@@ -1,0 +1,75 @@
+.background {
+    margin-top: 70px;
+    background-color: #21325e;
+    color: whitesmoke;
+}
+
+.contact {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: calc(8rem - 1rem);
+    animation: fadeInAnimation ease 2.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.github {
+    background-color: #21325e;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem;
+    padding-bottom: calc(8rem - 1rem);
+}
+
+.contact-info {
+    text-align: left;
+    font-size: 15px;
+}
+
+.typewriter {
+    text-align: center;
+    font-size: 15px;
+}
+
+.socialMedia svg {
+    color: whitesmoke;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.socialMedia svg:hover {
+    filter: brightness(110%);
+    transform: scale(1.1);
+    transition: 0.1s ease-in;
+    color: lightyellow;
+}
+
+@media only screen and (max-width: 850px) {
+    .contact {
+        padding-top: 10rem;
+        padding-bottom: calc(10rem - 1rem);
+    }
+    .github {
+        padding-top: 10rem;
+        padding-bottom: calc(10rem - 1rem);
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

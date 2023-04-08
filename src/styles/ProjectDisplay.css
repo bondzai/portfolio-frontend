@@ -1,0 +1,42 @@
+.project {
+    margin-top: 100px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.project img {
+    margin-top: 0;
+    width: 90%;
+    border-radius: 10px;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.project p {
+    font-size: 1rem;
+    color: #3e497a;
+}
+
+.project svg {
+    font-size: 50px;
+    color: #3e497a;
+}
+
+ul {
+    list-style-type: none;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
