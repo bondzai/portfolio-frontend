@@ -14,6 +14,17 @@ class project {
 
 export const ProjectList = [
     new project(
+        "Scrum Dashboard", 
+        "https://res.cloudinary.com/dbdacfhye/image/upload/v1681039500/project-scrum.png", 
+        "Scrum Dashboard", 
+        "https://swiftdev.onrender.com/",
+        "https://github.com/introbond/scrum-dashboard",
+        "JavaScript",
+        "React+ViteJS, GoogleSheet GoogleScript-API",
+        `Learn to use Vite.`,
+        ``
+        ),
+    new project(
         "API: E-Commerce", 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-ecommerce.png", 
         "API: E-Commerce system", 
