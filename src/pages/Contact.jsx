@@ -3,6 +3,7 @@ import Github from '../components/Github';
 import Typewriter from 'typewriter-effect';
 import IconGithub from "@material-ui/icons/GitHub";
 import { SiReplit } from "react-icons/si";
+import { Box, FormControl, Input, Textarea, Button } from "@chakra-ui/react";
 
 import "../styles/Contact.css";
 
@@ -14,13 +15,22 @@ const Contact = () => {
     return (
         <div className="background">
             <div className="contact">
-                <h1> C O N T A C T </h1>
-                <div className="contact-info">
-                    <p> <strong> Name: </strong> James-Bond, Puritat Chamart</p>
-                    <p> <strong> Social Media: </strong> </p>
-                    <p> <strong> - GitHub: </strong> https://github.com/introbond </p>
-                    <p> <strong> - Replit: </strong> https://replit.com/@introbond </p>
-                    <p> <strong> - Email: </strong> introbond.dev@gmail.com </p>
+                <div className="contact-form">
+                    <Box className="contact-info" py={6}>
+                        <h2> TEXT ME </h2>
+                        <form target="_blank" action="https://formsubmit.co/c2e294745ff3985265b640a8e8e94e60" method="POST">
+                            <FormControl>
+                                <Input type="text" name="name" placeholder="Your Name" required />
+                            </FormControl>
+                            <FormControl>
+                                <Input type="email" name="email" placeholder="Your Email Address" required />
+                            </FormControl>
+                            <FormControl>
+                                <Textarea name="message" rows="6" placeholder="Your Message" required />
+                            </FormControl>
+                            <Button type="submit" colorScheme="blue">Send</Button>
+                        </form>
+                    </Box>
                 </div>
 
                 <div className="github">
