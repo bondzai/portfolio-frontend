@@ -1,16 +1,46 @@
-import { React } from "react";
+import React, { useState, useEffect } from "react";
 import Skill from "./Skill";
 import { SkillList } from "../apis/SkillList";
 import "../styles/Skills.css";
 
-const SkillsFilter = ({topic}) => {
-    const skillsTopicFilter = SkillList.filter((skill)=> { 
-        return skill.topic === topic; 
+const SkillsFilter = ({ topic }) => {
+    const [shouldAnimate, setShouldAnimate] = useState([]);
+
+    useEffect(() => {
+        // Start the animation for each skill item sequentially
+        const timers = skillsTopicFilter.map((item, index) => {
+            return setTimeout(() => {
+                triggerAnimation(index);
+            }, index * 250);
+        });
+
+        // Clean up the timers when the component unmounts
+        return () => timers.forEach((timer) => clearTimeout(timer));
+    }, []);
+
+    const skillsTopicFilter = SkillList.filter((skill) => {
+        return skill.topic === topic;
     });
+
+    const triggerAnimation = (index) => {
+        setShouldAnimate((prev) => [...prev, index]);
+    };
+
     return (
         <div className="skill-list">
             {skillsTopicFilter.map((item, index) => {
-                return <Skill key={index} id={index} {...item}/>
+                const animate = shouldAnimate.includes(index);
+                return (
+                    <div
+                        key={index}
+                        className={`skill-item ${animate ? "animate" : ""}`}
+                        onAnimationEnd={() =>
+                            setShouldAnimate((prev) => prev.filter((i) => i !== index))
+                        }
+                    >
+                        <Skill id={index} {...item} />
+                    </div>
+                );
             })}
         </div>
     );
