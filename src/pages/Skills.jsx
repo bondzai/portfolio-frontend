@@ -6,7 +6,6 @@ const Skills = () => {
     return (
         <div className="home">
             <div className="skills">  
-                <h3> S K I L L S </h3>
                 <ol className="list">
                     <li> <b> Programming Languages </b> <SkillsFilter topic = "language"/> </li>
                     <li> <b> Frontend </b> <SkillsFilter topic = "frontend"/> </li>

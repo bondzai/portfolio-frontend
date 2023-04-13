@@ -24,6 +24,7 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="toggleButton">
+            <h6> {activeLink} </h6>
                 <button onClick={toggleNavbar}>
                     <ReorderIcon />
                 </button>
