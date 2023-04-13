@@ -3,7 +3,6 @@ import Github from '../components/Github';
 import Typewriter from 'typewriter-effect';
 import IconGithub from "@material-ui/icons/GitHub";
 import { SiReplit } from "react-icons/si";
-import { Box, FormControl, Input, Textarea, Button } from "@chakra-ui/react";
 
 import "../styles/Contact.css";
 

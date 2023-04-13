@@ -18,6 +18,24 @@
     animation-fill-mode: forwards;
 }
 
+.arrow-left {
+    position: absolute;
+    top: 50%;
+    left: 150px;
+    font-size: 5rem;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 150px;
+    font-size: 5rem;
+    z-index: 10;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 2000px) {
     .certification-display img {
         width: 60%;
@@ -64,4 +82,4 @@
     100% {
         opacity: 1;
     }
-}       
+}
