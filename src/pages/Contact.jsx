@@ -15,7 +15,8 @@ const Contact = () => {
     return (
         <div className="background">
             <div className="contact">
-                <div className="contact-form">
+
+                {/* <div className="contact-form">
                     <Box className="contact-info" py={6}>
                         <h2> TEXT ME </h2>
                         <form target="_blank" action="https://formsubmit.co/c2e294745ff3985265b640a8e8e94e60" method="POST">
@@ -31,7 +32,7 @@ const Contact = () => {
                             <Button type="submit" colorScheme="blue">Send</Button>
                         </form>
                     </Box>
-                </div>
+                </div> */}
 
                 <div className="github">
                     <Github />
