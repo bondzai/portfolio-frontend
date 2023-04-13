@@ -7,14 +7,12 @@ const SkillsFilter = ({ topic }) => {
     const [shouldAnimate, setShouldAnimate] = useState([]);
 
     useEffect(() => {
-        // Start the animation for each skill item sequentially
         const timers = skillsTopicFilter.map((item, index) => {
             return setTimeout(() => {
                 triggerAnimation(index);
             }, index * 250);
         });
 
-        // Clean up the timers when the component unmounts
         return () => timers.forEach((timer) => clearTimeout(timer));
     }, []);
 
