@@ -67,14 +67,16 @@ const CertificationDisplay = () => {
                         height: 'auto',
                     }}
                 >
+                    {/* <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', }}>
+                        <AiOutlineClose className="close-icon" onClick={closeModal} />
+                    </Box> */}
                     <Box>
                         <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
                         <img src={CertificationList[id].image} alt={CertificationList[id].name} className="certification-image" />
                     </Box>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                        <AiOutlineClose className="close-icon" onClick={closeModal} />
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <AiOutlineArrowRight className="arrow-right" onClick={slideForward} />
                     </Box>
                 </Box>
