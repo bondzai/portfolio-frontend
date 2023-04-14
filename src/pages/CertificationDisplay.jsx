@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CertificationList } from "../apis/CertificationList";
 import "../styles/CertificationDisplay.css";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-icons/ai";
 import { Modal, Box } from '@mui/material';
 
 const CertificationDisplay = () => {
-    const { id } = useParams();
-    const navigate = useNavigate(); // useNavigate hook from react-router-dom
+    let { id } = useParams();
+    const navigate = useNavigate();
     const [current, setCurrent] = useState(id);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const CertificationDisplay = () => {
     }, [current]);
 
     const slideBack = () => {
-        if (current === 0) {
+        if (current <= 0) {
             setCurrent(CertificationList.length - 1);
         } else {
             setCurrent(parseInt(current) - 1);
@@ -41,6 +41,8 @@ const CertificationDisplay = () => {
             setCurrent(parseInt(current) + 1);
         }
     };
+
+    id = current;
 
     const closeModal = () => {
         navigate('/certifications');
@@ -59,15 +61,22 @@ const CertificationDisplay = () => {
                         boxShadow: 24,
                         p: 4,
                         display: 'flex',
-                        gap: '1rem',
                         flexDirection: 'column',
-                        width: '50vw',
+                        gap: '2rem',
+                        width: '60vw',
                         height: 'auto',
                     }}
                 >
-                    <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
-                    <img src={CertificationList[current].image} alt={CertificationList[current].name} />
-                    <AiOutlineArrowRight className="arrow-right" onClick={slideForward} />
+                    <Box>
+                        <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+                        <img src={CertificationList[id].image} alt={CertificationList[id].name} className="certification-image" />
+                    </Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <AiOutlineClose className="close-icon" onClick={closeModal} />
+                        <AiOutlineArrowRight className="arrow-right" onClick={slideForward} />
+                    </Box>
                 </Box>
             </Modal>
         </div>
