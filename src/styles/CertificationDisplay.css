@@ -74,6 +74,14 @@
     }
 }
 
+@media (max-width: 768px) {
+
+    .arrow-left,
+    .arrow-right {
+        display: none;
+    }
+}
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
