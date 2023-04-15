@@ -67,9 +67,9 @@ const CertificationDisplay = () => {
                         height: 'auto',
                     }}
                 >
-                    {/* <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '10%'}}>
                         <AiOutlineClose className="close-icon" onClick={closeModal} />
-                    </Box> */}
+                    </Box>
                     <Box>
                         <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
                     </Box>
