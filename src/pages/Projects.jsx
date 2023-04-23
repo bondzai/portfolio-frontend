@@ -1,15 +1,11 @@
+import "../styles/Projects.css";
 import React, { useState } from "react";
 import Project from "../components/Project";
 import { ProjectList } from "../apis/ProjectList";
-import "../styles/Projects.css";
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import Toolbar from '@mui/material/Toolbar';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import { MenuItem } from '@mui/material';
-import Select from '@mui/material/Select';
+import { DataGrid } from '@mui/x-data-grid';
+import { MenuItem, Select, InputAdornment, TextField, Toolbar, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Box } from '@mui/material';
 
 const statusOptions = [
     { value: "", label: "all" },
@@ -17,6 +13,26 @@ const statusOptions = [
     { value: "offline", label: "Offline" },
     { value: "inprogress", label: "In progress" }
 ];
+
+const columns = [
+    { field: 'id', headerName: 'id', width: 90 },
+    {
+        field: 'name',
+        headerName: 'name',
+        width: 300,
+    },
+    {
+        field: 'language',
+        headerName: 'language',
+        width: 200,
+    },
+    {
+        field: 'status',
+        headerName: 'status',
+        width: 150,
+    },
+];
+
 
 const Projects = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -47,24 +63,28 @@ const Projects = () => {
 
     return (
         <div className="projects">
-            <Toolbar >
-                <Select
-                    value={selectedStatus}
-                    label="status"
-                    onChange={(event, value) => handleStatusChange(value)}
-                    sx={{ minWidth: '120px' }}
-                >
-                    {statusOptions.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                    ))}
-                </Select>
+            <Toolbar className="projectToolbar">
+                <FormControl fullWidth>
+                    <InputLabel>Fitler by status</InputLabel>
+                    <Select
+                        label="Search by status"
+                        variant="outlined"
+                        value={selectedStatus}
+                        onChange={(event, value) => handleStatusChange(value)}
+                        sx={{ minWidth: '150px' }}
+                    >
+                        {statusOptions.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
                 <TextField
                     id="search-bar"
                     label="Search by name"
                     variant="outlined"
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    sx={{ minWidth: '400px' }}
+                    sx={{ minWidth: '330px' }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -92,9 +112,22 @@ const Projects = () => {
                     ))}
                 </div>
             ) : (
-                <div className="projectList">
-                    <h1> test </h1>
-                    {/* Render the list view mode here */}
+                <div style={{width: '80%'}}>
+                    <Box sx={{ height: 'auto', width: '100%' }}>
+                        <DataGrid
+                            rows={filteredProjects}
+                            columns={columns}
+                            initialState={{
+                                pagination: {
+                                    paginationModel: {
+                                        pageSize: 20,
+                                    },
+                                },
+                            }}
+                            pageSizeOptions={[15, 20]}
+                            disableRowSelectionOnClick
+                        />
+                    </Box>
                 </div>
             )}
         </div>

@@ -1,5 +1,6 @@
 class project {
     constructor(
+        id,
         name,
         is_highlight, 
         image, 
@@ -12,6 +13,7 @@ class project {
         remark,
         status,
     ) {
+        this.id = id;
         this.name = name;
         this.is_highlight = is_highlight; 
         this.image = image;
@@ -28,6 +30,7 @@ class project {
 
 export const ProjectList = [
     new project(
+        12,
         "Websocket Channels", 
         true,
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1682211771/project-websocket-channels.png", 
@@ -41,6 +44,7 @@ export const ProjectList = [
         "inprogress",
         ),
     new project(
+        11,
         "Scrum Dashboard", 
         false,
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1681039500/project-scrum.png", 
@@ -54,6 +58,7 @@ export const ProjectList = [
         "offline",
         ),
     new project(
+        10,
         "API: E-Commerce", 
         true,
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-ecommerce.png", 
@@ -67,6 +72,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        9,
         "Currency Exchange",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634065/Portfolio/project-exchange.png", 
@@ -80,6 +86,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        8,
         "Microservice: SHA-256",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-hash.png", 
@@ -93,6 +100,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        7,
         "Microservice: Request Parser",
         false,  
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-req-parser.png", 
@@ -106,6 +114,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        6,
         "Calculator",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-calculator.png", 
@@ -119,6 +128,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        5,
         "Microservice: Timestamp",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634065/Portfolio/project-timestamp.png", 
@@ -132,6 +142,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        4,
         "Countries info",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-contries-info.png", 
@@ -145,6 +156,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        3,
         "To-Do List",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634065/Portfolio/project-todolist.png", 
@@ -158,6 +170,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        2,
         "Quiz",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-quiz.png", 
@@ -171,6 +184,7 @@ export const ProjectList = [
         "online",
         ),
     new project(
+        1,
         "Microservice: Files Upload",
         false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-cloudinary.png", 
