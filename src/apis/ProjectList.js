@@ -9,7 +9,8 @@ class project {
         language, 
         tools, 
         note, 
-        remark
+        remark,
+        status,
     ) {
         this.name = name;
         this.is_highlight = is_highlight; 
@@ -21,6 +22,7 @@ class project {
         this.tools = tools;
         this.note = note;
         this.remark = remark;
+        this.status = status;
     }
 }
 
@@ -36,6 +38,7 @@ export const ProjectList = [
         "React+ViteJS",
         `---.`,
         ``,
+        "online",
         ),
     new project(
         "Scrum Dashboard", 
@@ -47,7 +50,8 @@ export const ProjectList = [
         "JavaScript",
         "React+ViteJS, GoogleSheet GoogleScript-API",
         `Learn to use Vite.`,
-        ``
+        ``,
+        "offline",
         ),
     new project(
         "API: E-Commerce", 
@@ -59,7 +63,8 @@ export const ProjectList = [
         "JavaScript",
         "ExpressJS, MongoDB Atlast",
         `Learn how to interation services.`,
-        `*Automatically sleep after after a period of inactivity.`
+        `*Automatically sleep after after a period of inactivity.`,
+        "inprogress",
         ),
     new project(
         "Currency Exchange",
@@ -71,7 +76,8 @@ export const ProjectList = [
         "JavaScript",
         "ReactJS",
         `Learn about how to fetching data from public API.`,
-        ``
+        ``,
+        "online",
         ),
     new project(
         "Microservice: SHA-256",
@@ -83,7 +89,8 @@ export const ProjectList = [
         "JavaScript",
         "ExpressJS, EJS veiw engine",
         `Learn how to deal crypto flow.`,
-        `*Automatically sleep after after a period of inactivity.`
+        `*Automatically sleep after after a period of inactivity.`,
+        "online",
         ),
     new project(
         "Microservice: Request Parser",
@@ -95,7 +102,8 @@ export const ProjectList = [
         "JavaScript",
         "ExpressJS",
         `Learn more about request.`,
-        `*Automatically sleep after after a period of inactivity.`
+        `*Automatically sleep after after a period of inactivity.`,
+        "online",
         ),
     new project(
         "Calculator",
@@ -107,7 +115,8 @@ export const ProjectList = [
         "JavaScript",
         "ReactJS",
         `Just a simple logic built with useState and JavaScript 'eval' trick.`,
-        ``
+        ``,
+        "online",
         ),
     new project(
         "Microservice: Timestamp",
@@ -119,7 +128,8 @@ export const ProjectList = [
         "JavaScript",
         "NodeJS",
         ``,
-        `*Automatically sleep after after a period of inactivity.`
+        `*Automatically sleep after after a period of inactivity.`,
+        "online",
         ),
     new project(
         "Countries info",
@@ -131,7 +141,8 @@ export const ProjectList = [
         "JavaScript",
         "ReactJS",
         `Fetch data from restcountries API v2 then loop with simple JavaScript array method.`,
-        ``
+        ``,
+        "online",
         ),
     new project(
         "To-Do List",
@@ -143,7 +154,8 @@ export const ProjectList = [
         "JavaScript",
         "ReactJS",
         `Learn about how to CRUD with React.`,
-        ``
+        ``,
+        "online",
         ),
     new project(
         "Quiz",
@@ -155,7 +167,8 @@ export const ProjectList = [
         "JavaScript",
         "ReactJS",
         `Learn about React hooks (state, probs & context) with the simple structure.`,
-        ``
+        ``,
+        "online",
         ),
     new project(
         "Microservice: Files Upload",
@@ -167,6 +180,7 @@ export const ProjectList = [
         "JavaScript",
         "ExpressJS, EJS veiw engine, Cloudinary, Cyclic",
         `Learn how to deal with files system.`,
-        ``
+        ``,
+        "online",
         ),
 ]
