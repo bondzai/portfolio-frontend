@@ -1,15 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
-.App {
+body {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f0f0;
-}
-
-body {
+    font-family: "Source Sans Pro", sans-serif;
     padding: 0;
     margin: 0;
+    background-color: #f0f0f0;
 }
 
 ::-webkit-scrollbar {
@@ -18,12 +15,6 @@ body {
 
 ::-webkit-scrollbar-track {
     background: #e0e0e0;
-    border-radius: 0.5rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #21325e;
-    /* border-radius: 0.5rem; */
 }
 
 ::-webkit-scrollbar-thumb:hover {
