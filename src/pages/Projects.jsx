@@ -6,6 +6,10 @@ import Select from "react-select";
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import Toolbar from '@mui/material/Toolbar';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import { MenuItem } from '@mui/material';
 
 const statusOptions = [
     { value: "", label: "Status" },
@@ -41,34 +45,46 @@ const Projects = () => {
         return nameMatch && statusMatch;
     });
 
-    console.log(viewMode)
-
     return (
         <div className="projects">
-            <div className="searchBar">
-                <div>
-                    <input type="text" placeholder="Search by name" value={searchTerm} onChange={handleSearchChange} />
-                </div>
-                <div style={{ width: '120px' }}>
-                    <Select
-                        options={statusOptions}
-                        value={statusOptions.find(option => option.value === selectedStatus)}
-                        onChange={handleStatusChange}
-                    />
-                    <ToggleButtonGroup
-                        value={viewMode}
-                        exclusive
-                        onChange={(event, value) => handleViewModeChange(value)}
-                    >
-                        <ToggleButton value="module" aria-label="module">
-                            <ViewModuleIcon />
-                        </ToggleButton>
-                        <ToggleButton value="list" aria-label="list">
-                            <ViewListIcon />
-                        </ToggleButton>
-                    </ToggleButtonGroup>
-                </div>
-            </div>
+            <Toolbar>
+                <TextField
+                    id="search-bar"
+                    label="Search by name"
+                    variant="outlined"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <ToggleButtonGroup
+                                    value={viewMode}
+                                    exclusive
+                                    onChange={(event, value) => handleViewModeChange(value)}
+                                >
+                                    <ToggleButton value="module" aria-label="module">
+                                        <ViewModuleIcon />
+                                    </ToggleButton>
+                                    <ToggleButton value="list" aria-label="list">
+                                        <ViewListIcon />
+                                    </ToggleButton>
+                                </ToggleButtonGroup>
+                            </InputAdornment>
+                        )
+                    }}
+                />
+                <Select
+                    id="status-select"
+                    options={statusOptions}
+                    value={statusOptions.find(option => option.value === selectedStatus)}
+                    onChange={handleStatusChange}
+                    sx={{ marginLeft: "auto", minWidth: "120px" }}
+                >
+                    {statusOptions.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+                    ))}
+                </Select>
+            </Toolbar>
             {viewMode === "module" ? (
                 <div className="projectList">
                     {filteredProjects.map((project, index) => (
@@ -77,7 +93,7 @@ const Projects = () => {
                 </div>
             ) : (
                 <div className="projectList">
-                    <h1>list view</h1>
+                    <h1> test </h1>
                     {/* Render the list view mode here */}
                 </div>
             )}
