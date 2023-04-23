@@ -1,6 +1,18 @@
 class project {
-    constructor(name, image, description, url, source, language, tools, note, remark) {
+    constructor(
+        name,
+        is_highlight, 
+        image, 
+        description, 
+        url, 
+        source, 
+        language, 
+        tools, 
+        note, 
+        remark
+    ) {
         this.name = name;
+        this.is_highlight = is_highlight; 
         this.image = image;
         this.description = description;
         this.url = url;
@@ -8,13 +20,14 @@ class project {
         this.language = language;
         this.tools = tools;
         this.note = note;
-        this.remark = remark; 
+        this.remark = remark;
     }
 }
 
 export const ProjectList = [
     new project(
         "Websocket Channels", 
+        true,
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1682211771/project-websocket-channels.png", 
         "Websocket Channels", 
         "https://lab-websocket.onrender.com",
@@ -22,10 +35,11 @@ export const ProjectList = [
         "JavaScript",
         "React+ViteJS",
         `---.`,
-        ``
+        ``,
         ),
     new project(
         "Scrum Dashboard", 
+        false,
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1681039500/project-scrum.png", 
         "Scrum Dashboard", 
         "https://swiftdev.onrender.com/",
@@ -37,6 +51,7 @@ export const ProjectList = [
         ),
     new project(
         "API: E-Commerce", 
+        true,
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-ecommerce.png", 
         "API: E-Commerce system", 
         "https://ecommerce.introbond.repl.co/api-docs/",
@@ -47,7 +62,8 @@ export const ProjectList = [
         `*Automatically sleep after after a period of inactivity.`
         ),
     new project(
-        "Currency Exchange", 
+        "Currency Exchange",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634065/Portfolio/project-exchange.png", 
         "Simple currency converter web application", 
         "https://introbond.github.io/micro-app-api-currency-exchange/", 
@@ -58,7 +74,8 @@ export const ProjectList = [
         ``
         ),
     new project(
-        "Microservice: SHA-256", 
+        "Microservice: SHA-256",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-hash.png", 
         "Simple SHA256 algorithm hashing function", 
         "https://introbond-crypto-ui.onrender.com/",
@@ -69,7 +86,8 @@ export const ProjectList = [
         `*Automatically sleep after after a period of inactivity.`
         ),
     new project(
-        "Microservice: Request Parser", 
+        "Microservice: Request Parser",
+        false,  
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-req-parser.png", 
         "Simple SHA256 algorithm hashing function", 
         "https://microservice-headerparser.introbond.repl.co/",
@@ -80,7 +98,8 @@ export const ProjectList = [
         `*Automatically sleep after after a period of inactivity.`
         ),
     new project(
-        "Calculator", 
+        "Calculator",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-calculator.png", 
         "Simple calculator web application", 
         "https://introbond.github.io/micro-app-simple-calculator/",
@@ -91,7 +110,8 @@ export const ProjectList = [
         ``
         ),
     new project(
-        "Microservice: Timestamp", 
+        "Microservice: Timestamp",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634065/Portfolio/project-timestamp.png", 
         "Free code camp backend assignment", 
         "https://microservice-timestamp.introbond.repl.co",
@@ -102,7 +122,8 @@ export const ProjectList = [
         `*Automatically sleep after after a period of inactivity.`
         ),
     new project(
-        "Countries info", 
+        "Countries info",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-contries-info.png", 
         "Fetch information from API then filter by country name or capital name", 
         "https://introbond.github.io/micro-app-contries-search-filter/",
@@ -113,7 +134,8 @@ export const ProjectList = [
         ``
         ),
     new project(
-        "To-Do List", 
+        "To-Do List",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634065/Portfolio/project-todolist.png", 
         "Simple to-do list web application", 
         "https://introbond.github.io/micro-app-todolist/",
@@ -124,7 +146,8 @@ export const ProjectList = [
         ``
         ),
     new project(
-        "Quiz", 
+        "Quiz",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-quiz.png", 
         "Simple quiz web application", 
         "https://introbond.github.io/micro-app-quiz/", 
@@ -135,7 +158,8 @@ export const ProjectList = [
         ``
         ),
     new project(
-        "Microservice: Files Upload", 
+        "Microservice: Files Upload",
+        false, 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/project-cloudinary.png", 
         "API: file uploading service", 
         "https://introbond-upload.cyclic.app/",
