@@ -47,9 +47,15 @@ export const SkillList = [
         
     // ========== Frontend ==========
     new skill(
-        "ReactJS", 
+        "React", 
         "https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg", 
         "https://reactjs.org/", 
+        "frontend", 
+    ),
+    new skill(
+        "React-Redux", 
+        "https://brandeps.com/logo-download/R/Redux-logo-vector-01.svg", 
+        "https://redux.js.org/", 
         "frontend", 
     ),
     new skill(
@@ -62,6 +68,12 @@ export const SkillList = [
         "CSS", 
         "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg", 
         "https://www.w3schools.com/css/", 
+        "frontend", 
+        ),
+    new skill(
+        "CSS-Tailwind", 
+        "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg", 
+        "https://tailwindcss.com/", 
         "frontend", 
         ),
 
