@@ -28,48 +28,6 @@
     padding-bottom: calc(10rem - 1rem);
 }
 
-/* .contact-form {
-    font-size: 15px;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 8px;
-    z-index: 1;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-form label {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
-.contact-form input, textarea {
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 16px;
-    font-size: 16px;
-}
-
-.contact-form button[type="submit"] {
-    margin: 0 auto;
-    width: 35%;
-    background-color: #3182ce;
-    color: #fff;
-    font-size: 16px;
-    padding: 12px 24px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.contact-form button[type="submit"]:hover {
-    background-color: #2c5282;
-} */
-
 .typewriter {
     text-align: center;
     font-size: 15px;
@@ -100,15 +58,5 @@
     .github {
         padding-top: 10rem;
         padding-bottom: calc(10rem - 1rem);
-    }
-}
-
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
     }
 }

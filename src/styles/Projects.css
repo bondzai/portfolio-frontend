@@ -119,13 +119,3 @@
         height: 300px;
     }
 }
-
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
