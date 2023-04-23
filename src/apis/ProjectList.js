@@ -38,7 +38,7 @@ export const ProjectList = [
         "React+ViteJS",
         `---.`,
         ``,
-        "online",
+        "inprogress",
         ),
     new project(
         "Scrum Dashboard", 
@@ -64,7 +64,7 @@ export const ProjectList = [
         "ExpressJS, MongoDB Atlast",
         `Learn how to interation services.`,
         `*Automatically sleep after after a period of inactivity.`,
-        "inprogress",
+        "online",
         ),
     new project(
         "Currency Exchange",

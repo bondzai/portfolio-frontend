@@ -52,7 +52,7 @@ const Project = ({ ...project }) => {
                         position: "absolute",
                         top: 10,
                         right: 10,
-                        color: "greenyellow",
+                        color: "yellow",
                     }}>
                     <AiFillStar size={30} />
                 </div>
