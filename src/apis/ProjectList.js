@@ -14,6 +14,17 @@ class project {
 
 export const ProjectList = [
     new project(
+        "Websocket Channels", 
+        "https://res.cloudinary.com/dbdacfhye/image/upload/v1682211771/project-websocket-channels.png", 
+        "Websocket Channels", 
+        "https://lab-websocket.onrender.com",
+        "https://github.com/introbond/websocket-channels",
+        "JavaScript",
+        "React+ViteJS",
+        `---.`,
+        ``
+        ),
+    new project(
         "Scrum Dashboard", 
         "https://res.cloudinary.com/dbdacfhye/image/upload/v1681039500/project-scrum.png", 
         "Scrum Dashboard", 
