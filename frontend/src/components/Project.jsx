@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { AiFillStar } from 'react-icons/ai';
 
@@ -15,9 +15,8 @@ const Project = ({ ...project }) => {
                     backgroundColor: 'green',
                     display: 'inline-block',
                     borderRadius: '50%',
-                    width: '12px',
-                    height: '12px',
-                    marginRight: '5px',
+                    width: '14px',
+                    height: '14px',
                     animation: 'blinking 1s infinite'
                 };
             case 'offline':
@@ -25,18 +24,16 @@ const Project = ({ ...project }) => {
                     backgroundColor: 'red',
                     display: 'inline-block',
                     borderRadius: '50%',
-                    width: '12px',
-                    height: '12px',
-                    marginRight: '5px'
+                    width: '14px',
+                    height: '14px',
                 };
             case 'inprogress':
                 return {
                     backgroundColor: 'orange',
                     display: 'inline-block',
                     borderRadius: '50%',
-                    width: '12px',
-                    height: '12px',
-                    marginRight: '5px',
+                    width: '14px',
+                    height: '14px',
                     animation: 'blinking 1s infinite'
                 };
             default:
@@ -57,12 +54,12 @@ const Project = ({ ...project }) => {
                     <AiFillStar size={30} />
                 </div>
             )}
-            <div style={{ backgroundImage: `url(${project.image})` }} className="bgImage" />
+            <div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />
             <h1> {project.name} </h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <button onClick={() => navigate("/project/" + project.id)}> Detail </button>
-                    <button onClick={() => openInNewTab(project.url)}> Demo </button>
+                    <button onClick={() => openInNewTab(project.host_url)}> Demo </button>
                         <div style={getStatusStyle()}> </div>
                 </div>
             </div>
