@@ -25,9 +25,10 @@ func main() {
 		return c.SendString("Hello, World! Redis ping result: " + pong)
 	})
 
-	app.Get("/projectList", func(c *fiber.Ctx) error {
+	app.Get("/projectList/", func(c *fiber.Ctx) error {
 		data, err := service.ReadData()
 		if err != nil {
+			fmt.Println("Error get project list:", err)
 			return c.SendStatus(http.StatusInternalServerError)
 		}
 		return c.JSON(data)
