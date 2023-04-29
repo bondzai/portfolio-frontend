@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	service "portfolio/service"
 
@@ -22,6 +23,14 @@ func main() {
 		}
 
 		return c.SendString("Hello, World! Redis ping result: " + pong)
+	})
+
+	app.Get("/projectList", func(c *fiber.Ctx) error {
+		data, err := service.ReadData()
+		if err != nil {
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
 	})
 
 	app.Listen(":5000")
