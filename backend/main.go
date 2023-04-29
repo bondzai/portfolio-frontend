@@ -3,20 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 
 	service "portfolio/service"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	app := fiber.New()
 
 	redisClient := service.NewRedisClient()
