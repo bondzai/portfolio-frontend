@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const getProjectList = (async () => {
+    const API_PROJECT_LIST = import.meta.env.VITE_API_PROJECT_LIST;
     try {
-        const response = await axios.get('https://script.google.com/macros/s/AKfycbw5LvdR-rN92zHfS7waUWub4OLY9oWvxEyovpFrvYuVmowMABhDobCtS-iJGuSH77ks/exec?action=readData');
+        const response = await axios.get(API_PROJECT_LIST);
         return response.data.sort((a, b) => b.id - a.id);
     } catch (error) {
         console.error(error);
