@@ -33,6 +33,10 @@ func NewRedisCache() RedisCache {
 		fmt.Println("Error connecting to Redis:", err)
 	}
 
+	if err := client.FlushAll(context.Background()).Err(); err != nil {
+		fmt.Println("Error flushing Redis cache:", err)
+	}
+
 	fmt.Println("Connected to Redis:", pong)
 
 	return RedisCache{client}
