@@ -7,12 +7,18 @@ import (
 	service "portfolio/service"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
 	app := fiber.New()
 
 	redisClient := service.NewRedisCache()
+
+	// Add cors middleware to allow requests from frontend app
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "https://thejb-portfolio-froentend.onrender.com",
+	}))
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World!")
