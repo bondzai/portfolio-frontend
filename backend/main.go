@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"net/http"
 
@@ -13,20 +12,14 @@ import (
 func main() {
 	app := fiber.New()
 
-	redisClient := service.NewRedisClient()
+	redisClient := service.NewRedisCache()
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		pong, err := redisClient.Ping(context.Background()).Result()
-		if err != nil {
-			fmt.Println("Error pinging Redis:", err)
-			return c.SendStatus(fiber.StatusInternalServerError)
-		}
-
-		return c.SendString("Hello, World! Redis ping result: " + pong)
+		return c.SendString("Hello, World!")
 	})
 
 	app.Get("/projectList/", func(c *fiber.Ctx) error {
-		data, err := service.ReadData()
+		data, err := service.GetData(redisClient)
 		if err != nil {
 			fmt.Println("Error get project list:", err)
 			return c.SendStatus(http.StatusInternalServerError)
