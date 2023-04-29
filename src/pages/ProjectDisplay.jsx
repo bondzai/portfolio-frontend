@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ProjectList } from "../apis/ProjectList";
+import { getProjectList } from "../apis/ProjectList";
 import "../styles/ProjectDisplay.css";
 
 const ProjectDisplay = () => {
     const { id } = useParams();
-    const project = ProjectList[id];
+    const [projectList, setProjectList] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getProjectList();
+            console.log(result)
+            setProjectList(result);
+        };
+        fetchData();
+    }, []);
+
+    const project = projectList[Number(id) - 1];
 
     return (
         <div className="project">
-            <img src={project.image} alt ={project.name}/>
-            <ul>
-                <li>
-                    <p> <b> Description: </b> {project.description} </p>
-                </li>
-                <li>
-                    <p> <b> Language: </b> {project.language} </p>
-                </li>
-                <li>
-                    <p> <b> Tools: </b> {project.tools} </p>
-                </li>
-                <li>
-                    <p> <b> Note to self: </b> {project.note} </p>
-                </li>
-            </ul>
+            {project && (
+                <>
+                    <img src={project.image_url} alt={project.name} />
+                    <ul>
+                        <li>
+                            <p>
+                                <b> Language: </b> {project.language}
+                            </p>
+                        </li>
+                    </ul>
+                </>
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default ProjectDisplay;

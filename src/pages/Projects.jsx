@@ -1,42 +1,25 @@
 import "../styles/Projects.css";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Project from "../components/Project";
-import { ProjectList } from "../apis/ProjectList";
+import { getProjectList, statusOptions, columns } from "../apis/ProjectList";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import { DataGrid } from '@mui/x-data-grid';
 import { MenuItem, Select, InputAdornment, TextField, Toolbar, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Box } from '@mui/material';
 
-const statusOptions = [
-    { value: "", label: "all" },
-    { value: "online", label: "Online" },
-    { value: "offline", label: "Offline" },
-    { value: "inprogress", label: "In progress" }
-];
-
-const columns = [
-    { field: 'id', headerName: 'id', width: 90 },
-    {
-        field: 'name',
-        headerName: 'name',
-        width: 250,
-    },
-    {
-        field: 'language',
-        headerName: 'language',
-        width: 120,
-    },
-    {
-        field: 'status',
-        headerName: 'status',
-        width: 120,
-    },
-];
-
 const Projects = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedStatus, setSelectedStatus] = useState("");
     const [viewMode, setViewMode] = useState("module");
+    const [projectList, setProjectList] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getProjectList();
+            setProjectList(result);
+        };
+        fetchData();
+    }, []);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -54,11 +37,13 @@ const Projects = () => {
         }
     };
 
-    const filteredProjects = ProjectList.filter((project) => {
-        const nameMatch = project.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const statusMatch = selectedStatus === "" || project.status === selectedStatus;
-        return nameMatch && statusMatch;
-    });
+    const filteredProjects = useMemo(() => {
+        return projectList.filter((project) => {
+            const nameMatch = project.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const statusMatch = selectedStatus === "" || project.status === selectedStatus;
+            return nameMatch && statusMatch;
+        });
+    }, [projectList, searchTerm, selectedStatus]);
 
     return (
         <div className="projects">
