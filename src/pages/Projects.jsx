@@ -19,20 +19,19 @@ const columns = [
     {
         field: 'name',
         headerName: 'name',
-        width: 300,
+        width: 250,
     },
     {
         field: 'language',
         headerName: 'language',
-        width: 200,
+        width: 120,
     },
     {
         field: 'status',
         headerName: 'status',
-        width: 150,
+        width: 120,
     },
 ];
-
 
 const Projects = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -112,7 +111,7 @@ const Projects = () => {
                     ))}
                 </div>
             ) : (
-                <div style={{width: '80%'}}>
+                <div style={{ width: '80%' }}>
                     <Box sx={{ height: 'auto', width: '100%' }}>
                         <DataGrid
                             rows={filteredProjects}
