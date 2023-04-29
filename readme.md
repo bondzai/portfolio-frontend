@@ -6,7 +6,7 @@ Frontend
 - Host: Firebase
 - Incase of manual deploy using command "yarn firebase-deploy"
 
-Frontend
+Backend
 - Language: Go
 - Core: Fiber
 - Host: Render
