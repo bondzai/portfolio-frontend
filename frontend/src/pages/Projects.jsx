@@ -12,14 +12,28 @@ const Projects = () => {
     const [selectedStatus, setSelectedStatus] = useState("");
     const [viewMode, setViewMode] = useState("module");
     const [projectList, setProjectList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await getProjectList();
             setProjectList(result);
+            setLoading(false);
         };
         fetchData();
     }, []);
+
+    const filteredProjects = useMemo(() => {
+        if (loading) {
+            return [];
+        }
+        return projectList.filter((project) => {
+            const nameMatch = project.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const statusMatch = selectedStatus === "" || project.status === selectedStatus;
+            return nameMatch && statusMatch;
+        });
+    }, [loading, projectList, searchTerm, selectedStatus]);
+
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -36,14 +50,6 @@ const Projects = () => {
             setViewMode("list");
         }
     };
-
-    const filteredProjects = useMemo(() => {
-        return projectList.filter((project) => {
-            const nameMatch = project.name.toLowerCase().includes(searchTerm.toLowerCase());
-            const statusMatch = selectedStatus === "" || project.status === selectedStatus;
-            return nameMatch && statusMatch;
-        });
-    }, [projectList, searchTerm, selectedStatus]);
 
     return (
         <div className="projects">
