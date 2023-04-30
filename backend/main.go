@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	service "portfolio/service"
 
@@ -27,7 +28,13 @@ func main() {
 	})
 
 	app.Get("/projectList/", func(c *fiber.Ctx) error {
-		data, err := service.GetData(redisClient)
+		url := os.Getenv("DB_URL") + "?action=getData&sheetName=projects"
+
+		fmt.Println("*****")
+		fmt.Println(url)
+		fmt.Println("*****")
+
+		data, err := service.GetData(redisClient, url)
 		if err != nil {
 			fmt.Println("Error get project list:", err)
 			return c.SendStatus(http.StatusInternalServerError)
