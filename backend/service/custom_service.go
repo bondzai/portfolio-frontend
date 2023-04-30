@@ -5,13 +5,13 @@ import (
 	"time"
 )
 
-func GetData(redisClient RedisCache) ([]map[string]interface{}, error) {
+func GetData(redisClient RedisCache, url string) ([]map[string]interface{}, error) {
 	cacheKey := "projectList"
 	var data []map[string]interface{}
 
 	err := redisClient.GetCache(cacheKey, &data)
 	if err != nil {
-		data, err = ReadData()
+		data, err = GetDataFromAPI(url)
 		if err != nil {
 			return nil, err
 		}
