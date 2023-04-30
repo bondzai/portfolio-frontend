@@ -12,7 +12,7 @@ const Certification = ({ ...certification }) => {
     
     return (
         <div className="certification" onClick={handleClick}>
-            <div style={{ backgroundImage: `url(${certification.image})` }} className="bgImage" />
+            <div style={{ backgroundImage: `url(${certification.image_url})` }} className="bgImage" />
         </div>
     )
 }
