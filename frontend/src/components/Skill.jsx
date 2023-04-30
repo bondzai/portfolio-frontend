@@ -8,7 +8,7 @@ const SkillItem = ({...skill}) => {
     return (
         <div className="skill">
             <div>
-                <button onClick={() => openInNewTab(skill.url)}> <img src={skill.image} alt={skill.name}/></button>
+                <button onClick={() => openInNewTab(skill.url)}> <img src={skill.image_url} alt={skill.name}/></button>
             </div>
         </div>
     );
