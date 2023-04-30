@@ -5,8 +5,7 @@ import (
 	"time"
 )
 
-func GetData(redisClient RedisCache, url string) ([]map[string]interface{}, error) {
-	cacheKey := "projectList"
+func GetData(redisClient RedisCache, url string, cacheKey string) ([]map[string]interface{}, error) {
 	var data []map[string]interface{}
 
 	err := redisClient.GetCache(cacheKey, &data)

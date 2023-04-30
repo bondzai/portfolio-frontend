@@ -27,16 +27,34 @@ func main() {
 		return c.SendString("Hello, World!")
 	})
 
-	app.Get("/projectList/", func(c *fiber.Ctx) error {
-		url := os.Getenv("DB_URL") + "?action=getData&sheetName=projects"
-
-		fmt.Println("*****")
-		fmt.Println(url)
-		fmt.Println("*****")
-
-		data, err := service.GetData(redisClient, url)
+	app.Get("/projects/", func(c *fiber.Ctx) error {
+		key := "projects"
+		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
+		data, err := service.GetData(redisClient, url, key)
 		if err != nil {
-			fmt.Println("Error get project list:", err)
+			fmt.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
+	})
+
+	app.Get("/skills/", func(c *fiber.Ctx) error {
+		key := "skills"
+		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
+		data, err := service.GetData(redisClient, url, key)
+		if err != nil {
+			fmt.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
+	})
+
+	app.Get("/certifications/", func(c *fiber.Ctx) error {
+		key := "certifications"
+		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
+		data, err := service.GetData(redisClient, url, key)
+		if err != nil {
+			fmt.Println(err)
 			return c.SendStatus(http.StatusInternalServerError)
 		}
 		return c.JSON(data)
