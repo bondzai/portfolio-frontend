@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const getProjectList = (async () => {
-    const API_PROJECT_LIST = import.meta.env.VITE_API_PROJECT_LIST;
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL + "/projects/";
     try {
-        const response = await axios.get(API_PROJECT_LIST);
+        const response = await axios.get(BACKEND_URL);
         return response.data.sort((a, b) => b.id - a.id);
     } catch (error) {
         console.error(error);
