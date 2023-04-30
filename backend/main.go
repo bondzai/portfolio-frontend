@@ -16,7 +16,7 @@ func main() {
 	redisClient := service.NewRedisCache()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:     "https://thejb.onrender.com/",
+		AllowOrigins:     "*",
 		AllowHeaders:     "Origin,Content-Type,Accept,Content-Length,Accept-Language,Accept-Encoding,Connection,Access-Control-Allow-Origin",
 		AllowCredentials: true,
 		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
