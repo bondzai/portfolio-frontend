@@ -60,5 +60,15 @@ func main() {
 		return c.JSON(data)
 	})
 
+	app.Post("/flush-cache/", func(c *fiber.Ctx) error {
+		if c.Get("Authorization") != os.Getenv("API_TOKEN") {
+			return c.SendStatus(http.StatusUnauthorized)
+		}
+
+		redisClient.FlushAllCache()
+
+		return c.SendStatus(http.StatusOK)
+	})
+
 	app.Listen(":5000")
 }
