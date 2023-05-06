@@ -42,6 +42,14 @@ func NewRedisCache() RedisCache {
 	return RedisCache{client}
 }
 
+func (r RedisCache) FlushAllCache() {
+	if err := r.client.FlushAll(context.Background()).Err(); err != nil {
+		fmt.Println("Error flushing Redis cache:", err)
+	}
+
+	fmt.Println("Flush cache successfully")
+}
+
 func (r RedisCache) GetCache(key string, data interface{}) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
