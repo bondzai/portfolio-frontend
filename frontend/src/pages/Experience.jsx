@@ -59,10 +59,6 @@ const Experience = () => {
                     <p> Responsibilities: Designed, developed, debugged, deployed & delivered automation projects (especially automated batch control system)</p>
                     <p> &emsp; - PLC, SCADA & Database programming </p>
                     <p> &emsp; - Implement analog signals, digital devices, I/O server & other 3rd party integrations by any protocol of choice </p>
-                    <p> Specializes in: </p>
-                    <p> &emsp; - PLC: Rockwell & Schneider Electric </p>
-                    <p> &emsp; - HMI & SCADA: WSP, InTouch & InBatch </p>
-                    <p> &emsp; - Virtual Environment: VMware Workstation & ESXi </p>
                 </VerticalTimelineElement>
 
                 <VerticalTimelineElement
@@ -78,7 +74,7 @@ const Experience = () => {
                     <p> Q3: </p>
                     <p> &emsp; - Start using git & GitHub. Start learning web development tools, libraries & frameworks.(JavaScript stack - TypeScript, React.js, Node.js & Express.js)</p>
                     <p> Q4: </p>
-                    <p> &emsp; - Start learning Python for backend services. Start learning software lifecycle, CI/CD tools, tech & workflow.</p>
+                    <p> &emsp; - Start learning Python, Go, software lifecycle, CI/CD tools, tech & workflow.</p>
                     <p> &emsp; - Become a better backend developer. Pushing more open-source projects. Further down the road, keep learning.</p>
                 </VerticalTimelineElement>
 
@@ -91,18 +87,14 @@ const Experience = () => {
                     <h3 className="vertical-timeline-element-title"> Swift Dynamics Co., Ltd., Bangkok, Thailand </h3>
                     <p> Role: Backend Developer </p>
                     <p> Responsibilities: <br />
-                        &emsp; -Fully focus on design & develop many type of backend services (Database, logic & API). <br />
-                        &emsp; -Implement communication networks & backend protocols. <br />
+                        &emsp; -Fully focus on design & develop many type of backend services (Database, Bussiness logic & API). <br />
+                        &emsp; -Implement infrastructure, networking, security, middlewares & backend protocols. <br />
                         &emsp; -Co-work with peer engineers in coding & code reviews. <br />
                     </p>
-                    <p> Specializes in: </p>
-                    <p> &emsp; - Languages: JavaScript, Python, Go</p>
-                    <p> &emsp; - Backend Stacks:</p>
-                    <p> &emsp;&emsp; - Python: Django REST</p>
-                    <p> &emsp;&emsp; - JavaScript: Node & Express</p>
-                    <p> &emsp;&emsp; - Go: Fiber & Gin</p>
-                    <p> &emsp; - Other tools & middlewares:</p>
-                    <p> &emsp;&emsp; - Infrastructure: Docker</p>
+                    <p> Hightlight-skills: </p>
+                    <p> &emsp; - OS: Arch, Debian, RHEL & Derivatives-based Linux distro.</p>
+                    <p> &emsp; - Languages: JavaScript, Python, Go.</p>
+
                 </VerticalTimelineElement>
             </VerticalTimeline>
         </div>
