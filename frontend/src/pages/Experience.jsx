@@ -72,9 +72,9 @@ const Experience = () => {
                     <p> &emsp; - Traditional system programming practice. Laser focus on logic, loop, data structure & algorithm. </p>
                     <p> &emsp; - Built blockchain's data monitoring mobile application using Google cloud environment. </p>
                     <p> Q3: </p>
-                    <p> &emsp; - Start using git & GitHub. Start learning web development tools, libraries & frameworks.(JavaScript stack - TypeScript, React.js, Node.js & Express.js)</p>
+                    <p> &emsp; - Start using Git & GitHub. Start learning web development tools, libraries & frameworks.(JavaScript stack - React.js, Node.js & Express.js)</p>
                     <p> Q4: </p>
-                    <p> &emsp; - Start learning Python, Go, software lifecycle, CI/CD tools, tech & workflow.</p>
+                    <p> &emsp; - Start learning Python, Go, software lifecycle (CI/CD concept) & infrastructure.</p>
                     <p> &emsp; - Become a better backend developer. Pushing more open-source projects. Further down the road, keep learning.</p>
                 </VerticalTimelineElement>
 
