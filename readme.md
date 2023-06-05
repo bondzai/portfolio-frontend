@@ -9,6 +9,6 @@ Frontend
 Backend
 - Language: Go
 - Core: Fiber
-- Host: Render
+- Host: Render *** 2023-06-05 move to Replit ***
 - Cache: Redis
 - Database: Google-sheet
