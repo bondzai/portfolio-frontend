@@ -19,9 +19,6 @@ const getProjectList = (async () => {
 
 export { getProjectList }
 
-
-export { getProjectList }
-
 export const statusOptions = [
     { value: "", label: "all" },
     { value: "online", label: "Online" },
