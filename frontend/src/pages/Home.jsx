@@ -1,5 +1,4 @@
 import React from "react";
-
 import Typewriter from 'typewriter-effect';
 import "../styles/Home.css";
 
@@ -14,12 +13,17 @@ const Home = () => {
                     <p> Clean, simple & high-quality code <br/> always sparks joy in my blood. </p>
                 </div>
                 <Typewriter
-                        options={{
-                            strings: ['GROWTH MINDSET', 'GRIT', 'SELF-ACTUALIZATION'],
-                            autoStart: true,
-                            loop: true,
-                        }}
-                    />
+                    options={{
+                        strings: [
+                            '<strong>GROWTH MINDSET</strong>',
+                            '<strong>GRIT</strong>',
+                            '<strong>SELF-ACTUALIZATION</strong>'
+                        ],
+                        autoStart: true,
+                        loop: true,
+                        escapeHtml: false,
+                    }}
+                />
                 <p> &copy; JB </p>
             </div>
         </div>
