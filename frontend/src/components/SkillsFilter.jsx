@@ -8,11 +8,15 @@ const SkillsFilter = ({ topic }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getSkillList();
-            setSkillList(result);
+            try {
+                const result = await getSkillList();
+                setSkillList(result);
+            } catch (error) {
+                console.error('Failed to fetch skills', error);
+            }
         };
         fetchData();
-    }, []);
+    }, [topic]);
 
     const skillsTopicFilter = skillList.filter((skill) => {
         return skill.topic === topic && skill.is_showing === true;
@@ -26,5 +30,6 @@ const SkillsFilter = ({ topic }) => {
         </div>
     );
 };
+
 
 export default SkillsFilter;
