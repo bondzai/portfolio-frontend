@@ -6,6 +6,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import { DataGrid } from '@mui/x-data-grid';
 import { MenuItem, Select, InputAdornment, TextField, Toolbar, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Box } from '@mui/material';
+import SpinComponent from "../components/SpinComponent";
 
 const Projects = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -95,7 +96,11 @@ const Projects = () => {
                     }}
                 />
             </Toolbar>
-            {viewMode === "module" ? (
+            {loading ? (
+                <div className="spin-container">
+                    <SpinComponent size="large" />
+                </div>
+            ) : viewMode === "module" ? (
                 <div className="projectList">
                     {filteredProjects.map((project, index) => (
                         <Project key={index} id={index} {...project} />
@@ -122,6 +127,7 @@ const Projects = () => {
             )}
         </div>
     );
+    
 };
 
 export default Projects;
