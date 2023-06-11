@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div className="home">
             <div className="about">
-                <img src="https://res.cloudinary.com/dbdacfhye/image/upload/v1667634064/Portfolio/profile.png" alt="profile"/>
+                <img src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png" alt="profile"/>
                 <div className="prompt">
                     <h2> Hi, I am James-Bond. </h2> <h3> Software Engineer </h3>
                     <p> Clean, simple & high-quality code <br/> always sparks joy in my blood. </p>
