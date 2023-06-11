@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -17,15 +18,17 @@ type RedisCache struct {
 
 func NewRedisCache() RedisCache {
 	redisHost := os.Getenv("REDIS_HOST")
+	redisPassword := os.Getenv("REDIS_PASSWORD")
 	address := "localhost:6379"
 	if redisHost != "" {
 		address = redisHost
 	}
 
 	client := redis.NewClient(&redis.Options{
-		Addr:     address,
-		Password: "",
-		DB:       0,
+		Addr:      address,
+		Password:  redisPassword,
+		DB:        0,
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	})
 
 	pong, err := client.Ping(context.Background()).Result()
