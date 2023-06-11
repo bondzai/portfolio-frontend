@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -17,27 +16,25 @@ type RedisCache struct {
 }
 
 func NewRedisCache() RedisCache {
-	redisHost := os.Getenv("REDIS_HOST")
-	redisPassword := os.Getenv("REDIS_PASSWORD")
-	address := "localhost:6379"
-	if redisHost != "" {
-		address = redisHost
+	redisURL := os.Getenv("REDIS_URL")
+
+	opts, err := redis.ParseURL(redisURL)
+	if err != nil {
+		fmt.Println("Error parsing Redis URL:", err)
+		os.Exit(1) // or return an error, depending on your program's requirements
 	}
 
-	client := redis.NewClient(&redis.Options{
-		Addr:      address,
-		Password:  redisPassword,
-		DB:        0,
-		TLSConfig: &tls.Config{InsecureSkipVerify: true},
-	})
+	client := redis.NewClient(opts)
 
 	pong, err := client.Ping(context.Background()).Result()
 	if err != nil {
 		fmt.Println("Error connecting to Redis:", err)
+		os.Exit(1) // or return an error, depending on your program's requirements
 	}
 
 	if err := client.FlushAll(context.Background()).Err(); err != nil {
 		fmt.Println("Error flushing Redis cache:", err)
+		os.Exit(1) // or return an error, depending on your program's requirements
 	}
 
 	fmt.Println("Connected to Redis:", pong)
