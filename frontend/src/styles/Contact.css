@@ -4,7 +4,7 @@
     margin-top: 70px;
     background-color: #21325e;
     color: whitesmoke;
-    
+
 }
 
 .contact {
@@ -18,13 +18,26 @@
     animation-fill-mode: forwards;
 }
 
+.content {
+    margin-top: 4rem;
+}
+
+.white-link {
+    color: white;
+}
+
+.grey-link {
+    color: grey;
+}
+
+
 .github {
     background-color: #21325e;
     color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10rem;
+    padding-top: 6rem;
     padding-bottom: calc(10rem - 1rem);
 }
 

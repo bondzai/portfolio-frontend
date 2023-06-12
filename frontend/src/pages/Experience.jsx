@@ -56,9 +56,9 @@ const Experience = () => {
                 >
                     <h3 className="vertical-timeline-element-title"> Synergetech Co., Ltd., Nonthaburi, Thailand </h3>
                     <p> Role: Automation System Engineer </p>
-                    <p> Responsibilities: Designed, developed, debugged, deployed & delivered automation projects (especially automated batch control system)</p>
-                    <p> &emsp; - PLC, SCADA & Database programming </p>
-                    <p> &emsp; - Implement analog signals, digital devices, I/O server & other 3rd party integrations by any protocol of choice </p>
+                    <p> Responsibilities: Designed, developed, debugged, deployed & delivered industrial automation projects (especially automated batch control system). </p>
+                    <p> &emsp; - PLC, SCADA & Database programming. </p>
+                    <p> &emsp; - Implement analog signals, digital devices, I/O server & other 3rd party integrations by any protocol of choice. </p>
                 </VerticalTimelineElement>
 
                 <VerticalTimelineElement
@@ -70,12 +70,13 @@ const Experience = () => {
                     <h3 className="vertical-timeline-element-title"> Self-learning: Software Development </h3>
                     <p> Q2: </p>
                     <p> &emsp; - Traditional system programming practice. Laser focus on logic, loop, data structure & algorithm. </p>
-                    <p> &emsp; - Built blockchain's data monitoring mobile application using Google cloud environment. </p>
+                    <p> &emsp; - Built blockchain's data monitoring mobile application using Google cloud environment(GoogleSheet, AppSheet, AppsScript). </p>
                     <p> Q3: </p>
-                    <p> &emsp; - Start using Git & GitHub. Start learning web development tools, libraries & frameworks.(JavaScript stack - React.js, Node.js & Express.js)</p>
+                    <p> &emsp; - Start using Git & GitHub. </p>
+                    <p> &emsp; - Start learning web development libraries & frameworks.(JavaScript stack - React.js & Express.js) </p>
                     <p> Q4: </p>
-                    <p> &emsp; - Start learning Python, Go, software lifecycle (CI/CD concept) & infrastructure.</p>
-                    <p> &emsp; - Become a better backend developer. Pushing more open-source projects. Further down the road, keep learning.</p>
+                    <p> &emsp; - Start learning Python-Django & software life cycle. </p>
+                    <p> &emsp; - Become a better backend developer. Pushing more open-source projects. Further down the road, keep learning. </p>
                 </VerticalTimelineElement>
 
                 <VerticalTimelineElement
@@ -88,12 +89,8 @@ const Experience = () => {
                     <p> Role: Backend Developer </p>
                     <p> Responsibilities: <br />
                         &emsp; -Fully focus on design & develop many type of backend services (Database, Bussiness logic & API). <br />
-                        &emsp; -Implement infrastructure, networking, security, middlewares & backend protocols. <br />
                         &emsp; -Co-work with peer engineers in coding & code reviews. <br />
                     </p>
-                    <p> Hightlight-skills: </p>
-                    <p> &emsp; - OS: Arch, Debian, RHEL & Derivatives-based Linux distro.</p>
-                    <p> &emsp; - Languages: JavaScript, Python, Go.</p>
 
                 </VerticalTimelineElement>
             </VerticalTimeline>
