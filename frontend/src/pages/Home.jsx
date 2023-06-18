@@ -1,5 +1,7 @@
 import React from "react";
 import Typewriter from 'typewriter-effect';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import "../styles/Home.css";
 
 const Home = () => {
@@ -7,10 +9,15 @@ const Home = () => {
     return (
         <div className="home">
             <div className="about">
-                <img src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png" alt="profile"/>
+                <LazyLoadImage
+                    src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png"
+                    alt="profile"
+                    effect="blur"
+                    className="profileImage"
+                />
                 <div className="prompt">
                     <h2> Hi, I am James-Bond. </h2> <h3> Software Engineer </h3>
-                    <p> Clean, simple & high-quality solution <br/> always sparks joy in my blood. </p>
+                    <p> Clean, simple & high-quality solution <br /> always sparks joy in my blood. </p>
                 </div>
                 <Typewriter
                     options={{
