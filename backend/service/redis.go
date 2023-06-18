@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/go-redis/redis/v8"
@@ -16,12 +17,14 @@ type RedisCache struct {
 }
 
 func NewRedisCache() RedisCache {
-	redisURL := os.Getenv("REDIS_URL")
+	redisURL := strings.TrimSpace(os.Getenv("REDIS_URL"))
+	if redisURL == "" {
+		redisURL = "rediss://localhost:6379"
+	}
 
 	opts, err := redis.ParseURL(redisURL)
 	if err != nil {
 		fmt.Println("Error parsing Redis URL:", err)
-		os.Exit(1) // or return an error, depending on your program's requirements
 	}
 
 	client := redis.NewClient(opts)
@@ -29,12 +32,10 @@ func NewRedisCache() RedisCache {
 	pong, err := client.Ping(context.Background()).Result()
 	if err != nil {
 		fmt.Println("Error connecting to Redis:", err)
-		os.Exit(1) // or return an error, depending on your program's requirements
 	}
 
 	if err := client.FlushAll(context.Background()).Err(); err != nil {
 		fmt.Println("Error flushing Redis cache:", err)
-		os.Exit(1) // or return an error, depending on your program's requirements
 	}
 
 	fmt.Println("Connected to Redis:", pong)

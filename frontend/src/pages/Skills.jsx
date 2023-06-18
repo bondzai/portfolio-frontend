@@ -31,7 +31,7 @@ const Skills = () => {
                             <SkillsFilter topic="language" skills={skills} />
                         </li>
                         <li>
-                            <b>DevSecOps</b>
+                            <b>Infrastructure Tools</b>
                             <SkillsFilter topic="tools" skills={skills} />
                         </li>
                         <li>

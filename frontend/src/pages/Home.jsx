@@ -10,7 +10,7 @@ const Home = () => {
                 <img src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png" alt="profile"/>
                 <div className="prompt">
                     <h2> Hi, I am James-Bond. </h2> <h3> Software Engineer </h3>
-                    <p> Clean, simple & high-quality code <br/> always sparks joy in my blood. </p>
+                    <p> Clean, simple & high-quality solution <br/> always sparks joy in my blood. </p>
                 </div>
                 <Typewriter
                     options={{

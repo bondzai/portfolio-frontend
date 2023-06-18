@@ -1,37 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import Github from '../components/Github';
 import Typewriter from 'typewriter-effect';
-import IconGithub from "@material-ui/icons/GitHub";
-import { SiReplit } from "react-icons/si";
 
 import "../styles/Contact.css";
 
 const Contact = () => {
-    const openInNewTab = (e) => {
-        window.open(e, '_blank', 'noopener,noreferrer')
-    }
+    const [linkClicked, setLinkClicked] = useState(false);
 
     return (
         <div className="background">
             <div className="contact">
+                <div className="content">
 
-                {/* <div className="contact-form">
-                    <Box className="contact-info" py={6}>
-                        <h2> TEXT ME </h2>
-                        <form target="_blank" action="https://formsubmit.co/c2e294745ff3985265b640a8e8e94e60" method="POST">
-                            <FormControl>
-                                <Input type="text" name="name" placeholder="Your Name" required />
-                            </FormControl>
-                            <FormControl>
-                                <Input type="email" name="email" placeholder="Your Email Address" required />
-                            </FormControl>
-                            <FormControl>
-                                <Textarea name="message" rows="6" placeholder="Your Message" required />
-                            </FormControl>
-                            <Button type="submit" colorScheme="blue">Send</Button>
-                        </form>
-                    </Box>
-                </div> */}
+                    <p> <strong>Github :</strong> <a
+                        href="https://github.com/introbond"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClicked ? "grey-link" : "white-link"}
+                    >https://github.com/introbond</a></p>
+
+
+                    <p> <strong>Replit :</strong> <a
+                        href="https://replit.com/@introbond"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClicked ? "grey-link" : "white-link"}
+                    >https://replit.com/@introbond</a></p>
+
+                    <p> <strong>Dockerhub :</strong> <a
+                        href="https://hub.docker.com/u/introbondocker"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClicked ? "grey-link" : "white-link"}
+                    >https://hub.docker.com/u/introbondocker</a></p>
+
+                    <p> <strong>Facebook :</strong> <a
+                        href="https://www.facebook.com/jamesbond.puri.1/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClicked ? "grey-link" : "white-link"}
+                    >https://www.facebook.com/jamesbond.puri.1</a></p>
+
+                    <p> <strong>Email :</strong> <a
+                        href="mailto:introbond.dev@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClicked ? "grey-link" : "white-link"}
+                    >introbond.dev@gmail.com</a></p>
+                </div>
 
                 <div className="github">
                     <Github />
@@ -48,10 +64,7 @@ const Contact = () => {
                     />
                 </div>
 
-                <div className="socialMedia">
-                    <IconGithub onClick={() => openInNewTab('https://github.com/introbond')} />
-                    <SiReplit onClick={() => openInNewTab('https://replit.com/@introbond')} />
-                </div>
+                <p> &copy; JB </p>
 
             </div>
         </div>
