@@ -1,6 +1,9 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { getLampStatusStyle } from './LampStatus';
+import { getHighlightStatusStyle } from './HighlightStatus';
 
 const Project = ({ ...project }) => {
     const navigate = useNavigate();
@@ -8,49 +11,13 @@ const Project = ({ ...project }) => {
         window.open(e, '_blank', 'noopener,noreferrer');
     };
 
-    const getStatusStyle = () => {
-        switch (project.status) {
-            case 'online':
-                return {
-                    backgroundColor: 'green',
-                    display: 'inline-block',
-                    borderRadius: '50%',
-                    width: '14px',
-                    height: '14px',
-                    animation: 'blinking 1s infinite'
-                };
-            case 'offline':
-                return {
-                    backgroundColor: 'red',
-                    display: 'inline-block',
-                    borderRadius: '50%',
-                    width: '14px',
-                    height: '14px',
-                };
-            case 'inprogress':
-                return {
-                    backgroundColor: 'orange',
-                    display: 'inline-block',
-                    borderRadius: '50%',
-                    width: '14px',
-                    height: '14px',
-                    animation: 'blinking 1s infinite'
-                };
-            default:
-                return {};
-        }
-    };
+    const lampStatusStyle = getLampStatusStyle(project.status);
+    const highlightStatusStyle = getHighlightStatusStyle(project.is_highlight);
 
     return (
-        <div className="projectItem" style={{ position: "relative" }}>
+        <div className="projectItem" style={{ position: 'relative' }}>
             {project.is_highlight && (
-                <div className="highlightIcon"
-                    style={{
-                        position: "absolute",
-                        top: 10,
-                        right: 10,
-                        color: "yellow",
-                    }}>
+                <div className="highlightIcon" style={highlightStatusStyle}>
                     <AiFillStar size={30} />
                 </div>
             )}
@@ -58,16 +25,16 @@ const Project = ({ ...project }) => {
             <h1> {project.name} </h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <button onClick={() => navigate("/project/" + project.id)}> Detail </button>
+                    <button onClick={() => navigate('/project/' + project.id)}> Detail </button>
                     <button onClick={() => openInNewTab(project.host_url)}> Demo </button>
-                        <div style={getStatusStyle()}> </div>
+                    <div style={lampStatusStyle} />
                 </div>
             </div>
             <div>
                 <small> {project.remark} </small>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Project;
