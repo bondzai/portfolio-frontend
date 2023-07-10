@@ -10,13 +10,18 @@ const ProjectDisplay = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getProjectList();
-            console.log(result)
             setProjectList(result);
         };
         fetchData();
     }, []);
 
-    const project = projectList[Number(id) - 1];
+    let project = {};
+
+    for (const i in projectList) {
+        if (projectList[i].id == id) {
+            project = projectList[i];
+        }
+    }
 
     return (
         <div className="project">
