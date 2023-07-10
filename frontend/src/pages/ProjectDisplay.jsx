@@ -10,13 +10,12 @@ const ProjectDisplay = () => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await getProjectList();
-            console.log(result)
             setProjectList(result);
         };
         fetchData();
     }, []);
 
-    const project = projectList[Number(id) - 1];
+    let project = projectList.find(item => item.id == id);
 
     return (
         <div className="project">
