@@ -15,13 +15,7 @@ const ProjectDisplay = () => {
         fetchData();
     }, []);
 
-    let project = {};
-
-    for (const i in projectList) {
-        if (projectList[i].id == id) {
-            project = projectList[i];
-        }
-    }
+    let project = projectList.find(item => item.id == id);
 
     return (
         <div className="project">

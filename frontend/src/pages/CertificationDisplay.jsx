@@ -7,7 +7,7 @@ import { Modal, Box } from '@mui/material';
 
 const CertificationDisplay = () => {
     let { id } = useParams();
-    id = Number(id) - 1
+    id = Number(id)
     const navigate = useNavigate();
     const [current, setCurrent] = useState(id);
     const [certificationList, setCertificationList] = useState([]);
@@ -54,6 +54,8 @@ const CertificationDisplay = () => {
 
     id = current;
 
+    let cert = certificationList.find(item => item.id === id);
+
     const closeModal = () => {
         navigate('/certifications');
     }
@@ -85,7 +87,7 @@ const CertificationDisplay = () => {
                             <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
-                            <img src={certificationList[id].image_url} alt={certificationList[id].name} className="certification-image" />
+                            <img src={cert.image_url} alt={cert.name} className="certification-image" />
                         </Box>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <AiOutlineArrowRight className="arrow-right" onClick={slideForward} />
