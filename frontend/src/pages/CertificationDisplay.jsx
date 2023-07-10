@@ -36,24 +36,23 @@ const CertificationDisplay = () => {
         };
     }, [current]);
 
-    const slideBack = () => {
-        if (current <= 0) {
-            setCurrent(certificationList.length - 1);
+    const slideForward = () => {
+        if (current <= 1) {
+            setCurrent(certificationList.length);
         } else {
             setCurrent(parseInt(current) - 1);
         }
     };
-
-    const slideForward = () => {
-        if (current === certificationList.length - 1) {
-            setCurrent(0);
+    
+    const slideBack = () => {
+        if (current >= certificationList.length - 1) {
+            setCurrent(1);
         } else {
             setCurrent(parseInt(current) + 1);
         }
     };
 
     id = current;
-
     let cert = certificationList.find(item => item.id === id);
 
     const closeModal = () => {
@@ -62,7 +61,7 @@ const CertificationDisplay = () => {
 
     return (
         <div className="certification-display">
-            {certificationList.length > 0 && (
+            {cert && (
                 <Modal open={true} onClose={closeModal}>
                     <Box
                         sx={{
