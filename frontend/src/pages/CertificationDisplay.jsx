@@ -45,7 +45,10 @@ const CertificationDisplay = () => {
     };
     
     const slideBack = () => {
-        if (current >= certificationList.length - 1) {
+        console.log("This is current" + current)
+        console.log("This cert len" + certificationList.length)
+        // if (current >= certificationList.length) {
+        if (current >= 7) {
             setCurrent(1);
         } else {
             setCurrent(parseInt(current) + 1);
