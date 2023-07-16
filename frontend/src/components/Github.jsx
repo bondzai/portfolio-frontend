@@ -6,7 +6,6 @@ function Github() {
 
     return (
             <div className="github-calendar">
-                <h5> GitHub Stats </h5>
                 <GitHubCalendar
                     username="introbond"
                     blockSize={15}

@@ -55,11 +55,18 @@ const Contact = () => {
 
                 <div className="typewriter">
                     <Typewriter
+                        options={{
+                            delay: 80,
+                        }}
                         onInit={(typewriter) => {
-                            typewriter.start()
-                                .typeString('Still finding myself.')
-                                .pauseFor(10)
-                                .typeString('<strong>     - James Bond </strong>')
+                            typewriter
+                                .start()
+                                .typeString('"To succeed, you must study the endgame before everything else." <br>')
+                                .pauseFor(50)
+                                .typeString('<br> <strong>     José Raúl Capablanca, </strong>')
+                                .pauseFor(50)
+                                .typeString('<strong>     Chess Grandmaster </strong>')
+                                .start();
                         }}
                     />
                 </div>
