@@ -93,15 +93,9 @@ const CertificationDisplay = () => {
                         />
 
                         <Box
-                            sx={{
-                                position: 'relative',
-                                display: 'flex',
-                                justifyContent: 'center',
-                            }}
+                            sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
                         >
-
                             <img src={cert.image_url} alt={cert.name} className="certification-image" />
-
                         </Box>
                     </Box>
                 </Modal>
