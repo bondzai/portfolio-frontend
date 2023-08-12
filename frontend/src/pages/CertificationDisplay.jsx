@@ -74,12 +74,8 @@ const CertificationDisplay = () => {
                         }}
                     >
                         <IconButton
-                            sx={{
-                                position: 'absolute',
-                                top: '1rem',
-                                right: '1rem',
-                            }}
                             onClick={closeModal}
+                            sx={{ position: 'absolute', right: '1rem', top: '0.5rem' }}
                         >
                             <CloseIcon />
                         </IconButton>
