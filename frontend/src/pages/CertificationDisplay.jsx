@@ -10,11 +10,13 @@ const CertificationDisplay = () => {
     const navigate = useNavigate();
     const [current, setCurrent] = useState(Number(id));
     const [certificationList, setCertificationList] = useState([]);
+    const [certificationListFetched, setCertificationListFetched] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await getCertificationList();
             setCertificationList(result);
+            setCertificationListFetched(true);
         };
         fetchData();
     }, []);
@@ -22,6 +24,10 @@ const CertificationDisplay = () => {
     useEffect(() => {
         const handleKeyDown = (event) => {
             const { keyCode } = event;
+            if (!certificationListFetched) {
+                return;
+            }
+
             if (keyCode === 37) {
                 slideBack();
             } else if (keyCode === 39) {
@@ -34,7 +40,7 @@ const CertificationDisplay = () => {
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, [current]);
+    }, [current, certificationListFetched]);
 
     const slideForward = () => {
         setCurrent(prev => (prev === 1 ? certificationList.length : prev - 1));
