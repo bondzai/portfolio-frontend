@@ -4,10 +4,9 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Modal, Box, IconButton } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
 
-import { getProjectList } from "../apis/ProjectList";
 import "../styles/CertificationDisplay.css";
 
-const ProjectDisplay = () => {
+const DisplayModal = ({ getDataList, dataRoutePath }) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [current, setCurrent] = useState(Number(id));
@@ -16,12 +15,12 @@ const ProjectDisplay = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getProjectList();
+            const result = await getDataList();
             setDataList(result);
             setDataListFetched(true);
         };
         fetchData();
-    }, []);
+    }, [getDataList]);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -53,7 +52,7 @@ const ProjectDisplay = () => {
     };
 
     const closeModal = () => {
-        navigate('/projects');
+        navigate(dataRoutePath);
     };
 
     const data = dataList.find(item => item.id === current);
@@ -105,4 +104,4 @@ const ProjectDisplay = () => {
     );
 };
 
-export default ProjectDisplay;
+export default DisplayModal;
