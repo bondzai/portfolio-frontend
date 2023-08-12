@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Modal, Box, IconButton } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
 
-import "../styles/CertificationDisplay.css";
+import "../styles/DisplayModal.css";
 
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
     const { id } = useParams();
@@ -58,7 +58,7 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
     const data = dataList.find(item => item.id === current);
 
     return (
-        <div className="certification-display">
+        <div className="root-display">
             {data && (
                 <Modal open={true} onClose={closeModal}>
                     <Box
@@ -95,7 +95,7 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
                         <Box
                             sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
                         >
-                            <img src={data.image_url} alt={data.name} className="certification-image" />
+                            <img src={data.image_url} alt={data.name} className="display-image" />
                         </Box>
                     </Box>
                 </Modal>
