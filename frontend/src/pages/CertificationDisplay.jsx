@@ -6,10 +6,9 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-i
 import { Modal, Box } from '@mui/material';
 
 const CertificationDisplay = () => {
-    let { id } = useParams();
-    id = Number(id)
+    const { id } = useParams();
     const navigate = useNavigate();
-    const [current, setCurrent] = useState(id);
+    const [current, setCurrent] = useState(Number(id));
     const [certificationList, setCertificationList] = useState([]);
 
     useEffect(() => {
@@ -22,11 +21,12 @@ const CertificationDisplay = () => {
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.keyCode === 37) {
+            const { keyCode } = event;
+            if (keyCode === 37) {
                 slideBack();
-            } else if (event.keyCode === 39) {
+            } else if (keyCode === 39) {
                 slideForward();
-            } else if (event.keyCode === 27) {
+            } else if (keyCode === 27) {
                 closeModal();
             }
         };
@@ -37,30 +37,18 @@ const CertificationDisplay = () => {
     }, [current]);
 
     const slideForward = () => {
-        if (current <= 1) {
-            setCurrent(certificationList.length);
-        } else {
-            setCurrent(parseInt(current) - 1);
-        }
-    };
-    
-    const slideBack = () => {
-        console.log("This is current" + current)
-        console.log("This cert len" + certificationList.length)
-        // if (current >= certificationList.length) {
-        if (current >= 7) {
-            setCurrent(1);
-        } else {
-            setCurrent(parseInt(current) + 1);
-        }
+        setCurrent(prev => (prev === 1 ? certificationList.length : prev - 1));
     };
 
-    id = current;
-    let cert = certificationList.find(item => item.id === id);
+    const slideBack = () => {
+        setCurrent(prev => (prev === certificationList.length ? 1 : prev + 1));
+    };
 
     const closeModal = () => {
         navigate('/certifications');
-    }
+    };
+
+    const cert = certificationList.find(item => item.id === current);
 
     return (
         <div className="certification-display">
