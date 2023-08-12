@@ -68,7 +68,7 @@ const CertificationDisplay = () => {
                             boxShadow: 24,
                             p: 4,
                             width: '60vw',
-                            height: 'auto',
+                            height: '100vh',
                             zIndex: '1000',
                             margin: 'auto',
                         }}
@@ -87,13 +87,13 @@ const CertificationDisplay = () => {
                         <AiOutlineArrowLeft
                             className="arrow-left"
                             onClick={slideBack}
-                            sx={{ position: 'absolute', left: 0, top: '50%' }}
+                            sx={{ position: 'absolute', left: '10px', top: '50vh' }}
                         />
 
                         <AiOutlineArrowRight
                             className="arrow-right"
                             onClick={slideForward}
-                            sx={{ position: 'absolute', right: 0, top: '50%' }}
+                            sx={{ position: 'absolute', right: '10px', top: '50vh' }}
                         />
 
                         <Box
