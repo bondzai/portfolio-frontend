@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getCertificationList } from "../apis/CertificationList";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Modal, Box, IconButton } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
+
+import { getCertificationList } from "../apis/CertificationList";
 import "../styles/CertificationDisplay.css";
 
-const CertificationDisplay = () => {
+
+const CertificationDisplay = ({}) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [current, setCurrent] = useState(Number(id));
-    const [certificationList, setCertificationList] = useState([]);
-    const [certificationListFetched, setCertificationListFetched] = useState(false);
+    const [dataList, setDataList] = useState([]);
+    const [dataListFetched, setDataListFetched] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await getCertificationList();
-            setCertificationList(result);
-            setCertificationListFetched(true);
+            setDataList(result);
+            setDataListFetched(true);
         };
         fetchData();
     }, []);
@@ -25,7 +27,7 @@ const CertificationDisplay = () => {
     useEffect(() => {
         const handleKeyDown = (event) => {
             const { keyCode } = event;
-            if (!certificationListFetched) {
+            if (!dataListFetched) {
                 return;
             }
 
@@ -41,25 +43,25 @@ const CertificationDisplay = () => {
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, [current, certificationListFetched]);
+    }, [current, dataListFetched]);
 
     const slideForward = () => {
-        setCurrent(prev => (prev === 1 ? certificationList.length : prev - 1));
+        setCurrent(prev => (prev === 1 ? dataList.length : prev - 1));
     };
 
     const slideBack = () => {
-        setCurrent(prev => (prev === certificationList.length ? 1 : prev + 1));
+        setCurrent(prev => (prev === dataList.length ? 1 : prev + 1));
     };
 
     const closeModal = () => {
         navigate('/certifications');
     };
 
-    const cert = certificationList.find(item => item.id === current);
+    const data = dataList.find(item => item.id === current);
 
     return (
         <div className="certification-display">
-            {cert && (
+            {data && (
                 <Modal open={true} onClose={closeModal}>
                     <Box
                         sx={{
@@ -95,7 +97,7 @@ const CertificationDisplay = () => {
                         <Box
                             sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
                         >
-                            <img src={cert.image_url} alt={cert.name} className="certification-image" />
+                            <img src={data.image_url} alt={data.name} className="certification-image" />
                         </Box>
                     </Box>
                 </Modal>
