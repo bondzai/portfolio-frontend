@@ -8,7 +8,7 @@ import { getCertificationList } from "../apis/CertificationList";
 import "../styles/CertificationDisplay.css";
 
 
-const CertificationDisplay = ({}) => {
+const CertificationDisplay = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [current, setCurrent] = useState(Number(id));
