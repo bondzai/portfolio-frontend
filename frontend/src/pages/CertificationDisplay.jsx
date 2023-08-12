@@ -63,35 +63,49 @@ const CertificationDisplay = () => {
                 <Modal open={true} onClose={closeModal}>
                     <Box
                         sx={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
+                            position: 'relative',
                             bgcolor: 'background.paper',
                             boxShadow: 24,
                             p: 4,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '2rem',
                             width: '60vw',
                             height: 'auto',
                             zIndex: '1000',
+                            margin: 'auto',
                         }}
                     >
-                        <Box sx={{ position: 'absolute', top: '2.5rem', right: '1rem' }}>
-                            <IconButton onClick={closeModal}>
-                                <CloseIcon />
-                            </IconButton>
-                        </Box>
+                        <IconButton
+                            sx={{
+                                position: 'absolute',
+                                top: '1rem',
+                                right: '1rem',
+                            }}
+                            onClick={closeModal}
+                        >
+                            <CloseIcon />
+                        </IconButton>
 
-                        <Box>
-                            <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+                        <AiOutlineArrowLeft
+                            className="arrow-left"
+                            onClick={slideBack}
+                            sx={{ position: 'absolute', left: 0, top: '50%' }}
+                        />
+
+                        <AiOutlineArrowRight
+                            className="arrow-right"
+                            onClick={slideForward}
+                            sx={{ position: 'absolute', right: 0, top: '50%' }}
+                        />
+
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                        >
+
                             <img src={cert.image_url} alt={cert.name} className="certification-image" />
-                        </Box>
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <AiOutlineArrowRight className="arrow-right" onClick={slideForward} />
+
                         </Box>
                     </Box>
                 </Modal>
