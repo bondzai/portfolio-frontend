@@ -1,32 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCertificationList } from "../apis/CertificationList";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { Modal, Box, IconButton } from '@mui/material';
+import CloseIcon from "@mui/icons-material/Close";
 import "../styles/CertificationDisplay.css";
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-icons/ai";
-import { Modal, Box } from '@mui/material';
 
 const CertificationDisplay = () => {
-    let { id } = useParams();
-    id = Number(id)
+    const { id } = useParams();
     const navigate = useNavigate();
-    const [current, setCurrent] = useState(id);
+    const [current, setCurrent] = useState(Number(id));
     const [certificationList, setCertificationList] = useState([]);
+    const [certificationListFetched, setCertificationListFetched] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await getCertificationList();
             setCertificationList(result);
+            setCertificationListFetched(true);
         };
         fetchData();
     }, []);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.keyCode === 37) {
+            const { keyCode } = event;
+            if (!certificationListFetched) {
+                return;
+            }
+
+            if (keyCode === 37) {
                 slideBack();
-            } else if (event.keyCode === 39) {
+            } else if (keyCode === 39) {
                 slideForward();
-            } else if (event.keyCode === 27) {
+            } else if (keyCode === 27) {
                 closeModal();
             }
         };
@@ -34,33 +41,21 @@ const CertificationDisplay = () => {
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, [current]);
+    }, [current, certificationListFetched]);
 
     const slideForward = () => {
-        if (current <= 1) {
-            setCurrent(certificationList.length);
-        } else {
-            setCurrent(parseInt(current) - 1);
-        }
-    };
-    
-    const slideBack = () => {
-        console.log("This is current" + current)
-        console.log("This cert len" + certificationList.length)
-        // if (current >= certificationList.length) {
-        if (current >= 7) {
-            setCurrent(1);
-        } else {
-            setCurrent(parseInt(current) + 1);
-        }
+        setCurrent(prev => (prev === 1 ? certificationList.length : prev - 1));
     };
 
-    id = current;
-    let cert = certificationList.find(item => item.id === id);
+    const slideBack = () => {
+        setCurrent(prev => (prev === certificationList.length ? 1 : prev + 1));
+    };
 
     const closeModal = () => {
         navigate('/certifications');
-    }
+    };
+
+    const cert = certificationList.find(item => item.id === current);
 
     return (
         <div className="certification-display">
@@ -68,31 +63,49 @@ const CertificationDisplay = () => {
                 <Modal open={true} onClose={closeModal}>
                     <Box
                         sx={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
+                            position: 'relative',
                             bgcolor: 'background.paper',
                             boxShadow: 24,
                             p: 4,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '2rem',
                             width: '60vw',
-                            height: 'auto',
+                            height: '100vh',
+                            zIndex: '1000',
+                            margin: 'auto',
                         }}
                     >
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '10%' }}>
-                            <AiOutlineClose className="close-icon" onClick={closeModal} />
-                        </Box>
-                        <Box>
-                            <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+                        <IconButton
+                            sx={{
+                                position: 'absolute',
+                                top: '1rem',
+                                right: '1rem',
+                            }}
+                            onClick={closeModal}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+
+                        <AiOutlineArrowLeft
+                            className="arrow-left"
+                            onClick={slideBack}
+                            sx={{ position: 'absolute', left: '10px', top: '50vh' }}
+                        />
+
+                        <AiOutlineArrowRight
+                            className="arrow-right"
+                            onClick={slideForward}
+                            sx={{ position: 'absolute', right: '10px', top: '50vh' }}
+                        />
+
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                        >
+
                             <img src={cert.image_url} alt={cert.name} className="certification-image" />
-                        </Box>
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <AiOutlineArrowRight className="arrow-right" onClick={slideForward} />
+
                         </Box>
                     </Box>
                 </Modal>
