@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCertificationList } from "../apis/CertificationList";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { Modal, Box, IconButton } from '@mui/material';
+import CloseIcon from "@mui/icons-material/Close";
 import "../styles/CertificationDisplay.css";
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-icons/ai";
-import { Modal, Box } from '@mui/material';
 
 const CertificationDisplay = () => {
     const { id } = useParams();
@@ -74,11 +75,15 @@ const CertificationDisplay = () => {
                             gap: '2rem',
                             width: '60vw',
                             height: 'auto',
+                            zIndex: '1000',
                         }}
                     >
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', height: '10%' }}>
-                            <AiOutlineClose className="close-icon" onClick={closeModal} />
+                        <Box sx={{ position: 'absolute', top: '2.5rem', right: '1rem' }}>
+                            <IconButton onClick={closeModal}>
+                                <CloseIcon />
+                            </IconButton>
                         </Box>
+
                         <Box>
                             <AiOutlineArrowLeft className="arrow-left" onClick={slideBack} />
                         </Box>
