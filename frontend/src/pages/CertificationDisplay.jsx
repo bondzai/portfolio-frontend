@@ -7,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { getCertificationList } from "../apis/CertificationList";
 import "../styles/CertificationDisplay.css";
 
-
 const CertificationDisplay = () => {
     const { id } = useParams();
     const navigate = useNavigate();
