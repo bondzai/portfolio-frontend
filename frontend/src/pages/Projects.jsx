@@ -1,12 +1,14 @@
-import "../styles/Projects.css";
 import React, { useState, useEffect, useMemo } from "react";
-import Project from "../components/Project";
 import { getProjectList, statusOptions, columns } from "../apis/ProjectList";
-import ViewListIcon from '@mui/icons-material/ViewList';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import { DataGrid } from '@mui/x-data-grid';
-import { MenuItem, Select, InputAdornment, TextField, Toolbar, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Box } from '@mui/material';
+import { Box } from '@mui/material';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
+import Project from "../components/Project";
 import SpinComponent from "../components/SpinComponent";
+import CustomToolbar from '../components/CustomToolbar';
+import "../styles/Projects.css";
 
 const Projects = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +37,6 @@ const Projects = () => {
         });
     }, [loading, projectList, searchTerm, selectedStatus]);
 
-
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
@@ -52,57 +53,34 @@ const Projects = () => {
         }
     };
 
+    const itemsPerPage = 9;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPageCount = Math.ceil(filteredProjects.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const visibleProjects = filteredProjects.slice(startIndex, startIndex + itemsPerPage);
+
+    const handleChangePage = (event, newPage) => {
+        setCurrentPage(newPage);
+    };
+
     return (
         <div className="projects">
-            <Toolbar className="projectToolbar">
-                <FormControl fullWidth>
-                    <InputLabel>Fitler by status</InputLabel>
-                    <Select
-                        label="Search by status"
-                        variant="outlined"
-                        value={selectedStatus}
-                        onChange={(event, value) => handleStatusChange(value)}
-                        sx={{ minWidth: '150px' }}
-                    >
-                        {statusOptions.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
-                <TextField
-                    id="search-bar"
-                    label="Search by name"
-                    variant="outlined"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    sx={{ minWidth: '330px' }}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <ToggleButtonGroup
-                                    value={viewMode}
-                                    exclusive
-                                    onChange={(event, value) => handleViewModeChange(value)}
-                                >
-                                    <ToggleButton value="module" aria-label="module">
-                                        <ViewModuleIcon />
-                                    </ToggleButton>
-                                    <ToggleButton value="list" aria-label="list">
-                                        <ViewListIcon />
-                                    </ToggleButton>
-                                </ToggleButtonGroup>
-                            </InputAdornment>
-                        )
-                    }}
-                />
-            </Toolbar>
+            <CustomToolbar
+                selectedStatus={selectedStatus}
+                handleStatusChange={handleStatusChange}
+                searchTerm={searchTerm}
+                handleSearchChange={handleSearchChange}
+                viewMode={viewMode}
+                handleViewModeChange={handleViewModeChange}
+            />
             {loading ? (
                 <div className="spin-container">
                     <SpinComponent size="large" />
                 </div>
             ) : viewMode === "module" ? (
                 <div className="projectList">
-                    {filteredProjects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <Project key={index} id={index} {...project} />
                     ))}
                 </div>
@@ -125,9 +103,18 @@ const Projects = () => {
                     </Box>
                 </div>
             )}
+            {viewMode === "module" && (
+                <Stack spacing={2} justifyContent="center" mt={3}>
+                    <Pagination
+                        count={totalPageCount}
+                        page={currentPage}
+                        onChange={handleChangePage}
+                    />
+                </Stack>
+            )}
         </div>
     );
-    
+
 };
 
 export default Projects;
