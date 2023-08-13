@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import IconSchool from "@material-ui/icons/School";
@@ -9,6 +9,27 @@ import { IoMdPulse } from "react-icons/io";
 import "../styles/Experience.css";
 
 const Experience = () => {
+    const [showScrollButton, setShowScrollButton] = useState(false);
+    
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.pageYOffset > 100) {
+                setShowScrollButton(true);
+            } else {
+                setShowScrollButton(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     const born = new Date("02/03/1994");
     const ageMonth = Date.now() - born.getTime();
     const ageDay = new Date(ageMonth);
@@ -94,6 +115,12 @@ const Experience = () => {
 
                 </VerticalTimelineElement>
             </VerticalTimeline>
+            <button
+                className={`scroll-button ${showScrollButton ? "visible" : ""}`}
+                onClick={scrollToTop}
+            >
+                Scroll to Top
+            </button>
         </div>
     )
 }
