@@ -43,10 +43,7 @@ const Contact = () => {
                         text="Email : "
                     />
                 </div>
-                <div className="github">
-                    <strong> Github Calendar </strong> <br />
-                    <Github />
-                </div>
+
                 <div className="typewriter">
                     <Typewriter
                         options={{

@@ -28,16 +28,6 @@
     color: grey;
 }
 
-.github {
-    background-color: #21325e;
-    color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10rem;
-    margin-bottom: 10rem;
-}
-
 .typewriter {
     text-align: center;
     font-size: 15px;
