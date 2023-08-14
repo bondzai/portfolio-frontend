@@ -1,58 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
 import Github from '../components/Github';
 import Typewriter from 'typewriter-effect';
 
 import "../styles/Contact.css";
 
-const Contact = () => {
-    const [linkClicked, setLinkClicked] = useState(false);
+const linkStyles = "white-link";
+const LinkWithStyle = ({ href, text }) => (
+    <p>
+        <strong>{text}</strong>
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkStyles}
+        >
+            {href}
+        </a>
+    </p>
+);
 
+
+const Contact = () => {
     return (
         <div className="background">
             <div className="contact">
                 <div className="content">
-
-                    <p> <strong>Github :</strong> <a
-                        href="https://github.com/introbond"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={linkClicked ? "grey-link" : "white-link"}
-                    >https://github.com/introbond</a></p>
-
-
-                    <p> <strong>Replit :</strong> <a
+                    <strong> Contact links </strong>
+                    <LinkWithStyle
                         href="https://replit.com/@introbond"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={linkClicked ? "grey-link" : "white-link"}
-                    >https://replit.com/@introbond</a></p>
-
-                    <p> <strong>Dockerhub :</strong> <a
+                        text="Replit : "
+                    />
+                    <LinkWithStyle
+                        href="https://github.com/introbond"
+                        text="Github : "
+                    />
+                    <LinkWithStyle
                         href="https://hub.docker.com/u/introbondocker"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={linkClicked ? "grey-link" : "white-link"}
-                    >https://hub.docker.com/u/introbondocker</a></p>
-
-                    <p> <strong>Facebook :</strong> <a
-                        href="https://www.facebook.com/jamesbond.puri.1/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={linkClicked ? "grey-link" : "white-link"}
-                    >https://www.facebook.com/jamesbond.puri.1</a></p>
-
-                    <p> <strong>Email :</strong> <a
-                        href="mailto:introbond.dev@gmail.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={linkClicked ? "grey-link" : "white-link"}
-                    >introbond.dev@gmail.com</a></p>
+                        text="Dockerhub : "
+                    />
+                    <LinkWithStyle
+                        href="introbond.dev@gmail.com"
+                        text="Email : "
+                    />
                 </div>
-
                 <div className="github">
+                    <strong> Github Calendar </strong> <br />
                     <Github />
                 </div>
-
                 <div className="typewriter">
                     <Typewriter
                         options={{
@@ -70,9 +64,7 @@ const Contact = () => {
                         }}
                     />
                 </div>
-
                 <p> &copy; JB </p>
-
             </div>
         </div>
     );

@@ -1,9 +1,21 @@
 .home {
     width: 100%;
-    height: auto;
+    height: 100vh;
     align-items: center;
     font-family: "Arial", sans-serif;
     color: #3e497a;
+}
+
+.about {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #21325e;
+    color: whitesmoke;
 }
 
 .about h2 {
@@ -18,15 +30,9 @@
     color: whitesmoke;
 }
 
-.about {
-    width: 100%;
-    height: calc(110vh - 20px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #21325e;
+.about p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
     color: whitesmoke;
 }
 
@@ -44,13 +50,6 @@
     width: 55%;
     font-size: 20px;
 }
-
-.about p {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 17px;
-    color: whitesmoke;
-}
-
 
 @media (max-height: 600px) {
     .about h2 {
