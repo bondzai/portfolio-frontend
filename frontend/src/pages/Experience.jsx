@@ -4,6 +4,7 @@ import "react-vertical-timeline-component/style.min.css";
 import IconSchool from "@material-ui/icons/School";
 import IconWork from "@material-ui/icons/Work";
 import IconInt from "@material-ui/icons/LocalLibraryOutlined";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { IoMdPulse } from "react-icons/io";
 
 import "../styles/Experience.css";
@@ -115,12 +116,11 @@ const Experience = () => {
 
                 </VerticalTimelineElement>
             </VerticalTimeline>
-            <button
+            <KeyboardArrowUpIcon
                 className={`scroll-button ${showScrollButton ? "visible" : ""}`}
                 onClick={scrollToTop}
             >
-                Scroll to Top
-            </button>
+            </KeyboardArrowUpIcon>
         </div>
     )
 }

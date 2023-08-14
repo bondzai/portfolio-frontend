@@ -9,6 +9,26 @@ body {
     background-color: #f0f0f0;
 }
 
+.scroll-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 10px;
+    background-color: #3e497a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-button.visible {
+    opacity: 0.9;
+    visibility: visible;
+}
+
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -31,7 +51,7 @@ body {
     }
 
     100% {
-        opacity:
+        opacity: 1;
     }
 }
 
