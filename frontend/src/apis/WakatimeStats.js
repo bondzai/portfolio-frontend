@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getWakatimeStat = (async () => {
+const getWakatimeStats = (async () => {
     const BACKEND_URLS = [
         import.meta.env.VITE_WAKA_BACKEND_URL,
     ].map(url => url + "/");
@@ -16,4 +16,4 @@ const getWakatimeStat = (async () => {
     throw new Error('All backend services are unavailable.');
 });
 
-export { getWakatimeStat }
+export { getWakatimeStats }

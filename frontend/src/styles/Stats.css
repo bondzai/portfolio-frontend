@@ -1,11 +1,11 @@
-.stat-background {
+.stats-background {
     width: 100%;
     height: 100vh;
     background-color: whitesmoke;
     color: #21325e;
 }
 
-.stat-content {
+.stats-content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -16,14 +16,14 @@
     animation-fill-mode: forwards;
 }
 
-.stat-waka {
+.stats-waka {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 6.5rem;
 }
 
-.stat-github {
+.stats-github {
     display: flex;
     flex-direction: column;
     align-items: center;

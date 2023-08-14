@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Descriptions } from 'antd';
-import SpinComponent from '../components/SpinComponent';
-import { getWakatimeStat } from '../apis/WakatimeStat';
-import '../styles/WakatimeStat.css';
+import SpinComponent from './SpinComponent';
+import { getWakatimeStat } from '../apis/WakatimeStats';
+import '../styles/WakatimeStats.css';
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
@@ -20,7 +20,7 @@ const WakatimeStats = () => {
     }
 
     return (
-        <div className='wakatime-stat'>
+        <div className='wakatime-stats'>
             <div className='title-center'>
                 <h3>WakaTime Stats</h3>
             </div>
