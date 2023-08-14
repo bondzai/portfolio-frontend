@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
-import SpinComponent from "../components/SpinComponent";
-
+import { Descriptions } from 'antd';
+import SpinComponent from '../components/SpinComponent';
 import { getWakatimeStat } from '../apis/WakatimeStat';
-
 import '../styles/WakatimeStat.css';
 
 const WakatimeStats = () => {
@@ -18,33 +16,45 @@ const WakatimeStats = () => {
     }, []);
 
     if (!stats) {
-        return <SpinComponent />
+        return <SpinComponent />;
     }
 
     return (
         <div className='wakatime-stat'>
-            <strong>WakaTime stat: {stats.human_readable_range}</strong>
-            <p>Total development time: {stats.human_readable_total_including_other_language}</p>
-            <p> OS <br />
-                &emsp; - {stats.operating_systems[0].name}: {stats.operating_systems[0].text} ({stats.operating_systems[0].percent} %)<br />
-                &emsp; - {stats.operating_systems[1].name}: {stats.operating_systems[1].text} ({stats.operating_systems[1].percent} %) <br />
-                &emsp; - {stats.operating_systems[2].name}: {stats.operating_systems[2].text} ({stats.operating_systems[2].percent} %) <br />
-            </p>
-            <p> IDE <br />
-                &emsp; - {stats.editors[0].name}: {stats.editors[0].text} ({stats.editors[0].percent} %)<br />
-                &emsp; - {stats.editors[1].name}: {stats.editors[1].text} ({stats.editors[1].percent} %) <br />
-                &emsp; - {stats.editors[2].name}: {stats.editors[2].text} ({stats.editors[2].percent} %) <br />
-            </p>
-            <p> Top 5 languages <br />
-                &emsp; - {stats.languages[0].name}: {stats.languages[0].text} ({stats.languages[0].percent} %)<br />
-                &emsp; - {stats.languages[1].name}: {stats.languages[1].text} ({stats.languages[1].percent} %) <br />
-                &emsp; - {stats.languages[2].name}: {stats.languages[2].text} ({stats.languages[2].percent} %) <br />
-                &emsp; - {stats.languages[3].name}: {stats.languages[3].text} ({stats.languages[3].percent} %) <br />
-                &emsp; - {stats.languages[4].name}: {stats.languages[4].text} ({stats.languages[4].percent} %) <br />
-            </p>
-            <p> Best day <br />
-                &emsp; - {stats.best_day.date}: {stats.best_day.text} <br />
-            </p>
+            <div className='title-center'>
+                <h3>WakaTime Stats</h3>
+            </div>
+
+            <Descriptions bordered>
+                <Descriptions.Item label='Since Jul 19 2022'>
+                    Total development time: {stats.human_readable_total_including_other_language} / Best day: {stats.best_day.date} ({stats.best_day.text})
+                </Descriptions.Item>
+            </Descriptions>
+
+            <Descriptions layout="vertical" bordered>
+                <Descriptions.Item label='Operating Systems'>
+                    {stats.operating_systems.map(os => (
+                        <p key={os.name}>
+                            {os.name}: {os.text} ({os.percent}%)
+                        </p>
+                    ))}
+                </Descriptions.Item>
+
+                <Descriptions.Item label='IDEs'>
+                    {stats.editors.map(editor => (
+                        <p key={editor.name}>
+                            {editor.name}: {editor.text} ({editor.percent}%)
+                        </p>
+                    ))}
+                </Descriptions.Item>
+                <Descriptions.Item label='Top 5 Languages'>
+                    {stats.languages.slice(0, 5).map(language => (
+                        <p key={language.name}>
+                            {language.name}: {language.text} ({language.percent}%)
+                        </p>
+                    ))}
+                </Descriptions.Item>
+            </Descriptions>
 
         </div>
     );
