@@ -4,10 +4,12 @@ import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
 import { getSkillList } from "../apis/SkillList";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import "../styles/Home.css";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import "../styles/Home.css";
 
 const Skills = () => {
     const [skills, setSkills] = useState([]);
@@ -39,6 +41,10 @@ const Skills = () => {
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const scrollToBottom = () => {
+        window.scrollTo({ top: document.body.offsetHeight, behavior: "smooth" });
     };
 
     return (
@@ -116,6 +122,11 @@ const Skills = () => {
                 onClick={scrollToTop}
             >
             </KeyboardArrowUpIcon>
+            <KeyboardArrowDownIcon
+                className={`scroll-button ${!showScrollButton ? "visible" : ""}`}
+                onClick={scrollToBottom}
+            >
+            </KeyboardArrowDownIcon>
         </div>
     );
 };

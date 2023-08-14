@@ -5,6 +5,7 @@ import IconSchool from "@material-ui/icons/School";
 import IconWork from "@material-ui/icons/Work";
 import IconInt from "@material-ui/icons/LocalLibraryOutlined";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { IoMdPulse } from "react-icons/io";
 
 import "../styles/Experience.css";
@@ -29,6 +30,10 @@ const Experience = () => {
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const scrollToBottom = () => {
+        window.scrollTo({ top: document.body.offsetHeight, behavior: "smooth" });
     };
 
     const calculateAge = (birthdate) => {
@@ -139,6 +144,11 @@ const Experience = () => {
                 onClick={scrollToTop}
             >
             </KeyboardArrowUpIcon>
+            <KeyboardArrowDownIcon
+                className={`scroll-button ${!showScrollButton ? "visible" : ""}`}
+                onClick={scrollToBottom}
+            >
+            </KeyboardArrowDownIcon>
         </div>
     )
 }
