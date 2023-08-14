@@ -53,7 +53,7 @@ const Projects = () => {
         }
     };
 
-    const itemsPerPage = 6  ;
+    const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPageCount = Math.ceil(filteredProjects.length / itemsPerPage);
@@ -66,14 +66,16 @@ const Projects = () => {
 
     return (
         <div className="projects">
-            <CustomToolbar
-                selectedStatus={selectedStatus}
-                handleStatusChange={handleStatusChange}
-                searchTerm={searchTerm}
-                handleSearchChange={handleSearchChange}
-                viewMode={viewMode}
-                handleViewModeChange={handleViewModeChange}
-            />
+            {loading ? null : (
+                <CustomToolbar
+                    selectedStatus={selectedStatus}
+                    handleStatusChange={handleStatusChange}
+                    searchTerm={searchTerm}
+                    handleSearchChange={handleSearchChange}
+                    viewMode={viewMode}
+                    handleViewModeChange={handleViewModeChange}
+                />
+            )}
             {loading ? (
                 <div className="spin-container">
                     <SpinComponent size="large" />
