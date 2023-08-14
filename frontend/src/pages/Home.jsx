@@ -31,7 +31,10 @@ const Home = () => {
                         escapeHtml: false,
                     }}
                 />
-                <p> &copy; JB </p>
+
+                <div className="footer">
+                    <p> &copy; JB </p>
+                </div>
             </div>
         </div>
     )
