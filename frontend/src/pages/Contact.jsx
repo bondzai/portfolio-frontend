@@ -1,7 +1,5 @@
 import React from "react";
-import Github from '../components/Github';
 import Typewriter from 'typewriter-effect';
-
 import "../styles/Contact.css";
 
 const linkStyles = "white-link";
@@ -18,7 +16,6 @@ const LinkWithStyle = ({ href, text }) => (
         </a>
     </p>
 );
-
 
 const Contact = () => {
     return (

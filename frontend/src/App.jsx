@@ -8,7 +8,6 @@ import Certifications from './pages/Certifications';
 import Experience from './pages/Experience';
 import Stat from './pages/Stat';
 import Contact from './pages/Contact';
-
 import DisplayModal from './components/DisplayModal';
 import { getProjectList } from "./apis/ProjectList";
 import { getCertificationList } from "./apis/CertificationList";

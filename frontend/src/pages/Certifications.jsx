@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-
 import Certification from "../components/Certification";
 import SpinComponent from "../components/SpinComponent";
-
 import { getCertificationList } from "../apis/CertificationList";
 import "../styles/Certifications.css";
 

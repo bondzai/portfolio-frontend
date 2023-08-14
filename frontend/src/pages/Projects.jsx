@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { getProjectList, statusOptions, columns } from "../apis/ProjectList";
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-
 import Project from "../components/Project";
 import SpinComponent from "../components/SpinComponent";
 import CustomToolbar from '../components/CustomToolbar';
+import { getProjectList, columns } from "../apis/ProjectList";
 import "../styles/Projects.css";
 
 const Projects = () => {

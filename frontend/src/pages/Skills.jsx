@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
-import { getSkillList } from "../apis/SkillList";
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
-import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import { getSkillList } from "../apis/SkillList";
 import "../styles/Home.css";
 
 const Skills = () => {

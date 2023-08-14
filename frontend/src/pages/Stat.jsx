@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
-
 import WakatimeStat from "../components/WakatimeStat";
 import Github from '../components/Github';
-
 import "../styles/Stat.css";
 
 const Stat = () => {
