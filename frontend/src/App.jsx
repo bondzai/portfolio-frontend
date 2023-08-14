@@ -4,11 +4,13 @@ import Navbar from './pages/global/Navbar';
 import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
-import ProjectDisplay from './pages/ProjectDisplay';
 import Certifications from './pages/Certifications';
-import CertificationDisplay from './pages/CertificationDisplay';
 import Experience from './pages/Experience';
 import Contact from './pages/Contact';
+
+import DisplayModal from './components/DisplayModal';
+import { getProjectList } from "./apis/ProjectList";
+import { getCertificationList } from "./apis/CertificationList";
 
 function App() {
     return (
@@ -19,9 +21,9 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/skills' element={<Skills />} />
                     <Route path='/projects' element={<Projects />} />
-                    <Route path='/project/:id' element={<ProjectDisplay />} />
+                    <Route path='/project/:id' element={<DisplayModal getDataList={getProjectList} dataRoutePath="/projects" />} />
                     <Route path='/certifications' element={<Certifications />} />
-                    <Route path='/certification/:id' element={<CertificationDisplay />} />
+                    <Route path='/certification/:id' element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />
                     <Route path='/experience' element={<Experience />} />
                     <Route path='/contact' element={<Contact />} />
                 </Routes>

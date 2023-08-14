@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Certification from "../components/Certification";
-import { getCertificationList } from "../apis/CertificationList";
 import SpinComponent from "../components/SpinComponent";
+
+import { getCertificationList } from "../apis/CertificationList";
 import "../styles/Certifications.css";
 
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
 const Certifications = () => {
+    const itemsPerPage = 6;
     const [certificationList, setCertificationList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,15 +23,31 @@ const Certifications = () => {
         fetchData();
     }, []);
 
+    const handleChangePage = (event, newPage) => {
+        setCurrentPage(newPage);
+    };
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
+
     return (
         <div className="certifications">
-            {isLoading ? (<SpinComponent />) : (
+            {isLoading ? (
+                <SpinComponent />
+            ) : (
                 <div className="certificationList">
-                    {certificationList.map((certification, index) => {
-                        return <Certification key={index} id={index} {...certification} />
-                    })}
+                    {visibleCertifications.map((certification, index) => (
+                        <Certification key={startIndex + index} id={startIndex + index} {...certification} />
+                    ))}
                 </div>
             )}
+            <Stack spacing={2} justifyContent="center" mt={3}>
+                <Pagination
+                    count={Math.ceil(certificationList.length / itemsPerPage)}
+                    page={currentPage}
+                    onChange={handleChangePage}
+                />
+            </Stack>
         </div>
     );
 };

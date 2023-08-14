@@ -5,7 +5,7 @@
 
 .skills {
     margin-top: 90px;
-    font-size: 20px;
+    font-size: 17px;
     width: 100%;
     height: auto;
     display: flex;
@@ -41,7 +41,7 @@
     border-radius: 50%;
     border-style: none;
     background-color: transparent;
-    width: 65px;
+    width: 60px;
     height: auto;
 }
 

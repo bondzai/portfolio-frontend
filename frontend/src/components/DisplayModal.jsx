@@ -4,10 +4,9 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Modal, Box, IconButton } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
 
-import { getProjectList } from "../apis/ProjectList";
-import "../styles/CertificationDisplay.css";
+import "../styles/DisplayModal.css";
 
-const ProjectDisplay = () => {
+const DisplayModal = ({ getDataList, dataRoutePath }) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [current, setCurrent] = useState(Number(id));
@@ -16,12 +15,12 @@ const ProjectDisplay = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getProjectList();
+            const result = await getDataList();
             setDataList(result);
             setDataListFetched(true);
         };
         fetchData();
-    }, []);
+    }, [getDataList]);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -53,13 +52,13 @@ const ProjectDisplay = () => {
     };
 
     const closeModal = () => {
-        navigate('/projects');
+        navigate(dataRoutePath);
     };
 
     const data = dataList.find(item => item.id === current);
 
     return (
-        <div className="certification-display">
+        <div className="root-display">
             {data && (
                 <Modal open={true} onClose={closeModal}>
                     <Box
@@ -96,7 +95,7 @@ const ProjectDisplay = () => {
                         <Box
                             sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
                         >
-                            <img src={data.image_url} alt={data.name} className="certification-image" />
+                            <img src={data.image_url} alt={data.name} className="display-image" />
                         </Box>
                     </Box>
                 </Modal>
@@ -105,4 +104,4 @@ const ProjectDisplay = () => {
     );
 };
 
-export default ProjectDisplay;
+export default DisplayModal;
