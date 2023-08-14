@@ -29,22 +29,13 @@
 }
 
 .typewriter {
+    margin-top: 30rem;
     text-align: center;
     font-size: 15px;
 }
 
-.socialMedia svg {
-    color: whitesmoke;
-    margin-top: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.socialMedia svg:hover {
-    filter: brightness(110%);
-    transform: scale(1.1);
-    transition: 0.1s ease-in;
-    color: lightyellow;
+.footer {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 50%;
 }

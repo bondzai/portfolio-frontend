@@ -61,7 +61,10 @@ const Contact = () => {
                         }}
                     />
                 </div>
-                <p> &copy; JB </p>
+
+                <div className="footer">
+                    <p> &copy; JB </p>
+                </div>
             </div>
         </div>
     );
