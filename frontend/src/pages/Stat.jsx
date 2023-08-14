@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 
-import SpinComponent from "../components/SpinComponent";
-import WakaTimeStats from "../components/Wakatime";
+import WakatimeStat from "../components/WakatimeStat";
+import Github from '../components/Github';
 
-// import "../styles/Certifications.css";
+import "../styles/Stat.css";
 
 const Stat = () => {
     return (
-        <div className="stat">
-            <WakaTimeStats />
+        <div className="stat-background">
+            <div className="stat-content">
+                <div className="stat-waka">
+                    <WakatimeStat />
+                </div>
+                <div className="stat-github">
+                    <Github />
+                </div>
+            </div>
         </div>
     );
 };
