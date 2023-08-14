@@ -6,6 +6,9 @@ import { getSkillList } from "../apis/SkillList";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import "../styles/Home.css";
 
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 const Skills = () => {
     const [skills, setSkills] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -42,36 +45,70 @@ const Skills = () => {
         <div className="home">
             <div className="skills">
                 {isLoading ? (<SpinComponent />) : (
-                    <ol className="list">
-                        <li>
-                            <b>OS</b>
-                            <SkillsFilter topic="os" skills={skills} />
-                        </li>
-                        <li>
-                            <b>Programming Languages</b>
-                            <SkillsFilter topic="language" skills={skills} />
-                        </li>
-                        <li>
-                            <b>Infrastructure Tools</b>
-                            <SkillsFilter topic="tools" skills={skills} />
-                        </li>
-                        <li>
-                            <b>Databases</b>
-                            <SkillsFilter topic="database" skills={skills} />
-                        </li>
-                        <li>
-                            <b>Backend</b>
-                            <SkillsFilter topic="backend" skills={skills} />
-                        </li>
-                        <li>
-                            <b>Frontend</b>
-                            <SkillsFilter topic="frontend" skills={skills} />
-                        </li>
-                        <li>
-                            <b>Automation & IOT Stuff</b>
-                            <SkillsFilter topic="automation" skills={skills} />
-                        </li>
-                    </ol>
+                    <div className="list">
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">OS</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="os" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">Programming Languages</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="language" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">Infrastructure Tools</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="tools" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">Databases</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="database" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">Backend</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="backend" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">Frontend</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="frontend" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion defaultExpanded>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography variant="h6">Automation & IOT Stuff</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <SkillsFilter topic="automation" skills={skills} />
+                            </AccordionDetails>
+                        </Accordion>
+                    </div>
                 )}
             </div>
             <KeyboardArrowUpIcon
