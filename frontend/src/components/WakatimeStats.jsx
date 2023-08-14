@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Descriptions } from 'antd';
 import SpinComponent from './SpinComponent';
-import { getWakatimeStat } from '../apis/WakatimeStats';
+import { getWakatimeStats } from '../apis/WakatimeStats';
 import '../styles/WakatimeStats.css';
 
 const WakatimeStats = () => {
@@ -9,7 +9,7 @@ const WakatimeStats = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getWakatimeStat();
+            const result = await getWakatimeStats();
             setStats(result);
         };
         fetchData();
