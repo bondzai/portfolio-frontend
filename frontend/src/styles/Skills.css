@@ -1,11 +1,5 @@
-.skills h3 {
-    font-size: 40px;
-    color: #3e497a;
-}
-
 .skills {
     margin-top: 90px;
-    font-size: 17px;
     width: 100%;
     height: auto;
     display: flex;
@@ -15,6 +9,12 @@
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+}
+
+.skills h6 {
+    font-size: 17px;
+    font-weight: bold;
+    color: #3e497a;
 }
 
 .skill-list {
