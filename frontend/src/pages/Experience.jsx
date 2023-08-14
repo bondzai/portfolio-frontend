@@ -60,7 +60,7 @@ const Experience = () => {
 
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
-                    date="2009 - 2012"
+                    date="2009 - 2012 (3 years)"
                     icon={<IconSchool />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
                 >
@@ -70,7 +70,7 @@ const Experience = () => {
 
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
-                    date="2012 - 2016"
+                    date="2012 - 2016 (4 years)"
                     icon={<IconSchool />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
                 >
@@ -94,7 +94,7 @@ const Experience = () => {
 
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
-                    date="Jan 2022 - Nov 2022"
+                    date="Jan 2022 - Nov 2022 (10 months)"
                     icon={<IconInt />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
                 >
