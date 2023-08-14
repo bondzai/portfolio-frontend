@@ -86,8 +86,9 @@ const Experience = () => {
                 >
                     <h3 className="vertical-timeline-element-title"> Synergetech Co., Ltd., Nonthaburi, Thailand </h3>
                     <p> Role: Automation System Engineer </p>
-                    <p> Responsibilities: Designed, developed, debugged, deployed & delivered industrial automation projects (especially automated batch control system). </p>
-                    <p> &emsp; - PLC, SCADA MES & Database programming. <br />
+                    <p> Responsibilities: <br />
+                        &emsp; - Designed, developed, debugged, deployed & delivered industrial automation projects (especially automated batch control system). <br />
+                        &emsp; - PLC, SCADA MES & Database programming. <br />
                         &emsp; - Implement analog signals, digital devices, I/O server & other 3rd party integrations by any protocol of choices. <br />
                     </p>
                 </VerticalTimelineElement>
