@@ -31,7 +31,7 @@ const WakatimeStats = () => {
                 </Descriptions.Item>
             </Descriptions>
 
-            <Descriptions layout="vertical" bordered>
+            <Descriptions layout="vertical" bordered className='first-row-highlight'>
                 <Descriptions.Item label='Operating Systems'>
                     {stats.operating_systems.map(os => (
                         <p key={os.name}>
