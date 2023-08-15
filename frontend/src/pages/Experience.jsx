@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 import IconSchool from "@material-ui/icons/School";
 import IconWork from "@material-ui/icons/Work";
 import IconInt from "@material-ui/icons/LocalLibraryOutlined";
+import { IoMdPulse } from "react-icons/io";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { IoMdPulse } from "react-icons/io";
-
+import "react-vertical-timeline-component/style.min.css";
 import "../styles/Experience.css";
 
 const Experience = () => {
@@ -39,7 +38,6 @@ const Experience = () => {
     const calculateAge = (birthdate) => {
         const today = new Date();
         const birthdateObj = new Date(birthdate);
-
         const years = today.getFullYear() - birthdateObj.getFullYear();
         const months = today.getMonth() - birthdateObj.getMonth();
 

@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Modal, Box, IconButton } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
-
 import "../styles/DisplayModal.css";
 
 const DisplayModal = ({ getDataList, dataRoutePath }) => {

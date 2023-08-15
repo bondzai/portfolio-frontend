@@ -1,10 +1,13 @@
 import React from "react";
 import GitHubCalendar from "react-github-calendar";
-import "../styles/GitHub.css";
+import "../styles/Github.css";
 
 function Github() {
 
     return (
+        <div className="github-calendar-background">
+        <div className="github-calendar-container">
+            <h5> Github Calendar </h5> <br />
             <div className="github-calendar">
                 <GitHubCalendar
                     username="introbond"
@@ -22,6 +25,8 @@ function Github() {
                     showWeekdayLabels
                 />
             </div>
+        </div>
+    </div>
     );
 }
 

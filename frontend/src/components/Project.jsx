@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { getLampStatusStyle } from './LampStatus';
 import { getHighlightStatusStyle } from './HighlightStatus';
 

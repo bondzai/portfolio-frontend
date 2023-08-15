@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
-import { getSkillList } from "../apis/SkillList";
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
-import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import { getSkillList } from "../apis/SkillList";
 import "../styles/Home.css";
 
 const Skills = () => {
@@ -47,12 +44,18 @@ const Skills = () => {
         window.scrollTo({ top: document.body.offsetHeight, behavior: "smooth" });
     };
 
+    const accordionStyle = {
+        borderRadius: "10px",
+        boxShadow: "0px 3px 15px rgba(58, 58, 58, 0.2)",
+        marginBottom: "5px",
+    };
+
     return (
         <div className="home">
             <div className="skills">
                 {isLoading ? (<SpinComponent />) : (
                     <div className="list">
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">OS</Typography>
                             </AccordionSummary>
@@ -61,7 +64,7 @@ const Skills = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">Programming Languages</Typography>
                             </AccordionSummary>
@@ -70,7 +73,7 @@ const Skills = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">Infrastructure Tools</Typography>
                             </AccordionSummary>
@@ -79,7 +82,7 @@ const Skills = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">Databases</Typography>
                             </AccordionSummary>
@@ -88,7 +91,7 @@ const Skills = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">Backend</Typography>
                             </AccordionSummary>
@@ -97,7 +100,7 @@ const Skills = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">Frontend</Typography>
                             </AccordionSummary>
@@ -106,7 +109,7 @@ const Skills = () => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion defaultExpanded>
+                        <Accordion defaultExpanded style={accordionStyle}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography variant="h6">Automation & IOT Stuff</Typography>
                             </AccordionSummary>

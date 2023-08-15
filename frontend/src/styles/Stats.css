@@ -1,0 +1,31 @@
+.stats-background {
+    width: 100%;
+    height: 100vh;
+    background-color: whitesmoke;
+    color: #21325e;
+}
+
+.stats-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInAnimation ease 2.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.stats-waka {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6.5rem;
+}
+
+.stats-github {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}

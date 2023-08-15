@@ -1,7 +1,5 @@
 import React from "react";
-import Github from '../components/Github';
 import Typewriter from 'typewriter-effect';
-
 import "../styles/Contact.css";
 
 const linkStyles = "white-link";
@@ -18,7 +16,6 @@ const LinkWithStyle = ({ href, text }) => (
         </a>
     </p>
 );
-
 
 const Contact = () => {
     return (
@@ -43,10 +40,7 @@ const Contact = () => {
                         text="Email : "
                     />
                 </div>
-                <div className="github">
-                    <strong> Github Calendar </strong> <br />
-                    <Github />
-                </div>
+
                 <div className="typewriter">
                     <Typewriter
                         options={{
@@ -64,7 +58,10 @@ const Contact = () => {
                         }}
                     />
                 </div>
-                <p> &copy; JB </p>
+
+                <div className="footer">
+                    <p> &copy; JB </p>
+                </div>
             </div>
         </div>
     );
