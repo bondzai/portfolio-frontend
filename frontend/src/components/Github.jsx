@@ -7,7 +7,7 @@ function Github() {
     return (
         <div className="github-calendar-background">
         <div className="github-calendar-container">
-            <h5> Github Calendar </h5> <br />
+            <h4> Github Calendar </h4> <br />
             <div className="github-calendar">
                 <GitHubCalendar
                     username="introbond"
