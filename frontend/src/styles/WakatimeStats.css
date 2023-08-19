@@ -3,8 +3,8 @@
     width: 100vh;
     height: auto;
     box-shadow: 0px 3px 15px rgba(58, 58, 58, 0.2);
-    background-color: #21325e;
-    color: #FFF;
+    background-color: #1a2949;
+    color: whitesmoke;
 }
 
 .wakatime-stats .ant-descriptions-item-label > span {
@@ -13,7 +13,7 @@
 
 .wakatime-stats .ant-descriptions-item-label > span,
 .wakatime-stats .ant-descriptions-item-content {
-    color: #FFF;
+    color: whitesmoke;
 }
 
 .ant-descriptions-row .ant-descriptions-item-content {
@@ -21,12 +21,13 @@
 }
 
 .first-row-highlight > div > table > tbody > tr.ant-descriptions-row:first-child {
-    background-color: #3e497a;
+    background-color: #121d38;
 }
 
 .title-center {
     text-align: center;
-    background-color: #3e497a;
+    background-color: #121d38;
+    color: whitesmoke;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
