@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { Spin } from "antd";
 import "../styles/SpinComponent.css";
 
-const SpinComponent = ({ customColor }) => {
+const SpinComponent = ({ customColor, customHeight}) => {
     const dynamicStyle = {
         "--custom-spin-color": customColor || "#1677ff",
+        "--custom-spin-height": customHeight || "100vh",
     };
 
     return (

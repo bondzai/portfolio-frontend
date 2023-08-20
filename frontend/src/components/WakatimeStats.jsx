@@ -16,7 +16,7 @@ const WakatimeStats = () => {
     }, []);
 
     if (!stats) {
-        return <SpinComponent customColor="whitesmoke" />;
+        return <SpinComponent customColor="whitesmoke" customHeight="330px"/>;
     }
 
 return (
