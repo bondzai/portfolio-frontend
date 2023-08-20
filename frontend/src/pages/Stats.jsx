@@ -9,7 +9,7 @@ import Github from '../components/Github';
 import "../styles/Stats.css";
 
 const Stats = () => {
-    
+
     const openInNewTab = (e) => {
         window.open(e, '_blank', 'noopener,noreferrer')
     }
@@ -43,11 +43,11 @@ const Stats = () => {
                         }}
                     />
                 </div>
-                
-                <GitHubIcon className="icon-social-github" onClick={() => openInNewTab('https://github.com/introbond')}/>
-                <LinkedInIcon className="icon-social-linkedin" onClick={() => openInNewTab('https://github.com/introbond')}/>
-                <FacebookIcon className="icon-social-facebook"onClick={() => openInNewTab('https://github.com/introbond')}/>
-                <MailIcon className="icon-social-mail"onClick={() => openInNewTab('https://github.com/introbond')} />
+
+                <MailIcon className="icon-social-mail" onClick={() => openInNewTab('')} />
+                <FacebookIcon className="icon-social-facebook" onClick={() => openInNewTab('')} />
+                <LinkedInIcon className="icon-social-linkedin" onClick={() => openInNewTab('')} />
+                <GitHubIcon className="icon-social-github" onClick={() => openInNewTab('https://github.com/introbond')} />
 
                 <div className="footer">
                     <p> &copy; JB </p>
