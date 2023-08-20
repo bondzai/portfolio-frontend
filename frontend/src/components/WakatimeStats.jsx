@@ -47,8 +47,8 @@ const WakatimeStats = () => {
                         </p>
                     ))}
                 </Descriptions.Item>
-                <Descriptions.Item label='Top 5 Languages'>
-                    {stats.languages.slice(0, 5).map(language => (
+                <Descriptions.Item label='Top 3 Languages'>
+                    {stats.languages.slice(0, 3).map(language => (
                         <p key={language.name}>
                             {language.name}: {language.text} ({language.percent}%)
                         </p>
