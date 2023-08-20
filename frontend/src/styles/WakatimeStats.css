@@ -11,10 +11,6 @@
     font-weight: 900;
 }
 
-.ant-spin .ant-spin-dot-item {
-    background-color: whitesmoke;
-}
-
 .wakatime-stats .ant-descriptions-item-label>span,
 .wakatime-stats .ant-descriptions-item-content {
     color: whitesmoke;
