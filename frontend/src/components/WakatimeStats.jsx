@@ -30,7 +30,6 @@ return (
                 Total development time: {stats.human_readable_total_including_other_language} / Best day: {stats.best_day.date} ({stats.best_day.text})
             </Descriptions.Item>
         </Descriptions>
-
         <Descriptions layout="vertical" bordered className='first-row-highlight'>
             <Descriptions.Item label='Operating Systems'>
                 {stats.operating_systems.map(os => (
@@ -39,7 +38,6 @@ return (
                     </p>
                 ))}
             </Descriptions.Item>
-
             <Descriptions.Item label='IDEs'>
                 {stats.editors.map(editor => (
                     <p key={editor.name}>
