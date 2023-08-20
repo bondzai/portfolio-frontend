@@ -7,11 +7,15 @@
     color: whitesmoke;
 }
 
-.wakatime-stats .ant-descriptions-item-label > span {
+.wakatime-stats .ant-descriptions-item-label>span {
     font-weight: 900;
 }
 
-.wakatime-stats .ant-descriptions-item-label > span,
+.ant-spin .ant-spin-dot-item {
+    background-color: whitesmoke;
+}
+
+.wakatime-stats .ant-descriptions-item-label>span,
 .wakatime-stats .ant-descriptions-item-content {
     color: whitesmoke;
 }
@@ -20,7 +24,7 @@
     vertical-align: top;
 }
 
-.first-row-highlight > div > table > tbody > tr.ant-descriptions-row:first-child {
+.first-row-highlight>div>table>tbody>tr.ant-descriptions-row:first-child {
     background-color: #121d38;
 }
 
@@ -32,7 +36,7 @@
     border-top-right-radius: 10px;
 }
 
-.title-center h3{
+.title-center h3 {
     margin: 0;
     padding: 20px 0;
     font-size: 17px;
