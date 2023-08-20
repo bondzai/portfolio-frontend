@@ -18,12 +18,12 @@ const Stats = () => {
         <div className="stats-background">
             <div className="stats-content">
 
-                <div className="stats-github">
-                    <Github />
-                </div>
-
                 <div className="stats-waka">
                     <WakatimeStat />
+                </div>
+
+                <div className="stats-github">
+                    <Github />
                 </div>
 
                 <div className="typewriter">

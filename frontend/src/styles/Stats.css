@@ -16,14 +16,14 @@
     animation-fill-mode: forwards;
 }
 
-.stats-github {
+.stats-waka {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 6.5rem;
 }
 
-.stats-waka {
+.stats-github {
     display: flex;
     flex-direction: column;
     align-items: center;
