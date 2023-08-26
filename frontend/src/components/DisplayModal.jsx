@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Modal, Box, IconButton } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
+import { Empty } from 'antd';
 import "../styles/DisplayModal.css";
 
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
@@ -94,7 +95,9 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
                         <Box
                             sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
                         >
-                            <img src={data.image_url} alt={data.name} className="display-image" />
+                            {
+                                data.image_url ? (<img src={data.image_url} alt={data.name} className="display-image" />) : (<Empty className="display-image" />)
+                            }
                         </Box>
                     </Box>
                 </Modal>
