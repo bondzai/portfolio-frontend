@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import VirtualList from 'rc-virtual-list';
 import { Avatar, List, message } from 'antd';
-const fakeDataUrl =
-    'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
+
+const fakeDataUrl = 'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
 const ContainerHeight = 550;
 
 const RoadmapCard = () => {
@@ -13,7 +13,7 @@ const RoadmapCard = () => {
             .then((res) => res.json())
             .then((body) => {
                 setData(data.concat(body.results));
-                // message.success(`${body.results.length} more items loaded!`);
+                message.success(`${body.results.length} more items loaded!`);
             });
     };
     

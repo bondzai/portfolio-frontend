@@ -1,26 +1,25 @@
 import React from 'react';
-import { Card, List } from 'antd';
+import { Card, List, Statistic } from 'antd';
 import '../styles/Roadmap.css';
 import RoadmapCard from '../components/RoadmapCard';
+import CountUp from 'react-countup';
 
-const data = [
+const table = [
     {
         title: 'Ideas',
-        content: "",
     },
     {
         title: 'Todo',
-        content: "",
     },
     {
         title: 'Focus',
-        content: ["a", "b"],
     },
     {
         title: 'Done',
-        content: "",
     },
 ];
+
+const formatter = (value) => <CountUp end={value} separator="," />;
 
 const Roadmap = () => (
     <div className='roadmap-background'>
@@ -29,19 +28,27 @@ const Roadmap = () => (
                 gutter: 16,
                 column: 4,
             }}
-            dataSource={data}
+            dataSource={table}
             renderItem={(item) => (
                 <List.Item>
-                    <Card 
+                    <Card
                         title={item.title}
-                        extra={<a href="#">More</a>}
+                        extra={
+                            <Statistic
+                                title="Total"
+                                value={112893}
+                                valueStyle={{ fontSize: '15px' }}
+                                suffix="tasks"
+                                formatter={formatter}
+                            />
+                        }
                         style={{
                             width: 360,
-                        }}                   
+                        }}
                     >
-                        <RoadmapCard/>
+                        <RoadmapCard />
                     </Card>
-                    
+
                 </List.Item>
             )}
         />
