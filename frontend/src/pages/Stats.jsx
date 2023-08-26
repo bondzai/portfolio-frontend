@@ -1,18 +1,11 @@
 import React from "react";
 import Typewriter from 'typewriter-effect';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import MailIcon from '@material-ui/icons/Mail';
+import SocialMediaIcons from "../components/SocialMediaIcons";
 import WakatimeStat from "../components/WakatimeStats";
 import Github from '../components/Github';
 import "../styles/Stats.css";
 
 const Stats = () => {
-
-    const openInNewTab = (e) => {
-        window.open(e, '_blank', 'noopener,noreferrer')
-    }
 
     return (
         <div className="stats-background">
@@ -44,10 +37,7 @@ const Stats = () => {
                     />
                 </div>
 
-                <MailIcon className="icon-social-mail" onClick={() => openInNewTab('')} />
-                <FacebookIcon className="icon-social-facebook" onClick={() => openInNewTab('')} />
-                <LinkedInIcon className="icon-social-linkedin" onClick={() => openInNewTab('')} />
-                <GitHubIcon className="icon-social-github" onClick={() => openInNewTab('https://github.com/introbond')} />
+                <SocialMediaIcons/>
 
                 <div className="footer">
                     <p> &copy; JB </p>
