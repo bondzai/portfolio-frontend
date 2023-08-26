@@ -1,21 +1,29 @@
 import React from 'react';
 import { Card, List, Statistic } from 'antd';
-import '../styles/Roadmap.css';
-import RoadmapCard from '../components/RoadmapCard';
 import CountUp from 'react-countup';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import { RiFocus3Fill } from 'react-icons/ri';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import RoadmapCard from '../components/RoadmapCard';
+import '../styles/Roadmap.css';
 
 const table = [
     {
         title: 'Ideas',
+        icon: <TipsAndUpdatesIcon />,
     },
     {
         title: 'Todo',
+        icon: <ListAltIcon />,
     },
     {
-        title: 'Focus',
+        title: 'Focusing',
+        icon: <RiFocus3Fill />,
     },
     {
         title: 'Done',
+        icon: <TaskAltIcon />,
     },
 ];
 
@@ -32,7 +40,12 @@ const Roadmap = () => (
             renderItem={(item) => (
                 <List.Item>
                     <Card
-                        title={item.title}
+                        title={
+                            <div className="card-title">
+                                {item.icon}
+                                <span className="title-text">{item.title}</span>
+                            </div>
+                        }
                         extra={
                             <Statistic
                                 title="Total"
@@ -48,7 +61,6 @@ const Roadmap = () => (
                     >
                         <RoadmapCard />
                     </Card>
-
                 </List.Item>
             )}
         />

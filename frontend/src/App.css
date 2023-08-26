@@ -45,17 +45,20 @@ body {
     box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
-
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 2px;
 }
 
 ::-webkit-scrollbar-track {
     background: #e0e0e0;
 }
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb {
     background: #3e497a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #21325e;
 }
 
 @keyframes blinking {
