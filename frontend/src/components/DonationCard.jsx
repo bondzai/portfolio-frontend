@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Input, QRCode, Space, Select, Tooltip, Avatar } from 'antd';
-import { InfoCircleOutlined, UserOutlined } from '@ant-design/icons';
+import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from 'antd';
+import { InfoCircleOutlined, UserOutlined, CopyOutlined } from '@ant-design/icons';
 
 const options = [
     {
@@ -19,6 +19,11 @@ const DonationCard = () => {
     const [selectedValue, setSelectedValue] = useState(options[0].value);
 
     const selectedOption = options.find(option => option.value === selectedValue);
+
+    const handleCopyToClipboard = () => {
+        navigator.clipboard.writeText(selectedValue);
+        message.success('Copied to clipboard');
+    };
 
     return (
         <div style={{ width: '50%' }}>
@@ -39,17 +44,18 @@ const DonationCard = () => {
                         value={selectedValue}
                         prefix={
                             <Tooltip title="Extra information">
-                                <Avatar size={21} style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                                <Avatar size={21} style={{ backgroundColor: '#3e497a' }} icon={<UserOutlined />} />
                             </Tooltip>
                         }
                         suffix={
-                            <Tooltip title="Extra information">
-                                <InfoCircleOutlined
-                                    style={{
-                                        color: 'rgba(0,0,0,.45)',
-                                    }}
-                                />
-                            </Tooltip>
+                            <>
+                                <Tooltip title="Copy to Clipboard">
+                                    <CopyOutlined onClick={handleCopyToClipboard} style={{ cursor: 'pointer' }} />
+                                </Tooltip>
+                                <Tooltip title="Extra information">
+                                    <InfoCircleOutlined style={{ color: 'rgba(0, 0, 0, 0.45)' }} />
+                                </Tooltip>
+                            </>
                         }
                         style={{ width: '400px' }}
                     />
@@ -59,4 +65,4 @@ const DonationCard = () => {
     );
 };
 
-export default DonationCard
+export default DonationCard;
