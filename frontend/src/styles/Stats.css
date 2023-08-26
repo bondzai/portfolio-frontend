@@ -37,64 +37,15 @@
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0.5rem;
-    right: 50%;
-    font-size: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.icon-social-github {
-    position: fixed;
-    bottom: 50px;
-    right: 40px;
-    padding: 10px 10px;
-    background-color: #3e497a;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.95;
-    transition: opacity 0.3s, visibility 0.3s;
-}
-
-.icon-social-linkedin {
-    position: fixed;
-    bottom: 100px;
-    right: 40px;
-    padding: 10px 10px;
-    background-color: #3e497a;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.95;
-    transition: opacity 0.3s, visibility 0.3s;
-}
-
-.icon-social-facebook {
-    position: fixed;
-    bottom: 150px;
-    right: 40px;
-    padding: 10px 10px;
-    background-color: #3e497a;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.95;
-    transition: opacity 0.3s, visibility 0.3s;
-}
-
-.icon-social-mail {
-    position: fixed;
-    bottom: 200px;
-    right: 40px;
-    padding: 10px 10px;
-    background-color: #3e497a;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    opacity: 0.95;
-    transition: opacity 0.3s, visibility 0.3s;
+.footer > div:not(:first-child) {
+    margin-left: 20px;
 }

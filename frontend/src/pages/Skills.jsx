@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
+
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
-import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ScrollButton from "../components/ScrollButon";
+
+import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/SkillList";
 import "../styles/Home.css";
 
 const Skills = () => {
+    const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
+
     const [skills, setSkills] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
@@ -19,30 +24,6 @@ const Skills = () => {
         };
         fetchData();
     }, []);
-
-    const [showScrollButton, setShowScrollButton] = useState(false);
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.pageYOffset > 100) {
-                setShowScrollButton(true);
-            } else {
-                setShowScrollButton(false);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    const scrollToBottom = () => {
-        window.scrollTo({ top: document.body.offsetHeight, behavior: "smooth" });
-    };
 
     const accordionStyle = {
         borderRadius: "10px",
@@ -120,16 +101,11 @@ const Skills = () => {
                     </div>
                 )}
             </div>
-            <KeyboardArrowUpIcon
-                className={`scroll-button ${showScrollButton ? "visible" : ""}`}
-                onClick={scrollToTop}
-            >
-            </KeyboardArrowUpIcon>
-            <KeyboardArrowDownIcon
-                className={`scroll-button ${!showScrollButton ? "visible" : ""}`}
-                onClick={scrollToBottom}
-            >
-            </KeyboardArrowDownIcon>
+            <ScrollButton
+                showScrollButton={showScrollButton}
+                scrollToTop={scrollToTop}
+                scrollToBottom={scrollToBottom}
+            />
         </div>
     );
 };

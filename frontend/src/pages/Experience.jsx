@@ -1,39 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import IconSchool from "@material-ui/icons/School";
 import IconWork from "@material-ui/icons/Work";
 import IconInt from "@material-ui/icons/LocalLibraryOutlined";
 import { IoMdPulse } from "react-icons/io";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+import ScrollButton from "../components/ScrollButon";
+
+import useScroll from "../hooks/useScroll";
+
 import "react-vertical-timeline-component/style.min.css";
 import "../styles/Experience.css";
 
+
 const Experience = () => {
-    const [showScrollButton, setShowScrollButton] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.pageYOffset > 100) {
-                setShowScrollButton(true);
-            } else {
-                setShowScrollButton(false);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    const scrollToBottom = () => {
-        window.scrollTo({ top: document.body.offsetHeight, behavior: "smooth" });
-    };
+    const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
 
     const calculateAge = (birthdate) => {
         const today = new Date();
@@ -137,16 +119,11 @@ const Experience = () => {
 
                 </VerticalTimelineElement>
             </VerticalTimeline>
-            <KeyboardArrowUpIcon
-                className={`scroll-button ${showScrollButton ? "visible" : ""}`}
-                onClick={scrollToTop}
-            >
-            </KeyboardArrowUpIcon>
-            <KeyboardArrowDownIcon
-                className={`scroll-button ${!showScrollButton ? "visible" : ""}`}
-                onClick={scrollToBottom}
-            >
-            </KeyboardArrowDownIcon>
+            <ScrollButton
+                showScrollButton={showScrollButton}
+                scrollToTop={scrollToTop}
+                scrollToBottom={scrollToBottom}
+            />
         </div>
     )
 }
