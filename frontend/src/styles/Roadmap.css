@@ -1,0 +1,33 @@
+.roadmap-background {
+    margin-top: 90px;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    color: #3e497a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.certificationList {
+    width: 70vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
+
+.certification {
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    margin-bottom: 55px;
+    box-shadow: 0px 3px 15px rgba(58, 58, 58, 0.2);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
