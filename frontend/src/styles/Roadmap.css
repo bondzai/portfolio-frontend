@@ -31,3 +31,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.card-title {
+    display: flex;
+    align-items: center;
+}
+
+.title-text {
+    margin-left: 8px;
+}
