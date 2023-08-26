@@ -37,8 +37,15 @@
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0.5rem;
-    right: 50%;
-    font-size: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer > div:not(:first-child) {
+    margin-left: 20px;
 }

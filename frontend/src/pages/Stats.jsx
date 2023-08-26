@@ -5,6 +5,9 @@ import WakatimeStat from "../components/WakatimeStats";
 import Github from '../components/Github';
 import "../styles/Stats.css";
 
+import DonationCard from "../components/DonationCard";
+import CustomModalButton from "../components/CustomModalButton";
+
 const Stats = () => {
 
     return (
@@ -37,12 +40,22 @@ const Stats = () => {
                     />
                 </div>
 
-                <SocialMediaIcons/>
+                <SocialMediaIcons />
+            </div>
 
-                <div className="footer">
+            <div className="footer">
+                <div>
                     <p> &copy; JB </p>
                 </div>
-
+                <div>
+                    <CustomModalButton
+                        buttonText="Buy me a coffee"
+                        title="Buy me a coffee"
+                        content={<DonationCard />}
+                        buttonIcon={<span className="icon">☕</span>}
+                        hideButtons
+                    />
+                </div>
             </div>
 
         </div>
