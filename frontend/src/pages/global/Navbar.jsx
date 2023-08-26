@@ -40,10 +40,13 @@ const Navbar = () => {
                     Skills
                 </Link>
                 <Link to="/projects" onClick={handleLinkClick} className={activeLink === "projects" ? "active" : ""}>
-                    Lab
+                    Labs
                 </Link>
                 <Link to="/certifications" onClick={handleLinkClick} className={activeLink === "certifications" ? "active" : ""}>
                     Certifications
+                </Link>
+                <Link to="/roadmap" onClick={handleLinkClick} className={activeLink === "roadmap" ? "active" : ""}>
+                    Roadmap
                 </Link>
                 <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
                     Contact & More
