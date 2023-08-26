@@ -5,8 +5,8 @@ import IconSchool from "@material-ui/icons/School";
 import IconWork from "@material-ui/icons/Work";
 import IconInt from "@material-ui/icons/LocalLibraryOutlined";
 import { IoMdPulse } from "react-icons/io";
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
+import ScrollButton from "../components/ScrollButon";
 
 import useScroll from "../hooks/useScroll";
 
@@ -119,16 +119,11 @@ const Experience = () => {
 
                 </VerticalTimelineElement>
             </VerticalTimeline>
-            <ArrowUpwardIcon
-                className={`scroll-button ${showScrollButton ? "visible" : ""}`}
-                onClick={scrollToTop}
-            >
-            </ArrowUpwardIcon>
-            <ArrowDownwardIcon
-                className={`scroll-button ${!showScrollButton ? "hidden" : ""}`}
-                onClick={scrollToBottom}
-            >
-            </ArrowDownwardIcon>
+            <ScrollButton
+                showScrollButton={showScrollButton}
+                scrollToTop={scrollToTop}
+                scrollToBottom={scrollToBottom}
+            />
         </div>
     )
 }

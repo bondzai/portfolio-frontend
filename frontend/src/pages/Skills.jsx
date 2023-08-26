@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
+import ScrollButton from "../components/ScrollButon";
 
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/SkillList";
@@ -102,16 +101,11 @@ const Skills = () => {
                     </div>
                 )}
             </div>
-            <ArrowUpwardIcon
-                className={`scroll-button ${showScrollButton ? "visible" : ""}`}
-                onClick={scrollToTop}
-            >
-            </ArrowUpwardIcon>
-            <ArrowDownwardIcon
-                className={`scroll-button ${!showScrollButton ? "hidden" : ""}`}
-                onClick={scrollToBottom}
-            >
-            </ArrowDownwardIcon>
+            <ScrollButton
+                showScrollButton={showScrollButton}
+                scrollToTop={scrollToTop}
+                scrollToBottom={scrollToBottom}
+            />
         </div>
     );
 };
