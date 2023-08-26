@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
 import { getLampStatusStyle } from './LampStatus';
 import { getHighlightStatusStyle } from './HighlightStatus';
+import { Empty } from 'antd';
 
 const Project = ({ ...project }) => {
     const navigate = useNavigate();
@@ -20,7 +21,9 @@ const Project = ({ ...project }) => {
                     <AiFillStar size={30} />
                 </div>
             )}
-            <div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />
+            {
+                project.image_url ? (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />) : (<Empty className="bgImage" />)
+            }
             <h1> {project.name} </h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
