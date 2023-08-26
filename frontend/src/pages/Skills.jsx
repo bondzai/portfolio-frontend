@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { getSkillList } from "../apis/SkillList";
 import "../styles/Home.css";
@@ -23,7 +23,7 @@ const Skills = () => {
     const [showScrollButton, setShowScrollButton] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
-            if (window.pageYOffset > 100) {
+            if (window.scrollY > 100) {
                 setShowScrollButton(true);
             } else {
                 setShowScrollButton(false);
@@ -120,16 +120,16 @@ const Skills = () => {
                     </div>
                 )}
             </div>
-            <KeyboardArrowUpIcon
+            <ArrowUpwardIcon
                 className={`scroll-button ${showScrollButton ? "visible" : ""}`}
                 onClick={scrollToTop}
             >
-            </KeyboardArrowUpIcon>
-            <KeyboardArrowDownIcon
-                className={`scroll-button ${!showScrollButton ? "visible" : ""}`}
+            </ArrowUpwardIcon>
+            <ArrowDownwardIcon
+                className={`scroll-button ${!showScrollButton ? "hidden" : ""}`}
                 onClick={scrollToBottom}
             >
-            </KeyboardArrowDownIcon>
+            </ArrowDownwardIcon>
         </div>
     );
 };

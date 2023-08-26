@@ -4,8 +4,8 @@ import IconSchool from "@material-ui/icons/School";
 import IconWork from "@material-ui/icons/Work";
 import IconInt from "@material-ui/icons/LocalLibraryOutlined";
 import { IoMdPulse } from "react-icons/io";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import "react-vertical-timeline-component/style.min.css";
 import "../styles/Experience.css";
 
@@ -14,7 +14,7 @@ const Experience = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.pageYOffset > 100) {
+            if (window.scrollY > 100) {
                 setShowScrollButton(true);
             } else {
                 setShowScrollButton(false);
@@ -137,16 +137,16 @@ const Experience = () => {
 
                 </VerticalTimelineElement>
             </VerticalTimeline>
-            <KeyboardArrowUpIcon
+            <ArrowUpwardIcon
                 className={`scroll-button ${showScrollButton ? "visible" : ""}`}
                 onClick={scrollToTop}
             >
-            </KeyboardArrowUpIcon>
-            <KeyboardArrowDownIcon
-                className={`scroll-button ${!showScrollButton ? "visible" : ""}`}
+            </ArrowUpwardIcon>
+            <ArrowDownwardIcon
+                className={`scroll-button ${!showScrollButton ? "hidden" : ""}`}
                 onClick={scrollToBottom}
             >
-            </KeyboardArrowDownIcon>
+            </ArrowDownwardIcon>
         </div>
     )
 }
