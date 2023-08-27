@@ -14,6 +14,10 @@ const Stats = () => {
         <div className="stats-background">
             <div className="stats-content">
 
+                <div>
+                    {/*  */}
+                </div>
+
                 <div className="stats-waka">
                     <WakatimeStat />
                 </div>
