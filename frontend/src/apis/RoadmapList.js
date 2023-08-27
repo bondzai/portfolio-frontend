@@ -19,6 +19,17 @@ const getRoadmapList = (async () => {
 
 export { getRoadmapList }
 
+export const years = [
+    {
+        label: '2022',
+        key: '2022',
+    },
+    {
+        label: '2023',
+        key: '2023',
+    },
+];
+
 export const columns = [
     {
         title: 'Ideas',

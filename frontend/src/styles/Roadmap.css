@@ -3,14 +3,15 @@
     width: 100%;
     height: auto;
     font-size: 20px;
-    color: #3e497a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+}
+
+.roadmap-content {
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
 }
 
 .card-title {
