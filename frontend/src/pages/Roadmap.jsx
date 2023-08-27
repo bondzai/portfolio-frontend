@@ -76,7 +76,6 @@ const Roadmap = () => {
                                 width: 360,
                             }}
                         >
-                            {/* {loading ? <p>Loading...</p> : <RoadmapCard data={getFilteredRoadmapList(index)} />} */}
                             {loading ? <SpinComponent customHeight="550px"/> : <RoadmapCard data={getFilteredRoadmapList(index)} />}
                         </Card>
                     </List.Item>
