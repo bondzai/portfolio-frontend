@@ -6,6 +6,7 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import { RiFocus3Fill } from 'react-icons/ri';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import RoadmapCard from '../components/RoadmapCard';
+import SpinComponent from "../components/SpinComponent";
 import { getRoadmapList, columns } from '../apis/RoadmapList';
 import '../styles/Roadmap.css';
 
@@ -75,7 +76,8 @@ const Roadmap = () => {
                                 width: 360,
                             }}
                         >
-                            {loading ? <p>Loading...</p> : <RoadmapCard data={getFilteredRoadmapList(index)} />}
+                            {/* {loading ? <p>Loading...</p> : <RoadmapCard data={getFilteredRoadmapList(index)} />} */}
+                            {loading ? <SpinComponent customHeight="550px"/> : <RoadmapCard data={getFilteredRoadmapList(index)} />}
                         </Card>
                     </List.Item>
                 )}
