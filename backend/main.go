@@ -70,8 +70,8 @@ func main() {
 		return c.JSON(data)
 	})
 
-	app.Get("/roadmap/", func(c *fiber.Ctx) error {
-		key := "roadmap"
+	app.Get("/roadmap-legacy/", func(c *fiber.Ctx) error {
+		key := "roadmap-legacy"
 		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
 		data, err := services.GetData(redisClient, url, key)
 		if err != nil {
@@ -81,8 +81,8 @@ func main() {
 		return c.JSON(data)
 	})
 
-	app.Get("/roadmap2/", func(c *fiber.Ctx) error {
-		key := "roadmap2"
+	app.Get("/roadmap/", func(c *fiber.Ctx) error {
+		key := "roadmap"
 		data, err := services.GetMongoData(redisClient, key)
 		if err != nil {
 			log.Println(err)
