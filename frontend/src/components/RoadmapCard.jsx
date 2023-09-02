@@ -39,9 +39,7 @@ const RoadmapCard = ({ data }) => {
                                             switcherIcon={<DownOutlined />}
                                             treeData={convertSubTasksToTree(item.sub_tasks)}
                                         />
-                                    ) : (
-                                        item.description
-                                    )
+                                    ) : item.description
                                 }
                             />
                         </List.Item>
