@@ -81,6 +81,16 @@ func main() {
 		return c.JSON(data)
 	})
 
+	app.Get("/roadmap2/", func(c *fiber.Ctx) error {
+		key := "roadmap2"
+		data, err := services.GetMongoData(redisClient, key)
+		if err != nil {
+			log.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
+	})
+
 	app.Post("/flush-cache/", func(c *fiber.Ctx) error {
 		if c.Get("Authorization") != os.Getenv("API_TOKEN") {
 			return c.SendStatus(http.StatusUnauthorized)
