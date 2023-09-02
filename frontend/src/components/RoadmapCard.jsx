@@ -4,9 +4,7 @@ import { Avatar, Divider, List, Tree } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { convertSubTasksToTree } from '../utils/utils.js';
 
-
 const RoadmapCard = ({ data }) => {
-
     return (
         <div
             id="scrollableDiv"
@@ -35,13 +33,15 @@ const RoadmapCard = ({ data }) => {
                                 }
                                 title={<a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>}
                                 description={
-                                    item.sub_tasks ? (
+                                    Object.keys(item.sub_tasks).length > 0 ? (
                                         <Tree
                                             showLine
                                             switcherIcon={<DownOutlined />}
                                             treeData={convertSubTasksToTree(item.sub_tasks)}
                                         />
-                                    ) : null
+                                    ) : (
+                                        item.description
+                                    )
                                 }
                             />
                         </List.Item>
