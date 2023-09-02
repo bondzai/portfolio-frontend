@@ -1,50 +1,52 @@
 import React from "react";
+import { Space, Card } from "antd";
 import Typewriter from 'typewriter-effect';
+
 import SocialMediaIcons from "../components/SocialMediaIcons";
 import WakatimeStat from "../components/WakatimeStats";
 import Github from '../components/Github';
-import "../styles/Stats.css";
 
 import DonationCard from "../components/DonationCard";
 import CustomModalButton from "../components/CustomModalButton";
+
+import "../styles/Stats.css";
 
 const Stats = () => {
 
     return (
         <div className="stats-background">
+
             <div className="stats-content">
+                <Space direction="vertical" size="large" style={{ display: 'flex' }}>
 
-                <div>
-                    {/*  */}
-                </div>
+                    <div className="stats-waka">
+                        <WakatimeStat />
+                    </div>
 
-                <div className="stats-waka">
-                    <WakatimeStat />
-                </div>
+                    <div className="stats-github">
+                        <Github />
+                    </div>
 
-                <div className="stats-github">
-                    <Github />
-                </div>
+                    <div className="typewriter">
+                        <Typewriter
+                            options={{
+                                delay: 80,
+                            }}
+                            onInit={(typewriter) => {
+                                typewriter
+                                    .start()
+                                    .typeString('"To succeed, you must study the endgame before everything else." <br>')
+                                    .pauseFor(50)
+                                    .typeString('<br> <strong>     José Raúl Capablanca, </strong>')
+                                    .pauseFor(50)
+                                    .typeString('<strong>     Chess Grandmaster </strong>')
+                                    .start();
+                            }}
+                        />
+                    </div>
 
-                <div className="typewriter">
-                    <Typewriter
-                        options={{
-                            delay: 80,
-                        }}
-                        onInit={(typewriter) => {
-                            typewriter
-                                .start()
-                                .typeString('"To succeed, you must study the endgame before everything else." <br>')
-                                .pauseFor(50)
-                                .typeString('<br> <strong>     José Raúl Capablanca, </strong>')
-                                .pauseFor(50)
-                                .typeString('<strong>     Chess Grandmaster </strong>')
-                                .start();
-                        }}
-                    />
-                </div>
-
-                <SocialMediaIcons />
+                    <SocialMediaIcons />
+                </Space>
             </div>
 
             <div className="footer">
