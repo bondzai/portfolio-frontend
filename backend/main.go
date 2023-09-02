@@ -6,6 +6,7 @@ import (
 	"os"
 
 	services "portfolio/services"
+	"portfolio/services/mongodb"
 	"portfolio/services/redis"
 	utils "portfolio/utils"
 
@@ -17,6 +18,7 @@ func init() {
 	log.SetPrefix("LOG: ")
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 	log.Println("initial started")
+	mongodb.CheckConnection()
 }
 
 func main() {
