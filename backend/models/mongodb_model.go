@@ -21,3 +21,15 @@ type MongoItemMap struct {
 	Version int `bson:"version"`
 	ItemMap map[string]interface{}
 }
+
+type MongoTask struct {
+	ID          int               `bson:"_id"`
+	Title       string            `bson:"title"`
+	StartDate   string            `bson:"start_date"`
+	EndDate     string            `bson:"end_date"`
+	Year        int               `bson:"year"`
+	Status      int               `bson:"status"`
+	Image       string            `bson:"image"`
+	Description string            `bson:"description"`
+	SubTasks    map[string]string `bson:"sub_tasks"`
+}
