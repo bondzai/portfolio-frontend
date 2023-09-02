@@ -1,4 +1,4 @@
-package service
+package googlesheet
 
 import (
 	"encoding/json"

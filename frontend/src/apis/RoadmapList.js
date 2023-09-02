@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const getRoadmapList = (async () => {
     const BACKEND_URLS = [
+        import.meta.env.VITE_BACKEND_URL0,
         import.meta.env.VITE_BACKEND_URL1,
         import.meta.env.VITE_BACKEND_URL2,
     ].map(url => url + "/roadmap/");

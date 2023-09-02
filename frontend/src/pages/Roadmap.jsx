@@ -20,7 +20,6 @@ const Roadmap = () => {
 
     const filteredRoadmapList = roadmapList.filter(data => {
         return data.year == selectedYear
-        // return parseInt(data.year, 10) === parseInt(selectedYear, 10);
     });
 
     return (

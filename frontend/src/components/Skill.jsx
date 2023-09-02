@@ -1,10 +1,8 @@
 import React from "react";
+import { openInNewTab } from "../utils/utils.js"
 
 const SkillItem = ({ ...skill }) => {
-    const openInNewTab = (e) => {
-        window.open(e, "_blank", "noopener,noreferrer");
-    };
-
+    
     return (
         <div className="skill">
             <div>

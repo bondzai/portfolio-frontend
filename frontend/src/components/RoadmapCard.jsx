@@ -1,9 +1,10 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Avatar, Divider, List } from 'antd';
+import { Avatar, Divider, List, Tree } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { convertSubTasksToTree } from '../utils/utils.js';
 
 const RoadmapCard = ({ data }) => {
-
     return (
         <div
             id="scrollableDiv"
@@ -25,18 +26,25 @@ const RoadmapCard = ({ data }) => {
                     size='large'
                     dataSource={data}
                     renderItem={(item) => (
-                        <List.Item key={item.id}>
+                        <List.Item key={item._id}>
                             <List.Item.Meta
                                 avatar={
                                     item.image ? (<Avatar src={item.image} />) : (<Avatar>N/A</Avatar>)
                                 }
                                 title={<a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>}
-                                description={item.description}
+                                description={
+                                    Object.keys(item.sub_tasks).length > 0 ? (
+                                        <Tree
+                                            showLine
+                                            switcherIcon={<DownOutlined />}
+                                            treeData={convertSubTasksToTree(item.sub_tasks)}
+                                        />
+                                    ) : item.description
+                                }
                             />
                         </List.Item>
                     )}
                 />
-                
             </InfiniteScroll>
         </div>
     );
