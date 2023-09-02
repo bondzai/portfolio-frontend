@@ -1,20 +1,28 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"os"
 
-	service "portfolio/service"
+	services "portfolio/services"
+	"portfolio/services/redis"
+	utils "portfolio/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
+func init() {
+	log.SetPrefix("LOG: ")
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+	log.Println("initial started")
+}
+
 func main() {
 	app := fiber.New()
 
-	redisClient := service.NewRedisCache()
+	redisClient := redis.NewRedisCache()
 
 	app.Use(cors.New(cors.Config{
 		AllowOrigins:     "https://thejb.onrender.com, http://localhost:5173",
@@ -24,15 +32,15 @@ func main() {
 	}))
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+		return c.SendString("Portfolio backend is running...")
 	})
 
 	app.Get("/projects/", func(c *fiber.Ctx) error {
 		key := "projects"
-		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
-		data, err := service.GetData(redisClient, url, key)
+		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
+		data, err := services.GetData(redisClient, url, key)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 			return c.SendStatus(http.StatusInternalServerError)
 		}
 		return c.JSON(data)
@@ -40,10 +48,10 @@ func main() {
 
 	app.Get("/skills/", func(c *fiber.Ctx) error {
 		key := "skills"
-		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
-		data, err := service.GetData(redisClient, url, key)
+		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
+		data, err := services.GetData(redisClient, url, key)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 			return c.SendStatus(http.StatusInternalServerError)
 		}
 		return c.JSON(data)
@@ -51,10 +59,10 @@ func main() {
 
 	app.Get("/certifications/", func(c *fiber.Ctx) error {
 		key := "certifications"
-		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
-		data, err := service.GetData(redisClient, url, key)
+		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
+		data, err := services.GetData(redisClient, url, key)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 			return c.SendStatus(http.StatusInternalServerError)
 		}
 		return c.JSON(data)
@@ -62,10 +70,10 @@ func main() {
 
 	app.Get("/roadmap/", func(c *fiber.Ctx) error {
 		key := "roadmap"
-		url := os.Getenv("DB_URL") + "?action=getData&sheetName=" + key
-		data, err := service.GetData(redisClient, url, key)
+		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
+		data, err := services.GetData(redisClient, url, key)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 			return c.SendStatus(http.StatusInternalServerError)
 		}
 		return c.JSON(data)
