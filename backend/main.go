@@ -8,7 +8,7 @@ import (
 	"portfolio/services"
 	"portfolio/services/mongodb"
 	"portfolio/services/redis"
-	utils "portfolio/utils"
+	"portfolio/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -70,17 +70,6 @@ func main() {
 		return c.JSON(data)
 	})
 
-	app.Get("/roadmap-legacy/", func(c *fiber.Ctx) error {
-		key := "roadmap-legacy"
-		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
-		data, err := services.GetData(redisClient, url, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		return c.JSON(data)
-	})
-
 	app.Get("/roadmap/", func(c *fiber.Ctx) error {
 		key := "roadmap"
 		data, err := services.GetMongoData(redisClient, key)
@@ -101,5 +90,5 @@ func main() {
 		return c.SendStatus(http.StatusOK)
 	})
 
-	app.Listen(":5000")
+	app.Listen(utils.GetEnv("PORT", ":5000"))
 }
