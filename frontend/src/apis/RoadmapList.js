@@ -1,13 +1,10 @@
 import axios from 'axios';
+import { BACKEND_URLS } from './urls/urls.js';
 
-const getRoadmapList = (async () => {
-    const BACKEND_URLS = [
-        import.meta.env.VITE_BACKEND_URL0,
-        import.meta.env.VITE_BACKEND_URL1,
-        import.meta.env.VITE_BACKEND_URL2,
-    ].map(url => url + "/roadmap/");
-
-    for (let url of BACKEND_URLS) {
+const getRoadmapList = async () => {
+    const urls = BACKEND_URLS.map(url => url + "/roadmap/");
+    
+    for (let url of urls) {
         try {
             const response = await axios.get(url);
             return response.data.sort((a, b) => b.id - a.id);
@@ -16,7 +13,7 @@ const getRoadmapList = (async () => {
         }
     }
     throw new Error('All backend services are unavailable.');
-});
+};
 
 export { getRoadmapList }
 

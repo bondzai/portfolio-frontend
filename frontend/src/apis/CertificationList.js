@@ -1,12 +1,10 @@
 import axios from 'axios';
+import { BACKEND_URLS } from './urls/urls.js';
 
 const getCertificationList = (async () => {
-    const BACKEND_URLS = [
-        import.meta.env.VITE_BACKEND_URL1,
-        import.meta.env.VITE_BACKEND_URL2,
-    ].map(url => url + "/certifications/");
+    const urls = BACKEND_URLS.map(url => url + "/certifications/");
 
-    for (let url of BACKEND_URLS) {
+    for (let url of urls) {
         try {
             const response = await axios.get(url);
             return response.data.sort((a, b) => b.id - a.id);

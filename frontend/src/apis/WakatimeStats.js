@@ -1,11 +1,10 @@
 import axios from 'axios';
+import { WAKA_BACKEND_URL } from './urls/urls.js';
 
 const getWakatimeStats = (async () => {
-    const BACKEND_URLS = [
-        import.meta.env.VITE_WAKA_BACKEND_URL,
-    ].map(url => url + "/");
+    const urls = WAKA_BACKEND_URL.map(url => url + "/");
 
-    for (let url of BACKEND_URLS) {
+    for (let url of urls) {
         try {
             const response = await axios.get(url);
             return response.data;
