@@ -1,18 +1,11 @@
-import axios from 'axios';
-import { BACKEND_URLS } from './urls/urls.js';
+import { getList } from './common/logics.js'
+import { BACKEND_URLS } from './common/urls.js';
+import { CustomSortEnum } from '../utils/choices.js';
 
-const getSkillList = (async () => {
-    const urls = BACKEND_URLS.map(url => url + "/skills/");
-
-    for (let url of urls) {
-        try {
-            const response = await axios.get(url);
-            return response.data;
-        } catch (error) {
-            console.error(`Error with URL ${url}: ${error}`);
-        }
-    }
-    throw new Error('All backend services are unavailable.');
-});
+const getSkillList = () => getList({
+    urls: BACKEND_URLS,
+    endpoint: "/skills/",
+    customSort: CustomSortEnum.ASCENDING,
+})
 
 export { getSkillList }

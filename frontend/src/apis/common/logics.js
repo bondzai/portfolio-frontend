@@ -22,7 +22,6 @@ const getList = (async ( {...Props} ) => {
         try {
             const response = await axios.get(url);
             return customSortReponse(Props.customSort, response)
-            // return response.data.sort((a, b) => b.id - a.id);
         } catch (error) {
             console.error(`Error with URL ${url}: ${error}`);
         }

@@ -1,18 +1,11 @@
-import axios from 'axios';
-import { WAKA_BACKEND_URL } from './urls/urls.js';
+import { getList } from './common/logics.js'
+import { WAKA_BACKEND_URL } from './common/urls.js';
+import { CustomSortEnum } from '../utils/choices.js';
 
-const getWakatimeStats = (async () => {
-    const urls = WAKA_BACKEND_URL.map(url => url + "/");
-
-    for (let url of urls) {
-        try {
-            const response = await axios.get(url);
-            return response.data;
-        } catch (error) {
-            console.error(`Error with URL ${url}: ${error}`);
-        }
-    }
-    throw new Error('All backend services are unavailable.');
-});
+const getWakatimeStats = () => getList({
+    urls: WAKA_BACKEND_URL,
+    endpoint: "/",
+    customSort: CustomSortEnum.ASCENDING,
+})
 
 export { getWakatimeStats }
