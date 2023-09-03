@@ -2,7 +2,7 @@ import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem, TextField, ToggleButtonGroup, ToggleButton, InputAdornment, Toolbar } from '@mui/material';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewListIcon from '@mui/icons-material/ViewList';
-import { statusOptions } from '../apis/ProjectList';
+import { statusOptions } from '../apis/Project';
 
 const CustomToolbar = ({
     selectedStatus,

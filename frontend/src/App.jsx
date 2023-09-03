@@ -9,8 +9,8 @@ import Experience from './pages/Experience';
 import Stats from './pages/Stats';
 import Roadmap from './pages/Roadmap';
 import DisplayModal from './components/DisplayModal';
-import { getProjectList } from "./apis/ProjectList";
-import { getCertificationList } from "./apis/CertificationList";
+import { getProjectList } from "./apis/Project";
+import { getCertificationList } from "./apis/Certification";
 
 function App() {
     return (

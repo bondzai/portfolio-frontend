@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Project from "../components/Project";
 import SpinComponent from "../components/SpinComponent";
 import CustomToolbar from '../components/CustomToolbar';
-import { getProjectList, columns } from "../apis/ProjectList";
+import { getProjectList, columns } from "../apis/Project";
 import "../styles/Projects.css";
 
 const Projects = () => {
