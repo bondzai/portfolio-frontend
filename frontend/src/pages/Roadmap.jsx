@@ -8,7 +8,7 @@ const Roadmap = () => {
     const [roadmapList, setRoadmapList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedYear, setSelectedYear] = useState('2023');
-    
+
     useEffect(() => {
         const fetchData = async () => {
             const result = await getRoadmapList();
@@ -28,12 +28,9 @@ const Roadmap = () => {
                 <Card bordered={false}>
                     <Tabs
                         defaultActiveKey={selectedYear}
+                        items={years}
                         onChange={year => setSelectedYear(year)}
-                    >
-                        {years.map(year => (
-                            <Tabs.TabPane tab={year.label} key={year.key} />
-                        ))}
-                    </Tabs>
+                    />
                     <RoadmapOneYear loading={loading} data={filteredRoadmapList} />
                 </Card>
             </div>
