@@ -7,7 +7,7 @@ import { RiFocus3Fill } from 'react-icons/ri';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import RoadmapCard from './RoadmapCard';
 import SpinComponent from "./SpinComponent";
-import { columns } from '../apis/RoadmapList';
+import { columns } from '../apis/Roadmap';
 import '../styles/Roadmap.css';
 
 const formatter = (value) => <CountUp end={value} separator="," />;
