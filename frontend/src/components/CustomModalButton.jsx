@@ -16,27 +16,20 @@ const CustomModal = ({ ...props }) => {
         setIsModalOpen(false);
     };
 
-    const renderButton = () => {
-        const buttonStyle = { backgroundColor: props.buttonColor };
-        
-        if (props.buttonIcon) {
-            return (
-                <Button type="primary" onClick={showModal} icon={props.buttonIcon} style={buttonStyle}>
-                    {props.buttonText || null}
-                </Button>
-            );
-        } else {
-            return (
-                <Button type="primary" onClick={showModal} style={buttonStyle}>
-                    {props.buttonText || 'Open Modal'}
-                </Button>
-            );
+    const renderIcon = () => {
+        if (props.icon) {
+            return React.cloneElement(props.icon, { onClick: showModal });
         }
+        return (
+            <Button type="primary" onClick={showModal} style={{ backgroundColor: props.buttonColor }}>
+                {props.buttonText || 'Open Modal'}
+            </Button>
+        );
     };
 
     return (
         <div>
-            {renderButton()}
+            {renderIcon()}
             <Modal
                 title={props.title}
                 open={isModalOpen}
