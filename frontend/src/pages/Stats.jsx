@@ -1,5 +1,5 @@
 import React from "react";
-import { Space, Card } from "antd";
+import { Space } from "antd";
 import Typewriter from 'typewriter-effect';
 
 import SocialMediaIcons from "../components/SocialMediaIcons";
@@ -52,15 +52,6 @@ const Stats = () => {
             <div className="footer">
                 <div>
                     <p> &copy; JB </p>
-                </div>
-                <div>
-                    <CustomModalButton
-                        buttonText="Buy me a coffee"
-                        title="Buy me a coffee"
-                        content={<DonationCard />}
-                        buttonIcon={<span className="icon">☕</span>}
-                        hideButtons
-                    />
                 </div>
             </div>
 
