@@ -7,11 +7,10 @@ import { SiGitbook } from 'react-icons/si';
 import { SiBitcoin } from 'react-icons/si';
 import DonationCard from "../components/DonationCard";
 import CustomModalButton from "../components/CustomModalButton";
+import { openInNewTab } from "../utils/utils.js"
+import { Button, Popover } from 'antd';
 
 const SocialMediaIcons = () => {
-    const openInNewTab = (url) => {
-        window.open(url, '_blank');
-    };
 
     return (
         <div>
@@ -50,6 +49,9 @@ const SocialMediaIcons = () => {
                 />}
                 hideButtons
             />
+            <Popover placement="left" title={"text"} content={"content"} >
+                <Button>Left</Button>
+            </Popover>
         </div>
     );
 };
