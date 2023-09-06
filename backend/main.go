@@ -80,6 +80,16 @@ func main() {
 		return c.JSON(data)
 	})
 
+	app.Get("/wakatime/", func(c *fiber.Ctx) error {
+		key := "wakatime"
+		data, err := services.GetWakatimeData(redisClient, key)
+		if err != nil {
+			log.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
+	})
+
 	app.Post("/flush-cache/", func(c *fiber.Ctx) error {
 		if c.Get("Authorization") != os.Getenv("API_TOKEN") {
 			return c.SendStatus(http.StatusUnauthorized)
