@@ -2,10 +2,10 @@ package services
 
 import (
 	"log"
-	req "portfolio/services/custom-requests"
 	googlesheet "portfolio/services/google-sheet"
 	"portfolio/services/mongodb"
 	"portfolio/services/redis"
+	req "portfolio/services/req"
 	"time"
 )
 
