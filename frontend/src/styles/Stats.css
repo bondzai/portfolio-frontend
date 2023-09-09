@@ -1,7 +1,7 @@
 .stats-background {
     width: 100%;
     height: 100vh;
-    background-color: #21325e;
+    background-color: var(--color-primary);
     color: whitesmoke;
 }
 

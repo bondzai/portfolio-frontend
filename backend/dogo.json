@@ -4,7 +4,7 @@
         "."
     ],
     "SourceExt": [".c", ".cpp", ".go", ".h"],
-    "BuildCmd": "go build ./main.go",
+    "BuildCmd": "go build ./cmd/main.go",
     "RunCmd": "./main",
     "Decreasing": 1
 }

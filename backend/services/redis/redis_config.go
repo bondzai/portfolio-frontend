@@ -14,7 +14,7 @@ type RedisCache struct {
 }
 
 func NewRedisCache() RedisCache {
-	redisURL := strings.TrimSpace(utils.GetEnv("REDIS_URL", "rediss://localhost:6379"))
+	redisURL := strings.TrimSpace(utils.GetEnv("GO_REDIS_URL", "rediss://localhost:6379"))
 
 	opts, err := redis.ParseURL(redisURL)
 	if err != nil {

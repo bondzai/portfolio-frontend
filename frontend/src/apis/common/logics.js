@@ -20,7 +20,11 @@ export const getList = async ({ ...Props }) => {
 
     for (let url of urls) {
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(url, {
+                headers: import.meta.env.DEV ? {
+                    Authorization: `Bearer ${import.meta.env.VITE_DEV_TOKEN}`,
+                } : {},
+            });
 
             if (Array.isArray(response.data)) {
                 return customSortResponse(Props.customSort, response);
@@ -44,7 +48,12 @@ export const getSingleObject = async ({ ...Props }) => {
 
     for (let url of urls) {
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(url, {
+                headers: import.meta.env.DEV ? {
+                    Authorization: `Bearer ${import.meta.env.VITE_DEV_TOKEN}`,
+                } : {},
+            });
+
             return response.data;
         } catch (error) {
             console.error(`Error with URL ${url}: ${error.message}`);

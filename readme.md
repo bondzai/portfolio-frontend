@@ -3,7 +3,7 @@
 Frontend
 - Language: JavaScript
 - Core: React + ViteJS
-- Host: Firebase *** 2023-06-05 move to Render ***
+- Host: Render (Prod), Firebase (Dev)
 - Incase of manual deploy using command "yarn firebase-deploy"
 
 Backend

@@ -7,11 +7,17 @@ import { SiGitbook } from 'react-icons/si';
 import { SiBitcoin } from 'react-icons/si';
 import DonationCard from "../components/DonationCard";
 import CustomModalButton from "../components/CustomModalButton";
+import { openInNewTab } from "../utils/utils.js"
+import { Popover } from 'antd';
+
+const donationIconContent = (
+    <div>
+        <p>All project in this site is open-source and fully design by me.</p>
+        <p>Feel free to clone and contribute me some code or crypto!</p>
+    </div>
+);
 
 const SocialMediaIcons = () => {
-    const openInNewTab = (url) => {
-        window.open(url, '_blank');
-    };
 
     return (
         <div>
@@ -35,19 +41,23 @@ const SocialMediaIcons = () => {
                 style={{ bottom: '150px', right: '40px', width: '25px', height: '25px' }}
                 onClick={() => openInNewTab('')}
             />
-            <GitHubIcon
-                className="icon-social"
-                style={{ bottom: '100px', right: '40px' }}
-                onClick={() => openInNewTab('https://github.com/introbond')}
-            />
+                <GitHubIcon
+                    className="icon-social"
+                    style={{ bottom: '100px', right: '40px' }}
+                    onClick={() => openInNewTab('https://github.com/introbond')}
+                />
             <CustomModalButton
                 buttonText="Buy me a coffee"
                 title="Buy me a coffee"
                 content={<DonationCard />}
-                icon={<SiBitcoin
-                    className="icon-social"
-                    style={{ bottom: '50px', right: '40px', width: '25px', height: '25px' }}
-                />}
+                icon={
+                    <Popover placement="left" title={"Buy me a coffee."} content={donationIconContent} >
+                        <SiBitcoin
+                            className="icon-social"
+                            style={{ bottom: '50px', right: '40px', width: '25px', height: '25px' }}
+                        />
+                    </Popover>
+                }
                 hideButtons
             />
         </div>
