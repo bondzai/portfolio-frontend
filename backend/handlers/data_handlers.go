@@ -56,6 +56,5 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
 	h.RedisClient.FlushAllCache()
-
 	return c.SendStatus(fiber.StatusOK)
 }
