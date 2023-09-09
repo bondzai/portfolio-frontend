@@ -18,7 +18,7 @@ func CheckConnection() {
 		if err != nil {
 			log.Fatal(err)
 		} else {
-			db = connection.Database(utils.GetEnv("MONGODB", ""))
+			db = connection.Database(utils.GetEnv("GO_MONGODB", ""))
 		}
 	} else {
 		err := db.Client().Ping(context.Background(), nil)
@@ -35,7 +35,7 @@ func CheckConnection() {
 }
 
 func ConnectToMongoDB() (*mongo.Client, error) {
-	url := utils.GetEnv("MONGODB_URL", "mongodb://mongoadmin:mongoadmin@localhost:27017/")
+	url := utils.GetEnv("GO_MONGODB_URL", "mongodb://mongoadmin:mongoadmin@localhost:27017/")
 
 	clientOptions := options.Client().ApplyURI(url)
 
