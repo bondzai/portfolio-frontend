@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"log"
-	"net/http"
 
 	"portfolio/services"
 	"portfolio/services/redis"
@@ -30,7 +29,7 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 		data, err := services.GetMongoData(h.RedisClient, key)
 		if err != nil {
 			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
+			return c.SendStatus(fiber.StatusInternalServerError)
 		}
 		return c.JSON(data)
 
@@ -39,7 +38,7 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 		data, err := services.GetWakatimeData(h.RedisClient, key)
 		if err != nil {
 			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
+			return c.SendStatus(fiber.StatusInternalServerError)
 		}
 		return c.JSON(data)
 
@@ -49,7 +48,7 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 		data, err := services.GetData(h.RedisClient, url, key)
 		if err != nil {
 			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
+			return c.SendStatus(fiber.StatusInternalServerError)
 		}
 		return c.JSON(data)
 	}
@@ -58,5 +57,5 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
 	h.RedisClient.FlushAllCache()
 
-	return c.SendStatus(http.StatusOK)
+	return c.SendStatus(fiber.StatusOK)
 }

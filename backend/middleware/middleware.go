@@ -13,7 +13,7 @@ func CustomAuth(c *fiber.Ctx) error {
 		actualToken := c.Get("Authorization")
 
 		if actualToken != expectedToken {
-			return c.SendString("Unauthorized: Dev-mode ")
+			return c.Status(fiber.StatusUnauthorized).SendString("Unauthorized: Dev-mode ")
 		}
 	}
 
@@ -34,7 +34,7 @@ func CustomExtraAuth(c *fiber.Ctx) error {
 	actualToken, exists := requestBody["ExtraAuth"]
 
 	if !exists || actualToken != expectedToken {
-		return c.SendString("Unauthorized: Cache flushing.")
+		return c.Status(fiber.StatusUnauthorized).SendString("Unauthorized: Cache flushing.")
 	}
 
 	return c.Next()
