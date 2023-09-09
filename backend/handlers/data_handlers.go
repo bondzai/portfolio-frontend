@@ -12,19 +12,16 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// DataHandler is responsible for handling routes related to various data types.
 type DataHandler struct {
 	RedisClient redis.RedisCache
 }
 
-// NewDataHandler creates a new instance of DataHandler with the given dependencies.
 func NewDataHandler() DataHandler {
 	return DataHandler{
 		RedisClient: redis.NewRedisCache(),
 	}
 }
 
-// HandleData handles the GET requests for /{dataType} route where dataType can be "projects," "skills," "certifications," "roadmap," or "wakatime."
 func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 	dataType := c.Params("dataType")
 
@@ -61,7 +58,6 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 	}
 }
 
-// FlushCache handles the POST /flush-cache route.
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
 	expectedToken := os.Getenv("API_TOKEN")
 	actualToken := c.Get("Authorization")
