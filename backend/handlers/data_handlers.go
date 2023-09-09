@@ -3,7 +3,6 @@ package handlers
 import (
 	"log"
 	"net/http"
-	"os"
 
 	"portfolio/services"
 	"portfolio/services/redis"
@@ -59,13 +58,6 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 }
 
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
-	expectedToken := os.Getenv("API_TOKEN")
-	actualToken := c.Get("Authorization")
-
-	if actualToken != expectedToken {
-		return c.SendStatus(http.StatusUnauthorized)
-	}
-
 	h.RedisClient.FlushAllCache()
 
 	return c.SendStatus(http.StatusOK)
