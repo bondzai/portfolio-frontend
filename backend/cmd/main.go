@@ -25,22 +25,23 @@ func main() {
 
 	// Middleware
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:     "https://thejb.onrender.com, http://localhost:5173",
-		AllowHeaders:     "Origin,Content-Type,Accept,Content-Length,Accept-Language,Accept-Encoding,Connection,Access-Control-Allow-Origin",
+		AllowOrigins:     utils.GetEnv("GO_CORS_ORIGINS", ""),
+		AllowHeaders:     utils.GetEnv("GO_CORS_HEADERS", "*"),
+		AllowMethods:     utils.GetEnv("GO_CORS_METHODS", "*"),
 		AllowCredentials: true,
-		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
 	}))
+	app.Use(middleware.CustomAuth)
 
 	// Handlers
 	dataHandler := handlers.NewDataHandler()
 
 	// Routes
 	app.Get("/:dataType", dataHandler.HandleData) // Handle all data types with a single function
-	app.Post("/flush-cache", middleware.AuthMiddleware, dataHandler.FlushCache)
+	app.Post("/flush-cache", middleware.CustomExtraAuth, dataHandler.FlushCache)
 
 	// Root route
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Portfolio backend is running...")
+		return c.SendString("JB backend is running...")
 	})
 
 	port := utils.GetEnv("PORT", ":5000")
