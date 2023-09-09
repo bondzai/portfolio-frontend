@@ -24,41 +24,41 @@ func NewDataHandler() DataHandler {
 	}
 }
 
-// GetRoadmap handles the GET /roadmap route.
-func (h *DataHandler) GetRoadmap(c *fiber.Ctx) error {
-	key := "roadmap"
-	data, err := services.GetMongoData(h.RedisClient, key)
-	if err != nil {
-		log.Println(err)
-		return c.SendStatus(http.StatusInternalServerError)
-	}
-	return c.JSON(data)
-}
-
-// GetWakatime handles the GET /wakatime route.
-func (h *DataHandler) GetWakatime(c *fiber.Ctx) error {
-	key := "wakatime"
-	data, err := services.GetWakatimeData(h.RedisClient, key)
-	if err != nil {
-		log.Println(err)
-		return c.SendStatus(http.StatusInternalServerError)
-	}
-	return c.JSON(data)
-}
-
-// GetData handles the GET /{dataType} route where dataType can be "projects," "skills," or "certifications."
-func (h *DataHandler) GetData(c *fiber.Ctx) error {
+// HandleData handles the GET requests for /{dataType} route where dataType can be "projects," "skills," "certifications," "roadmap," or "wakatime."
+func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 	dataType := c.Params("dataType")
-	key := dataType
-	url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
 
-	data, err := services.GetData(h.RedisClient, url, key)
-	if err != nil {
-		log.Println(err)
-		return c.SendStatus(http.StatusInternalServerError)
+	switch dataType {
+	case "roadmap":
+		key := "roadmap"
+		data, err := services.GetMongoData(h.RedisClient, key)
+		if err != nil {
+			log.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
+
+	case "wakatime":
+		key := "wakatime"
+		data, err := services.GetWakatimeData(h.RedisClient, key)
+		if err != nil {
+			log.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
+
+	default:
+		// Handle other data types (e.g., "projects," "skills," "certifications")
+		key := dataType
+		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
+
+		data, err := services.GetData(h.RedisClient, url, key)
+		if err != nil {
+			log.Println(err)
+			return c.SendStatus(http.StatusInternalServerError)
+		}
+		return c.JSON(data)
 	}
-
-	return c.JSON(data)
 }
 
 // FlushCache handles the POST /flush-cache route.

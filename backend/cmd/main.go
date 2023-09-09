@@ -33,10 +33,8 @@ func main() {
 	// Handlers
 	dataHandler := handlers.NewDataHandler()
 
-	// Routes (Specific route should come first)
-	app.Get("/roadmap", dataHandler.GetRoadmap)
-	app.Get("/wakatime", dataHandler.GetWakatime)
-	app.Get("/:dataType", dataHandler.GetData) // Generic route with dynamic segment
+	// Routes
+	app.Get("/:dataType", dataHandler.HandleData) // Handle all data types with a single function
 	app.Post("/flush-cache", middleware.AuthMiddleware, dataHandler.FlushCache)
 
 	// Root route
