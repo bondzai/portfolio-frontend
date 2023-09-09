@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
 :root {
-    --color-main: green;
-    --color-secondary: yellow;
+    --color-primary: #21325e;
+    --color-secondary: #3e497a;
+    --font-family-main: "Arial", sans-serif;
+    --font-family-secondary: "Source Sans Pro", sans-serif;
 }
 
 body {
@@ -19,7 +21,7 @@ body {
     bottom: 20px;
     right: 20px;
     padding: 10px 10px;
-    background-color: #3e497a;
+    background-color: var(--color-secondary);
     color: white;
     border: none;
     border-radius: 50%;
@@ -37,7 +39,7 @@ body {
 .icon-social {
     position: fixed;
     padding: 10px 10px;
-    background-color: #3e497a;
+    background-color: var(--color-secondary);
     color: white;
     border: none;
     border-radius: 50%;
@@ -59,7 +61,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3e497a;
+    background: var(--color-secondary);
 }
 
 ::-webkit-scrollbar-thumb:hover {

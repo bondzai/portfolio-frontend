@@ -1,7 +1,7 @@
 .projects {
     width: 100%;
     margin-top: 100px;
-    color: #3e497a;
+    color: var(--color-secondary);
     font-size: 20px;
     height: auto;
     display: flex;
@@ -14,7 +14,7 @@
 }
 
 .projects .projectTitle {
-    color: #3e497a;
+    color: var(--color-secondary);
     text-align: center;
     font-size: 60px;
     font-weight: bolder;
@@ -71,7 +71,7 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    background: #3e497a;
+    background: var(--color-secondary);
     color: whitesmoke;
 }
 

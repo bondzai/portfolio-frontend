@@ -3,7 +3,7 @@
     width: 100%;
     height: auto;
     font-size: 20px;
-    color: #3e497a;
+    color: var(--color-secondary);
     display: flex;
     justify-content: center;
     align-items: center;
