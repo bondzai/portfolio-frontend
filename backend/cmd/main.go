@@ -30,7 +30,7 @@ func main() {
 		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
 	}))
 
-	// Initialize handlers
+	// Handlers
 	dataHandler := handlers.NewDataHandler()
 
 	// Routes (Specific route should come first)
@@ -44,7 +44,6 @@ func main() {
 		return c.SendString("Portfolio backend is running...")
 	})
 
-	// Start the server
 	port := utils.GetEnv("PORT", ":5000")
 	log.Printf("Server is running on port %s", port)
 	app.Listen(port)
