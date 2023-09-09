@@ -24,21 +24,6 @@ func NewDataHandler() DataHandler {
 	}
 }
 
-// GetData handles the GET /{dataType} route where dataType can be "projects," "skills," or "certifications."
-func (h *DataHandler) GetData(c *fiber.Ctx) error {
-	dataType := c.Params("dataType")
-	key := dataType
-	url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
-
-	data, err := services.GetData(h.RedisClient, url, key)
-	if err != nil {
-		log.Println(err)
-		return c.SendStatus(http.StatusInternalServerError)
-	}
-
-	return c.JSON(data)
-}
-
 // GetRoadmap handles the GET /roadmap route.
 func (h *DataHandler) GetRoadmap(c *fiber.Ctx) error {
 	key := "roadmap"
@@ -61,9 +46,23 @@ func (h *DataHandler) GetWakatime(c *fiber.Ctx) error {
 	return c.JSON(data)
 }
 
+// GetData handles the GET /{dataType} route where dataType can be "projects," "skills," or "certifications."
+func (h *DataHandler) GetData(c *fiber.Ctx) error {
+	dataType := c.Params("dataType")
+	key := dataType
+	url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
+
+	data, err := services.GetData(h.RedisClient, url, key)
+	if err != nil {
+		log.Println(err)
+		return c.SendStatus(http.StatusInternalServerError)
+	}
+
+	return c.JSON(data)
+}
+
 // FlushCache handles the POST /flush-cache route.
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
-	// Check if the Authorization header contains the correct API token
 	expectedToken := os.Getenv("API_TOKEN")
 	actualToken := c.Get("Authorization")
 

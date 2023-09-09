@@ -2,12 +2,10 @@ package main
 
 import (
 	"log"
-	"net/http"
-	"os"
 
-	"portfolio/services"
+	"portfolio/handlers"
+	"portfolio/middleware"
 	"portfolio/services/mongodb"
-	"portfolio/services/redis"
 	"portfolio/utils"
 
 	"github.com/gofiber/fiber/v2"
@@ -24,8 +22,7 @@ func init() {
 func main() {
 	app := fiber.New()
 
-	redisClient := redis.NewRedisCache()
-
+	// Middleware
 	app.Use(cors.New(cors.Config{
 		AllowOrigins:     "https://thejb.onrender.com, http://localhost:5173",
 		AllowHeaders:     "Origin,Content-Type,Accept,Content-Length,Accept-Language,Accept-Encoding,Connection,Access-Control-Allow-Origin",
@@ -33,72 +30,22 @@ func main() {
 		AllowMethods:     "GET,POST,HEAD,PUT,DELETE,PATCH,OPTIONS",
 	}))
 
+	// Initialize handlers
+	dataHandler := handlers.NewDataHandler()
+
+	// Routes (Specific route should come first)
+	app.Get("/roadmap", dataHandler.GetRoadmap)
+	app.Get("/wakatime", dataHandler.GetWakatime)
+	app.Get("/:dataType", dataHandler.GetData) // Generic route with dynamic segment
+	app.Post("/flush-cache", middleware.AuthMiddleware, dataHandler.FlushCache)
+
+	// Root route
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Portfolio backend is running...")
 	})
 
-	app.Get("/projects/", func(c *fiber.Ctx) error {
-		key := "projects"
-		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
-		data, err := services.GetData(redisClient, url, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		return c.JSON(data)
-	})
-
-	app.Get("/skills/", func(c *fiber.Ctx) error {
-		key := "skills"
-		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
-		data, err := services.GetData(redisClient, url, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		return c.JSON(data)
-	})
-
-	app.Get("/certifications/", func(c *fiber.Ctx) error {
-		key := "certifications"
-		url := utils.GetEnv("DB_URL", "") + "?action=getData&sheetName=" + key
-		data, err := services.GetData(redisClient, url, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		return c.JSON(data)
-	})
-
-	app.Get("/roadmap/", func(c *fiber.Ctx) error {
-		key := "roadmap"
-		data, err := services.GetMongoData(redisClient, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		return c.JSON(data)
-	})
-
-	app.Get("/wakatime/", func(c *fiber.Ctx) error {
-		key := "wakatime"
-		data, err := services.GetWakatimeData(redisClient, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		return c.JSON(data)
-	})
-
-	app.Post("/flush-cache/", func(c *fiber.Ctx) error {
-		if c.Get("Authorization") != os.Getenv("API_TOKEN") {
-			return c.SendStatus(http.StatusUnauthorized)
-		}
-
-		redisClient.FlushAllCache()
-
-		return c.SendStatus(http.StatusOK)
-	})
-
-	app.Listen(utils.GetEnv("PORT", ":5000"))
+	// Start the server
+	port := utils.GetEnv("PORT", ":5000")
+	log.Printf("Server is running on port %s", port)
+	app.Listen(port)
 }
