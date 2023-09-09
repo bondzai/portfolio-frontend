@@ -45,7 +45,7 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 
 	default:
 		key := dataType
-		url := utils.GetEnv("GO_SHEET_URL", "") + "?action=getData&sheetName=" + key
+		url := utils.GetEnv("GO_SHEET_URL", "") + key
 
 		data, err := services.GetData(h.RedisClient, url, key)
 		if err != nil {
