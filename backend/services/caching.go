@@ -50,7 +50,7 @@ func GetData(redisClient redis.RedisCache, dataParams map[string]interface{}) (i
 			return googlesheet.GetDataFromAPI(dataType)
 		})
 
-	case "http-requests":
+	case "httpRequests":
 		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
 			return req.FetchDataFromAPI()
 		})

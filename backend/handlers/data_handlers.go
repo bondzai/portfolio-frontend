@@ -29,7 +29,7 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 		dataParams["dataType"] = dataType
 
 	case "wakatime":
-		dataParams["dataSource"] = "http-requests"
+		dataParams["dataSource"] = "httpRequests"
 		dataParams["dataType"] = dataType
 
 	case "skills", "projects", "certifications":
