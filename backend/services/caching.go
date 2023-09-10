@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"log"
 	googlesheet "portfolio/services/google-sheet"
 	"portfolio/services/mongodb"
@@ -9,60 +10,52 @@ import (
 	"time"
 )
 
-func GetData(redisClient redis.RedisCache, url string, cacheKey string) ([]map[string]interface{}, error) {
-	var data []map[string]interface{}
+func getCacheOrFetchData(redisClient redis.RedisCache, cacheKey string, fetchDataFunc func() (interface{}, error)) (interface{}, error) {
+	var cachedData interface{}
 
-	err := redisClient.GetCache(cacheKey, &data)
+	err := redisClient.GetCache(cacheKey, &cachedData)
 	if err != nil {
-		data, err = googlesheet.GetDataFromAPI(url)
-		if err != nil {
-			return nil, err
+		fetchedData, fetchErr := fetchDataFunc()
+		if fetchErr != nil {
+			return nil, fetchErr
 		}
 
-		err = redisClient.SetCache(cacheKey, data, 24*time.Hour)
-		if err != nil {
-			log.Println("Error caching data:", err)
+		cacheErr := redisClient.SetCache(cacheKey, fetchedData, 24*time.Hour)
+		if cacheErr != nil {
+			log.Println("Error caching data:", cacheErr)
 		}
+
+		return fetchedData, nil
 	}
 
-	return data, nil
+	return cachedData, nil
 }
 
-func GetMongoData(redisClient redis.RedisCache, cacheKey string) ([]map[string]interface{}, error) {
-	var data []map[string]interface{}
+func GetData(redisClient redis.RedisCache, dataParams map[string]interface{}) (interface{}, error) {
+	dataSource, dataSourceOk := dataParams["dataSource"].(string)
+	dataType, dataTypeOk := dataParams["dataType"].(string)
 
-	err := redisClient.GetCache(cacheKey, &data)
-	if err != nil {
-		data, err = mongodb.GetRoadmap()
-		if err != nil {
-			return nil, err
-		}
-
-		err = redisClient.SetCache(cacheKey, data, 24*time.Hour)
-		if err != nil {
-			log.Println("Error caching data:", err)
-		}
+	if !dataSourceOk || !dataTypeOk {
+		return nil, errors.New("invalid data parameters")
 	}
 
-	return data, nil
-}
+	switch dataSource {
+	case "mongodb":
+		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
+			return mongodb.GetRoadmap()
+		})
 
-func GetWakatimeData(redisClient redis.RedisCache, cacheKey string) (map[string]interface{}, error) {
-	var data map[string]interface{}
+	case "googlesheet":
+		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
+			return googlesheet.GetDataFromAPI(dataType)
+		})
 
-	err := redisClient.GetCache(cacheKey, &data)
+	case "http-requests":
+		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
+			return req.FetchDataFromAPI()
+		})
 
-	if err != nil {
-		data, err = req.FetchDataFromAPI()
-		if err != nil {
-			return nil, err
-		}
-
-		err = redisClient.SetCache(cacheKey, data, 24*time.Hour)
-		if err != nil {
-			log.Println("Error caching data:", err)
-		}
+	default:
+		return nil, errors.New("invalid data")
 	}
-
-	return data, nil
 }

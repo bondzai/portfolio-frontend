@@ -5,7 +5,6 @@ import (
 
 	"portfolio/services"
 	"portfolio/services/redis"
-	"portfolio/utils"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -21,37 +20,32 @@ func NewDataHandler() DataHandler {
 }
 
 func (h *DataHandler) HandleData(c *fiber.Ctx) error {
+	dataParams := make(map[string]interface{})
 	dataType := c.Params("dataType")
 
 	switch dataType {
 	case "roadmap":
-		key := "roadmap"
-		data, err := services.GetMongoData(h.RedisClient, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(fiber.StatusInternalServerError)
-		}
-		return c.JSON(data)
+		dataParams["dataSource"] = "mongodb"
+		dataParams["dataType"] = dataType
 
 	case "wakatime":
-		key := "wakatime"
-		data, err := services.GetWakatimeData(h.RedisClient, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(fiber.StatusInternalServerError)
-		}
-		return c.JSON(data)
+		dataParams["dataSource"] = "http-requests"
+		dataParams["dataType"] = dataType
+
+	case "skills", "projects", "certifications":
+		dataParams["dataSource"] = "googlesheet"
+		dataParams["dataType"] = dataType
 
 	default:
-		key := dataType
-		url := utils.GetEnv("GO_SHEET_URL", "") + key
-		data, err := services.GetData(h.RedisClient, url, key)
-		if err != nil {
-			log.Println(err)
-			return c.SendStatus(fiber.StatusInternalServerError)
-		}
-		return c.JSON(data)
+		return nil
 	}
+
+	data, err := services.GetData(h.RedisClient, dataParams)
+	if err != nil {
+		log.Println(err)
+		return c.SendStatus(fiber.StatusInternalServerError)
+	}
+	return c.JSON(data)
 }
 
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
