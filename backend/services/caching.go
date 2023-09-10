@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func getCacheOrFetchData(redisClient redis.RedisCache, cacheKey string, fetchDataFunc func() (interface{}, error)) (interface{}, error) {
+func getCacheOrDataSource(redisClient redis.RedisCache, cacheKey string, fetchDataFunc func() (interface{}, error)) (interface{}, error) {
 	var cachedData interface{}
 
 	err := redisClient.GetCache(cacheKey, &cachedData)
@@ -41,17 +41,17 @@ func GetData(redisClient redis.RedisCache, dataParams map[string]interface{}) (i
 
 	switch dataSource {
 	case "mongodb":
-		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
+		return getCacheOrDataSource(redisClient, dataType, func() (interface{}, error) {
 			return mongodb.GetRoadmap()
 		})
 
 	case "googlesheet":
-		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
+		return getCacheOrDataSource(redisClient, dataType, func() (interface{}, error) {
 			return googlesheet.GetDataFromAPI(dataType)
 		})
 
 	case "httpRequests":
-		return getCacheOrFetchData(redisClient, dataType, func() (interface{}, error) {
+		return getCacheOrDataSource(redisClient, dataType, func() (interface{}, error) {
 			return req.FetchDataFromAPI()
 		})
 
