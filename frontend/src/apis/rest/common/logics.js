@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CustomSortEnum } from '../../utils/choices.js';
+import { CustomSortEnum } from '../../../utils/choices.js';
 
 const customSortResponse = (customSort, response) => {
     if (customSort === CustomSortEnum.DESCENDING) {
