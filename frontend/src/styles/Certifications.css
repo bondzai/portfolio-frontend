@@ -30,6 +30,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    transition: transform 0.5s;
 }
 
 .certification:hover {
