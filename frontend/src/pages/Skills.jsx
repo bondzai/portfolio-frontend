@@ -8,7 +8,7 @@ import SpinComponent from "../components/SpinComponent";
 import ScrollButton from "../components/ScrollButon";
 
 import useScroll from "../hooks/useScroll";
-import { getSkillList } from "../apis/Skill";
+import { getSkillList } from "../apis/rest/Skill";
 import "../styles/Home.css";
 
 const Skills = () => {
