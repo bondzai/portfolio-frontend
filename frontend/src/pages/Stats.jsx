@@ -6,9 +6,6 @@ import SocialMediaIcons from "../components/SocialMediaIcons";
 import WakatimeStat from "../components/WakatimeStats";
 import Github from '../components/Github';
 
-import DonationCard from "../components/DonationCard";
-import CustomModalButton from "../components/CustomModalButton";
-
 import "../styles/Stats.css";
 
 const Stats = () => {

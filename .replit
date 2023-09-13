@@ -1,5 +1,5 @@
-run = "sh -c 'cd ./backend && go run .'"
-compile = "sh -c 'cd ./backend && go build .'" 
+run = "sh -c 'cd ./backend/cmd && go run .'"
+compile = "sh -c 'cd ./backend/cmd && go build .'" 
 
 [languages.go]
 pattern = "**/*.go"
@@ -14,5 +14,5 @@ channel = "stable-22_11"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["sh", "-c", "cd ./backend && ./main"]
-build = ["sh", "-c", "cd ./backend && go build ."]
+run = ["sh", "-c", "cd ./backend/cmd && ./main"]
+build = ["sh", "-c", "cd ./backend/cmd && go build ."]

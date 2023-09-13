@@ -5,7 +5,9 @@ import (
 	"net/http"
 )
 
-func GetDataFromAPI(url string) ([]map[string]interface{}, error) {
+func GetDataFromAPI(dataType string) ([]map[string]interface{}, error) {
+	url := getGoogleSheetURL() + dataType
+
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
