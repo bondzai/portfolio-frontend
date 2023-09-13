@@ -23,7 +23,6 @@ func init() {
 func main() {
 	app := fiber.New()
 
-	// Middleware
 	app.Use(cors.New(cors.Config{
 		AllowOrigins:     utils.GetEnv("GO_CORS_ORIGINS", ""),
 		AllowHeaders:     utils.GetEnv("GO_CORS_HEADERS", "*"),
@@ -32,10 +31,8 @@ func main() {
 	}))
 	app.Use(middleware.CustomAuth)
 
-	// Handlers
 	dataHandler := handlers.NewDataHandler()
 
-	// Routes
 	app.Get("/:dataType", dataHandler.HandleData)
 	app.Post("/flush-cache", middleware.CustomExtraAuth, dataHandler.FlushCache)
 	app.Get("/", func(c *fiber.Ctx) error {
