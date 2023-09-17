@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
+
 import { MdExpandMore } from "react-icons/md"
 
 import SkillsFilter from "../components/SkillsFilter";

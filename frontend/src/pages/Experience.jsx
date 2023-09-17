@@ -1,6 +1,7 @@
 import React from "react";
 
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+
 import { IoMdPulse, IoMdSchool } from "react-icons/io";
 import { FaBookOpenReader } from "react-icons/fa6";
 import { MdWork } from "react-icons/md";

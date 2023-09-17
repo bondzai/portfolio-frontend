@@ -1,10 +1,15 @@
 import React from 'react';
+
+import { Empty } from 'antd';
+
 import { useNavigate } from 'react-router-dom';
+
 import { AiFillStar } from 'react-icons/ai';
+
 import { getLampStatusStyle } from './LampStatus';
 import { getHighlightStatusStyle } from './HighlightStatus';
+
 import { openInNewTab } from "../utils/utils.js"
-import { Empty } from 'antd';
 
 const Project = ({ ...project }) => {
     const navigate = useNavigate();

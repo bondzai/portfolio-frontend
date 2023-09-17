@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+
 import { useParams, useNavigate } from "react-router-dom";
 
 import { Empty } from 'antd';
 
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineCloseCircle } from "react-icons/ai";
+
 import { Modal, Box, IconButton } from '@mui/material';
 
 import "../styles/DisplayModal.css";

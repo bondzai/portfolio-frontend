@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
 import { Descriptions } from 'antd';
+
 import SpinComponent from './SpinComponent';
+
 import { getWakatimeStats } from '../apis/rest/WakatimeStats';
+
 import '../styles/WakatimeStats.css';
 
 const WakatimeStats = () => {
