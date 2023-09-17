@@ -1,10 +1,9 @@
 import React from "react";
 
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
-import IconSchool from "@material-ui/icons/School";
-import IconWork from "@material-ui/icons/Work";
-import IconInt from "@material-ui/icons/LocalLibraryOutlined";
-import { IoMdPulse } from "react-icons/io";
+import { IoMdPulse, IoMdSchool } from "react-icons/io";
+import { FaBookOpenReader } from "react-icons/fa6";
+import { MdWork } from "react-icons/md";
 
 import ScrollButton from "../components/ScrollButon";
 
@@ -46,7 +45,7 @@ const Experience = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
                     date="2009 - 2012 (3 years)"
-                    icon={<IconSchool />}
+                    icon={<IoMdSchool />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
                 >
                     <h3 className="vertical-timeline-element-title"> Benchama Maharat Ubon Ratchatani </h3>
@@ -56,7 +55,7 @@ const Experience = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
                     date="2012 - 2016 (4 years)"
-                    icon={<IconSchool />}
+                    icon={<IoMdSchool />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
                 >
                     <h3 className="vertical-timeline-element-title"> King Mongkut's Institute of Technology Ladkrabang </h3>
@@ -66,7 +65,7 @@ const Experience = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
                     date="Jul 2016 - Jan 2022 (5 years 7 months)"
-                    icon={<IconWork />}
+                    icon={<MdWork />}
                     iconStyle={{ background: "royalblue", color: "#fff" }}
                 >
                     <h3 className="vertical-timeline-element-title"> Synergetech Co., Ltd., Nonthaburi, Thailand </h3>
@@ -81,7 +80,7 @@ const Experience = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
                     date="Jan 2022 - Nov 2022 (10 months)"
-                    icon={<IconInt />}
+                    icon={<FaBookOpenReader />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
                 >
                     <h3 className="vertical-timeline-element-title"> Self-learning: Software Development </h3>
@@ -102,7 +101,7 @@ const Experience = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-elemt--education"
                     date={`Nov 2022 - Present (${calculateAge("11/03/2022")})`}
-                    icon={<IconWork />}
+                    icon={<MdWork />}
                     iconStyle={{ background: "royalblue", color: "#fff" }}
                 >
                     <h3 className="vertical-timeline-element-title"> Swift Dynamics Co., Ltd., Bangkok, Thailand </h3>

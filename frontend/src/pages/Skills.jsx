@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { MdExpandMore } from "react-icons/md"
 
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
 import ScrollButton from "../components/ScrollButon";
 
 import useScroll from "../hooks/useScroll";
+
 import { getSkillList } from "../apis/rest/Skill";
+
 import "../styles/Home.css";
 
 const Skills = () => {
@@ -37,7 +39,7 @@ const Skills = () => {
                 {isLoading ? (<SpinComponent />) : (
                     <div className="list">
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">OS</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -46,7 +48,7 @@ const Skills = () => {
                         </Accordion>
 
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">Programming Languages</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -55,7 +57,7 @@ const Skills = () => {
                         </Accordion>
 
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">Infrastructure Tools</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -64,7 +66,7 @@ const Skills = () => {
                         </Accordion>
 
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">Databases</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -73,7 +75,7 @@ const Skills = () => {
                         </Accordion>
 
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">Backend</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -82,7 +84,7 @@ const Skills = () => {
                         </Accordion>
 
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">Frontend</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -91,7 +93,7 @@ const Skills = () => {
                         </Accordion>
 
                         <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <AccordionSummary expandIcon={<MdExpandMore />}>
                                 <Typography variant="h6">Automation & IOT Stuff</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
