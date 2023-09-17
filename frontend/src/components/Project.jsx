@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { Empty } from 'antd';
+import { Empty } from "antd";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar } from "react-icons/ai";
 
-import { getLampStatusStyle } from './LampStatus';
-import { getHighlightStatusStyle } from './HighlightStatus';
+import { getLampStatusStyle, getHighlightStatusStyle } from "./StatusStyles";
 
 import { openInNewTab } from "../utils/utils.js"
 
