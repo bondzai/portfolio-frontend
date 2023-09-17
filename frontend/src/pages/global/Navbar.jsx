@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-// import ReorderIcon from "@material-ui/icons/Reorder";
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import '../../styles/Navbar.css';
