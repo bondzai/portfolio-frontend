@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ReorderIcon from "@material-ui/icons/Reorder";
+import { GiHamburgerMenu } from 'react-icons/gi';
+
 import '../../styles/Navbar.css';
 
 const Navbar = () => {
@@ -26,7 +27,7 @@ const Navbar = () => {
             <div className="toggleButton">
             <h6> {activeLink} </h6>
                 <button onClick={toggleNavbar}>
-                    <ReorderIcon />
+                    <GiHamburgerMenu />
                 </button>
             </div>
             <div className={`links ${expandNavbar ? "open" : "closed"}`}>

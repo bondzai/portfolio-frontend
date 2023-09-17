@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Space } from "antd";
+
 import Typewriter from 'typewriter-effect';
 
 import SocialMediaIcons from "../components/SocialMediaIcons";

@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Card, List, Statistic } from 'antd';
-import CountUp from 'react-countup';
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import ListAltIcon from '@mui/icons-material/ListAlt';
+
 import { RiFocus3Fill } from 'react-icons/ri';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import { FaListAlt } from "react-icons/fa"
+import { MdTipsAndUpdates, MdOutlineTask } from "react-icons/md";
+
+import CountUp from 'react-countup';
+
 import RoadmapCard from './RoadmapCard';
 import SpinComponent from "./SpinComponent";
+
 import { columns } from '../apis/rest/Roadmap';
+
 import '../styles/Roadmap.css';
 
 const formatter = (value) => <CountUp end={value} separator="," />;
 
 const icons = {
-    TipsAndUpdatesIcon: <TipsAndUpdatesIcon />,
-    ListAltIcon: <ListAltIcon />,
+    TipsAndUpdatesIcon: <MdTipsAndUpdates />,
+    ListAltIcon: <FaListAlt />,
     RiFocus3Fill: <RiFocus3Fill />,
-    TaskAltIcon: <TaskAltIcon />,
+    TaskAltIcon: <MdOutlineTask />,
 };
 
 const RoadmapOneYear = ({ ...prop }) => {

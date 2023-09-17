@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+
 import { useParams, useNavigate } from "react-router-dom";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { Modal, Box, IconButton } from '@mui/material';
-import CloseIcon from "@mui/icons-material/Close";
+
 import { Empty } from 'antd';
+
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineCloseCircle } from "react-icons/ai";
+
+import { Modal, Box, IconButton } from '@mui/material';
+
 import "../styles/DisplayModal.css";
 
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
@@ -77,7 +81,7 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
                             onClick={closeModal}
                             sx={{ position: 'absolute', right: '1rem', top: '0.5rem' }}
                         >
-                            <CloseIcon />
+                            <AiOutlineCloseCircle />
                         </IconButton>
 
                         <AiOutlineArrowLeft

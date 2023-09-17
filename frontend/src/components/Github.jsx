@@ -1,5 +1,7 @@
 import React from "react";
+
 import GitHubCalendar from "react-github-calendar";
+
 import "../styles/Github.css";
 
 function Github() {

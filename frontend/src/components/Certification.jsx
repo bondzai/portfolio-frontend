@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Certification = ({ ...certification }) => {
