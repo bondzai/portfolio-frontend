@@ -31,9 +31,11 @@ const Home = () => {
                         escapeHtml: false,
                     }}
                 />
+            </div>
 
-                <div className="footer">
-                    <p> &copy; JB </p>
+            <div className="footer">
+                <div>
+                    <p> &copy; JB, Running since October 23, 2022. </p>
                 </div>
             </div>
         </div>

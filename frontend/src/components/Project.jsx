@@ -31,7 +31,9 @@ const Project = ({ ...project }) => {
                 </div>
             </div>
             <div>
-                <small> {project.remark} </small>
+                <small>
+                    { project.is_sleep && <> *Automatically sleep after after a period of inactivity. </> }
+                </small>
             </div>
         </div>
     );
