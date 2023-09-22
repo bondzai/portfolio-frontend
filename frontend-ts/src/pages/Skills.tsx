@@ -10,14 +10,15 @@ import ScrollButton from "../components/buttons/ScrollButon";
 
 import useScroll from "../hooks/useScroll";
 
-import { getSkillList } from "../apis/rest/Skill";
+import { getSkillList } from "../apis/rest/endpoints";
 
 import "../styles/Home.css";
 
 const Skills = () => {
     const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
 
-    const [skills, setSkills] = useState([]);
+    const [skills, setSkills] = useState<any[]>([]); // Replace 'any[]' with the actual type of your skills data if known
+
     // const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {
