@@ -1,5 +1,5 @@
-import { Suspense } from 'react'
-import { Spin } from 'antd'
+import { Suspense } from "react"
+import { Spin } from "antd"
 
 export const withLoading = (Component: React.FC) => (props: any) =>
 (
