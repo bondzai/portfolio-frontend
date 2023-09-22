@@ -7,11 +7,12 @@ import Navbar from './components/global/Navbar';
 import './App.css';
 
 const App: React.FC = (): ReactElement => {
-    const element = useRoutes(Routes)
+    const routes = useRoutes(Routes)
+
     return (
         <div className="App">
             <Navbar />
-            {element}
+            { routes }
         </div>)
 }
 
