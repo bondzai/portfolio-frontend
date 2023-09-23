@@ -1,15 +1,15 @@
 import React from "react";
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
+import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai"
 
 const ScrollButton = ({ showScrollButton, scrollToTop, scrollToBottom }) => {
     return (
         <div className="scroll-buttons">
-            <ArrowUpwardIcon
+            <AiOutlineArrowUp
                 className={`scroll-button ${showScrollButton ? "visible" : ""}`}
                 onClick={scrollToTop}
             />
-            <ArrowDownwardIcon
+            <AiOutlineArrowDown
                 className={`scroll-button ${!showScrollButton ? "hidden" : ""}`}
                 onClick={scrollToBottom}
             />

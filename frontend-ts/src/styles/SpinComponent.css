@@ -1,0 +1,9 @@
+.spin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--custom-spin-height);
+    .ant-spin .ant-spin-dot-item {
+        background-color: var(--custom-spin-color, initial);
+    }
+}

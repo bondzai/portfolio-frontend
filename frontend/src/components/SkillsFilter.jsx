@@ -1,5 +1,7 @@
 import React from "react";
+
 import Skill from "./Skill";
+
 import "../styles/Skills.css";
 
 const SkillsFilter = ({ skills, topic }) => {

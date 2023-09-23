@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { useQuery } from '@apollo/client';
+
 import { GET_TRACKS_FOR_HOME } from '../apis/graphql/queries';
 
 function TracksList() {

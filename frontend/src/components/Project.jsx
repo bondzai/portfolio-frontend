@@ -1,10 +1,14 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AiFillStar } from 'react-icons/ai';
-import { getLampStatusStyle } from './LampStatus';
-import { getHighlightStatusStyle } from './HighlightStatus';
+import React from "react";
+
+import { Empty } from "antd";
+
+import { useNavigate } from "react-router-dom";
+
+import { AiFillStar } from "react-icons/ai";
+
+import { getLampStatusStyle, getHighlightStatusStyle } from "./StatusStyles";
+
 import { openInNewTab } from "../utils/utils.js"
-import { Empty } from 'antd';
 
 const Project = ({ ...project }) => {
     const navigate = useNavigate();
@@ -31,7 +35,9 @@ const Project = ({ ...project }) => {
                 </div>
             </div>
             <div>
-                <small> {project.remark} </small>
+                <small>
+                    { project.is_sleep && <> *Automatically sleep after after a period of inactivity. </> }
+                </small>
             </div>
         </div>
     );

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { FormControl, InputLabel, Select, MenuItem, TextField, ToggleButtonGroup, ToggleButton, InputAdornment, Toolbar } from '@mui/material';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import ViewListIcon from '@mui/icons-material/ViewList';
+
+import { MdViewModule, MdList } from "react-icons/md";
+
 import { statusOptions } from '../apis/rest/Project';
 
 const CustomToolbar = ({
@@ -44,10 +46,10 @@ const CustomToolbar = ({
                                 onChange={(event, value) => handleViewModeChange(value)}
                             >
                                 <ToggleButton value="module" aria-label="module">
-                                    <ViewModuleIcon />
+                                    <MdViewModule />
                                 </ToggleButton>
                                 <ToggleButton value="list" aria-label="list">
-                                    <ViewListIcon />
+                                    <MdList />
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </InputAdornment>
