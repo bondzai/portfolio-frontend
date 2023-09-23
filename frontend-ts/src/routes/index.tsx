@@ -8,12 +8,14 @@ const Skills = withLoading(lazy(() => import("../pages/Skills")))
 const Certifications = withLoading(lazy(() => import("../pages/Certifications")))
 const Stats = withLoading(lazy(() => import("../pages/Stats")))
 const Labs = withLoading(lazy(() => import("../pages/Labs")))
+const Roadmap = withLoading(lazy(() => import("../pages/Roadmap")))
 
 export const Routes: RouteObject[] = [
     { path: '/', element: <Home /> },
     { path: '/experience', element: <Experience /> },
     { path: '/skills', element: <Skills /> },
+    { path: "/labs", element: <Labs /> },
     { path: '/certifications', element: <Certifications /> },
     { path: "/stats", element: <Stats /> },
-    { path: "/labs", element: <Labs /> },
+    { path: "/roadmap", element: <Roadmap /> },
 ]
