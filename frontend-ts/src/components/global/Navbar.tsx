@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { GiHamburgerMenu } from "react-icons/gi";
 
-import '../../styles/Navbar.css';
+import "../../styles/Navbar.css";
 
 const Navbar: React.FC = () => {
     const [expandNavbar, setExpandNavbar] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
                 <Link to="/skills" onClick={handleLinkClick} className={activeLink === "skills" ? "active" : ""}>
                     Skills
                 </Link>
-                <Link to="/projects" onClick={handleLinkClick} className={activeLink === "projects" ? "active" : ""}>
+                <Link to="/labs" onClick={handleLinkClick} className={activeLink === "labs" ? "active" : ""}>
                     Labs
                 </Link>
                 <Link to="/certifications" onClick={handleLinkClick} className={activeLink === "certifications" ? "active" : ""}>
