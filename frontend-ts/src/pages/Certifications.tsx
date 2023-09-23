@@ -1,22 +1,23 @@
 import React, { FC, useState, useEffect } from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import Certification from '../components/Certification';
+import CertificationCard from '../components/cards/CertificationCard';
 import { getCertificationList } from '../apis/rest/endpoints';
 import '../styles/Certifications.css';
 
-interface Certification {
+interface CertificationCard {
     id: number;
+    image_url: string;
 }
 
 const Certifications: FC = () => {
     const itemsPerPage: number = 6;
-    const [certificationList, setCertificationList] = useState<Certification[]>([]);
+    const [certificationList, setCertificationList] = useState<CertificationCard[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result: Certification[] = await getCertificationList();
+            const result: CertificationCard[] = await getCertificationList();
             setCertificationList(result);
         };
         fetchData();
@@ -27,7 +28,7 @@ const Certifications: FC = () => {
     };
 
     const startIndex: number = (currentPage - 1) * itemsPerPage;
-    const visibleCertifications: Certification[] = certificationList.slice(
+    const visibleCertifications: CertificationCard[] = certificationList.slice(
         startIndex,
         startIndex + itemsPerPage
     );
@@ -36,7 +37,7 @@ const Certifications: FC = () => {
         <div className="certifications">
             <div className="certificationList">
                 {visibleCertifications.map((certification, index) => (
-                    <Certification key={startIndex + index} {...certification} />
+                    <CertificationCard key={startIndex + index} certification={certification} />
                 ))}
             </div>
             <Stack spacing={2} justifyContent="center" mt={3}>
