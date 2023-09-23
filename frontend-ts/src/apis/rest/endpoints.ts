@@ -29,4 +29,5 @@ export const getRoadmapList = () => getList({
 export const getWakatimeStats = () => getSingleObject({
     urls: BACKEND_URLS,
     endpoint: "/wakatime/",
+    customSort: undefined,
 })

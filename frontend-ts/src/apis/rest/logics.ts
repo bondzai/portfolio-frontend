@@ -4,7 +4,7 @@ import { CustomSortEnum } from "../../utils/choices";
 interface Props {
     urls: string[];
     endpoint: string;
-    customSort: CustomSortEnum;
+    customSort: CustomSortEnum | undefined;
 }
 
 const customSortResponse = (customSort: CustomSortEnum | undefined, response: AxiosResponse<any>): any[] | undefined => {
