@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 interface ScrollButtonProps {
