@@ -3,10 +3,10 @@ import { Popover } from 'antd';
 import { AiFillLinkedin, AiFillFacebook, AiOutlineMail, AiFillGithub } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from 'react-icons/si';
 
-import DonationCard from "../components/DonationCard.js";
-import CustomModalButton from "../components/CustomModalButton.js";
+import DonationCard from "../cards/DonationCard.js";
+import CustomModalButton from "../buttons/CustomModalButton.js";
 
-import { openInNewTab } from "../utils/utils.js"
+import { openInNewTab } from "../../utils/utils.js"
 
 const donationIconContent = (
     <div>

@@ -2,7 +2,7 @@ import { Space } from "antd";
 
 import Typewriter from 'typewriter-effect';
 
-import SocialMediaIcons from "../components/SocialMediaIcons.js";
+import SocialMediaIcons from "../components/icons/SocialMediaIcons.js";
 import WakatimeStat from "../components/WakatimeStats.js";
 import Github from '../components/Github.js';
 
