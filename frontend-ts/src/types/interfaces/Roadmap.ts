@@ -16,5 +16,5 @@ export interface RoadmapTasksType {
 
 export interface RoadmapColumnType {
     title: string;
-    icon: React.ReactNode;
+    icon: React.ReactElement;
 }
