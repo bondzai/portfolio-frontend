@@ -1,9 +1,12 @@
-import { FC, useEffect, useState } from 'react';
-import { Descriptions } from 'antd';
-import { getWakatimeStats } from '../apis/rest/endpoints';
-import '../styles/WakatimeStats.css';
+import { FC, useEffect, useState } from "react";
 
-import { WatatimeStatType } from "../types"
+import { Descriptions } from "antd";
+
+import { getWakatimeStats } from "../../apis/rest/endpoints";
+
+import { WatatimeStatType } from "../../types"
+
+import "../../styles/WakatimeStats.css";
 
 const WakatimeStats: FC<{}> = () => {
     const [stats, setStats] = useState<WatatimeStatType>();
@@ -19,7 +22,7 @@ const WakatimeStats: FC<{}> = () => {
     return (
         <div className='wakatime-stats'>
             <div className='title-center'>
-                <h3>WakaTime Stats</h3>
+                <h3> WakaTime Stats </h3>
             </div>
 
             <Descriptions bordered>

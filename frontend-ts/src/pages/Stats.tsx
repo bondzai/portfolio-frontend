@@ -3,8 +3,8 @@ import { Space } from "antd";
 import Typewriter from 'typewriter-effect';
 
 import SocialMediaIcons from "../components/icons/SocialMediaIcons.js";
-import WakatimeStat from "../components/WakatimeStats.js";
-import GithubCard from '../components/cards/GithubCard.js';
+import WakatimeStatCard from "../components/cards/WakatimeStatCard.js";
+import GithubStatCard from '../components/cards/GithubStatCard.js';
 
 import "../styles/Stats.css";
 
@@ -16,11 +16,11 @@ const Stats = () => {
                 <Space direction="vertical" size="large" style={{ display: 'flex' }}>
 
                     <div className="stats-waka">
-                        <WakatimeStat />
+                        <WakatimeStatCard />
                     </div>
 
                     <div className="stats-github">
-                        <GithubCard />
+                        <GithubStatCard />
                     </div>
 
                     <div className="typewriter">
