@@ -7,16 +7,7 @@ import CountUp from 'react-countup';
 import RoadmapCard from './cards/RoadmapCard';
 import '../styles/Roadmap.css';
 
-interface Task {
-    _id: string;
-    description: string;
-    sub_tasks: Record<string, string>;
-    title: string;
-    url: string;
-    image: string;
-    status: number;
-    year: string;
-}
+import { RoadmapTask } from "../types/index";
 
 interface Column {
     title: string;
@@ -24,7 +15,7 @@ interface Column {
 }
 
 interface RoadmapOneYearProps {
-    data: Task[];
+    data: RoadmapTask[];
     loading: boolean;
 }
 
@@ -36,7 +27,7 @@ const columns: Column[] = [
 ];
 
 const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data, loading }) => {
-    const [roadmapList, setRoadmapList] = useState<Task[]>(data);
+    const [roadmapList, setRoadmapList] = useState<RoadmapTask[]>(data);
 
     useEffect(() => {
         setRoadmapList(data);
@@ -52,7 +43,7 @@ const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data, loading }) => {
         return statusToColumnIndex[status] || 0;
     };
 
-    const getFilteredRoadmapList = (statusIndex: number): Task[] => {
+    const getFilteredRoadmapList = (statusIndex: number): RoadmapTask[] => {
         return roadmapList.filter((task) => getColumnIndex(task.status) === statusIndex);
     };
 

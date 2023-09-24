@@ -8,6 +8,8 @@ import { getRoadmapList } from '../apis/rest/endpoints';
 
 import '../styles/Roadmap.css';
 
+import { RoadmapTask } from "../types/index";
+
 const years = [
     {
         label: '2022',
@@ -19,26 +21,15 @@ const years = [
     },
 ];
 
-interface Task {
-    _id: string;
-    description: string;
-    sub_tasks: Record<string, string>;
-    title: string;
-    url: string;
-    image: string;
-    status: number;
-    year: string;
-}
-
 const Roadmap = () => {
-    const [roadmapList, setRoadmapList] = useState<Task[]>([]);
+    const [roadmapList, setRoadmapList] = useState<RoadmapTask[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [selectedYear, setSelectedYear] = useState<string>("2023");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result: Task[] = await getRoadmapList();
+                const result: RoadmapTask[] = await getRoadmapList();
                 setRoadmapList(result);
                 setLoading(false);
             } catch (error) {

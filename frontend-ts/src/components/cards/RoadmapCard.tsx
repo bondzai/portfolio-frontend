@@ -3,19 +3,9 @@ import { List, Avatar, Tree } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import type { DataNode } from 'antd/es/tree';
 
-interface Task {
-    _id: string;
-    description: string;
-    sub_tasks: Record<string, string>;
-    title: string;
-    url: string;
-    image: string;
-    status: number;
-    year: string;
-}
+import { RoadmapTask } from "../../types/index";
 
-const convertDataToTreeData = (data: Task[]): DataNode[] => {
-
+const convertDataToTreeData = (data: RoadmapTask[]): DataNode[] => {
     const treeData: DataNode[] = [];
 
     data.forEach((task) => {
@@ -45,7 +35,7 @@ const convertDataToTreeData = (data: Task[]): DataNode[] => {
 };
 
 interface RoadmapCardProps {
-    data: Task[];
+    data: RoadmapTask[];
 }
 
 const RoadmapCard: FC<RoadmapCardProps> = ({ data }) => {
