@@ -7,17 +7,7 @@ import CountUp from 'react-countup';
 import RoadmapCard from './cards/RoadmapCard';
 import '../styles/Roadmap.css';
 
-import { RoadmapTask } from "../types/index";
-
-interface Column {
-    title: string;
-    icon: React.ReactNode;
-}
-
-interface RoadmapOneYearProps {
-    data: RoadmapTask[];
-    loading: boolean;
-}
+import { Column, RoadmapTask, RoadmapOneYearProps } from "../types/index";
 
 const columns: Column[] = [
     { title: 'Ideas', icon: <MdTipsAndUpdates /> },
@@ -50,10 +40,7 @@ const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data, loading }) => {
     return (
         <div>
             <List
-                grid={{
-                    gutter: 16,
-                    column: 4,
-                }}
+                grid={{ gutter: 16, column: 4 }}
                 dataSource={columns}
                 renderItem={(item, index) => (
                     <List.Item key={item.title}>
@@ -73,9 +60,7 @@ const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data, loading }) => {
                                     formatter={(value) => <CountUp end={+value} separator="," />}
                                 />
                             }
-                            style={{
-                                width: 360,
-                            }}
+                            style={{ width: 360 }}
                         >
                             <RoadmapCard data={getFilteredRoadmapList(index)} />
                         </Card>

@@ -8,3 +8,17 @@ export interface RoadmapTask {
     status: number;
     year: string;
 }
+
+export interface RoadmapTasks {
+    data: RoadmapTask[];
+}
+
+export interface RoadmapOneYearProps {
+    data: RoadmapTask[];
+    loading: boolean;
+}
+
+export interface Column {
+    title: string;
+    icon: React.ReactNode;
+}

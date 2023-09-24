@@ -1,14 +1,15 @@
 import { FC } from 'react';
+
 import { List, Avatar, Tree } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+
 import type { DataNode } from 'antd/es/tree';
+import { RoadmapTasks } from "../../types/index";
 
-import { RoadmapTask } from "../../types/index";
-
-const convertDataToTreeData = (data: RoadmapTask[]): DataNode[] => {
+const convertDataToTreeData = (data: RoadmapTasks): DataNode[] => {
     const treeData: DataNode[] = [];
 
-    data.forEach((task) => {
+    data.data.forEach((task) => {
         const taskNode: DataNode = {
             title: task.title,
             key: task._id,
@@ -34,11 +35,7 @@ const convertDataToTreeData = (data: RoadmapTask[]): DataNode[] => {
     return treeData;
 };
 
-interface RoadmapCardProps {
-    data: RoadmapTask[];
-}
-
-const RoadmapCard: FC<RoadmapCardProps> = ({ data }) => {
+const RoadmapCard: FC<RoadmapTasks> = ({ data }) => {
     return (
         <div
             id="scrollableDiv"
@@ -69,7 +66,7 @@ const RoadmapCard: FC<RoadmapCardProps> = ({ data }) => {
                                     <Tree
                                         showLine
                                         switcherIcon={<DownOutlined />}
-                                        treeData={convertDataToTreeData([item])}
+                                        treeData={convertDataToTreeData({ data: [item] })}
                                     />
                                 ) : (
                                     <p>No sub-tasks available</p>
