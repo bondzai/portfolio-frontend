@@ -4,12 +4,11 @@ import Typewriter from 'typewriter-effect';
 
 import SocialMediaIcons from "../components/icons/SocialMediaIcons.js";
 import WakatimeStat from "../components/WakatimeStats.js";
-import Github from '../components/Github.js';
+import GithubCard from '../components/cards/GithubCard.js';
 
 import "../styles/Stats.css";
 
 const Stats = () => {
-
     return (
         <div className="stats-background">
 
@@ -21,7 +20,7 @@ const Stats = () => {
                     </div>
 
                     <div className="stats-github">
-                        <Github />
+                        <GithubCard />
                     </div>
 
                     <div className="typewriter">

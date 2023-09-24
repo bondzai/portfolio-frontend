@@ -1,8 +1,8 @@
 import GitHubCalendar from "react-github-calendar";
 
-import "../styles/Github.css";
+import "../../styles/Github.css";
 
-function Github() {
+const GithubCard = () => {
 
     return (
         <div className="github-calendar-background">
@@ -32,4 +32,4 @@ function Github() {
     );
 }
 
-export default Github;
+export default GithubCard;
