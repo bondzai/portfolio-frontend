@@ -3,29 +3,10 @@ import { Descriptions } from 'antd';
 import { getWakatimeStats } from '../apis/rest/endpoints';
 import '../styles/WakatimeStats.css';
 
-interface WakatimeStatsProps { }
+import { WatatimeStatType } from "../types"
 
-interface Stats {
-    human_readable_total_including_other_language: string;
-    operating_systems: {
-        name: string;
-        text: string;
-        percent: number;
-    }[];
-    editors: {
-        name: string;
-        text: string;
-        percent: number;
-    }[];
-    languages: {
-        name: string;
-        text: string;
-        percent: number;
-    }[];
-}
-
-const WakatimeStats: FC<WakatimeStatsProps> = () => {
-    const [stats, setStats] = useState<Stats | undefined>(undefined);
+const WakatimeStats: FC<{}> = () => {
+    const [stats, setStats] = useState<WatatimeStatType>();
 
     useEffect(() => {
         const fetchData = async () => {
