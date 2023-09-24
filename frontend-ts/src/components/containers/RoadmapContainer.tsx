@@ -21,59 +21,53 @@ const columns: RoadmapColumnType[] = [
     { title: 'Done', icon: <MdOutlineTask /> },
 ];
 
-const RoadmapContainer: React.FC<RoadmapTasksType> = ({ data, loading }) => {
-    const [roadmapList, setRoadmapList] = useState<RoadmapTaskType[]>(data);
-    const [filteredLists, setFilteredLists] = useState<Record<number, RoadmapTaskType[]>>({});
+const CardTitle: React.FC<{ icon: React.ReactNode, title: string }> = ({ icon, title }) => (
+    <div className="card-title">
+        {icon}
+        <span className="title-text">{title}</span>
+    </div>
+);
+
+const CardStatistic: React.FC<{ value: number }> = ({ value }) => (
+    <Statistic
+        title="Total"
+        value={value}
+        valueStyle={{ fontSize: '15px' }}
+        suffix="tasks"
+        formatter={(value) => <CountUp end={+value} separator="," />}
+    />
+);
+
+const RoadmapContainer: React.FC<RoadmapTasksType> = ({ data }) => {
+    const [taskListsByStatus, setTaskListsByStatus] = useState<Record<number, RoadmapTaskType[]>>({});
 
     useEffect(() => {
-        setRoadmapList(data);
-
-        const newFilteredLists: Record<number, RoadmapTaskType[]> = {};
-        for (let i = 0; i < columns.length; i++) {
-            newFilteredLists[i] = roadmapList.filter((task) => task.status === i);
-        }
-        
-        setFilteredLists(newFilteredLists);
-    }, [data, loading]);
-
-    const renderCardTitle = (icon: React.ReactNode, title: string) => (
-        <div className="card-title">
-            {icon || null}
-            <span className="title-text">{title}</span>
-        </div>
-    );
-
-    const renderStatistic = (value: number) => (
-        <Statistic
-            title="Total"
-            value={value}
-            valueStyle={{ fontSize: '15px' }}
-            suffix="tasks"
-            formatter={(value) => <CountUp end={+value} separator="," />}
-        />
-    );
-
-    const renderCard = (item: RoadmapColumnType, index: number) => {
-        const filteredList = filteredLists[index] || [];
-        return (
-            <List.Item key={item.title}>
-                <Card
-                    title={renderCardTitle(item.icon, item.title)}
-                    extra={renderStatistic(filteredList.length)}
-                    style={{ width: 360 }}
-                >
-                    <RoadmapCard data={filteredList} />
-                </Card>
-            </List.Item>
-        );
-    };
+        const newTaskLists: Record<number, RoadmapTaskType[]> = {};
+        columns.forEach((_, index) => {
+            newTaskLists[index] = data.filter(task => task.status === index);
+        });
+        setTaskListsByStatus(newTaskLists);
+    }, [data]);
 
     return (
         <div>
             <List
                 grid={{ gutter: 16, column: 4 }}
                 dataSource={columns}
-                renderItem={renderCard}
+                renderItem={({ title, icon }, index) => {
+                    const tasksForColumn = taskListsByStatus[index] || [];
+                    return (
+                        <List.Item key={title}>
+                            <Card
+                                title={<CardTitle icon={icon} title={title} />}
+                                extra={<CardStatistic value={tasksForColumn.length} />}
+                                style={{ width: 360 }}
+                            >
+                                <RoadmapCard data={tasksForColumn} />
+                            </Card>
+                        </List.Item>
+                    );
+                }}
             />
         </div>
     );
