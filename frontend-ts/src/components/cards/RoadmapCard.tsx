@@ -4,9 +4,9 @@ import { List, Avatar, Tree } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
 import type { DataNode } from 'antd/es/tree';
-import { RoadmapTasks } from "../../types/index";
+import { RoadmapTasksType } from "../../types/index";
 
-const convertDataToTreeData = (data: RoadmapTasks): DataNode[] => {
+const convertDataToTreeData = (data: RoadmapTasksType): DataNode[] => {
     const treeData: DataNode[] = [];
 
     data.data.forEach((task) => {
@@ -35,7 +35,7 @@ const convertDataToTreeData = (data: RoadmapTasks): DataNode[] => {
     return treeData;
 };
 
-const RoadmapCard: FC<RoadmapTasks> = ({ data }) => {
+const RoadmapCard: FC<RoadmapTasksType> = ({ data }) => {
     return (
         <div
             id="scrollableDiv"
@@ -69,7 +69,7 @@ const RoadmapCard: FC<RoadmapTasks> = ({ data }) => {
                                         treeData={convertDataToTreeData({ data: [item] })}
                                     />
                                 ) : (
-                                    <p>No sub-tasks available</p>
+                                    item.description
                                 )
                             }
                         />

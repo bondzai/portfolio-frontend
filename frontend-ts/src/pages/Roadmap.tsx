@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { Card, Tabs } from 'antd';
 
-import RoadmapOneYear from '../components/RoadmapOneYear';
+import RoadmapContainer from '../components/containers/RoadmapContainer';
 
 import { getRoadmapList } from '../apis/rest/endpoints';
 
@@ -53,7 +53,7 @@ const Roadmap = () => {
                         items={years}
                         onChange={year => setSelectedYear(year)}
                     />
-                    <RoadmapOneYear loading={loading} data={filteredRoadmapList} />
+                    <RoadmapContainer loading={loading} data={filteredRoadmapList} />
                 </Card>
             </div>
         </div>
