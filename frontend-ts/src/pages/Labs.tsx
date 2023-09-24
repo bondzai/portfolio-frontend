@@ -5,16 +5,7 @@ import Lab from "../components/Lab";
 import CustomToolbar from '../components/CustomToolbar';
 import { getProjectList } from "../apis/rest/endpoints";
 
-interface Lab {
-    id: number;
-    name: string;
-    language: string;
-    status: string;
-    is_highlight: boolean;
-    is_sleep: boolean;
-    image_url: string;
-    host_url: string;
-}
+import { LabType } from "../types";
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -29,12 +20,12 @@ const Labs: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedStatus, setSelectedStatus] = useState("");
     const [viewMode, setViewMode] = useState("module");
-    const [projectList, setProjectList] = useState<Lab[]>([]);
+    const [projectList, setProjectList] = useState<LabType[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result: Lab[] = await getProjectList();
+            const result: LabType[] = await getProjectList();
             setProjectList(result);
         };
         fetchData();
