@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Pagination, Stack } from '@mui/material';
-import Lab from "../components/Lab";
+import LabCard from "../components/cards/LabCard";
 import CustomToolbar from '../components/CustomToolbar';
 import { getProjectList } from "../apis/rest/endpoints";
 
@@ -73,7 +73,7 @@ const Labs: React.FC = () => {
             {viewMode === "module" ? (
                 <div className="projectList">
                     {visibleProjects.map((project, index) => (
-                        <Lab key={index} data={project} />
+                        <LabCard key={index} data={project} />
                     ))}
                 </div>
             ) : (

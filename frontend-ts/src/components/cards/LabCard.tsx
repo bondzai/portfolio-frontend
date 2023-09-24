@@ -1,13 +1,16 @@
 import { FC } from 'react';
-import { Empty } from 'antd';
+
 import { useNavigate } from 'react-router-dom';
+
+import { Empty } from 'antd';
+
 import { AiFillStar } from 'react-icons/ai';
-import { getLampStatusStyle, getHighlightStatusStyle } from './Status';
-import { openInNewTab } from '../utils/utils';
 
-import { LabPropsType } from "../types"
+import { openInNewTab, getLampStatusStyle, getHighlightStatusStyle } from '../../utils/utils';
 
-const Project: FC<LabPropsType> = ({ data }) => {
+import { LabPropsType } from "../../types"
+
+const LabCard: FC<LabPropsType> = ({ data }) => {
     const navigate = useNavigate();
 
     const lampStatusStyle = getLampStatusStyle(data.status);
@@ -40,4 +43,4 @@ const Project: FC<LabPropsType> = ({ data }) => {
     );
 };
 
-export default Project;
+export default LabCard;
