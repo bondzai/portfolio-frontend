@@ -26,11 +26,7 @@ const Navbar: React.FC = () => {
     const renderDevelopmentLink = () => {
         if (import.meta.env.DEV) {
             return (
-                <Link
-                    to="/development"
-                    onClick={handleLinkClick}
-                    className={activeLink === "development" ? "active" : ""}
-                >
+                <Link to="/development" onClick={handleLinkClick} className={activeLink === "development" ? "active" : ""}>
                     Development
                 </Link>
             );
