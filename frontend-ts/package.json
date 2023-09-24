@@ -1,16 +1,19 @@
 {
   "name": "portfolio",
-  "homepage": "https://introbond.github.io/portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && echo '/* /index.html  200' | cat >dist/_redirects",
+    "build": "tsc && vite build && echo '/* /index.html  200' | cat >dist/_redirects",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "firebase-deploy": "yarn run build && firebase deploy"
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "@apollo/client": "^3.8.3",
     "@babel/core": "^7.0.0",
     "@emotion/react": "^11.10.6",
@@ -23,22 +26,25 @@
     "gh-pages": "^4.0.0",
     "graphql": "^16.8.0",
     "graphql-tag": "^2.12.6",
-    "react": "^18.2.0",
     "react-countup": "^6.4.2",
-    "react-dom": "^18.2.0",
     "react-github-calendar": "^3.4.0",
     "react-icons": "^4.6.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-lazy-load-image-component": "^1.6.0",
-    "react-router-dom": "^6.4.2",
     "react-vertical-timeline-component": "^3.6.0",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.21",
+    "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^3.1.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.2.0"
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   }
 }
