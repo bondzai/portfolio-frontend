@@ -7,7 +7,7 @@ import CountUp from 'react-countup';
 import RoadmapCard from './cards/RoadmapCard';
 import '../styles/Roadmap.css';
 
-import { Column, RoadmapTask, RoadmapOneYearProps } from "../types/index";
+import { Column, RoadmapTask, RoadmapTasks } from "../types/index";
 
 const columns: Column[] = [
     { title: 'Ideas', icon: <MdTipsAndUpdates /> },
@@ -16,7 +16,7 @@ const columns: Column[] = [
     { title: 'Done', icon: <MdOutlineTask /> },
 ];
 
-const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data, loading }) => {
+const RoadmapOneYear: React.FC<RoadmapTasks> = ({ data, loading }) => {
     const [roadmapList, setRoadmapList] = useState<RoadmapTask[]>(data);
 
     useEffect(() => {

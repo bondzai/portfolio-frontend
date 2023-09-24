@@ -11,11 +11,7 @@ export interface RoadmapTask {
 
 export interface RoadmapTasks {
     data: RoadmapTask[];
-}
-
-export interface RoadmapOneYearProps {
-    data: RoadmapTask[];
-    loading: boolean;
+    loading?: boolean;
 }
 
 export interface Column {
