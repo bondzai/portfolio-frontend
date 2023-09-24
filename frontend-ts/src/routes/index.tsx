@@ -2,7 +2,7 @@ import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
 import { withLoading } from "../components/hocs/withLoading";
 
-import { getCertificationList } from "../apis/rest/endpoints";
+import { getProjectList, getCertificationList } from "../apis/rest/endpoints";
 
 import DisplayModal from "../components/modals/DisplayModal";
 
@@ -19,6 +19,7 @@ export const Routes: RouteObject[] = [
     { path: "/experience", element: <Experience /> },
     { path: "/skills", element: <Skills /> },
     { path: "/labs", element: <Labs /> },
+    { path: "/lab/:id", element: <DisplayModal getDataList={getProjectList} dataRoutePath="/labs" /> },
     { path: "/certifications", element: <Certifications /> },
     { path: "/certification/:id", element: <DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /> },
     { path: "/stats", element: <Stats /> },
@@ -27,7 +28,7 @@ export const Routes: RouteObject[] = [
 
 if (import.meta.env.DEV) {
     const DevelopmentPage = withLoading(lazy(() => import("../pages/Development")))
-    
+
     Routes.push(
         {
             path: "/development",
@@ -35,12 +36,3 @@ if (import.meta.env.DEV) {
         },
     )
 }
-
-// import DisplayModal from './components/DisplayModal';
-
-// import { getProjectList } from "./apis/rest/Project";
-// import { getCertificationList } from "./apis/rest/Certification";
-
-// <Route path='/project/:id' element={<DisplayModal getDataList={getProjectList} dataRoutePath="/projects" />} />
-// <Route path='/certifications' element={<Certifications />} />
-// <Route path='/certification/:id' element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />

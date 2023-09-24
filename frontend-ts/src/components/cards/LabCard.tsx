@@ -31,7 +31,7 @@ const LabCard: FC<LabPropsType> = ({ data }) => {
             <h1> {data.name} </h1>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <button onClick={() => navigate('/project/' + data.id)}> Detail </button>
+                    <button onClick={() => navigate('/lab/' + data.id)}> Detail </button>
                     <button onClick={() => openInNewTab(data.host_url)}> Demo </button>
                     <div style={lampStatusStyle} />
                 </div>
