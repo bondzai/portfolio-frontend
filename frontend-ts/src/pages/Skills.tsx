@@ -4,7 +4,7 @@ import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/
 
 import { MdExpandMore } from "react-icons/md"
 
-import SkillsFilter from "../components/SkillsFilter";
+import SkillCard from "../components/cards/SkillCard";
 import ScrollButton from "../components/buttons/ScrollButon";
 // import SpinComponent from "../components/SpinComponent";
 
@@ -12,12 +12,14 @@ import useScroll from "../hooks/useScroll";
 
 import { getSkillList } from "../apis/rest/endpoints";
 
+import { SkillItemType } from "../types";
+
 import "../styles/Home.css";
 
 const Skills = () => {
     const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
 
-    const [skills, setSkills] = useState<any[]>([]); // Replace 'any[]' with the actual type of your skills data if known
+    const [skills, setSkills] = useState<SkillItemType[]>([]);
 
     // const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
@@ -44,7 +46,7 @@ const Skills = () => {
                             <Typography variant="h6">OS</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="os" skills={skills} />
+                            <SkillCard topic="os" data={skills} />
                         </AccordionDetails>
                     </Accordion>
 
@@ -53,7 +55,7 @@ const Skills = () => {
                             <Typography variant="h6">Programming Languages</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="language" skills={skills} />
+                            <SkillCard topic="language" data={skills} />
                         </AccordionDetails>
                     </Accordion>
 
@@ -62,7 +64,7 @@ const Skills = () => {
                             <Typography variant="h6">Infrastructure Tools</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="tools" skills={skills} />
+                            <SkillCard topic="tools" data={skills} />
                         </AccordionDetails>
                     </Accordion>
 
@@ -71,7 +73,7 @@ const Skills = () => {
                             <Typography variant="h6">Databases</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="database" skills={skills} />
+                            <SkillCard topic="database" data={skills} />
                         </AccordionDetails>
                     </Accordion>
 
@@ -80,7 +82,7 @@ const Skills = () => {
                             <Typography variant="h6">Backend</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="backend" skills={skills} />
+                            <SkillCard topic="backend" data={skills} />
                         </AccordionDetails>
                     </Accordion>
 
@@ -89,7 +91,7 @@ const Skills = () => {
                             <Typography variant="h6">Frontend</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="frontend" skills={skills} />
+                            <SkillCard topic="frontend" data={skills} />
                         </AccordionDetails>
                     </Accordion>
 
@@ -98,7 +100,7 @@ const Skills = () => {
                             <Typography variant="h6">Automation & IOT Stuff</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <SkillsFilter topic="automation" skills={skills} />
+                            <SkillCard topic="automation" data={skills} />
                         </AccordionDetails>
                     </Accordion>
                 </div>

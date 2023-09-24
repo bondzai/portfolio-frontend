@@ -1,23 +1,15 @@
 import { FC } from 'react';
+
 import { List, Avatar, Tree } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+
 import type { DataNode } from 'antd/es/tree';
+import { RoadmapTasksType } from "../../types/index";
 
-interface Task {
-    _id: string;
-    description: string;
-    sub_tasks: Record<string, string>;
-    title: string;
-    url: string;
-    image: string;
-    status: number;
-    year: string;
-}
-
-const convertDataToTreeData = (data: Task[]): DataNode[] => {
+const convertDataToTreeData = (data: RoadmapTasksType): DataNode[] => {
     const treeData: DataNode[] = [];
 
-    data.forEach((task) => {
+    data.data.forEach((task) => {
         const taskNode: DataNode = {
             title: task.title,
             key: task._id,
@@ -40,17 +32,10 @@ const convertDataToTreeData = (data: Task[]): DataNode[] => {
         treeData.push(taskNode);
     });
 
-    console.log("------")
-    console.log(treeData)
-
     return treeData;
 };
 
-interface RoadmapCardProps {
-    data: Task[];
-}
-
-const RoadmapCard: FC<RoadmapCardProps> = ({ data }) => {
+const RoadmapCard: FC<RoadmapTasksType> = ({ data }) => {
     return (
         <div
             id="scrollableDiv"
@@ -81,10 +66,10 @@ const RoadmapCard: FC<RoadmapCardProps> = ({ data }) => {
                                     <Tree
                                         showLine
                                         switcherIcon={<DownOutlined />}
-                                        treeData={convertDataToTreeData([item])}
+                                        treeData={convertDataToTreeData({ data: [item] })}
                                     />
                                 ) : (
-                                    <p>No sub-tasks available</p>
+                                    item.description
                                 )
                             }
                         />

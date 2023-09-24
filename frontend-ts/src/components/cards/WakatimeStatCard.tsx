@@ -1,31 +1,15 @@
-import { FC, useEffect, useState } from 'react';
-import { Descriptions } from 'antd';
-import { getWakatimeStats } from '../apis/rest/endpoints';
-import '../styles/WakatimeStats.css';
+import { FC, useEffect, useState } from "react";
 
-interface WakatimeStatsProps { }
+import { Descriptions } from "antd";
 
-interface Stats {
-    human_readable_total_including_other_language: string;
-    operating_systems: {
-        name: string;
-        text: string;
-        percent: number;
-    }[];
-    editors: {
-        name: string;
-        text: string;
-        percent: number;
-    }[];
-    languages: {
-        name: string;
-        text: string;
-        percent: number;
-    }[];
-}
+import { getWakatimeStats } from "../../apis/rest/endpoints";
 
-const WakatimeStats: FC<WakatimeStatsProps> = () => {
-    const [stats, setStats] = useState<Stats | undefined>(undefined);
+import { WatatimeStatType } from "../../types"
+
+import "../../styles/WakatimeStats.css";
+
+const WakatimeStats: FC<{}> = () => {
+    const [stats, setStats] = useState<WatatimeStatType>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +22,7 @@ const WakatimeStats: FC<WakatimeStatsProps> = () => {
     return (
         <div className='wakatime-stats'>
             <div className='title-center'>
-                <h3>WakaTime Stats</h3>
+                <h3> WakaTime Stats </h3>
             </div>
 
             <Descriptions bordered>

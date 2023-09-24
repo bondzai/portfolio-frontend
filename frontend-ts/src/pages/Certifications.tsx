@@ -5,19 +5,16 @@ import CertificationCard from '../components/cards/CertificationCard';
 import { getCertificationList } from '../apis/rest/endpoints';
 import '../styles/Certifications.css';
 
-interface CertificationCard {
-    id: number;
-    image_url: string;
-}
+import { CertificationType } from '../types/';
 
 const Certifications: FC = () => {
     const itemsPerPage: number = 6;
-    const [certificationList, setCertificationList] = useState<CertificationCard[]>([]);
+    const [certificationList, setCertificationList] = useState<CertificationType[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result: CertificationCard[] = await getCertificationList();
+            const result: CertificationType[] = await getCertificationList();
             setCertificationList(result);
         };
         fetchData();
@@ -28,7 +25,7 @@ const Certifications: FC = () => {
     };
 
     const startIndex: number = (currentPage - 1) * itemsPerPage;
-    const visibleCertifications: CertificationCard[] = certificationList.slice(
+    const visibleCertifications: CertificationType[] = certificationList.slice(
         startIndex,
         startIndex + itemsPerPage
     );
@@ -37,7 +34,7 @@ const Certifications: FC = () => {
         <div className="certifications">
             <div className="certificationList">
                 {visibleCertifications.map((certification, index) => (
-                    <CertificationCard key={startIndex + index} certification={certification} />
+                    <CertificationCard key={startIndex + index} data={certification} />
                 ))}
             </div>
             <Stack spacing={2} justifyContent="center" mt={3}>

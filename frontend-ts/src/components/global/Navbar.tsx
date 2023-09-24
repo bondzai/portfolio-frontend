@@ -22,10 +22,22 @@ const Navbar: React.FC = () => {
         setActiveLink(location.pathname.slice(1));
     }, [location]);
 
+    // Conditionally render the development link if running on localhost
+    const renderDevelopmentLink = () => {
+        if (import.meta.env.DEV) {
+            return (
+                <Link to="/development" onClick={handleLinkClick} className={activeLink === "development" ? "active" : ""}>
+                    Development
+                </Link>
+            );
+        }
+        return null; // Don't render the link in production
+    };
+
     return (
         <div className="navbar">
             <div className="toggleButton">
-            <h6> {activeLink} </h6>
+                <h6> {activeLink} </h6>
                 <button onClick={toggleNavbar}>
                     <GiHamburgerMenu />
                 </button>
@@ -52,6 +64,7 @@ const Navbar: React.FC = () => {
                 <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
                     Contact & More
                 </Link>
+                {renderDevelopmentLink()}
             </div>
         </div>
     );
