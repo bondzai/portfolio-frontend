@@ -73,7 +73,7 @@ const Labs: React.FC = () => {
             {viewMode === "module" ? (
                 <div className="projectList">
                     {visibleProjects.map((project, index) => (
-                        <Lab key={index} lab={project} />
+                        <Lab key={index} data={project} />
                     ))}
                 </div>
             ) : (

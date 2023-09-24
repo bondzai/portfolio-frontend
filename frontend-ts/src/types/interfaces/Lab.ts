@@ -8,3 +8,7 @@ export interface LabType {
     image_url: string;
     host_url: string;
 }
+
+export interface LabPropsType {
+    data: LabType
+}
