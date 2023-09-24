@@ -1,4 +1,4 @@
-export interface RoadmapTask {
+export interface RoadmapTaskType {
     _id: string;
     description: string;
     sub_tasks: Record<string, string>;
@@ -9,12 +9,12 @@ export interface RoadmapTask {
     year: string;
 }
 
-export interface RoadmapTasks {
-    data: RoadmapTask[];
+export interface RoadmapTasksType {
+    data: RoadmapTaskType[];
     loading?: boolean;
 }
 
-export interface Column {
+export interface RoadmapColumnType {
     title: string;
     icon: React.ReactNode;
 }
