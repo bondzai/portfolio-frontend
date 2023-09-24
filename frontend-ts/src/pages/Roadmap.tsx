@@ -31,14 +31,14 @@ interface Task {
 }
 
 const Roadmap = () => {
-    const [roadmapList, setRoadmapList] = useState<Task[]>([]); // Specify the type here
+    const [roadmapList, setRoadmapList] = useState<Task[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [selectedYear, setSelectedYear] = useState<string>('2023');
+    const [selectedYear, setSelectedYear] = useState<string>("2023");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await getRoadmapList();
+                const result: Task[] = await getRoadmapList();
                 setRoadmapList(result);
                 setLoading(false);
             } catch (error) {
@@ -49,7 +49,8 @@ const Roadmap = () => {
     }, []);
 
     const filteredRoadmapList = roadmapList.filter(data => {
-        return data.year === selectedYear;
+        // todo strong type data from API
+        return data.year == selectedYear; 
     });
 
     return (

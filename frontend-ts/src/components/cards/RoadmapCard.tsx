@@ -15,6 +15,7 @@ interface Task {
 }
 
 const convertDataToTreeData = (data: Task[]): DataNode[] => {
+
     const treeData: DataNode[] = [];
 
     data.forEach((task) => {
@@ -39,9 +40,6 @@ const convertDataToTreeData = (data: Task[]): DataNode[] => {
 
         treeData.push(taskNode);
     });
-
-    console.log("------")
-    console.log(treeData)
 
     return treeData;
 };

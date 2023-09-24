@@ -1,33 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Card, List, Statistic } from 'antd';
-
 import { RiFocus3Fill } from 'react-icons/ri';
 import { FaListAlt } from 'react-icons/fa';
 import { MdTipsAndUpdates, MdOutlineTask } from 'react-icons/md';
-
 import CountUp from 'react-countup';
-
 import RoadmapCard from './cards/RoadmapCard';
-
-const columns = [
-    {
-        title: 'Ideas',
-        icon: 'TipsAndUpdatesIcon',
-    },
-    {
-        title: 'Todo',
-        icon: 'ListAltIcon',
-    },
-    {
-        title: 'Focusing',
-        icon: 'RiFocus3Fill',
-    },
-    {
-        title: 'Done',
-        icon: 'TaskAltIcon',
-    },
-];
-
 import '../styles/Roadmap.css';
 
 interface Task {
@@ -41,26 +18,29 @@ interface Task {
     year: string;
 }
 
+interface Column {
+    title: string;
+    icon: React.ReactNode;
+}
+
 interface RoadmapOneYearProps {
     data: Task[];
     loading: boolean;
 }
 
-const formatter = (value: number | string) => <CountUp end={+value} separator="," />;
+const columns: Column[] = [
+    { title: 'Ideas', icon: <MdTipsAndUpdates /> },
+    { title: 'Todo', icon: <FaListAlt /> },
+    { title: 'Focusing', icon: <RiFocus3Fill /> },
+    { title: 'Done', icon: <MdOutlineTask /> },
+];
 
-const icons = {
-    TipsAndUpdatesIcon: <MdTipsAndUpdates />,
-    ListAltIcon: <FaListAlt />,
-    RiFocus3Fill: <RiFocus3Fill />,
-    TaskAltIcon: <MdOutlineTask />,
-};
-
-const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data: propData, loading: propLoading }) => {
-    const [roadmapList, setRoadmapList] = useState<Task[]>(propData);
+const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data, loading }) => {
+    const [roadmapList, setRoadmapList] = useState<Task[]>(data);
 
     useEffect(() => {
-        setRoadmapList(propData);
-    }, [propData, propLoading]);
+        setRoadmapList(data);
+    }, [data, loading]);
 
     const getColumnIndex = (status: number): number => {
         const statusToColumnIndex: Record<number, number> = {
@@ -73,7 +53,7 @@ const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data: propData, loading
     };
 
     const getFilteredRoadmapList = (statusIndex: number): Task[] => {
-        return roadmapList.filter((data) => getColumnIndex(data.status) === statusIndex);
+        return roadmapList.filter((task) => getColumnIndex(task.status) === statusIndex);
     };
 
     return (
@@ -85,11 +65,11 @@ const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data: propData, loading
                 }}
                 dataSource={columns}
                 renderItem={(item, index) => (
-                    <List.Item key={item.icon}>
+                    <List.Item key={item.title}>
                         <Card
                             title={
                                 <div className="card-title">
-                                    {/* {icons[item.icon]} */}
+                                    {item.icon}
                                     <span className="title-text">{item.title}</span>
                                 </div>
                             }
@@ -99,7 +79,7 @@ const RoadmapOneYear: React.FC<RoadmapOneYearProps> = ({ data: propData, loading
                                     value={getFilteredRoadmapList(index).length}
                                     valueStyle={{ fontSize: '15px' }}
                                     suffix="tasks"
-                                    formatter={formatter}
+                                    formatter={(value) => <CountUp end={+value} separator="," />}
                                 />
                             }
                             style={{
