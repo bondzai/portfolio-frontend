@@ -1,29 +1,19 @@
 import React from "react";
 import { Tooltip } from "antd";
-import { openInNewTab } from "../utils/utils";
-import "../styles/Skills.css";
+import { openInNewTab } from "../../utils/utils";
 
-interface Skill {
-    name: string;
-    url: string;
-    image_url: string;
-    topic: string;
-    is_showing: boolean;
-}
+import { SkillCardType } from "../../types"
 
-interface Props {
-    skills: Skill[];
-    topic: string;
-}
+import "../../styles/Skills.css";
 
-const SkillsFilter: React.FC<Props> = ({ skills, topic }) => {
-    const skillsTopicFilter = skills.filter((skill) => {
+const SkillCard: React.FC<SkillCardType> = ({ data, topic }) => {
+    const topicFilterd = data.filter((skill) => {
         return skill.topic === topic && skill.is_showing === true;
     });
 
     return (
         <div className="skill-list">
-            {skillsTopicFilter.map((item, index) => (
+            {topicFilterd.map((item, index) => (
                 <div className="skill" key={index}>
                     <Tooltip title={item.name}>
                         <button onClick={() => openInNewTab(item.url)}>
@@ -40,4 +30,4 @@ const SkillsFilter: React.FC<Props> = ({ skills, topic }) => {
     );
 };
 
-export default SkillsFilter;
+export default SkillCard;
