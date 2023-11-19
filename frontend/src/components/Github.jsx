@@ -16,7 +16,7 @@ function Github() {
 
                 <div className="github-calendar">
                     <GitHubCalendar
-                        username="introbond"
+                        username="zenithero"
                         blockSize={15}
                         blockMargin={5}
                         fontSize={16}
