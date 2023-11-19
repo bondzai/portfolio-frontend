@@ -39,7 +39,7 @@ const SocialMediaIcons = () => {
             <SiGitbook
                 className="icon-social"
                 style={{ bottom: '150px', right: '40px' }}
-                onClick={() => openInNewTab('')}
+                onClick={() => openInNewTab('https://thejb.gitbook.io/core')}
             />
             <AiFillGithub
                 className="icon-social"
