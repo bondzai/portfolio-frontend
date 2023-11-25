@@ -44,7 +44,7 @@ const SocialMediaIcons = () => {
             <AiFillGithub
                 className="icon-social"
                 style={{ bottom: '100px', right: '40px' }}
-                onClick={() => openInNewTab('https://github.com/zenithero')}
+                onClick={() => openInNewTab('https://github.com/bondzai')}
             />
             <CustomModalButton
                 buttonText="Buy me a coffee"
