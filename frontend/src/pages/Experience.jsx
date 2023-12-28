@@ -116,7 +116,6 @@ const Experience = () => {
                         &emsp; - Deep understanding about software architectural patterns (especially microservices event driven base architecture). <br />
                         &emsp; - Learn more about DevSecOps & cloud engines. <br />
                     </p>
-
                 </VerticalTimelineElement>
             </VerticalTimeline>
             <ScrollButton
