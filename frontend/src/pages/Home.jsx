@@ -1,11 +1,7 @@
 import React from "react";
-
-import Typewriter from 'typewriter-effect';
-
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-
-import 'react-lazy-load-image-component/src/effects/blur.css';
-
+import Typewriter from "typewriter-effect";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -26,9 +22,9 @@ const Home = () => {
                 <Typewriter
                     options={{
                         strings: [
-                            '<strong>GROWTH MINDSET</strong>',
-                            '<strong>GRIT</strong>',
-                            '<strong>SELF-ACTUALIZATION</strong>'
+                            "<strong>GROWTH MINDSET</strong>",
+                            "<strong>GRIT</strong>",
+                            "<strong>SELF-ACTUALIZATION</strong>",
                         ],
                         autoStart: true,
                         loop: true,
