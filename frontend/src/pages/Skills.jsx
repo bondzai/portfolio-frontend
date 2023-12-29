@@ -9,13 +9,13 @@ import { getSkillList } from "../apis/rest/Skill";
 import "../styles/Home.css";
 
 const skillsData = [
-    { topic: "OS", label: "OS" },
+    { topic: "os", label: "OS" },
     { topic: "language", label: "Programming Languages" },
     { topic: "tools", label: "Infrastructure Tools" },
     { topic: "database", label: "Databases" },
     { topic: "backend", label: "Backend" },
     { topic: "frontend", label: "Frontend" },
-    { topic: "automation", label: "Automation & IOT Stuff" },
+    { topic: "automation", label: "Industrial automation & IoT" },
 ];
 
 const accordionStyle = {
