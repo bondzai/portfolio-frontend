@@ -1,24 +1,45 @@
 import React, { useState, useEffect } from "react";
-
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-
 import { MdExpandMore } from "react-icons/md"
-
 import SkillsFilter from "../components/SkillsFilter";
 import SpinComponent from "../components/SpinComponent";
 import ScrollButton from "../components/ScrollButon";
-
 import useScroll from "../hooks/useScroll";
-
 import { getSkillList } from "../apis/rest/Skill";
-
 import "../styles/Home.css";
+
+const skillsData = [
+    { topic: "OS", label: "OS" },
+    { topic: "language", label: "Programming Languages" },
+    { topic: "tools", label: "Infrastructure Tools" },
+    { topic: "database", label: "Databases" },
+    { topic: "backend", label: "Backend" },
+    { topic: "frontend", label: "Frontend" },
+    { topic: "automation", label: "Automation & IOT Stuff" },
+];
+
+const accordionStyle = {
+    borderRadius: "10px",
+    boxShadow: "0px 3px 15px rgba(58, 58, 58, 0.2)",
+    marginBottom: "5px",
+};
+
+const SkillsFilterWrapper = ({ topic, skills }) => (
+    <Accordion defaultExpanded style={accordionStyle}>
+        <AccordionSummary expandIcon={<MdExpandMore />}>
+            <Typography variant="h6">{topic.label}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+            <SkillsFilter topic={topic.topic} skills={skills} />
+        </AccordionDetails>
+    </Accordion>
+);
 
 const Skills = () => {
     const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
-
     const [skills, setSkills] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         const fetchData = async () => {
             const result = await getSkillList();
@@ -28,79 +49,14 @@ const Skills = () => {
         fetchData();
     }, []);
 
-    const accordionStyle = {
-        borderRadius: "10px",
-        boxShadow: "0px 3px 15px rgba(58, 58, 58, 0.2)",
-        marginBottom: "5px",
-    };
-
     return (
         <div className="home">
             <div className="skills">
-                {isLoading ? (<SpinComponent />) : (
+                {isLoading ? <SpinComponent /> : (
                     <div className="list">
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">OS</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="os" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">Programming Languages</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="language" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">Infrastructure Tools</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="tools" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">Databases</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="database" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">Backend</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="backend" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">Frontend</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="frontend" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Accordion defaultExpanded style={accordionStyle}>
-                            <AccordionSummary expandIcon={<MdExpandMore />}>
-                                <Typography variant="h6">Automation & IOT Stuff</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <SkillsFilter topic="automation" skills={skills} />
-                            </AccordionDetails>
-                        </Accordion>
+                        {skillsData.map((topic) => (
+                            <SkillsFilterWrapper key={topic.topic} topic={topic} skills={skills} />
+                        ))}
                     </div>
                 )}
             </div>
