@@ -1,7 +1,5 @@
 import React from "react";
-
 import { Space } from "antd";
-
 import SocialMediaIcons from "../components/SocialMediaIcons";
 import WakatimeStat from "../components/WakatimeStats";
 import Github from '../components/Github';
