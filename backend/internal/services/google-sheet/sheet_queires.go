@@ -3,11 +3,10 @@ package googlesheet
 import (
 	"encoding/json"
 	"net/http"
+	"portfolio/internal/models"
 )
 
-type GoogleSheetData []map[string]interface{}
-
-func GetDataFromAPI(dataType string) (GoogleSheetData, error) {
+func GetDataFromAPI(dataType string) (models.KeyValueSlice, error) {
 	url := getGoogleSheetURL() + dataType
 
 	resp, err := http.Get(url)
@@ -16,26 +15,13 @@ func GetDataFromAPI(dataType string) (GoogleSheetData, error) {
 	}
 	defer resp.Body.Close()
 
-	var data GoogleSheetData
+	var data models.KeyValueSlice
 	err = json.NewDecoder(resp.Body).Decode(&data)
 	if err != nil {
 		return nil, err
 	}
 
-	data.filter("is_showing", false)
+	data.Filter("is_showing", false)
 
 	return data, nil
-}
-
-func (data *GoogleSheetData) filter(key string, value interface{}) {
-	dstIndex := 0
-
-	for _, item := range *data {
-		if item[key] != value {
-			(*data)[dstIndex] = item
-			dstIndex++
-		}
-	}
-
-	*data = (*data)[:dstIndex]
 }
