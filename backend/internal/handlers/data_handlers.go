@@ -3,8 +3,8 @@ package handlers
 import (
 	"log"
 
-	"portfolio/services"
-	"portfolio/services/redis"
+	"portfolio/internal/services"
+	"portfolio/internal/services/redis"
 
 	"github.com/gofiber/fiber/v2"
 )

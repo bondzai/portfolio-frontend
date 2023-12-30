@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"portfolio/handlers"
-	"portfolio/middleware"
-	"portfolio/services/mongodb"
+	"portfolio/internal/handlers"
+	"portfolio/internal/middleware"
+	"portfolio/internal/services/mongodb"
 	"portfolio/utils"
 
 	"github.com/gofiber/fiber/v2"

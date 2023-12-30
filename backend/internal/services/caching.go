@@ -3,10 +3,10 @@ package services
 import (
 	"errors"
 	"log"
-	googlesheet "portfolio/services/google-sheet"
-	"portfolio/services/mongodb"
-	"portfolio/services/redis"
-	req "portfolio/services/req"
+	googlesheet "portfolio/internal/services/google-sheet"
+	"portfolio/internal/services/mongodb"
+	"portfolio/internal/services/redis"
+	req "portfolio/internal/services/req"
 	"time"
 )
 
