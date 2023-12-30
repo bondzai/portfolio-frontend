@@ -13,6 +13,7 @@ import (
 func (r RedisCache) FlushAllCache() {
 	if err := r.client.FlushAll(context.Background()).Err(); err != nil {
 		log.Println("Error flushing Redis cache:", err)
+		return
 	}
 
 	log.Println("Flush cache successfully")
