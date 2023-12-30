@@ -23,6 +23,7 @@ func getCacheOrDataSource(redisClient redis.RedisCache, cacheKey string, fetchDa
 		cacheErr := redisClient.SetCache(cacheKey, fetchedData, 24*time.Hour)
 		if cacheErr != nil {
 			log.Println("Error caching data:", cacheErr)
+			return nil, errors.New(cacheErr.Error())
 		}
 
 		return fetchedData, nil
@@ -35,8 +36,12 @@ func GetData(redisClient redis.RedisCache, dataParams map[string]interface{}) (i
 	dataSource, dataSourceOk := dataParams["dataSource"].(string)
 	dataType, dataTypeOk := dataParams["dataType"].(string)
 
-	if !dataSourceOk || !dataTypeOk {
-		return nil, errors.New("invalid data parameters")
+	if !dataSourceOk {
+		return nil, errors.New("invalid data sources")
+	}
+
+	if !dataTypeOk {
+		return nil, errors.New("invalid data type")
 	}
 
 	switch dataSource {
