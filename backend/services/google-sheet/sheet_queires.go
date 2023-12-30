@@ -20,15 +20,15 @@ func GetDataFromAPI(dataType string) ([]map[string]interface{}, error) {
 		return nil, err
 	}
 
-	filterData(&data)
+	filterData(&data, "is_showing")
 
 	return data, nil
 }
 
-func filterData(data *[]map[string]interface{}) {
+func filterData(data *[]map[string]interface{}, filter string) {
 	for i, item := range *data {
 		for key, value := range item {
-			if key == "is_showing" && value == false {
+			if key == filter && value == false {
 				removeElement(data, i)
 			}
 		}
