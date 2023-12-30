@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-
 import Certification from "../components/Certification";
 import SpinComponent from "../components/SpinComponent";
-
 import { getCertificationList } from "../apis/rest/Certification";
-
 import "../styles/Certifications.css";
 
 const Certifications = () => {
@@ -25,7 +21,7 @@ const Certifications = () => {
         fetchData();
     }, []);
 
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (_, newPage) => {
         setCurrentPage(newPage);
     };
 

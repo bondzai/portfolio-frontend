@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
 import { Card, Tabs } from 'antd';
-
 import RoadmapOneYear from '../components/RoadmapOneYear';
-
 import { getRoadmapList, years } from '../apis/rest/Roadmap';
-
 import '../styles/Roadmap.css';
 
 const Roadmap = () => {
