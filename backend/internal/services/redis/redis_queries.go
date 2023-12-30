@@ -10,13 +10,14 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
-func (r RedisCache) FlushAllCache() {
+func (r RedisCache) FlushAllCache() error {
 	if err := r.client.FlushAll(context.Background()).Err(); err != nil {
 		log.Println("Error flushing Redis cache:", err)
-		return
+		return err
 	}
 
 	log.Println("Flush cache successfully")
+	return nil
 }
 
 func (r RedisCache) GetCache(key string, data interface{}) error {
