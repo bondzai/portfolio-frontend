@@ -20,5 +20,27 @@ func GetDataFromAPI(dataType string) ([]map[string]interface{}, error) {
 		return nil, err
 	}
 
+	filterData(&data)
+
 	return data, nil
+}
+
+func filterData(data *[]map[string]interface{}) {
+	for i, item := range *data {
+		for key, value := range item {
+			if key == "is_showing" && value == false {
+				removeElement(data, i)
+			}
+		}
+	}
+}
+
+func removeElement(slice *[]map[string]interface{}, index int) {
+	if index < 0 || index >= len(*slice) {
+		return
+	}
+
+	copy((*slice)[index:], (*slice)[index+1:])
+
+	*slice = (*slice)[:len(*slice)-1]
 }
