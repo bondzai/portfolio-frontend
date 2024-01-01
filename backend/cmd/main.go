@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"portfolio/internal/handlers"
-	"portfolio/internal/middleware"
+	"portfolio/internal/middlewares"
 	"portfolio/internal/services/mongodb"
 	"portfolio/utils"
 
@@ -29,12 +29,12 @@ func main() {
 		AllowMethods:     utils.GetEnv("GO_CORS_METHODS", "*"),
 		AllowCredentials: true,
 	}))
-	app.Use(middleware.CustomAuth)
+	app.Use(middlewares.CustomAuth)
 
 	dataHandler := handlers.NewDataHandler()
 
 	app.Get("/:dataType", dataHandler.HandleData)
-	app.Post("/flush-cache", middleware.CustomExtraAuth, dataHandler.FlushCache)
+	app.Post("/flush-cache", middlewares.CustomExtraAuth, dataHandler.FlushCache)
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("JB backend is running...")
 	})
