@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"portfolio/handlers"
-	"portfolio/middleware"
-	"portfolio/services/mongodb"
+	"portfolio/internal/handlers"
+	"portfolio/internal/middlewares"
+	"portfolio/internal/services/mongodb"
 	"portfolio/utils"
 
 	"github.com/gofiber/fiber/v2"
@@ -29,12 +29,12 @@ func main() {
 		AllowMethods:     utils.GetEnv("GO_CORS_METHODS", "*"),
 		AllowCredentials: true,
 	}))
-	app.Use(middleware.CustomAuth)
+	app.Use(middlewares.CustomAuth)
 
 	dataHandler := handlers.NewDataHandler()
 
 	app.Get("/:dataType", dataHandler.HandleData)
-	app.Post("/flush-cache", middleware.CustomExtraAuth, dataHandler.FlushCache)
+	app.Post("/flush-cache", middlewares.CustomExtraAuth, dataHandler.FlushCache)
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("JB backend is running...")
 	})

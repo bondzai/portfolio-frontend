@@ -1,11 +1,13 @@
 package mongodb
 
 import (
+	"portfolio/internal/models"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func GetRoadmap() ([]map[string]interface{}, error) {
+func GetRoadmap() (models.KeyValueSlice, error) {
 	col := db.Collection("portfolio")
 
 	filter := bson.D{{Key: "year", Value: bson.D{{Key: "$exists", Value: true}}}}
@@ -17,7 +19,7 @@ func GetRoadmap() ([]map[string]interface{}, error) {
 		return nil, err
 	}
 
-	var data []map[string]interface{}
+	var data models.KeyValueSlice
 	if err = cursor.All(ctx, &data); err != nil {
 		return nil, err
 	}

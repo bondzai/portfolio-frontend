@@ -1,10 +1,11 @@
 package handlers
 
 import (
+	"errors"
 	"log"
 
-	"portfolio/services"
-	"portfolio/services/redis"
+	"portfolio/internal/services"
+	"portfolio/internal/services/redis"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -49,6 +50,11 @@ func (h *DataHandler) HandleData(c *fiber.Ctx) error {
 }
 
 func (h *DataHandler) FlushCache(c *fiber.Ctx) error {
-	h.RedisClient.FlushAllCache()
+	err := h.RedisClient.FlushAllCache()
+	if err != nil {
+		log.Println("Error flush cache: ", err)
+		return errors.New(err.Error())
+	}
+
 	return c.SendStatus(fiber.StatusOK)
 }
