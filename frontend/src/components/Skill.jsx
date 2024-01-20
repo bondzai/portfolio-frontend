@@ -1,7 +1,5 @@
 import React from "react";
-
 import { openInNewTab } from "../utils/utils.js";
-
 import { Tooltip } from "antd";
 
 const SkillItem = ({ ...skill }) => {
