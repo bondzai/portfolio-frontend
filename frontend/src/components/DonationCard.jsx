@@ -6,11 +6,13 @@ import { InfoCircleOutlined, UserOutlined, CopyOutlined } from '@ant-design/icon
 
 const options = [
     {
+        id: 1,
         value: '0x1c45e086ed143aef83c1209521a2ff5369f39abc',
         label: 'ETH',
         iconUrl: 'https://www.vectorlogo.zone/logos/ethereum/ethereum-icon.svg',
     },
     {
+        id: 2,
         value: '0x2f35e086ed143aef83c1209521a2ff5369f39def',
         label: 'BTC',
         iconUrl: 'https://www.vectorlogo.zone/logos/bitcoin/bitcoin-icon.svg',
