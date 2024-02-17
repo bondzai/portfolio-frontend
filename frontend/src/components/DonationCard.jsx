@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from 'antd';
-
 import { InfoCircleOutlined, UserOutlined, CopyOutlined } from '@ant-design/icons';
 
 const options = [
@@ -19,6 +17,24 @@ const options = [
     },
 ];
 
+const CopyToClipboardIcon = ({ onClick }) => (
+    <Tooltip title="Copy to Clipboard">
+        <CopyOutlined onClick={onClick} style={{ cursor: 'pointer' }} />
+    </Tooltip>
+);
+
+const ExtraInfoIcon = () => (
+    <Tooltip title="Extra information">
+        <InfoCircleOutlined style={{ color: 'rgba(0, 0, 0, 0.45)' }} />
+    </Tooltip>
+);
+
+const AvatarWithTooltip = () => (
+    <Tooltip title="Extra information">
+        <Avatar size={21} style={{ backgroundColor: '#3e497a' }} icon={<UserOutlined />} />
+    </Tooltip>
+);
+
 const DonationCard = () => {
     const [selectedValue, setSelectedValue] = useState(options[0].value);
 
@@ -33,40 +49,44 @@ const DonationCard = () => {
         <div style={{ width: '50%' }}>
             <Space direction="vertical" align="center">
                 <QRCode value={selectedValue || '-'} />
+
                 <img
                     src={selectedOption?.iconUrl}
                     style={{ width: '100%', height: 'auto' }}
                     alt=""
                 />
+
                 <Space.Compact>
                     <Select
                         defaultValue={selectedValue}
                         options={options}
                         onChange={value => setSelectedValue(value)}
                     />
-                    <Input
+
+                    <InputWithIcons
                         value={selectedValue}
-                        prefix={
-                            <Tooltip title="Extra information">
-                                <Avatar size={21} style={{ backgroundColor: '#3e497a' }} icon={<UserOutlined />} />
-                            </Tooltip>
-                        }
-                        suffix={
-                            <>
-                                <Tooltip title="Copy to Clipboard">
-                                    <CopyOutlined onClick={handleCopyToClipboard} style={{ cursor: 'pointer' }} />
-                                </Tooltip>
-                                <Tooltip title="Extra information">
-                                    <InfoCircleOutlined style={{ color: 'rgba(0, 0, 0, 0.45)' }} />
-                                </Tooltip>
-                            </>
-                        }
-                        style={{ width: '400px' }}
+                        handleCopyToClipboard={handleCopyToClipboard}
                     />
+
                 </Space.Compact>
+
             </Space>
         </div>
     );
 };
+
+const InputWithIcons = ({ value, handleCopyToClipboard }) => (
+    <Input
+        value={value}
+        prefix={<AvatarWithTooltip />}
+        suffix={
+            <>
+                <CopyToClipboardIcon onClick={handleCopyToClipboard} />
+                <ExtraInfoIcon />
+            </>
+        }
+        style={{ width: '400px' }}
+    />
+);
 
 export default DonationCard;
