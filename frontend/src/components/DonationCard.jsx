@@ -11,15 +11,15 @@ const options = [
     },
     {
         id: 2,
-        value: '0x2f35e086ed143aef83c1209521a2ff5369f39def',
+        value: '0x1c45e086ed143aef83c1209521a2ff5369f39abc',
         label: 'BTC',
         iconUrl: 'https://www.vectorlogo.zone/logos/bitcoin/bitcoin-icon.svg',
     },
 ];
 
-const CopyToClipboardIcon = ({ onClick }) => (
+const CopyToClipboardIcon = ({ value, onClick }) => (
     <Tooltip title="Copy to Clipboard">
-        <CopyOutlined onClick={onClick} style={{ cursor: 'pointer' }} />
+        <CopyOutlined onClick={() => onClick(value)} style={{ cursor: 'pointer' }} />
     </Tooltip>
 );
 
@@ -36,19 +36,19 @@ const AvatarWithTooltip = () => (
 );
 
 const DonationCard = () => {
-    const [selectedValue, setSelectedValue] = useState(options[0].value);
+    const [selectedId, setSelectedId] = useState(options[0].id);
 
-    const selectedOption = options.find(option => option.value === selectedValue);
+    const selectedOption = options.find(option => option.id === selectedId);
 
-    const handleCopyToClipboard = () => {
-        navigator.clipboard.writeText(selectedValue);
+    const handleCopyToClipboard = (value) => {
+        navigator.clipboard.writeText(value);
         message.success('Copied to clipboard');
     };
 
     return (
         <div style={{ width: '50%' }}>
             <Space direction="vertical" align="center">
-                <QRCode value={selectedValue || '-'} />
+                <QRCode value={selectedOption?.value || '-'} />
 
                 <img
                     src={selectedOption?.iconUrl}
@@ -58,13 +58,13 @@ const DonationCard = () => {
 
                 <Space.Compact>
                     <Select
-                        defaultValue={selectedValue}
-                        options={options}
-                        onChange={value => setSelectedValue(value)}
+                        defaultValue={selectedId}
+                        options={options.map(option => ({ label: option.label, value: option.id }))}
+                        onChange={id => setSelectedId(id)}
                     />
 
                     <InputWithIcons
-                        value={selectedValue}
+                        value={selectedOption?.value}
                         handleCopyToClipboard={handleCopyToClipboard}
                     />
 
@@ -81,7 +81,7 @@ const InputWithIcons = ({ value, handleCopyToClipboard }) => (
         prefix={<AvatarWithTooltip />}
         suffix={
             <>
-                <CopyToClipboardIcon onClick={handleCopyToClipboard} />
+                <CopyToClipboardIcon value={value} onClick={handleCopyToClipboard} />
                 <ExtraInfoIcon />
             </>
         }
