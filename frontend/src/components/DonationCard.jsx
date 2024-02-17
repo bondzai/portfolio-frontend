@@ -47,30 +47,29 @@ const DonationCard = () => {
 
     return (
         <div style={{ width: '50%' }}>
-            <Space direction="vertical" align="center">
-                <QRCode value={selectedOption?.value || '-'} />
 
+            <Space direction="horizontal" align="center" >
                 <img
                     src={selectedOption?.iconUrl}
                     style={{ width: '100%', height: 'auto' }}
                     alt=""
                 />
 
-                <Space.Compact>
-                    <Select
-                        defaultValue={selectedId}
-                        options={options.map(option => ({ label: option.label, value: option.id }))}
-                        onChange={id => setSelectedId(id)}
-                    />
-
-                    <InputWithIcons
-                        value={selectedOption?.value}
-                        handleCopyToClipboard={handleCopyToClipboard}
-                    />
-
-                </Space.Compact>
-
+                <QRCode value={selectedOption?.value || '-'} />
             </Space>
+
+            <Space.Compact direction='vertical' align='center'>
+                <InputWithIcons
+                    value={selectedOption?.value}
+                    handleCopyToClipboard={handleCopyToClipboard}
+                />
+                <Select
+                    defaultValue={selectedId}
+                    options={options.map(option => ({ label: option.label, value: option.id }))}
+                    onChange={id => setSelectedId(id)}
+                />
+            </Space.Compact>
+
         </div>
     );
 };
