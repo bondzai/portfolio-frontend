@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
-
 import { useParams, useNavigate } from "react-router-dom";
-
-import { Empty } from 'antd';
-
+import { Empty } from "antd";
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineCloseCircle } from "react-icons/ai";
-
-import { Modal, Box, IconButton } from '@mui/material';
-
+import { Modal, Box, IconButton } from "@mui/material";
 import "../styles/DisplayModal.css";
 
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
@@ -67,19 +62,19 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
                 <Modal open={true} onClose={closeModal}>
                     <Box
                         sx={{
-                            position: 'relative',
-                            bgcolor: 'background.paper',
+                            position: "relative",
+                            bgcolor: "background.paper",
                             boxShadow: 24,
                             p: 4,
-                            width: '60vw',
-                            height: '100vh',
-                            zIndex: '1000',
-                            margin: 'auto',
+                            width: "60vw",
+                            height: "100vh",
+                            zIndex: "1000",
+                            margin: "auto",
                         }}
                     >
                         <IconButton
                             onClick={closeModal}
-                            sx={{ position: 'absolute', right: '1rem', top: '0.5rem' }}
+                            sx={{ position: "absolute", right: "1rem", top: "0.5rem" }}
                         >
                             <AiOutlineCloseCircle />
                         </IconButton>
@@ -87,17 +82,17 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
                         <AiOutlineArrowLeft
                             className="arrow-left"
                             onClick={slideBack}
-                            sx={{ position: 'absolute', left: '10px', top: '50vh' }}
+                            sx={{ position: "absolute", left: "10px", top: "50vh" }}
                         />
 
                         <AiOutlineArrowRight
                             className="arrow-right"
                             onClick={slideForward}
-                            sx={{ position: 'absolute', right: '10px', top: '50vh' }}
+                            sx={{ position: "absolute", right: "10px", top: "50vh" }}
                         />
 
                         <Box
-                            sx={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
+                            sx={{ position: "relative", display: "flex", justifyContent: "center" }}
                         >
                             {
                                 data.image_url ? (<img src={data.image_url} alt={data.name} className="display-image" />) : (<Empty className="display-image" />)
