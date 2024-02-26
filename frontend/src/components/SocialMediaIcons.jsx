@@ -1,13 +1,9 @@
-import React from 'react';
-
-import { Popover } from 'antd';
-
+import React from "react";
+import { Popover } from "antd";
 import { AiFillLinkedin, AiFillFacebook, AiOutlineMail, AiFillGithub } from "react-icons/ai"
-import { SiGitbook, SiBitcoin } from 'react-icons/si';
-
+import { SiGitbook, SiBitcoin } from "react-icons/si";
 import DonationCard from "../components/DonationCard";
 import CustomModalButton from "../components/CustomModalButton";
-
 import { openInNewTab } from "../utils/utils.js"
 
 const donationIconContent = (
@@ -23,28 +19,28 @@ const SocialMediaIcons = () => {
         <div>
             <AiOutlineMail
                 className="icon-social"
-                style={{ bottom: '3000px', right: '40px' }}
-                onClick={() => openInNewTab('')}
+                style={{ bottom: "3000px", right: "40px" }}
+                onClick={() => openInNewTab("")}
             />
             <AiFillFacebook
                 className="icon-social"
-                style={{ bottom: '250px', right: '40px' }}
-                onClick={() => openInNewTab('')}
+                style={{ bottom: "250px", right: "40px" }}
+                onClick={() => openInNewTab("")}
             />
             <AiFillLinkedin
                 className="icon-social"
-                style={{ bottom: '200px', right: '40px' }}
-                onClick={() => openInNewTab('')}
+                style={{ bottom: "200px", right: "40px" }}
+                onClick={() => openInNewTab("")}
             />
             <SiGitbook
                 className="icon-social"
-                style={{ bottom: '150px', right: '40px' }}
-                onClick={() => openInNewTab('https://thejb.gitbook.io/core')}
+                style={{ bottom: "150px", right: "40px" }}
+                onClick={() => openInNewTab("https://thejb.gitbook.io/core")}
             />
             <AiFillGithub
                 className="icon-social"
-                style={{ bottom: '100px', right: '40px' }}
-                onClick={() => openInNewTab('https://github.com/bondzai')}
+                style={{ bottom: "100px", right: "40px" }}
+                onClick={() => openInNewTab("https://github.com/bondzai")}
             />
             <CustomModalButton
                 buttonText="Buy me a coffee"
@@ -54,7 +50,7 @@ const SocialMediaIcons = () => {
                     <Popover placement="left" title={"Buy me a coffee."} content={donationIconContent} >
                         <SiBitcoin
                             className="icon-social"
-                            style={{ bottom: '50px', right: '40px' }}
+                            style={{ bottom: "50px", right: "40px" }}
                         />
                     </Popover>
                 }

@@ -1,5 +1,5 @@
 export const openInNewTab = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
 };
 
 export const convertSubTasksToTree = (subTasks) => {
@@ -11,11 +11,11 @@ export const convertSubTasksToTree = (subTasks) => {
             key,
         };
 
-        // Check if the key has a dot (.) to determine if it's a parent or child node
-        const dotIndex = key.indexOf('.');
+        // Check if the key has a dot (.) to determine if it"s a parent or child node
+        const dotIndex = key.indexOf(".");
 
         if (dotIndex !== -1) {
-            // It's a child node, find the parent key
+            // It"s a child node, find the parent key
             const parentKey = key.substring(0, dotIndex);
             const parentNode = treeData.find(node => node.key === parentKey);
 
@@ -25,7 +25,7 @@ export const convertSubTasksToTree = (subTasks) => {
 
             parentNode.children.push(treeNode);
         } else {
-            // It's a parent node
+            // It"s a parent node
             treeData.push(treeNode);
         }
     }

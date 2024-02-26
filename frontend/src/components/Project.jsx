@@ -1,13 +1,8 @@
 import React from "react";
-
 import { Empty } from "antd";
-
 import { useNavigate } from "react-router-dom";
-
 import { AiFillStar } from "react-icons/ai";
-
 import { getLampStatusStyle, getHighlightStatusStyle } from "./StatusStyles";
-
 import { openInNewTab } from "../utils/utils.js"
 
 const Project = ({ ...project }) => {
@@ -17,7 +12,7 @@ const Project = ({ ...project }) => {
     const highlightStatusStyle = getHighlightStatusStyle(project.is_highlight);
 
     return (
-        <div className="projectItem" style={{ position: 'relative' }}>
+        <div className="projectItem" style={{ position: "relative" }}>
             {project.is_highlight && (
                 <div className="highlightIcon" style={highlightStatusStyle}>
                     <AiFillStar size={30} />
@@ -27,9 +22,9 @@ const Project = ({ ...project }) => {
                 project.image_url ? (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />) : (<Empty className="bgImage" />)
             }
             <h1> {project.name} </h1>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div style={{ width: '70%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <button onClick={() => navigate('/project/' + project.id)}> Detail </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ width: "70%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <button onClick={() => navigate("/project/" + project.id)}> Detail </button>
                     <button onClick={() => openInNewTab(project.host_url)}> Demo </button>
                     <div style={lampStatusStyle} />
                 </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Space } from "antd";
 import SocialMediaIcons from "../components/SocialMediaIcons";
 import WakatimeStat from "../components/WakatimeStats";
-import Github from '../components/Github';
+import Github from "../components/Github";
 
 import "../styles/Stats.css";
 
@@ -12,7 +12,7 @@ const Stats = () => {
         <div className="stats-background">
 
             <div className="stats-content">
-                <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+                <Space direction="vertical" size="large" style={{ display: "flex" }}>
 
                     <div className="stats-waka">
                         <WakatimeStat />

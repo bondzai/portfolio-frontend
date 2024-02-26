@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { DataGrid } from '@mui/x-data-grid';
-import { Box, Pagination, Stack } from '@mui/material';
+import { DataGrid } from "@mui/x-data-grid";
+import { Box, Pagination, Stack } from "@mui/material";
 import Project from "../components/Project";
 import SpinComponent from "../components/SpinComponent";
-import CustomToolbar from '../components/CustomToolbar';
+import CustomToolbar from "../components/CustomToolbar";
 import { getProjectList, columns } from "../apis/rest/Project";
 import "../styles/Projects.css";
 
@@ -84,8 +84,8 @@ const Projects = () => {
                     ))}
                 </div>
             ) : (
-                <div style={{ width: '80%' }}>
-                    <Box sx={{ height: 'auto', width: '100%' }}>
+                <div style={{ width: "80%" }}>
+                    <Box sx={{ height: "auto", width: "100%" }}>
                         <DataGrid
                             rows={filteredProjects}
                             columns={columns}

@@ -34,7 +34,9 @@ func main() {
 	dataHandler := handlers.NewDataHandler()
 
 	app.Get("/:dataType", dataHandler.HandleData)
+
 	app.Post("/flush-cache", middlewares.CustomExtraAuth, dataHandler.FlushCache)
+
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("JB backend is running...")
 	})

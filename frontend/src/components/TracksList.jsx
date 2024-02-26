@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { useQuery } from '@apollo/client';
+import { useQuery } from "@apollo/client";
 
-import { GET_TRACKS_FOR_HOME } from '../apis/graphql/queries';
+import { GET_TRACKS_FOR_HOME } from "../apis/graphql/queries";
 
 function TracksList() {
     const { loading, error, data } = useQuery(GET_TRACKS_FOR_HOME);

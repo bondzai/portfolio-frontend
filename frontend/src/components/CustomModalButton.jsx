@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-
-import { Button, Modal } from 'antd';
+import React, { useState } from "react";
+import { Button, Modal } from "antd";
 
 const CustomModal = ({ ...props }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +22,7 @@ const CustomModal = ({ ...props }) => {
         }
         return (
             <Button type="primary" onClick={showModal} style={{ backgroundColor: props.buttonColor }}>
-                {props.buttonText || 'Open Modal'}
+                {props.buttonText || "Open Modal"}
             </Button>
         );
     };

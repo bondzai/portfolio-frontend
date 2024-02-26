@@ -1,10 +1,10 @@
 export const getHighlightStatusStyle = (isHighlight) => {
     if (isHighlight) {
         return {
-            position: 'absolute',
+            position: "absolute",
             top: 10,
             right: 10,
-            color: 'yellow',
+            color: "yellow",
         };
     }
     return {};
@@ -12,31 +12,31 @@ export const getHighlightStatusStyle = (isHighlight) => {
 
 export const getLampStatusStyle = (status) => {
     switch (status) {
-        case 'online':
+        case "online":
             return {
-                backgroundColor: 'green',
-                display: 'inline-block',
-                borderRadius: '50%',
-                width: '14px',
-                height: '14px',
-                animation: 'blinking 1s infinite',
+                backgroundColor: "green",
+                display: "inline-block",
+                borderRadius: "50%",
+                width: "14px",
+                height: "14px",
+                animation: "blinking 1s infinite",
             };
-        case 'offline':
+        case "offline":
             return {
-                backgroundColor: 'red',
-                display: 'inline-block',
-                borderRadius: '50%',
-                width: '14px',
-                height: '14px',
+                backgroundColor: "red",
+                display: "inline-block",
+                borderRadius: "50%",
+                width: "14px",
+                height: "14px",
             };
-        case 'inprogress':
+        case "inprogress":
             return {
-                backgroundColor: 'orange',
-                display: 'inline-block',
-                borderRadius: '50%',
-                width: '14px',
-                height: '14px',
-                animation: 'blinking 1s infinite',
+                backgroundColor: "orange",
+                display: "inline-block",
+                borderRadius: "50%",
+                width: "14px",
+                height: "14px",
+                animation: "blinking 1s infinite",
             };
         default:
             return {};
