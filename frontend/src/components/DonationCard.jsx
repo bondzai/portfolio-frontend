@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
-import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from 'antd';
-import { InfoCircleOutlined, UserOutlined, CopyOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from "antd";
+import { InfoCircleOutlined, UserOutlined, CopyOutlined } from "@ant-design/icons";
 
 const options = [
     {
         id: 1,
-        value: '0x1c45e086ed143aef83c1209521a2ff5369f39abc',
-        label: 'ETH',
-        iconUrl: 'https://www.vectorlogo.zone/logos/ethereum/ethereum-icon.svg',
+        value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
+        label: "ETH",
+        iconUrl: "https://www.vectorlogo.zone/logos/ethereum/ethereum-icon.svg",
     },
     {
         id: 2,
-        value: '0x1c45e086ed143aef83c1209521a2ff5369f39abc',
-        label: 'BTC',
-        iconUrl: 'https://www.vectorlogo.zone/logos/bitcoin/bitcoin-icon.svg',
+        value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
+        label: "BTC",
+        iconUrl: "https://www.vectorlogo.zone/logos/bitcoin/bitcoin-icon.svg",
     },
 ];
 
 const CopyToClipboardIcon = ({ value, onClick }) => (
     <Tooltip title="Copy to Clipboard">
-        <CopyOutlined onClick={() => onClick(value)} style={{ cursor: 'pointer' }} />
+        <CopyOutlined onClick={() => onClick(value)} style={{ cursor: "pointer" }} />
     </Tooltip>
 );
 
 const ExtraInfoIcon = () => (
     <Tooltip title="Extra information">
-        <InfoCircleOutlined style={{ color: 'rgba(0, 0, 0, 0.45)' }} />
+        <InfoCircleOutlined style={{ color: "rgba(0, 0, 0, 0.45)" }} />
     </Tooltip>
 );
 
 const AvatarWithTooltip = () => (
     <Tooltip title="Extra information">
-        <Avatar size={21} style={{ backgroundColor: '#3e497a' }} icon={<UserOutlined />} />
+        <Avatar size={21} style={{ backgroundColor: "#3e497a" }} icon={<UserOutlined />} />
     </Tooltip>
 );
 
@@ -42,23 +42,23 @@ const DonationCard = () => {
 
     const handleCopyToClipboard = (value) => {
         navigator.clipboard.writeText(value);
-        message.success('Copied to clipboard');
+        message.success("Copied to clipboard");
     };
 
     return (
-        <div style={{ width: '50%' }}>
+        <div style={{ width: "50%" }}>
 
             <Space direction="horizontal" align="center" >
                 <img
                     src={selectedOption?.iconUrl}
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: "100%", height: "auto" }}
                     alt=""
                 />
 
-                <QRCode value={selectedOption?.value || '-'} />
+                <QRCode value={selectedOption?.value || "-"} />
             </Space>
 
-            <Space.Compact direction='vertical' align='center'>
+            <Space.Compact direction="vertical" align="center">
                 <InputWithIcons
                     value={selectedOption?.value}
                     handleCopyToClipboard={handleCopyToClipboard}
@@ -84,7 +84,7 @@ const InputWithIcons = ({ value, handleCopyToClipboard }) => (
                 <ExtraInfoIcon />
             </>
         }
-        style={{ width: '400px' }}
+        style={{ width: "400px" }}
     />
 );
 
