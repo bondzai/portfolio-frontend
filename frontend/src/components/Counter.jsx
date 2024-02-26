@@ -5,7 +5,7 @@ const Counter = () => {
     const [initializing, setInitializing] = useState(true);
 
     useEffect(() => {
-        const startTime = new Date("2023-12-01T00:00:00");
+        const startTime = new Date("2022-10-23T00:00:00");
         const intervalId = setInterval(() => {
         const now = new Date();
         const diffInMs = now - startTime;
@@ -28,7 +28,7 @@ const Counter = () => {
 
     // Function for smooth animation
     const handleAnimation = () => {
-        const animationDuration = 2000; // Customize animation duration in milliseconds
+        const animationDuration = 1000; // Customize animation duration in milliseconds
         const steps = 20; // Number of animation steps
         const increment = age.seconds / steps;
 
@@ -46,19 +46,19 @@ const Counter = () => {
 
     useEffect(() => {
         if (!initializing) {
-            handleAnimation(); // Trigger animation after initialization
+            handleAnimation();
         }
-    }, [initializing]); // Re-run useEffect on changes to initializing state
+    }, [initializing]);
 
     return (
         <div className="Counter">
             {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
                 <p>
-                    This website is {age.days} days, {age.hours} hours, {age.minutes} minutes, and {age.seconds} seconds old.
+                    &copy; JB, Publised {age.days}d {age.hours}h {age.minutes}m {age.seconds}s ago.
                 </p>
             ) : (
                 <p>
-                    Calculating website age...
+                    &copy; JB, Calculating website age... 
                 </p>
             )}
         </div>
