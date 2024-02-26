@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
-import { Descriptions } from 'antd';
-
-import SpinComponent from './SpinComponent';
-
-import { getWakatimeStats } from '../apis/rest/WakatimeStats';
-
-import '../styles/WakatimeStats.css';
+import React, { useState, useEffect } from "react";
+import { Descriptions } from "antd";
+import SpinComponent from "./SpinComponent";
+import { getWakatimeStats } from "../apis/rest/WakatimeStats";
+import "../styles/WakatimeStats.css";
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
@@ -24,32 +20,32 @@ const WakatimeStats = () => {
     }
 
     return (
-        <div className='wakatime-stats'>
-            <div className='title-center'>
+        <div className="wakatime-stats">
+            <div className="title-center">
                 <h3>WakaTime Stats</h3>
             </div>
 
             <Descriptions bordered>
-                <Descriptions.Item label='Total development time since Jul 19 2022: '>
+                <Descriptions.Item label="Total development time since Jul 19 2022: ">
                     {stats.human_readable_total_including_other_language}
                 </Descriptions.Item>
             </Descriptions>
-            <Descriptions layout="vertical" bordered className='first-row-highlight'>
-                <Descriptions.Item label='Operating Systems'>
+            <Descriptions layout="vertical" bordered className="first-row-highlight">
+                <Descriptions.Item label="Operating Systems">
                     {stats.operating_systems.map(os => (
                         <p key={os.name}>
                             {os.name}: {os.text} ({os.percent}%)
                         </p>
                     ))}
                 </Descriptions.Item>
-                <Descriptions.Item label='IDEs'>
+                <Descriptions.Item label="IDEs">
                     {stats.editors.map(editor => (
                         <p key={editor.name}>
                             {editor.name}: {editor.text} ({editor.percent}%)
                         </p>
                     ))}
                 </Descriptions.Item>
-                <Descriptions.Item label='Top 3 Languages'>
+                <Descriptions.Item label="Top 3 Languages">
                     {stats.languages.slice(0, 3).map(language => (
                         <p key={language.name}>
                             {language.name}: {language.text} ({language.percent}%)
