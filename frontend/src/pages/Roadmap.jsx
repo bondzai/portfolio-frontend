@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Tabs } from 'antd';
-import RoadmapOneYear from '../components/RoadmapOneYear';
-import { getRoadmapList, years } from '../apis/rest/Roadmap';
-import '../styles/Roadmap.css';
+import React, { useState, useEffect } from "react";
+import { Card, Tabs } from "antd";
+import RoadmapOneYear from "../components/RoadmapOneYear";
+import { getRoadmapList, years } from "../apis/rest/Roadmap";
+import "../styles/Roadmap.css";
 
 const Roadmap = () => {
     const [roadmapList, setRoadmapList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedYear, setSelectedYear] = useState('2023');
+    const [selectedYear, setSelectedYear] = useState("2023");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,8 +23,8 @@ const Roadmap = () => {
     });
 
     return (
-        <div className='roadmap-background'>
-            <div className='roadmap-content'>
+        <div className="roadmap-background">
+            <div className="roadmap-content">
                 <Card bordered={false}>
                     <Tabs
                         defaultActiveKey={selectedYear}
