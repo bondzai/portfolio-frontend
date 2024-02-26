@@ -1,6 +1,7 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Counter from "../components/Counter";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
@@ -35,7 +36,10 @@ const Home = () => {
 
             <div className="footer">
                 <div>
-                    <p> &copy; JB, Running since October 23, 2022. </p>
+                    <p>
+                        &copy; JB, Running since October 23, 2022.
+                        <Counter />
+                    </p>
                 </div>
             </div>
         </div>
