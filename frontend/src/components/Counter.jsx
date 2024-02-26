@@ -46,19 +46,21 @@ const Counter = () => {
 
     useEffect(() => {
         if (!initializing) {
-        handleAnimation(); // Trigger animation after initialization
+            handleAnimation(); // Trigger animation after initialization
         }
     }, [initializing]); // Re-run useEffect on changes to initializing state
 
     return (
-        <div className="App">
-        {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
-            <p>
-            This website is {age.days} days, {age.hours} hours, {age.minutes} minutes, and {age.seconds} seconds old.
-            </p>
-        ) : (
-            <p>Calculating website age...</p>
-        )}
+        <div className="Counter">
+            {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
+                <p>
+                    This website is {age.days} days, {age.hours} hours, {age.minutes} minutes, and {age.seconds} seconds old.
+                </p>
+            ) : (
+                <p>
+                    Calculating website age...
+                </p>
+            )}
         </div>
     );
 }
