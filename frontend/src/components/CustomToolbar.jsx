@@ -1,10 +1,17 @@
-import React from 'react';
-
-import { FormControl, InputLabel, Select, MenuItem, TextField, ToggleButtonGroup, ToggleButton, InputAdornment, Toolbar } from '@mui/material';
+import React from "react";
+import { FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    TextField,
+    ToggleButtonGroup,
+    ToggleButton,
+    InputAdornment,
+    Toolbar } from "@mui/material";
 
 import { MdViewModule, MdList } from "react-icons/md";
 
-import { statusOptions } from '../apis/rest/Project';
+import { statusOptions } from "../apis/rest/Project";
 
 const CustomToolbar = ({
     selectedStatus,
@@ -15,7 +22,7 @@ const CustomToolbar = ({
     handleViewModeChange,
 }) => {
     return (
-        <Toolbar style={{ marginBottom: '20px' }}>
+        <Toolbar style={{ marginBottom: "20px" }}>
             <FormControl fullWidth>
                 <InputLabel>Fitler by status</InputLabel>
                 <Select
@@ -23,7 +30,7 @@ const CustomToolbar = ({
                     variant="outlined"
                     value={selectedStatus}
                     onChange={(event, value) => handleStatusChange(value)}
-                    sx={{ minWidth: '150px' }}
+                    sx={{ minWidth: "150px" }}
                 >
                     {statusOptions.map((option) => (
                         <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
@@ -36,7 +43,7 @@ const CustomToolbar = ({
                 variant="outlined"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                sx={{ minWidth: '330px' }}
+                sx={{ minWidth: "330px" }}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
