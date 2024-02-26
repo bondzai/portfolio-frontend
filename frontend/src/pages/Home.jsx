@@ -37,7 +37,6 @@ const Home = () => {
             <div className="footer">
                 <div>
                     <p>
-                        &copy; JB, Running since October 23, 2022.
                         <Counter />
                     </p>
                 </div>
