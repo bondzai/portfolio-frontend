@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { CustomSortEnum } from '../../../utils/choices.js';
+import axios from "axios";
+import { CustomSortEnum } from "../../../utils/choices.js";
 
 const customSortResponse = (customSort, response) => {
     if (customSort === CustomSortEnum.DESCENDING) {
@@ -13,7 +13,7 @@ const customSortResponse = (customSort, response) => {
 
 export const getList = async ({ ...Props }) => {
     if (!Props.urls || Props.urls.length === 0 || !Props.endpoint) {
-        throw new Error('Props.urls and Props.endpoint must be defined.');
+        throw new Error("Props.urls and Props.endpoint must be defined.");
     }
 
     const urls = Props.urls.map(url => url + Props.endpoint);
@@ -36,12 +36,12 @@ export const getList = async ({ ...Props }) => {
         }
     }
 
-    throw new Error('All backend services are unavailable.');
+    throw new Error("All backend services are unavailable.");
 };
 
 export const getSingleObject = async ({ ...Props }) => {
     if (!Props.urls || Props.urls.length === 0 || !Props.endpoint) {
-        throw new Error('Props.urls and Props.endpoint must be defined.');
+        throw new Error("Props.urls and Props.endpoint must be defined.");
     }
 
     const urls = Props.urls.map(url => url + Props.endpoint);
@@ -60,5 +60,5 @@ export const getSingleObject = async ({ ...Props }) => {
         }
     }
 
-    throw new Error('All backend services are unavailable.');
+    throw new Error("All backend services are unavailable.");
 };

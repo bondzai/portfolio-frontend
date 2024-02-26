@@ -1,6 +1,6 @@
-import { getList } from './common/logics.js'
-import { BACKEND_URLS } from './common/urls.js';
-import { CustomSortEnum } from '../../utils/choices.js';
+import { getList } from "./common/logics.js"
+import { BACKEND_URLS } from "./common/urls.js";
+import { CustomSortEnum } from "../../utils/choices.js";
 
 const getProjectList = () => getList({
     urls: BACKEND_URLS,
@@ -18,20 +18,20 @@ export const statusOptions = [
 ];
 
 export const columns = [
-    { field: 'id', headerName: 'id', width: 90 },
+    { field: "id", headerName: "id", width: 90 },
     {
-        field: 'name',
-        headerName: 'name',
+        field: "name",
+        headerName: "name",
         width: 250,
     },
     {
-        field: 'language',
-        headerName: 'language',
+        field: "language",
+        headerName: "language",
         width: 120,
     },
     {
-        field: 'status',
-        headerName: 'status',
+        field: "status",
+        headerName: "status",
         width: 120,
     },
 ];
