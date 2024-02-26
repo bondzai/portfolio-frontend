@@ -1,12 +1,8 @@
-import React from 'react';
-
-import InfiniteScroll from 'react-infinite-scroll-component';
-
-import { Avatar, Divider, List, Tree } from 'antd';
-
-import { DownOutlined } from '@ant-design/icons';
-
-import { convertSubTasksToTree } from '../utils/utils.js';
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { Avatar, Divider, List, Tree } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { convertSubTasksToTree } from "../utils/utils.js";
 
 const RoadmapCard = ({ data }) => {
     return (
@@ -14,10 +10,10 @@ const RoadmapCard = ({ data }) => {
             id="scrollableDiv"
             style={{
                 height: 550,
-                overflow: 'auto',
-                padding: '0 12px',
-                border: '1px solid rgba(140, 140, 140, 0.35)',
-                borderRadius: '5px'
+                overflow: "auto",
+                padding: "0 12px",
+                border: "1px solid rgba(140, 140, 140, 0.35)",
+                borderRadius: "5px",
             }}
         >
             <InfiniteScroll
@@ -27,7 +23,7 @@ const RoadmapCard = ({ data }) => {
                 scrollableTarget="scrollableDiv"
             >
                 <List
-                    size='large'
+                    size="large"
                     dataSource={data}
                     renderItem={(item) => (
                         <List.Item key={item._id}>

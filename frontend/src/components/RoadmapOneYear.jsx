@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Card, List, Statistic } from 'antd';
-
-import { RiFocus3Fill } from 'react-icons/ri';
+import React, { useState, useEffect } from "react";
+import { Card, List, Statistic } from "antd";
+import { RiFocus3Fill } from "react-icons/ri";
 import { FaListAlt } from "react-icons/fa"
 import { MdTipsAndUpdates, MdOutlineTask } from "react-icons/md";
-
-import CountUp from 'react-countup';
-
-import RoadmapCard from './RoadmapCard';
+import CountUp from "react-countup";
+import RoadmapCard from "./RoadmapCard";
 import SpinComponent from "./SpinComponent";
-
-import { columns } from '../apis/rest/Roadmap';
-
-import '../styles/Roadmap.css';
+import { columns } from "../apis/rest/Roadmap";
+import "../styles/Roadmap.css";
 
 const formatter = (value) => <CountUp end={value} separator="," />;
 
@@ -67,7 +62,7 @@ const RoadmapOneYear = ({ ...prop }) => {
                                 <Statistic
                                     title="Total"
                                     value={getFilteredRoadmapList(index).length}
-                                    valueStyle={{ fontSize: '15px' }}
+                                    valueStyle={{ fontSize: "15px" }}
                                     suffix="tasks"
                                     formatter={formatter}
                                 />
