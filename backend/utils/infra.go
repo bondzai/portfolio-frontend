@@ -8,14 +8,13 @@ import (
 )
 
 const (
-	devMode        = true       // Change this to true for development mode
-	devModeKey     = "DEV_MODE" // (Optional) Keep this for future flexibility
+	devMode        = true
+	devModeKey     = "DEV_MODE"
 	devModeDefault = false
 )
 
 func GetEnv(key, fallback string) string {
 	if devMode {
-		// Load .env file in development mode
 		if err := godotenv.Load(); err != nil {
 			log.Printf("Error loading .env file: %s\n", err)
 		}
@@ -30,6 +29,7 @@ func GetEnv(key, fallback string) string {
 
 func FailOnError(err error, msg string) {
 	if err != nil {
-		log.Panicf("%s: %s", msg, err)
+		log.Printf("Error: %s: %v\n", msg, err)
+		os.Exit(1)
 	}
 }
