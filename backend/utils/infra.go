@@ -8,9 +8,7 @@ import (
 )
 
 const (
-	devMode        = true
-	devModeKey     = "DEV_MODE"
-	devModeDefault = false
+	devMode = false
 )
 
 func GetEnv(key, fallback string) string {
