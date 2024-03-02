@@ -7,21 +7,24 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func GetEnv(key, fallback string) string {
-	value := os.Getenv(key)
+const (
+	devMode        = true       // Change this to true for development mode
+	devModeKey     = "DEV_MODE" // (Optional) Keep this for future flexibility
+	devModeDefault = false
+)
 
-	if value == "" {
-		if err := godotenv.Load(); err == nil {
-			value = os.Getenv(key)
-		} else {
+func GetEnv(key, fallback string) string {
+	if devMode {
+		// Load .env file in development mode
+		if err := godotenv.Load(); err != nil {
 			log.Printf("Error loading .env file: %s\n", err)
 		}
 	}
 
+	value := os.Getenv(key)
 	if value == "" {
 		return fallback
 	}
-
 	return value
 }
 
