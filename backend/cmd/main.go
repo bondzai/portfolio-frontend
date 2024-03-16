@@ -41,7 +41,7 @@ func main() {
 		return c.SendString("JB backend is running...")
 	})
 
-	port := utils.GetEnv("PORT", ":5000")
+	port := utils.GetEnv("PORT", ":10000")
 	log.Printf("Server is running on port %s", port)
 	app.Listen(port)
 }
