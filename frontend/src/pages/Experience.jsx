@@ -93,9 +93,9 @@ const Experience = () => {
                     title="Synergetech Co., Ltd., Nonthaburi, Thailand"
                     content={`Role: Automation System Engineer
                     Responsibilities:
-                        - Designed, developed, debugged, deployed & delivered industrial automation projects (especially automated batch control system).
-                        - Industrial automation & control system programming. (PLC, SCADA, MES & Database)
-                        - Implement analog signals, digital devices, I/O server & other 3rd party integrations by any protocol of choices.
+                        - Spearheaded the design, development, debugging, deployment, and delivery of industrial automation projects, with a specialization in automated batch control systems.
+                        - Proficient in industrial automation and control system programming, including PLC, SCADA, MES, and database integration.
+                        - Successfully implemented analog signals, digital devices, I/O servers, and various 3rd-party integrations utilizing preferred protocols.
                     `}
                 />
 
@@ -103,15 +103,15 @@ const Experience = () => {
                     date="Jan 2022 - Nov 2022 (10 months)"
                     icon={<FaBookOpenReader />}
                     iconStyle={{ background: "#3e497a", color: "#fff" }}
-                    title="Self-learning: Software Development"
-                    content={`Q2:
-                        - Traditional system programming practice. Laser focus on logics, data structures & algorithms.
-                        - Built blockchain's data monitoring mobile application using Google cloud environment(GoogleSheet, AppSheet, AppsScript).
+                    title="Self-Learning Journey: Software Development"
+                    content={`
+                    Q2:
+                        - Dedicated self-learning period focused on traditional system programming practices with an emphasis on logic, data structures, and algorithms.
+                        - Constructed a blockchain data monitoring mobile application leveraging Google cloud services such as GoogleSheet, AppSheet, and AppsScript.
                     Q3:
-                        - Start using Git & GitHub.
-                        - Start learning web development libraries & frameworks.(JavaScript stack - React.js & Express.js).
+                        - Initiated learning of Git and GitHub, alongside exploration of web development libraries and frameworks, particularly the JavaScript stack encompassing React.js and Express.js.
                     Q4:
-                        - Learn more about backend services (Python-Django, Go-Fiber), infrasturcture tools & software life cycle.
+                        - Delved into backend services with Python and Go, as well as infrastructure tools and software lifecycle practices.
                     `}
                 />
 
@@ -122,12 +122,8 @@ const Experience = () => {
                     title="Swift Dynamics Co., Ltd., Bangkok, Thailand"
                     content={`Role: Backend Developer
                     Responsibilities:
-                        - Fully focus on design & develop many types of backend services.
-                        - Co-work with peer engineers in coding & code reviews.
-                    Challenges:
-                        - Become a master backend engineer.
-                        - Deep understanding of software architectural patterns (especially microservices event-driven base architecture).
-                        - Learn more about DevSecOps & cloud engines.
+                    - Concentrating efforts on designing and developing a variety of backend services while collaborating with fellow engineers through coding and code reviews.
+                    - Tackling challenges to master backend engineering, deepen understanding of software architectural patterns (with a focus on microservices and event-driven architecture), and expand knowledge in DevSecOps and cloud technologies.
                     `}
                 />
 
