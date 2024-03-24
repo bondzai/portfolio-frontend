@@ -30,7 +30,7 @@ const SocialMediaIcons = () => {
             <AiFillLinkedin
                 className="icon-social"
                 style={{ bottom: "200px", right: "40px" }}
-                onClick={() => openInNewTab("https://www.linkedin.com/in/puritat-chamart-9998112b8/")}
+                onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb/")}
             />
             <SiGitbook
                 className="icon-social"
