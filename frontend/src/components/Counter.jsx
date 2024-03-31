@@ -18,18 +18,16 @@ const Counter = () => {
         setAge({ days, hours, minutes, seconds });
 
         if (initializing) {
-            // Smooth animation during initialization only
             setInitializing(false);
         }
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, [initializing]); // Re-run useEffect on changes to initializing state
+    }, [initializing]);
 
-    // Function for smooth animation
     const handleAnimation = () => {
-        const animationDuration = 1000; // Customize animation duration in milliseconds
-        const steps = 20; // Number of animation steps
+        const animationDuration = 1000;
+        const steps = 20;
         const increment = age.seconds / steps;
 
         let currentSeconds = 0;
@@ -40,7 +38,7 @@ const Counter = () => {
         }
 
         currentSeconds += increment;
-        setAge({ ...age, seconds: Math.floor(currentSeconds) }); // Update state smoothly
+        setAge({ ...age, seconds: Math.floor(currentSeconds) });
         }, animationDuration / steps);
     };
 
