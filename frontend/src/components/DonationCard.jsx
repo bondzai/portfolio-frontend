@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from "antd";
 import { InfoCircleOutlined, UserOutlined, CopyOutlined } from "@ant-design/icons";
-import options from "../apis/rest/Wallets";
+import { cryptoWallets } from "../apis/rest/Wallets";
 
 
 const CopyToClipboardIcon = ({ value, onClick }) => (
@@ -23,9 +23,9 @@ const AvatarWithTooltip = () => (
 );
 
 const DonationCard = () => {
-    const [selectedId, setSelectedId] = useState(options[0].id);
+    const [selectedId, setSelectedId] = useState(cryptoWallets[0].id);
 
-    const selectedOption = options.find(option => option.id === selectedId);
+    const selectedOption = cryptoWallets.find(option => option.id === selectedId);
 
     const handleCopyToClipboard = (value) => {
         navigator.clipboard.writeText(value);
@@ -52,7 +52,7 @@ const DonationCard = () => {
                 />
                 <Select
                     defaultValue={selectedId}
-                    options={options.map(option => ({ label: option.label, value: option.id }))}
+                    options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
                     onChange={id => setSelectedId(id)}
                 />
             </Space.Compact>

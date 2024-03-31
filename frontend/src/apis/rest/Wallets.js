@@ -1,5 +1,4 @@
-// export const crptoWallets = [
-export const options = [
+export const cryptoWallets = [
     {
         id: 1,
         value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
