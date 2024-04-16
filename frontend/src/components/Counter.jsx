@@ -56,7 +56,7 @@ const Counter = () => {
                 </p>
             ) : (
                 <p>
-                    &copy; JB, Calculating website age... 
+                    &copy; JB, Calculating website age...
                 </p>
             )}
         </div>
