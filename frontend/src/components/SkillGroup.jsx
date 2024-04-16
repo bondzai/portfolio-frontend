@@ -1,6 +1,23 @@
 import React from "react";
-import Skill from "./Skill";
+import { openInNewTab } from "../utils/utils.js";
+import { Tooltip } from "antd";
 import "../styles/Skills.css";
+
+const Skill = ({ ...skill }) => {
+    return (
+        <div className="skill">
+            <Tooltip title={skill.name}>
+                <button onClick={() => openInNewTab(skill.url)}>
+                    <img
+                        src={skill.image_url}
+                        alt={skill.name}
+                        style={{ width: "50px", height: "auto" }}
+                    />
+                </button>
+            </Tooltip>
+        </div>
+    );
+};
 
 const SkillGroup = ({ skills, topic }) => {
     const skillGroupByTopic = skills.filter((skill) => {
@@ -9,8 +26,8 @@ const SkillGroup = ({ skills, topic }) => {
 
     return (
         <div className="skill-list">
-            {skillGroupByTopic.map((item, index) => (
-                <Skill key={index} id={index} {...item} />
+            {skillGroupByTopic.map((element, index) => (
+                <Skill key={index} id={index} {...element} />
             ))}
         </div>
     );

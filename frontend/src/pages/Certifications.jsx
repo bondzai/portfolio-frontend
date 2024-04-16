@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Certification from "../components/Certification";
-import SpinComponent from "../components/SpinComponent";
+import SpinComponent from "../components/loaders/SpinComponent";
 import { getCertificationList } from "../apis/rest/Certification";
+import { globalDelay, itemsPerPage } from "../utils/constants";
 import "../styles/Certifications.css";
 
 const Certifications = () => {
-    const itemsPerPage = 6;
     const [certificationList, setCertificationList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getCertificationList();
-            setCertificationList(result);
-            setIsLoading(false);
+            setTimeout(async () => {
+                const result = await getCertificationList();
+                setCertificationList(result);
+                setIsLoading(false);
+            }, globalDelay);
         };
         fetchData();
     }, []);

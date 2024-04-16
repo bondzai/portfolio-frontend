@@ -2,9 +2,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Pagination, Stack } from "@mui/material";
 import Project from "../components/Project";
-import SpinComponent from "../components/SpinComponent";
+import SpinComponent from "../components/loaders/SpinComponent";
 import CustomToolbar from "../components/CustomToolbar";
 import { getProjectList, columns } from "../apis/rest/Project";
+import { globalDelay } from "../utils/constants";
 import "../styles/Projects.css";
 
 const Projects = () => {
@@ -16,9 +17,11 @@ const Projects = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getProjectList();
-            setProjectList(result);
-            setLoading(false);
+            setTimeout(async () => {
+                const result = await getProjectList();
+                setProjectList(result);
+                setLoading(false);
+            }, globalDelay);
         };
         fetchData();
     }, []);

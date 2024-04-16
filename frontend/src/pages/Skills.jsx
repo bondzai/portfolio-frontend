@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import { MdExpandMore } from "react-icons/md"
 import SkillGroup from "../components/SkillGroup";
-import SpinComponent from "../components/SpinComponent";
+import SpinComponent from "../components/loaders/SpinComponent";
 import ScrollButton from "../components/ScrollButon";
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
+import { globalDelay } from "../utils/constants";
 import "../styles/Home.css";
 
 const skillsData = [
@@ -13,7 +14,7 @@ const skillsData = [
     { topic: "backend", label: "Backend" },
     { topic: "database", label: "Databases" },
     { topic: "commu", label: "Communication technology & protocols" },
-    { topic: "tools", label: "Infrastructure Tools" },
+    { topic: "tools", label: "Infrastructure & tools" },
     { topic: "frontend", label: "Frontend" },
     { topic: "os", label: "OS" },
     { topic: "automation", label: "Industrial automation & IoT" },
@@ -43,9 +44,11 @@ const Skills = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getSkillList();
-            setSkills(result);
-            setIsLoading(false);
+            setTimeout(async () => {
+                const result = await getSkillList();
+                setSkills(result);
+                setIsLoading(false);
+            }, globalDelay);
         };
         fetchData();
     }, []);
