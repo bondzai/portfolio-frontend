@@ -14,7 +14,7 @@ const skillsData = [
     { topic: "backend", label: "Backend" },
     { topic: "database", label: "Databases" },
     { topic: "commu", label: "Communication technology & protocols" },
-    { topic: "tools", label: "Infrastructure Tools" },
+    { topic: "tools", label: "Infrastructure & tools" },
     { topic: "frontend", label: "Frontend" },
     { topic: "os", label: "OS" },
     { topic: "automation", label: "Industrial automation & IoT" },
