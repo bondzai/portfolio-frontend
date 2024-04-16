@@ -1,6 +1,6 @@
 import React from "react";
 import { Popover } from "antd";
-import { AiFillLinkedin, AiFillFacebook, AiOutlineMail, AiFillGithub } from "react-icons/ai"
+import { AiFillLinkedin, AiOutlineMail, AiFillGithub } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from "react-icons/si";
 import DonationCard from "../components/DonationCard";
 import CustomModalButton from "../components/CustomModalButton";
@@ -18,11 +18,6 @@ const SocialMediaIcons = () => {
     return (
         <div>
             <AiOutlineMail
-                className="icon-social"
-                style={{ bottom: "3000px", right: "40px" }}
-                onClick={() => openInNewTab("")}
-            />
-            <AiFillFacebook
                 className="icon-social"
                 style={{ bottom: "250px", right: "40px" }}
                 onClick={() => openInNewTab("")}
@@ -48,10 +43,7 @@ const SocialMediaIcons = () => {
                 content={<DonationCard />}
                 icon={
                     <Popover placement="left" title={"Buy me a coffee."} content={donationIconContent} >
-                        <SiBitcoin
-                            className="icon-social"
-                            style={{ bottom: "50px", right: "40px" }}
-                        />
+                        <SiBitcoin className="icon-social" style={{ bottom: "50px", right: "40px" }}/>
                     </Popover>
                 }
                 hideButtons
