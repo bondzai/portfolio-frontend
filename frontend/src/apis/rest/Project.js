@@ -18,7 +18,11 @@ export const statusOptions = [
 ];
 
 export const columns = [
-    { field: "id", headerName: "id", width: 90 },
+    {
+        field: "id",
+        headerName: "id",
+        width: 90
+    },
     {
         field: "name",
         headerName: "name",
