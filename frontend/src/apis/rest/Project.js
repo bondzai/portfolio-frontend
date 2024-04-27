@@ -16,26 +16,3 @@ export const statusOptions = [
     { value: "offline", label: "Offline" },
     { value: "inprogress", label: "In progress" }
 ];
-
-export const columns = [
-    {
-        field: "id",
-        headerName: "id",
-        width: 90
-    },
-    {
-        field: "name",
-        headerName: "name",
-        width: 250,
-    },
-    {
-        field: "language",
-        headerName: "language",
-        width: 120,
-    },
-    {
-        field: "status",
-        headerName: "status",
-        width: 120,
-    },
-];
