@@ -53,16 +53,24 @@ const Skills = () => {
         fetchData();
     }, []);
 
+    if (isLoading) {
+        return (
+            <div className="home">
+                <div className="skills">
+                    <SpinComponent />
+                </div>
+            </div>
+        );
+    }
+    
     return (
         <div className="home">
             <div className="skills">
-                {isLoading ? <SpinComponent /> : (
-                    <div className="list">
-                        {skillsData.map((topic) => (
-                            <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
-                        ))}
-                    </div>
-                )}
+                <div className="list">
+                    {skillsData.map((topic) => (
+                        <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
+                    ))}
+                </div>
             </div>
             <ScrollButton
                 showScrollButton={showScrollButton}
@@ -71,6 +79,8 @@ const Skills = () => {
             />
         </div>
     );
+    
+    
 };
 
 export default Skills;
