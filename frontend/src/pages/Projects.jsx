@@ -3,7 +3,7 @@ import { Pagination, Stack } from "@mui/material";
 import Project from "../components/Project";
 import SpinComponent from "../components/loaders/SpinComponent";
 import { getProjectList } from "../apis/rest/Project";
-import { globalDelay } from "../utils/constants";
+import { globalDelay, itemsPerPage } from "../utils/constants";
 import "../styles/Projects.css";
 
 const Projects = () => {
@@ -28,9 +28,7 @@ const Projects = () => {
         return projectList
     }, [isLoading, projectList]);
 
-    const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
-
     const totalPageCount = Math.ceil(filteredProjects.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleProjects = filteredProjects.slice(startIndex, startIndex + itemsPerPage);
