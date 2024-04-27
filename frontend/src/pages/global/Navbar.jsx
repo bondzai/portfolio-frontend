@@ -43,10 +43,10 @@ const Navbar = () => {
                     Labs
                 </Link>
                 <Link to="/certifications" onClick={handleLinkClick} className={activeLink === "certifications" ? "active" : ""}>
-                    Certifications
+                    Certs
                 </Link>
                 <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
-                    Contact & More
+                    More
                 </Link>
             </div>
         </div>
