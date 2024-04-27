@@ -30,17 +30,19 @@ const Certifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
 
+    if (isLoading) {
+        return (
+            <SpinComponent />
+        );
+    };
+
     return (
         <div className="certifications">
-            {isLoading ? (
-                <SpinComponent />
-            ) : (
-                <div className="certificationList">
-                    {visibleCertifications.map((certification, index) => (
-                        <Certification key={startIndex + index} id={startIndex + index} {...certification} />
-                    ))}
-                </div>
-            )}
+            <div className="certificationList">
+                {visibleCertifications.map((certification, index) => (
+                    <Certification key={startIndex + index} id={startIndex + index} {...certification} />
+                ))}
+            </div>
             <Stack spacing={2} justifyContent="center" mt={3}>
                 <Pagination
                     count={Math.ceil(certificationList.length / itemsPerPage)}
