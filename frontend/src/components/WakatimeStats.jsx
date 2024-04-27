@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Descriptions } from "antd";
-import SpinComponent from "./loaders/SpinComponent";
+import SpinLoader from "./loaders/SpinLoader";
 import { getWakatimeStats } from "../apis/rest/WakatimeStats";
 import { globalDelay } from "../utils/constants.js";
 import "../styles/WakatimeStats.css";
@@ -19,7 +19,7 @@ const WakatimeStats = () => {
     }, []);
 
     if (!stats) {
-        return <SpinComponent customColor="whitesmoke" customHeight="330px" />;
+        return <SpinLoader customColor="whitesmoke" customHeight="330px" />;
     }
 
     return (

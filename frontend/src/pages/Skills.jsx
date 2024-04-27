@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import { MdExpandMore } from "react-icons/md"
 import SkillGroup from "../components/SkillGroup";
-import SpinComponent from "../components/loaders/SpinComponent";
+import SpinLoader from "../components/loaders/SpinLoader";
 import ScrollButton from "../components/ScrollButon";
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
@@ -55,7 +55,7 @@ const Skills = () => {
 
     if (isLoading) {
         return (
-            <SpinComponent />
+            <SpinLoader />
         );
     }
     
