@@ -8,25 +8,25 @@ import "../styles/Projects.css";
 
 const Projects = () => {
     const [projectList, setProjectList] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             setTimeout(async () => {
                 const result = await getProjectList();
                 setProjectList(result);
-                setLoading(false);
+                setIsLoading(false);
             }, globalDelay);
         };
         fetchData();
     }, []);
 
     const filteredProjects = useMemo(() => {
-        if (loading) {
+        if (isLoading) {
             return [];
         }
         return projectList
-    }, [loading, projectList]);
+    }, [isLoading, projectList]);
 
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
@@ -39,26 +39,28 @@ const Projects = () => {
         setCurrentPage(newPage);
     };
 
+    if (isLoading) {
+        return (
+            <div className="spin-container">
+                <SpinComponent size="large" />
+            </div>
+        )
+    }
+
     return (
         <div className="projects">
-            {loading ? (
-                <div className="spin-container">
-                    <SpinComponent size="large" />
-                </div>
-            ) : (
-                <div className="projectList">
-                    {visibleProjects.map((project, index) => (
-                        <Project key={index} id={index} {...project} />
-                    ))}
-                </div>
-            )}
-                <Stack spacing={2} justifyContent="center" mt={3}>
-                    <Pagination
-                        count={totalPageCount}
-                        page={currentPage}
-                        onChange={handleChangePage}
-                    />
-                </Stack>
+            <div className="projectList">
+                {visibleProjects.map((project, index) => (
+                    <Project key={index} id={index} {...project} />
+                ))}
+            </div>
+            <Stack spacing={2} justifyContent="center" mt={3}>
+                <Pagination
+                    count={totalPageCount}
+                    page={currentPage}
+                    onChange={handleChangePage}
+                />
+            </Stack>
         </div>
     );
 
