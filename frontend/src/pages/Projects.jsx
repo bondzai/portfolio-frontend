@@ -3,15 +3,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Pagination, Stack } from "@mui/material";
 import Project from "../components/Project";
 import SpinComponent from "../components/loaders/SpinComponent";
-import CustomToolbar from "../components/CustomToolbar";
 import { getProjectList, columns } from "../apis/rest/Project";
 import { globalDelay } from "../utils/constants";
 import "../styles/Projects.css";
 
 const Projects = () => {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [selectedStatus, setSelectedStatus] = useState("");
-    const [viewMode, setViewMode] = useState("module");
     const [projectList, setProjectList] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -30,28 +26,8 @@ const Projects = () => {
         if (loading) {
             return [];
         }
-        return projectList.filter((project) => {
-            const nameMatch = project.name.toLowerCase().includes(searchTerm.toLowerCase());
-            const statusMatch = selectedStatus === "" || project.status === selectedStatus;
-            return nameMatch && statusMatch;
-        });
-    }, [loading, projectList, searchTerm, selectedStatus]);
-
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const handleStatusChange = (option) => {
-        setSelectedStatus(option.props.value);
-    };
-
-    const handleViewModeChange = (selectedOption) => {
-        if (selectedOption === "module") {
-            setViewMode("module");
-        } else if (selectedOption === "list") {
-            setViewMode("list");
-        }
-    };
+        return projectList
+    }, [loading, projectList]);
 
     const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
@@ -66,16 +42,6 @@ const Projects = () => {
 
     return (
         <div className="projects">
-            {loading ? null : (
-                <CustomToolbar
-                    selectedStatus={selectedStatus}
-                    handleStatusChange={handleStatusChange}
-                    searchTerm={searchTerm}
-                    handleSearchChange={handleSearchChange}
-                    viewMode={viewMode}
-                    handleViewModeChange={handleViewModeChange}
-                />
-            )}
             {loading ? (
                 <div className="spin-container">
                     <SpinComponent size="large" />
