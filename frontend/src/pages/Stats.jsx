@@ -7,7 +7,6 @@ import Counter from "../components/Counter";
 import "../styles/Stats.css";
 
 const Stats = () => {
-
     return (
         <div className="stats-background">
             <div className="stats-content">
