@@ -35,7 +35,7 @@ const Projects = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleProjects = filteredProjects.slice(startIndex, startIndex + itemsPerPage);
 
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (_, newPage) => {
         setCurrentPage(newPage);
     };
 
