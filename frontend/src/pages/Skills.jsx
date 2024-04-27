@@ -55,11 +55,7 @@ const Skills = () => {
 
     if (isLoading) {
         return (
-            <div className="home">
-                <div className="skills">
-                    <SpinComponent />
-                </div>
-            </div>
+            <SpinComponent />
         );
     }
     
