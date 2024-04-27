@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Spin } from "antd";
-import "../../styles/SpinComponent.css";
+import "./SpinLoader.css";
 
-const SpinComponent = ({ customColor, customHeight}) => {
+const SpinLoader = ({ customColor, customHeight}) => {
     const dynamicStyle = {
         "--custom-spin-color": customColor || "#1677ff",
         "--custom-spin-height": customHeight || "100vh",
@@ -16,8 +16,8 @@ const SpinComponent = ({ customColor, customHeight}) => {
     );
 };
 
-SpinComponent.propTypes = {
+SpinLoader.propTypes = {
     customColor: PropTypes.string,
 };
 
-export default SpinComponent;
+export default SpinLoader;
