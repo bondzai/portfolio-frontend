@@ -20,7 +20,9 @@ const WakatimeStats = () => {
 
     if (!stats) {
         return (
-            <SpinLoader customColor="whitesmoke" customHeight="330px" />
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100vh' }}>
+                <SpinLoader customColor="whitesmoke" customHeight="330px" />
+            </div>
         );
     };
 
