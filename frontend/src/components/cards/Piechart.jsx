@@ -4,6 +4,14 @@ import ReactEcharts from 'echarts-for-react';
 const PieChart = ({ data }) => {
     const tooltip = {
         trigger: 'item',
+        formatter: function (params) {
+            const item = data.find(item => item.name === params.name);
+            return (
+                `<strong> ${item.name} </strong> <br/>
+                percentage: ${item.value}% <br/> 
+                total time: (${item.text})`
+            );
+        },
     }
 
     const legend = {
