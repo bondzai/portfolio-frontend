@@ -2,7 +2,7 @@ import React from "react";
 import { Popover } from "antd";
 import { AiFillLinkedin, AiOutlineMail, AiFillGithub } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from "react-icons/si";
-import DonationCard from "../components/DonationCard";
+import DonationCard from "../components/cards/DonationCard";
 import CustomModalButton from "../components/CustomModalButton";
 import { openInNewTab } from "../utils/utils.js"
 
