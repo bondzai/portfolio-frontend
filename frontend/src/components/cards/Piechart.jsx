@@ -34,9 +34,9 @@ const PieChart = ({ data }) => {
         legend: legend,
         series: [
             {
-                name: 'Data',
+                name: "",
                 type: 'pie',
-                radius: ['30%', '50%'],
+                radius: ['40%', '70%'],
                 avoidLabelOverlap: false,
                 itemStyle: {},
                 label: {

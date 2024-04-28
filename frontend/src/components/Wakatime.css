@@ -9,23 +9,6 @@
     justify-content: space-around;
 }
 
-.wakatime-stats .ant-descriptions-item-label>span {
-    font-weight: 900;
-}
-
-.wakatime-stats .ant-descriptions-item-label>span,
-.wakatime-stats .ant-descriptions-item-content {
-    color: whitesmoke;
-}
-
-.ant-descriptions-row .ant-descriptions-item-content {
-    vertical-align: top;
-}
-
-.first-row-highlight>div>table>tbody>tr.ant-descriptions-row:first-child {
-    background-color: #121d38;
-}
-
 .title-center {
     text-align: center;
     background-color: #1a2949;

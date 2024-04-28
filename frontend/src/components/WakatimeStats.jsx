@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SpinLoader from "./loaders/SpinLoader";
 import { getWakatimeStats } from "../apis/rest/WakatimeStats";
 import { globalDelay } from "../utils/constants.js";
-import "../styles/WakatimeStats.css";
+import "./Wakatime.css";
 import PieChart from "../components/cards/Piechart.jsx";
 
 const WakatimeStats = () => {
@@ -28,9 +28,9 @@ const WakatimeStats = () => {
 
     return (
         <div className="wakatime-stats">
-            <PieChart data={osData} />
-            <PieChart data={editorData} />
-            <PieChart data={languageData} />
+                <PieChart data={osData} />
+                <PieChart data={editorData} />
+                <PieChart data={languageData} />
         </div>
     );
 };
