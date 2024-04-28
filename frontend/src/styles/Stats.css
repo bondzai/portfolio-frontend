@@ -1,8 +1,8 @@
-.stats-background {
+.background {
     width: 100%;
     height: 100vh;
     background-color: var(--color-primary);
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .stats-content {

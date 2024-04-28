@@ -8,7 +8,7 @@ import "../styles/Stats.css";
 
 const Stats = () => {
     return (
-        <div className="stats-background">
+        <div className="background">
             <div className="stats-content">
                 <Space direction="vertical" size="large" style={{ display: "flex" }}>
                     <div className="stats-waka">

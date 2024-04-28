@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
 :root {
+    --text-color-primary: whitesmoke;
     --color-primary: #21325e;
     --color-secondary: #3e497a;
     --font-family-main: "Arial", sans-serif;
