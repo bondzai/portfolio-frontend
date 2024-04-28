@@ -101,4 +101,8 @@
     .projectToolbar {
         margin-top: 30px;
     }
+
+    .pagination-container {
+        display: none;
+    }
 }
