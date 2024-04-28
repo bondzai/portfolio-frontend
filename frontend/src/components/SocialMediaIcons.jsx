@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Popover } from "antd";
 import { AiFillLinkedin, AiOutlineMail, AiFillGithub } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from "react-icons/si";
@@ -14,27 +14,46 @@ const donationIconContent = (
 );
 
 const SocialMediaIcons = () => {
+    const maxWidth = 850
+    const [isMobile, setIsMobile] = useState(window.innerWidth < maxWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < maxWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    let rightPosition = "40px";
+    if (isMobile) {
+        rightPosition = "5px";
+    };
 
     return (
         <div>
             <AiOutlineMail
                 className="icon-social"
-                style={{ bottom: "250px", right: "40px" }}
+                style={{ bottom: "250px", right: rightPosition }}
                 onClick={() => openInNewTab("")}
             />
             <AiFillLinkedin
                 className="icon-social"
-                style={{ bottom: "200px", right: "40px" }}
+                style={{ bottom: "200px", right: rightPosition }}
                 onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb/")}
             />
             <SiGitbook
                 className="icon-social"
-                style={{ bottom: "150px", right: "40px" }}
+                style={{ bottom: "150px", right: rightPosition }}
                 onClick={() => openInNewTab("https://thejb.gitbook.io/core")}
             />
             <AiFillGithub
                 className="icon-social"
-                style={{ bottom: "100px", right: "40px" }}
+                style={{ bottom: "100px", right: rightPosition }}
                 onClick={() => openInNewTab("https://github.com/bondzai")}
             />
             <CustomModalButton
@@ -43,7 +62,7 @@ const SocialMediaIcons = () => {
                 content={<DonationCard />}
                 icon={
                     <Popover placement="left" title={"Buy me a coffee."} content={donationIconContent} >
-                        <SiBitcoin className="icon-social" style={{ bottom: "50px", right: "40px" }}/>
+                        <SiBitcoin className="icon-social" style={{ bottom: "50px", right: rightPosition }}/>
                     </Popover>
                 }
                 hideButtons
