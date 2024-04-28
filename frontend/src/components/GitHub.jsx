@@ -2,7 +2,7 @@ import React from "react";
 import GitHubCalendar from "react-github-calendar";
 import "../styles/Github.css";
 
-function Github() {
+function GitHub() {
     const classicTheme = {
         level0: "#2d333b",
         level1: "#0e4429",
@@ -33,4 +33,4 @@ function Github() {
     );
 }
 
-export default Github;
+export default GitHub;
