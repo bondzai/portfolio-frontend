@@ -30,7 +30,7 @@ const WakatimeStats = () => {
         <div className="wakatime-stats">
             <PieChart data={osData} />
             <PieChart data={editorData} />
-            <PieChart data={languageData} />/
+            <PieChart data={languageData} />
         </div>
     );
 };
