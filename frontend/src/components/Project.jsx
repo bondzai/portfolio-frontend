@@ -13,13 +13,17 @@ const Project = ({ ...project }) => {
 
     return (
         <div className="projectItem" style={{ position: "relative" }}>
-            {project.is_highlight && (
-                <div className="highlightIcon" style={highlightStatusStyle}>
-                    <AiFillStar size={30} />
-                </div>
-            )}
             {
-                project.image_url ? (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />) : (<Empty className="bgImage" />)
+                project.is_highlight && (
+                    <div className="highlightIcon" style={highlightStatusStyle}>
+                        <AiFillStar size={30} />
+                    </div>
+                )
+            }
+            {
+                project.image_url ? 
+                    (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />) : 
+                    (<Empty className="bgImage" />)
             }
             <h1> {project.name} </h1>
             <div style={{ display: "flex", justifyContent: "center" }}>
