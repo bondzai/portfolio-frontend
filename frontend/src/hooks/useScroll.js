@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 
 const useScrollEffect = () => {
     const [showScrollButton, setShowScrollButton] = useState(false);
+    const behavior = "smooth"
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: behavior });
     };
 
     const scrollToBottom = () => {
-        window.scrollTo({ top: document.body.offsetHeight, behavior: "smooth" });
+        window.scrollTo({ top: document.body.offsetHeight, behavior: behavior });
     };
 
     useEffect(() => {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Descriptions } from "antd";
-import SpinComponent from "./loaders/SpinComponent";
+import SpinLoader from "./loaders/SpinLoader";
 import { getWakatimeStats } from "../apis/rest/WakatimeStats";
 import { globalDelay } from "../utils/constants.js";
-import "../styles/WakatimeStats.css";
+import "./Wakatime.css";
+import PieChart from "../components/cards/Piechart.jsx";
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
@@ -19,44 +19,22 @@ const WakatimeStats = () => {
     }, []);
 
     if (!stats) {
-        return <SpinComponent customColor="whitesmoke" customHeight="330px" />;
-    }
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100vh' }}>
+                <SpinLoader customColor="whitesmoke" customHeight="330px" />
+            </div>
+        );
+    };
+
+    const os = stats.operating_systems.map(item => ({ value: item.percent, name: item.name, text: item.text }));
+    const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
+    const language = stats.languages.map(item => ({ value: item.percent, name: item.name, text: item.text }));
 
     return (
         <div className="wakatime-stats">
-            <div className="title-center">
-                <h3>WakaTime Stats</h3>
-            </div>
-
-            <Descriptions bordered>
-                <Descriptions.Item label="Total development time since Jul 19 2022: ">
-                    {stats.human_readable_total_including_other_language}
-                </Descriptions.Item>
-            </Descriptions>
-            <Descriptions layout="vertical" bordered className="first-row-highlight">
-                <Descriptions.Item label="Operating Systems">
-                    {stats.operating_systems.map(os => (
-                        <p key={os.name}>
-                            {os.name}: {os.text} ({os.percent}%)
-                        </p>
-                    ))}
-                </Descriptions.Item>
-                <Descriptions.Item label="IDEs">
-                    {stats.editors.map(editor => (
-                        <p key={editor.name}>
-                            {editor.name}: {editor.text} ({editor.percent}%)
-                        </p>
-                    ))}
-                </Descriptions.Item>
-                <Descriptions.Item label="Languages">
-                    {stats.languages.slice(0, 5).map(language => (
-                        <p key={language.name}>
-                            {language.name}: {language.text} ({language.percent}%)
-                        </p>
-                    ))}
-                </Descriptions.Item>
-            </Descriptions>
-
+            <PieChart data={os} />
+            <PieChart data={editor} />
+            <PieChart data={language} />
         </div>
     );
 };

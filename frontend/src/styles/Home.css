@@ -13,25 +13,25 @@
     align-items: center;
     text-align: center;
     background-color: var(--color-primary);
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .about h2 {
     font-family: "Arial", sans-serif;
     font-size: 27px;
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .about h3 {
     font-family: "Arial", sans-serif;
     font-size: 20px;
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .about p {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .about img {
@@ -49,24 +49,8 @@
     font-size: 20px;
 }
 
-@media (max-height: 600px) {
-    .about h2 {
-        font-size: 30px;
-    }
-
-    .about .prompt {
-        margin-top: 10px;
-        font-size: 20px;
-        width: 80%;
-    }
-
-    .about img {
-        display: none;
-    }
-}
-
 .footer {
-    color: whitesmoke;
+    color: var(--text-color-primary);
     font-size: 14px;
     position: absolute;
     bottom: 0.5rem;
@@ -75,4 +59,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 650px) {
+    .about h2 {
+        font-size: 20px;
+    }
+
+    .about h3 {
+        font-size: 17px;
+    }
+
+    .about .prompt {
+        margin-top: 10px;
+        font-size: 14px;
+        width: 80%;
+    }
 }

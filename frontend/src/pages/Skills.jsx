@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
 import { MdExpandMore } from "react-icons/md"
 import SkillGroup from "../components/SkillGroup";
-import SpinComponent from "../components/loaders/SpinComponent";
+import SpinLoader from "../components/loaders/SpinLoader";
 import ScrollButton from "../components/ScrollButon";
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
@@ -10,13 +10,13 @@ import { globalDelay } from "../utils/constants";
 import "../styles/Home.css";
 
 const skillsData = [
-    { topic: "language", label: "Programming Languages" },
-    { topic: "backend", label: "Backend" },
-    { topic: "database", label: "Databases" },
-    { topic: "commu", label: "Communication technology & protocols" },
-    { topic: "tools", label: "Infrastructure & tools" },
-    { topic: "frontend", label: "Frontend" },
     { topic: "os", label: "OS" },
+    { topic: "language", label: "Programming Languages" },
+    { topic: "frontend", label: "Frontend" },
+    { topic: "backend", label: "Backend" },
+    { topic: "database", label: "Databases & Caches" },
+    { topic: "commu", label: "Communication Technology & protocols" },
+    { topic: "tools", label: "Infra & More" },
     { topic: "automation", label: "Industrial automation & IoT" },
 ];
 
@@ -53,16 +53,20 @@ const Skills = () => {
         fetchData();
     }, []);
 
+    if (isLoading) {
+        return (
+            <SpinLoader />
+        );
+    }
+    
     return (
         <div className="home">
             <div className="skills">
-                {isLoading ? <SpinComponent /> : (
-                    <div className="list">
-                        {skillsData.map((topic) => (
-                            <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
-                        ))}
-                    </div>
-                )}
+                <div className="list">
+                    {skillsData.map((topic) => (
+                        <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
+                    ))}
+                </div>
             </div>
             <ScrollButton
                 showScrollButton={showScrollButton}
@@ -71,6 +75,8 @@ const Skills = () => {
             />
         </div>
     );
+    
+    
 };
 
 export default Skills;
