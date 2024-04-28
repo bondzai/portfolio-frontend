@@ -10,12 +10,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 .stats-github {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 .footer {
@@ -25,4 +27,11 @@
     bottom: 0.5rem;
     left: 0;
     right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .stats-github {
+        flex-direction: row; /* Change the flex-direction for smaller screens */
+        flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+    }
 }
