@@ -9,17 +9,15 @@ import "../styles/Stats.css";
 const Stats = () => {
     return (
         <div className="background">
-            <div className="stats-content">
-                <Space direction="vertical" size="large" style={{ display: "flex" }}>
-                    <div className="stats-waka">
-                        <WakatimeStat />
-                    </div>
-                    <div className="stats-github">
-                        <GitHub />
-                    </div>
-                    <SocialMediaIcons />
-                </Space>
-            </div>
+            <Space direction="vertical" size="large" style={{ display: "flex" }}>
+                <div className="stats-waka">
+                    <WakatimeStat />
+                </div>
+                <div className="stats-github">
+                    <GitHub />
+                </div>
+                <SocialMediaIcons />
+            </Space>
             <div className="footer">
                 <div>
                     <Counter />
