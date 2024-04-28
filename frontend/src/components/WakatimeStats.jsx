@@ -19,8 +19,10 @@ const WakatimeStats = () => {
     }, []);
 
     if (!stats) {
-        return <SpinLoader customColor="whitesmoke" customHeight="330px" />;
-    }
+        return (
+            <SpinLoader customColor="whitesmoke" customHeight="330px" />
+        );
+    };
 
     const os = stats.operating_systems.map(item => ({ value: item.percent, name: item.name, text: item.text }));
     const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));

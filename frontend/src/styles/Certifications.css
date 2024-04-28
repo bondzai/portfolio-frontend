@@ -64,11 +64,6 @@
 
     .certificationList {
         grid-template-columns: 1fr;
-    }
-}
-
-@media only screen and (max-width: 1050px) {
-    .certificationList {
         width: 100%;
     }
 
