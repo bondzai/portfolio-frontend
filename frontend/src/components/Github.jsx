@@ -15,7 +15,7 @@ function Github() {
         <div className="github-calendar-background">
             <div className="github-calendar-container">
                 <div className="github-calendar-title-center">
-                    <h3>Github Calendar</h3>
+                    <h3> GitHub Contribution activity </h3>
                 </div>
                 <div className="github-calendar">
                     <GitHubCalendar
