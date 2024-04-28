@@ -16,8 +16,10 @@ const Home = () => {
                     className="profileImage"
                 />
                 <div className="prompt">
-                    <h2> Hi, I am James-Bond. </h2> <h3> Software Engineer </h3>
-                    <p> Clean, simple & high-quality solution <br /> always sparks joy in my blood. </p>
+                    <h2> Hi, I am James-Bond. </h2>
+                    <h3> Software Engineer </h3>
+                    <p> Clean, simple & high-quality solution <br /> always sparks joy in my blood. 
+                    </p>
                 </div>
                 <Typewriter
                     options={{
