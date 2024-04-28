@@ -44,7 +44,7 @@ const PieChart = ({ data }) => {
             {
                 name: "",
                 type: 'pie',
-                radius: ['40%', '70%'],
+                radius: ['40%', '60%'],
                 avoidLabelOverlap: false,
                 itemStyle: {},
                 label: {show: false},
@@ -55,7 +55,9 @@ const PieChart = ({ data }) => {
         ]
     };
 
-    return <ReactEcharts option={option} style={{ height: '400px', width: '100%' }} />;
+    return (
+        <ReactEcharts option={option} style={{ height: '400px', width: '100%' }} />
+    )
 };
 
 export default PieChart;
