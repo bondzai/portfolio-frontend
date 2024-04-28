@@ -1,6 +1,6 @@
 import React from "react";
 import GitHubCalendar from "react-github-calendar";
-import "../styles/Github.css";
+import "./GitHub.css";
 
 function GitHub() {
     const classicTheme = {
