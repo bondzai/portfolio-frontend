@@ -47,14 +47,9 @@ const PieChart = ({ data }) => {
                 radius: ['40%', '70%'],
                 avoidLabelOverlap: false,
                 itemStyle: {},
-                label: {
-                    show: false,
-                    position: 'center'
-                },
+                label: {show: false},
+                labelLine: {show: false},
                 emphasis: emphasis,
-                labelLine: {
-                    show: false
-                },
                 data: data,
             },
         ]
