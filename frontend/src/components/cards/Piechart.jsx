@@ -16,13 +16,13 @@ const PieChart = ({ data }) => {
 
     const legend = {
         top: '30%',
-        right: '20%',
+        right: 0,
         orient: 'vertical',
-        textStyle: {
-            color: 'white'
-        },
         itemHeight: 10,
         itemWidth: 10,
+        textStyle: {
+            color: 'white',
+        },
         formatter: function (name) {
             const item = data.find(item => item.name === name);
             return `${name}: ${item.value}%`;
@@ -42,7 +42,7 @@ const PieChart = ({ data }) => {
         legend: legend,
         series: [
             {
-                name: "",
+                name: '',
                 type: 'pie',
                 radius: ['40%', '60%'],
                 avoidLabelOverlap: false,
