@@ -10,13 +10,13 @@ import { globalDelay } from "../utils/constants";
 import "../styles/Home.css";
 
 const skillsData = [
-    { topic: "language", label: "Programming Languages" },
-    { topic: "backend", label: "Backend" },
-    { topic: "database", label: "Databases" },
-    { topic: "commu", label: "Communication technology & protocols" },
-    { topic: "tools", label: "Infrastructure & tools" },
-    { topic: "frontend", label: "Frontend" },
     { topic: "os", label: "OS" },
+    { topic: "language", label: "Programming Languages" },
+    { topic: "frontend", label: "Frontend" },
+    { topic: "backend", label: "Backend" },
+    { topic: "database", label: "Databases & Caches" },
+    { topic: "commu", label: "Communication Technology & protocols" },
+    { topic: "tools", label: "Infra & More" },
     { topic: "automation", label: "Industrial automation & IoT" },
 ];
 
