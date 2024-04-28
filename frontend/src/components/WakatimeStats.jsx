@@ -22,15 +22,15 @@ const WakatimeStats = () => {
         return <SpinLoader customColor="whitesmoke" customHeight="330px" />;
     }
 
-    const osData = stats.operating_systems.map(os => ({ value: os.percent, name: os.name }));
-    const editorData = stats.editors.map(editor => ({ value: editor.percent, name: editor.name }));
-    const languageData = stats.languages.slice(0, 5).map(language => ({ value: language.percent, name: language.name }));
+    const osData = stats.operating_systems.map(item => ({ value: item.percent, name: item.name, text: item.text }));
+    const editorData = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
+    const languageData = stats.languages.slice(0, 5).map(item => ({ value: item.percent, name: item.name, text: item.text }));
 
     return (
         <div className="wakatime-stats">
-                <PieChart data={osData} />
-                <PieChart data={editorData} />
-                <PieChart data={languageData} />
+            <PieChart data={osData} />
+            <PieChart data={editorData} />
+            <PieChart data={languageData} />/
         </div>
     );
 };
