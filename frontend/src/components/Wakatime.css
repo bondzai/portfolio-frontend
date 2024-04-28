@@ -3,7 +3,7 @@
     width: 100vh;
     height: auto;
     box-shadow: 0px 3px 15px rgba(58, 58, 58, 0.2);
-    background-color: #1a2949;
+    background-color: var(--color-deep);
     color: whitesmoke;
     display: flex;
     justify-content: space-around;
@@ -11,7 +11,7 @@
 
 .title-center {
     text-align: center;
-    background-color: #1a2949;
+    background-color: var(--color-deep);
     color: whitesmoke;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
