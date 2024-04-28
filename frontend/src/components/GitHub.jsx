@@ -28,6 +28,9 @@ function GitHub() {
                         showWeekdayLabels
                     />
                 </div>
+                <i style={{fontSize: '14px'}}>
+                    since Jul 19, 2022
+                </i>
             </div>
         </div>
     );

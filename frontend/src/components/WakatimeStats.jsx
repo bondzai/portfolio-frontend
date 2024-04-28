@@ -30,11 +30,33 @@ const WakatimeStats = () => {
     const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
     const language = stats.languages.map(item => ({ value: item.percent, name: item.name, text: item.text }));
 
+    console.log(stats)
+
     return (
         <div className="wakatime-stats">
-            <PieChart data={os} />
-            <PieChart data={editor} />
-            <PieChart data={language} />
+            <div 
+                style={{
+                    backgroundColor: "#1a2949",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "60px",
+                    borderRadius: "10px",
+                    margin: "10px,"
+                }}
+            >
+                <div>
+                    <h4>
+                        Total coding time: {stats.human_readable_total_including_other_language}
+                    </h4>
+                </div>
+            </div>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+                <PieChart data={os} />
+                <PieChart data={editor} />
+                <PieChart data={language} />
+            </div>
         </div>
     );
 };

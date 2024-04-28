@@ -15,18 +15,15 @@ const PieChart = ({ data }) => {
     }
 
     const legend = {
-        top: '30%',
-        right: 0,
-        orient: 'vertical',
-        itemHeight: 10,
-        itemWidth: 10,
-        textStyle: {
-            color: 'white',
-        },
         formatter: function (name) {
             const item = data.find(item => item.name === name);
             return `${name}: ${item.value}%`;
-        }
+        },
+        textStyle: { color: 'white' },
+        top: 'center',
+        orient: 'vertical',
+        itemHeight: 10,
+        itemWidth: 10,
     }
 
     const emphasis = {
@@ -44,9 +41,8 @@ const PieChart = ({ data }) => {
             {
                 name: '',
                 type: 'pie',
-                radius: ['40%', '60%'],
+                radius: ['55%', '70%'],
                 avoidLabelOverlap: false,
-                itemStyle: {},
                 label: {show: false},
                 labelLine: {show: false},
                 emphasis: emphasis,
@@ -56,7 +52,16 @@ const PieChart = ({ data }) => {
     };
 
     return (
-        <ReactEcharts option={option} style={{ height: '400px', width: '100%' }} />
+        <ReactEcharts
+            option={option}
+            style={{ 
+                height: '400px',
+                width: '100%',
+                backgroundColor: "#1a2949",
+                margin: "10px",
+                borderRadius: "10px",
+            }} 
+        />
     )
 };
 
