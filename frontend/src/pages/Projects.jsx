@@ -24,7 +24,6 @@ const Projects = () => {
         fetchData();
     }, []);
 
-    const totalPageCount = Math.ceil(projectList.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleProjects = projectList.slice(startIndex, startIndex + itemsPerPage);
 
@@ -55,25 +54,29 @@ const Projects = () => {
     return (
         <div className="projects">
             <div className="projectList">
-                {isMobile ? (
-                    projectList.map((project, index) => (
-                        <Project key={index} id={index} {...project} />
-                    ))
-                ) : (
-                    visibleProjects.map((project, index) => (
-                        <Project key={index} id={index} {...project} />
-                    ))
-                )}
+                {
+                    isMobile ? (
+                        projectList.map((project, index) => (
+                            <Project key={index} id={index} {...project} />
+                        ))
+                    ) : (
+                        visibleProjects.map((project, index) => (
+                            <Project key={index} id={index} {...project} />
+                        ))
+                    )
+                }
             </div>
-            {!isMobile && (
-                <Stack spacing={2} justifyContent="center" mt={3}>
-                    <Pagination
-                        count={totalPageCount}
-                        page={currentPage}
-                        onChange={handleChangePage}
-                    />
-                </Stack>
-            )}
+            {
+                !isMobile && (
+                    <Stack spacing={2} justifyContent="center" mt={3}>
+                        <Pagination
+                            count={Math.ceil(projectList.length / itemsPerPage)}
+                            page={currentPage}
+                            onChange={handleChangePage}
+                        />
+                    </Stack>
+                )
+            }
         </div>
     );
 };

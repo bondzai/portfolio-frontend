@@ -11,6 +11,8 @@ const Certifications = () => {
     const [certificationList, setCertificationList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
+    const maxWidth = 850
+    const [isMobile, setIsMobile] = useState(window.innerWidth < maxWidth);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +29,18 @@ const Certifications = () => {
         setCurrentPage(newPage);
     };
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < maxWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
 
@@ -39,17 +53,29 @@ const Certifications = () => {
     return (
         <div className="certifications">
             <div className="certificationList">
-                {visibleCertifications.map((certification, index) => (
-                    <Certification key={startIndex + index} id={startIndex + index} {...certification} />
-                ))}
+            {
+                isMobile ? (
+                    certificationList.map((certification, index) => (
+                        <Certification key={startIndex + index} id={startIndex + index} {...certification} />
+                    ))
+                ): (
+                    visibleCertifications.map((certification, index) => (
+                        <Certification key={startIndex + index} id={startIndex + index} {...certification} />
+                    ))
+                )
+            }
             </div>
-            <Stack spacing={2} justifyContent="center" mt={3}>
-                <Pagination
-                    count={Math.ceil(certificationList.length / itemsPerPage)}
-                    page={currentPage}
-                    onChange={handleChangePage}
-                />
-            </Stack>
+            {
+                !isMobile && (
+                    <Stack spacing={2} justifyContent="center" mt={3}>
+                        <Pagination
+                            count={Math.ceil(certificationList.length / itemsPerPage)}
+                            page={currentPage}
+                            onChange={handleChangePage}
+                        />
+                    </Stack>
+                )
+            }
         </div>
     );
 };
