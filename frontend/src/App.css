@@ -67,7 +67,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #21325e;
+    background: var(--color-primary);
 }
 
 @keyframes blinking {

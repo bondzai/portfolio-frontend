@@ -30,8 +30,6 @@ const WakatimeStats = () => {
     const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
     const language = stats.languages.map(item => ({ value: item.percent, name: item.name, text: item.text }));
 
-    console.log(stats)
-
     return (
         <div className="wakatime-stats">
             <div 
@@ -41,9 +39,8 @@ const WakatimeStats = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     width: "100%",
-                    height: "60px",
+                    height: "45px",
                     borderRadius: "10px",
-                    margin: "10px,"
                 }}
             >
                 <div>
@@ -52,10 +49,10 @@ const WakatimeStats = () => {
                     </h4>
                 </div>
             </div>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
-                <PieChart data={os} />
-                <PieChart data={editor} />
-                <PieChart data={language} />
+            <div style={{display: "flex", justifyContent: "space-between", marginTop: "20px"}}>
+                <PieChart data={os} title="OS"/>
+                <PieChart data={editor} title="IDE"/>
+                <PieChart data={language} title="Languages"/>
             </div>
         </div>
     );

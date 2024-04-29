@@ -3,8 +3,8 @@
     width: 100vh;
     height: auto;
     box-shadow: 0px 3px 15px rgba(58, 58, 58, 0.2);
-    background-color: #1a2949;
-    color: whitesmoke;
+    background-color: var(--color-deep);
+    color: var(--text-color-primary);
     padding-top: 0.8rem;
     padding-bottom: 1.5rem;
 }
@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 17px;
 }
 
 .github-calendar {
@@ -23,16 +22,17 @@
     height: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .github-calendar-title-center {
     text-align: center;
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .github-calendar-title-center h3 {
     margin: 0;
     padding-top: 5px;
     padding-bottom: 20px;
-    font-size: 17px;
+    font-size: 16px;
 }
