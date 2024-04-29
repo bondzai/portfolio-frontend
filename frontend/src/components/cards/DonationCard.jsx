@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from "antd";
 import { InfoCircleOutlined, UserOutlined, CopyOutlined } from "@ant-design/icons";
 import { cryptoWallets } from "../../apis/rest/Wallets";
+import "./DonationCard.css";
 
 
 const CopyToClipboardIcon = ({ value, onClick }) => (
@@ -22,46 +23,7 @@ const AvatarWithTooltip = () => (
     </Tooltip>
 );
 
-const DonationCard = () => {
-    const [selectedId, setSelectedId] = useState(cryptoWallets[0].id);
-
-    const selectedOption = cryptoWallets.find(option => option.id === selectedId);
-
-    const handleCopyToClipboard = (value) => {
-        navigator.clipboard.writeText(value);
-        message.success("Copied to clipboard");
-    };
-
-    return (
-        <div style={{ width: "50%" }}>
-
-            <Space direction="horizontal" align="center" >
-                <img
-                    src={selectedOption?.iconUrl}
-                    style={{ width: "100%", height: "auto" }}
-                    alt=""
-                />
-
-                <QRCode value={selectedOption?.value || "-"} />
-            </Space>
-
-            <Space.Compact direction="vertical" align="center">
-                <InputWithIcons
-                    value={selectedOption?.value}
-                    handleCopyToClipboard={handleCopyToClipboard}
-                />
-                <Select
-                    defaultValue={selectedId}
-                    options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
-                    onChange={id => setSelectedId(id)}
-                />
-            </Space.Compact>
-
-        </div>
-    );
-};
-
-const InputWithIcons = ({ value, handleCopyToClipboard }) => (
+const InputWithIcons = ({ value, icon, handleCopyToClipboard }) => (
     <Input
         value={value}
         prefix={<AvatarWithTooltip />}
@@ -74,5 +36,49 @@ const InputWithIcons = ({ value, handleCopyToClipboard }) => (
         style={{ width: "400px" }}
     />
 );
+
+const DonationCard = () => {
+    const [selectedId, setSelectedId] = useState(cryptoWallets[0].id);
+
+    const selectedOption = cryptoWallets.find(option => option.id === selectedId);
+
+    const handleCopyToClipboard = (value) => {
+        navigator.clipboard.writeText(value);
+        message.success("Copied to clipboard");
+    };
+
+    return (
+        <div className="donation-card-background">
+            <div className="donation-card-head">
+                <div style={{ marginLeft: "20px", marginRight: "130px" }}>
+                    <img
+                        src={selectedOption?.iconUrl}
+                        style={{ width: "80px", height: "80px" }}
+                        alt=""
+                    />
+                </div>
+                <div style={{ marginBottom: "20px" }}>
+                    <QRCode value={selectedOption?.value || "-"} />
+                </div>
+            </div>
+            <div className="donation-card-tail">
+                <div style={{ marginBottom: "10px" }}>
+                    <InputWithIcons
+                        value={selectedOption?.value}
+                        icon={selectedOption?.iconUrl}
+                        handleCopyToClipboard={handleCopyToClipboard}
+                    />
+                </div>
+                <div>
+                    <Select
+                        defaultValue={selectedId}
+                        options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
+                        onChange={id => setSelectedId(id)}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default DonationCard;

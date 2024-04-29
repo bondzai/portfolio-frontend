@@ -1,0 +1,17 @@
+.donation-card-background {
+    display: flex;
+    flex-direction: column;
+}
+
+.donation-card-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.donation-card-tail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
