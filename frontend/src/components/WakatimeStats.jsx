@@ -30,6 +30,8 @@ const WakatimeStats = () => {
     const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
     const language = stats.languages.map(item => ({ value: item.percent, name: item.name, text: item.text }));
 
+    console.log(stats)
+
     return (
         <div className="wakatime-stats">
             <div 
