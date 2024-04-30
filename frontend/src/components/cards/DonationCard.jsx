@@ -49,22 +49,18 @@ const DonationCard = () => {
     return (
         <div className="donation-card-background">
             <div className="donation-card-head">
-                <div style={{ marginLeft: "10px", marginRight: "60px" }}>
-                    <img
-                        src={selectedOption?.iconUrl}
-                        style={{ width: "80px", height: "80px" }}
-                        alt=""
-                    />
-                </div>
-                    <QRCode value={selectedOption?.value || "-"} />
+                <img
+                    src={selectedOption?.iconUrl}
+                    alt=""
+                />
+                <QRCode value={selectedOption?.value || "-"} />
             </div>
             <div className="donation-card-tail">
-                <div className="donation-card-address">
-                    <InputWithIcons
-                        value={selectedOption?.value}
-                        handleCopyToClipboard={handleCopyToClipboard}
-                    />
-                </div>
+                <InputWithIcons
+                    className="donation-card-address"
+                    value={selectedOption?.value}
+                    handleCopyToClipboard={handleCopyToClipboard}
+                />
                 <Select
                     className="donation-card-input"
                     defaultValue={selectedId}
