@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from "antd";
+import { Input, QRCode, Select, Tooltip, Avatar, message } from "antd";
 import { InfoCircleOutlined, UserOutlined, CopyOutlined } from "@ant-design/icons";
 import { cryptoWallets } from "../../apis/rest/Wallets";
 import "./DonationCard.css";
@@ -23,7 +23,7 @@ const AvatarWithTooltip = () => (
     </Tooltip>
 );
 
-const InputWithIcons = ({ value, icon, handleCopyToClipboard }) => (
+const InputWithIcons = ({ value, handleCopyToClipboard }) => (
     <Input
         value={value}
         prefix={<AvatarWithTooltip />}
@@ -65,7 +65,6 @@ const DonationCard = () => {
                 <div style={{ marginBottom: "10px" }}>
                     <InputWithIcons
                         value={selectedOption?.value}
-                        icon={selectedOption?.iconUrl}
                         handleCopyToClipboard={handleCopyToClipboard}
                     />
                 </div>
