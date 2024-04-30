@@ -56,9 +56,7 @@ const DonationCard = () => {
                         alt=""
                     />
                 </div>
-                <div style={{ marginBottom: "20px" }}>
                     <QRCode value={selectedOption?.value || "-"} />
-                </div>
             </div>
             <div className="donation-card-tail">
                 <div className="donation-card-address">
