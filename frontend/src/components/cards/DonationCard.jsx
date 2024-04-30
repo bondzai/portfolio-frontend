@@ -33,7 +33,6 @@ const InputWithIcons = ({ value, handleCopyToClipboard }) => (
                 <ExtraInfoIcon />
             </>
         }
-        style={{ width: "400px" }}
     />
 );
 
@@ -50,7 +49,7 @@ const DonationCard = () => {
     return (
         <div className="donation-card-background">
             <div className="donation-card-head">
-                <div style={{ marginLeft: "20px", marginRight: "130px" }}>
+                <div style={{ marginLeft: "10px", marginRight: "60px" }}>
                     <img
                         src={selectedOption?.iconUrl}
                         style={{ width: "80px", height: "80px" }}
@@ -62,19 +61,18 @@ const DonationCard = () => {
                 </div>
             </div>
             <div className="donation-card-tail">
-                <div style={{ marginBottom: "10px" }}>
+                <div style={{ marginBottom: "10px", width: "400px" }}>
                     <InputWithIcons
                         value={selectedOption?.value}
                         handleCopyToClipboard={handleCopyToClipboard}
                     />
                 </div>
-                <div>
-                    <Select
-                        defaultValue={selectedId}
-                        options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
-                        onChange={id => setSelectedId(id)}
-                    />
-                </div>
+                <Select
+                    defaultValue={selectedId}
+                    options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
+                    onChange={id => setSelectedId(id)}
+                    style={{width: "400px"}}
+                />
             </div>
         </div>
     );
