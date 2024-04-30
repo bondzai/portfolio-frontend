@@ -61,17 +61,17 @@ const DonationCard = () => {
                 </div>
             </div>
             <div className="donation-card-tail">
-                <div style={{ marginBottom: "10px", width: "400px" }}>
+                <div className="donation-card-address">
                     <InputWithIcons
                         value={selectedOption?.value}
                         handleCopyToClipboard={handleCopyToClipboard}
                     />
                 </div>
                 <Select
+                    className="donation-card-input"
                     defaultValue={selectedId}
                     options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
                     onChange={id => setSelectedId(id)}
-                    style={{width: "400px"}}
                 />
             </div>
         </div>

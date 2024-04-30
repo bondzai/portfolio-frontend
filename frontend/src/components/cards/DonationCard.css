@@ -16,3 +16,12 @@
     align-items: center;
     overflow: auto;
 }
+
+.donation-card-address {
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+.donation-card-input {
+    width: 400px;
+}
