@@ -9,13 +9,14 @@ const Sidebar = () => {
     const location = useLocation();
     const excludedPaths = ["/experience", "/skills"];
     const [activeUsersCount, setActiveUsersCount] = useState(0);
+    let ws;
 
     const shouldRenderSidebar = () => {
         return !excludedPaths.includes(location.pathname);
     };
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:10000/ws/");
+        ws = new WebSocket("ws://localhost:10000/ws/");
 
         ws.onopen = () => {
             console.log("WebSocket connected");
@@ -30,11 +31,17 @@ const Sidebar = () => {
             console.log("WebSocket disconnected");
         };
 
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
         return () => {
-            console.log("Component unmounted, closing WebSocket");
+            window.removeEventListener("beforeunload", handleBeforeUnload);
             ws.close();
         };
     }, []);
+
+    const handleBeforeUnload = () => {
+        ws.close();
+    };
 
     return (
         <div>
