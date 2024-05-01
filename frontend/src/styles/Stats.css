@@ -39,4 +39,8 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
+
+    .footer {
+        bottom: 2px;
+    }
 }

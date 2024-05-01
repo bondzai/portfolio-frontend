@@ -68,7 +68,7 @@ const PieChart = ({ data, title }) => {
                 height: '260px',
                 width: '100%',
                 backgroundColor: "#1a2949",
-                margin: "10px",
+                margin: "2px",
                 borderRadius: "10px",
             }} 
         />
