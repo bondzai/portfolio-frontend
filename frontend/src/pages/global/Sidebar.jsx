@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import SocialMediaIcons from "../../components/SocialMediaIcons";
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space } from 'antd';
 import "./Sidebar.css";
-
 
 const Sidebar = () => {
     const location = useLocation();
@@ -13,6 +12,25 @@ const Sidebar = () => {
     const shouldRenderSidebar = () => {
         return !excludedPaths.includes(location.pathname);
     };
+
+    useEffect(() => {
+        const ws = new WebSocket("ws://localhost:10000/ws");
+        ws.onopen = () => {
+            console.log("WebSocket connected");
+        };
+
+        ws.onmessage = (event) => {
+            console.log("Received message:", event.data);
+        };
+
+        ws.onclose = () => {
+            console.log("WebSocket disconnected");
+        };
+
+        return () => {
+            ws.close();
+        };
+    }, []);
 
     return (
         <div>
