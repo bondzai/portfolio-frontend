@@ -54,9 +54,9 @@ const Sidebar = () => {
 
             <div
                 className="icon-social"
-                style={{ bottom: "300px", right: "40px" }}
+                style={{ bottom: "50px", right: "40px" }}
             >
-                <Badge count={activeUsersCount}>
+                <Badge count={activeUsersCount} style={{ backgroundColor: "green" }}>
                     <Avatar shape="circle" icon={<UserOutlined />} />
                 </Badge>
             </div>
