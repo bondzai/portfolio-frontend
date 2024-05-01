@@ -116,7 +116,7 @@ const Experience = () => {
                 />
 
                 <TimelineElement
-                    date={`Nov 2022 - Present (${calculateAge("11/03/2022")})`}
+                    date={`Nov 2022 - Present (${calculateAge("10/31/2022")})`}
                     icon={<MdWork />}
                     iconStyle={{ background: "royalblue", color: "#fff" }}
                     title="Swift Dynamics Co., Ltd., Bangkok, Thailand"
