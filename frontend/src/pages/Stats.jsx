@@ -1,6 +1,5 @@
 import React from "react";
 import { Space } from "antd";
-import SocialMediaIcons from "../components/SocialMediaIcons";
 import WakatimeStat from "../components/WakatimeStats";
 import GitHub from "../components/GitHub";
 import Counter from "../components/Counter";
@@ -16,7 +15,6 @@ const Stats = () => {
                 <div className="stats-github">
                     <GitHub />
                 </div>
-                <SocialMediaIcons />
             </Space>
             <div className="footer">
                 <div>
