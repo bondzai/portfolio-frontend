@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SocialMediaIcons from "../../components/SocialMediaIcons";
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Badge, Space } from 'antd';
+import { Avatar, Badge, Space, Tooltip } from 'antd';
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -53,12 +53,24 @@ const Sidebar = () => {
             )}
 
             <div
-                className="icon-social"
-                style={{ bottom: "300px", right: "40px" }}
+                style={{
+                    position: 'fixed',
+                    padding: '10px 10px',
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '50%',
+                    cursor: 'pointer',
+                    opacity: 0.95,
+                    bottom: "50px",
+                    left: "20px",
+                }}
             >
-                <Badge count={activeUsersCount}>
-                    <Avatar shape="circle" icon={<UserOutlined />} />
-                </Badge>
+                <Tooltip title={`Active Users: ${activeUsersCount}`}>
+                    <Badge count={activeUsersCount} style={{ backgroundColor: "green" }}>
+                        <Avatar shape="circle" icon={<UserOutlined />} />
+                    </Badge>
+                </Tooltip>
             </div>
         </div>
     );
