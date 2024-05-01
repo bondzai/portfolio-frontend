@@ -31,12 +31,12 @@
 
 @media screen and (max-width: 768px) {
     .stats-waka {
-        flex-direction: row; /* Change the flex-direction for smaller screens */
-        flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .stats-github {
-        flex-direction: row; /* Change the flex-direction for smaller screens */
-        flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }

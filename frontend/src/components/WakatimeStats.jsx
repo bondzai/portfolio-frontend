@@ -16,7 +16,6 @@ const CardWithTab = ({tabList, contentList}) => {
         <>
             <Card
                 style={{width: '100%'}}
-                extra={<a href="#">More</a>}
                 tabList={tabList}
                 activeTabKey={activeTabKey}
                 onTabChange={onTab1Change}
@@ -30,6 +29,7 @@ const CardWithTab = ({tabList, contentList}) => {
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const maxWidth = 850;
 
     useEffect(() => {
         const handleResize = () => {
@@ -93,7 +93,7 @@ const WakatimeStats = () => {
                     Total coding time: {stats.human_readable_total_including_other_language}
                 </h4>
             </div>
-            {windowWidth < 850 ? (
+            {windowWidth < maxWidth ? (
                 <div className="wakatime-stats-tab-chart">
                     <CardWithTab tabList={tabList} contentList={contentList} />
                 </div>
