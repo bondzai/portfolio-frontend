@@ -29,6 +29,19 @@ const CardWithTab = ({tabList, contentList}) => {
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -80,14 +93,17 @@ const WakatimeStats = () => {
                     Total coding time: {stats.human_readable_total_including_other_language}
                 </h4>
             </div>
-            <div className="wakatime-stats-full-chart">
-                <PieChart data={os} title="OS"/>
-                <PieChart data={editor} title="IDE"/>
-                <PieChart data={language} title="Languages"/>
-            </div>
-            <div className="wakatime-stats-tab-chart">
-                <CardWithTab tabList={tabList} contentList={contentList}/>
-            </div>
+            {windowWidth < 850 ? (
+                <div className="wakatime-stats-tab-chart">
+                    <CardWithTab tabList={tabList} contentList={contentList} />
+                </div>
+            ) : (
+                <div className="wakatime-stats-full-chart">
+                    <PieChart data={os} title="OS" />
+                    <PieChart data={editor} title="IDE" />
+                    <PieChart data={language} title="Languages" />
+                </div>
+            )}
         </div>
     );
 };
