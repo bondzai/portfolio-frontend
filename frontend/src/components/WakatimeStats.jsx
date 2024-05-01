@@ -34,22 +34,10 @@ const WakatimeStats = () => {
 
     return (
         <div className="wakatime-stats">
-            <div 
-                style={{
-                    backgroundColor: "#1a2949",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "45px",
-                    borderRadius: "10px",
-                }}
-            >
-                <div>
-                    <h4>
-                        Total coding time: {stats.human_readable_total_including_other_language}
-                    </h4>
-                </div>
+            <div className="wakatime-stats-title">
+                <h4> 
+                    Total coding time: {stats.human_readable_total_including_other_language}
+                </h4>
             </div>
             <div style={{display: "flex", justifyContent: "space-between", marginTop: "20px"}}>
                 <PieChart data={os} title="OS"/>

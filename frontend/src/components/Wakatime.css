@@ -6,16 +6,12 @@
     color: var(--text-color-primary);
 }
 
-.title-center {
-    text-align: center;
+.wakatime-stats-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
     background-color: var(--color-deep);
-    color: var(--text-color-primary);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.title-center h3 {
-    margin: 0;
-    padding: 20px 0;
-    font-size: 17px;
 }
