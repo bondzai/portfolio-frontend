@@ -9,6 +9,8 @@ const Sidebar = () => {
     const location = useLocation();
     const excludedPaths = ["/experience", "/skills"];
     const [activeUsersCount, setActiveUsersCount] = useState(0);
+
+    const wsUrl = import.meta.env.VITE_WS_URL;
     let ws;
 
     const shouldRenderSidebar = () => {
@@ -16,14 +18,13 @@ const Sidebar = () => {
     };
 
     useEffect(() => {
-        ws = new WebSocket("ws://localhost:10000/ws/");
+        ws = new WebSocket(wsUrl);
 
         ws.onopen = () => {
             console.log("WebSocket connected");
         };
 
         ws.onmessage = (event) => {
-            console.log("Received message:", event.data);
             setActiveUsersCount(parseInt(event.data));
         };
 
