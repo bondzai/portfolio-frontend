@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SocialMediaIcons from "../../components/SocialMediaIcons";
 import { UserOutlined } from '@ant-design/icons';
@@ -8,6 +8,7 @@ import "./Sidebar.css";
 const Sidebar = () => {
     const location = useLocation();
     const excludedPaths = ["/experience", "/skills"];
+    const [activeUsersCount, setActiveUsersCount] = useState(0);
 
     const shouldRenderSidebar = () => {
         return !excludedPaths.includes(location.pathname);
@@ -21,6 +22,7 @@ const Sidebar = () => {
 
         ws.onmessage = (event) => {
             console.log("Received message:", event.data);
+            setActiveUsersCount(parseInt(event.data));
         };
 
         ws.onclose = () => {
@@ -44,7 +46,7 @@ const Sidebar = () => {
                 className="icon-social"
                 style={{ bottom: "300px", right: "40px" }}
             >
-                <Badge count={1}>
+                <Badge count={activeUsersCount}>
                     <Avatar shape="circle" icon={<UserOutlined />} />
                 </Badge>
             </div>
