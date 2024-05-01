@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Input, QRCode, Space, Select, Tooltip, Avatar, message } from "antd";
+import { Input, QRCode, Select, Tooltip, Avatar, message } from "antd";
 import { InfoCircleOutlined, UserOutlined, CopyOutlined } from "@ant-design/icons";
 import { cryptoWallets } from "../../apis/rest/Wallets";
+import "./DonationCard.css";
 
 
 const CopyToClipboardIcon = ({ value, onClick }) => (
@@ -22,6 +23,19 @@ const AvatarWithTooltip = () => (
     </Tooltip>
 );
 
+const InputWithIcons = ({ value, handleCopyToClipboard }) => (
+    <Input
+        value={value}
+        prefix={<AvatarWithTooltip />}
+        suffix={
+            <>
+                <CopyToClipboardIcon value={value} onClick={handleCopyToClipboard} />
+                <ExtraInfoIcon />
+            </>
+        }
+    />
+);
+
 const DonationCard = () => {
     const [selectedId, setSelectedId] = useState(cryptoWallets[0].id);
 
@@ -33,46 +47,29 @@ const DonationCard = () => {
     };
 
     return (
-        <div style={{ width: "50%" }}>
-
-            <Space direction="horizontal" align="center" >
+        <div className="donation-card-background">
+            <div className="donation-card-head">
                 <img
                     src={selectedOption?.iconUrl}
-                    style={{ width: "100%", height: "auto" }}
                     alt=""
                 />
-
                 <QRCode value={selectedOption?.value || "-"} />
-            </Space>
-
-            <Space.Compact direction="vertical" align="center">
+            </div>
+            <div className="donation-card-tail">
                 <InputWithIcons
+                    className="donation-card-address"
                     value={selectedOption?.value}
                     handleCopyToClipboard={handleCopyToClipboard}
                 />
                 <Select
+                    className="donation-card-input"
                     defaultValue={selectedId}
                     options={cryptoWallets.map(option => ({ label: option.label, value: option.id }))}
                     onChange={id => setSelectedId(id)}
                 />
-            </Space.Compact>
-
+            </div>
         </div>
     );
 };
-
-const InputWithIcons = ({ value, handleCopyToClipboard }) => (
-    <Input
-        value={value}
-        prefix={<AvatarWithTooltip />}
-        suffix={
-            <>
-                <CopyToClipboardIcon value={value} onClick={handleCopyToClipboard} />
-                <ExtraInfoIcon />
-            </>
-        }
-        style={{ width: "400px" }}
-    />
-);
 
 export default DonationCard;
