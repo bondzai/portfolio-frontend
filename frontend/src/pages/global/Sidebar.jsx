@@ -1,27 +1,35 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Space } from "antd";
 import SocialMediaIcons from "../../components/SocialMediaIcons";
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Badge, Space } from 'antd';
 import "./Sidebar.css";
+
 
 const Sidebar = () => {
     const location = useLocation();
-
-    console.log(location)
-
-    const excludedPaths = ["/experience"];
+    const excludedPaths = ["/experience", "/skills"];
 
     const shouldRenderSidebar = () => {
         return !excludedPaths.includes(location.pathname);
     };
 
     return (
-        <div className="">
+        <div>
             {shouldRenderSidebar() && (
                 <Space direction="vertical" size="large" style={{ display: "flex" }}>
                     <SocialMediaIcons />
                 </Space>
             )}
+
+            <div
+                className="icon-social"
+                style={{ bottom: "300px", right: "40px" }}
+            >
+                <Badge count={1}>
+                    <Avatar shape="circle" icon={<UserOutlined />} />
+                </Badge>
+            </div>
         </div>
     );
 };
