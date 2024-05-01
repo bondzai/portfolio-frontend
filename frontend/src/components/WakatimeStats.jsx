@@ -4,6 +4,28 @@ import { getWakatimeStats } from "../apis/rest/WakatimeStats";
 import { globalDelay } from "../utils/constants.js";
 import "./Wakatime.css";
 import PieChart from "../components/cards/Piechart.jsx";
+import { Card } from 'antd';
+
+const CardWithTab = ({tabList, contentList}) => {
+    const [activeTabKey, setActiveTabKey] = useState(tabList[0].key || "");
+    const onTab1Change = (key) => {
+        setActiveTabKey(key);
+    };
+
+    return (
+        <>
+            <Card
+                style={{width: '100%'}}
+                extra={<a href="#">More</a>}
+                tabList={tabList}
+                activeTabKey={activeTabKey}
+                onTabChange={onTab1Change}
+            >
+                {contentList[activeTabKey]}
+            </Card>
+        </>
+    );
+};
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
@@ -30,7 +52,26 @@ const WakatimeStats = () => {
     const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
     const language = stats.languages.map(item => ({ value: item.percent, name: item.name, text: item.text }));
 
-    console.log(stats)
+    const tabList = [
+        {
+            key: 'os',
+            tab: 'OS',
+        },
+        {
+            key: 'editor',
+            tab: 'Editor',
+        },
+        {
+            key: 'languages',
+            tab: 'Languages',
+        },
+    ];
+    
+    const contentList = {
+        os: <PieChart data={os} title="OS"/>,
+        editor: <PieChart data={editor} title="IDE"/>,
+        languages: <PieChart data={language} title="Languages"/>,
+    };
 
     return (
         <div className="wakatime-stats">
@@ -43,6 +84,9 @@ const WakatimeStats = () => {
                 <PieChart data={os} title="OS"/>
                 <PieChart data={editor} title="IDE"/>
                 <PieChart data={language} title="Languages"/>
+            </div>
+            <div className="wakatime-stats-tab-chart">
+                <CardWithTab tabList={tabList} contentList={contentList}/>
             </div>
         </div>
     );
