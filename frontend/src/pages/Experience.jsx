@@ -9,7 +9,7 @@ import { Avatar} from "antd";
 import "react-vertical-timeline-component/style.min.css";
 import "../styles/Experience.css";
 
-const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc }) => {
+const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, avatarBorderColor  }) => {
     const formatKeyValue = (text) => {
         const parts = text.split(':');
         if (parts.length === 2) {
@@ -30,6 +30,11 @@ const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc }) =
         </React.Fragment>
     ));
 
+    const avatarStyle = {
+        backgroundColor: "transparent",
+        border: avatarBorderColor ? `1px solid ${avatarBorderColor}` : "none"
+    };
+
     return (
         <VerticalTimelineElement
             className="vertical-timeline-elemt--education"
@@ -39,7 +44,7 @@ const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc }) =
         >
 
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                {avatarSrc && <Avatar size={30} style={{ backgroundColor: "transparent" }} src={avatarSrc} />} &nbsp; 
+                {avatarSrc && <Avatar size={30} style={avatarStyle} src={avatarSrc} />}
                 <h3 className="vertical-timeline-element-title">{title}</h3>
             </div>
             <p>{formattedContent}</p>
