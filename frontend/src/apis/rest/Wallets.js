@@ -35,4 +35,10 @@ export const cryptoWallets = [
         label: "ETH - Arbitrum Network",
         iconUrl: "https://cryptologos.cc/logos/arbitrum-arb-logo.svg?v=031",
     },
+    {
+        id: 6,
+        value: "inj1r3z7pphdzsawlq7pyz2jrghl2d5l8x4ue99fh3",
+        label: "INJ - Injective Network",
+        iconUrl: "https://cryptologos.cc/logos/injective-inj-logo.svg?v=031",
+    },
 ];
