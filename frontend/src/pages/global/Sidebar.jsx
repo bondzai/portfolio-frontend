@@ -15,7 +15,8 @@ const Sidebar = () => {
     };
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:10000/ws");
+        const ws = new WebSocket("ws://localhost:10000/ws/");
+
         ws.onopen = () => {
             console.log("WebSocket connected");
         };
@@ -30,6 +31,7 @@ const Sidebar = () => {
         };
 
         return () => {
+            console.log("Component unmounted, closing WebSocket");
             ws.close();
         };
     }, []);
