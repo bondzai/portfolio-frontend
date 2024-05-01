@@ -15,3 +15,9 @@
     border-radius: 10px;
     background-color: var(--color-deep);
 }
+
+.wakatime-stats-full-chart {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

@@ -39,7 +39,7 @@ const WakatimeStats = () => {
                     Total coding time: {stats.human_readable_total_including_other_language}
                 </h4>
             </div>
-            <div style={{display: "flex", justifyContent: "space-between", marginTop: "20px"}}>
+            <div className="wakatime-stats-full-chart">
                 <PieChart data={os} title="OS"/>
                 <PieChart data={editor} title="IDE"/>
                 <PieChart data={language} title="Languages"/>
