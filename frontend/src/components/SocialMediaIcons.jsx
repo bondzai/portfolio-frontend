@@ -8,8 +8,8 @@ import { openInNewTab } from "../utils/utils.js"
 
 const donationIconContent = (
     <div>
-        <p>All project in this site is open-source and fully design by me.</p>
-        <p>Feel free to clone and contribute me some code or crypto!</p>
+        <p>All project in this site is open-source.</p>
+        <p>Feel free to clone & contribute me some code or crypto!</p>
     </div>
 );
 
