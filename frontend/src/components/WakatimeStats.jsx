@@ -4,27 +4,7 @@ import { getWakatimeStats } from "../apis/rest/WakatimeStats";
 import { globalDelay } from "../utils/constants.js";
 import "./Wakatime.css";
 import PieChart from "../components/cards/Piechart.jsx";
-import { Card } from 'antd';
-
-const CardWithTab = ({tabList, contentList}) => {
-    const [activeTabKey, setActiveTabKey] = useState(tabList[0].key || "");
-    const onTab1Change = (key) => {
-        setActiveTabKey(key);
-    };
-
-    return (
-        <>
-            <Card
-                style={{width: '100%'}}
-                tabList={tabList}
-                activeTabKey={activeTabKey}
-                onTabChange={onTab1Change}
-            >
-                {contentList[activeTabKey]}
-            </Card>
-        </>
-    );
-};
+import CardWithTab from "./cards/CardWithTab.jsx";
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
