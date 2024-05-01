@@ -31,3 +31,11 @@
         width: 100%;
     }
 }
+
+.wakatime-stats .ant-card {
+    background-color: var(--color-deep);
+}
+
+.wakatime-stats .ant-card .ant-tabs-tab-btn {
+    color: var(--text-color-primary);
+}
