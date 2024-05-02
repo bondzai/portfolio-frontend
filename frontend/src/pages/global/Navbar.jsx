@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Watchers from "../../components/badges/Watchers";
-import "../../styles/Navbar.css";
+import "./Navbar.css";
+
 
 const Navbar = () => {
     const [expandNavbar, setExpandNavbar] = useState(false);
