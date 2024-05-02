@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SocialMediaIcons from "../../components/SocialMediaIcons";
-import { UserOutlined } from '@ant-design/icons';
+import { EyeOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space, Tooltip } from 'antd';
 import "./Sidebar.css";
 
+
 const Sidebar = () => {
     const location = useLocation();
-    const excludedPaths = ["/experience", "/skills"];
+    const excludedPaths = ["/experience", "/skills", "/projects", "/certifications"];
     const [activeUsersCount, setActiveUsersCount] = useState(0);
 
     const wsUrl = import.meta.env.VITE_WS_URL;
@@ -44,6 +45,8 @@ const Sidebar = () => {
         ws.close();
     };
 
+    const isMobile = window.innerWidth <= 768;
+
     return (
         <div>
             {shouldRenderSidebar() && (
@@ -52,6 +55,7 @@ const Sidebar = () => {
                 </Space>
             )}
 
+        {!isMobile && (
             <div
                 style={{
                     position: 'fixed',
@@ -68,10 +72,11 @@ const Sidebar = () => {
             >
                 <Tooltip title={`Active Users: ${activeUsersCount}`}>
                     <Badge count={activeUsersCount} style={{ backgroundColor: "green" }}>
-                        <Avatar shape="circle" icon={<UserOutlined />} />
+                        <Avatar shape="circle" icon={<EyeOutlined />} />
                     </Badge>
                 </Tooltip>
             </div>
+        )}
         </div>
     );
 };
