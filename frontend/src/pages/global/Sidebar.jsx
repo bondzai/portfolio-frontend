@@ -1,47 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Space} from 'antd';
 import SocialMediaIcons from "../../components/SocialMediaIcons";
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Badge, Space, Tooltip } from 'antd';
-import "./Sidebar.css";
+
 
 const Sidebar = () => {
     const location = useLocation();
-    const excludedPaths = ["/experience", "/skills"];
-    const [activeUsersCount, setActiveUsersCount] = useState(0);
-
-    const wsUrl = import.meta.env.VITE_WS_URL;
-    let ws;
+    const excludedPaths = ["/experience", "/skills", "/projects", "/certifications"];
 
     const shouldRenderSidebar = () => {
         return !excludedPaths.includes(location.pathname);
-    };
-
-    useEffect(() => {
-        ws = new WebSocket(wsUrl);
-
-        ws.onopen = () => {
-            console.log("WebSocket connected");
-        };
-
-        ws.onmessage = (event) => {
-            setActiveUsersCount(parseInt(event.data));
-        };
-
-        ws.onclose = () => {
-            console.log("WebSocket disconnected");
-        };
-
-        window.addEventListener("beforeunload", handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
-            ws.close();
-        };
-    }, []);
-
-    const handleBeforeUnload = () => {
-        ws.close();
     };
 
     return (
@@ -52,26 +20,6 @@ const Sidebar = () => {
                 </Space>
             )}
 
-            <div
-                style={{
-                    position: 'fixed',
-                    padding: '10px 10px',
-                    backgroundColor: 'var(--color-secondary)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '50%',
-                    cursor: 'pointer',
-                    opacity: 0.95,
-                    bottom: "50px",
-                    left: "20px",
-                }}
-            >
-                <Tooltip title={`Active Users: ${activeUsersCount}`}>
-                    <Badge count={activeUsersCount} style={{ backgroundColor: "green" }}>
-                        <Avatar shape="circle" icon={<UserOutlined />} />
-                    </Badge>
-                </Tooltip>
-            </div>
         </div>
     );
 };

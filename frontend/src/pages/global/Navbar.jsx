@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import "../../styles/Navbar.css";
+import Watchers from "../../components/badges/Watchers";
+import "./Navbar.css";
+
 
 const Navbar = () => {
     const [expandNavbar, setExpandNavbar] = useState(false);
@@ -20,6 +22,37 @@ const Navbar = () => {
     useEffect(() => {
         setActiveLink(location.pathname.slice(1));
     }, [location]);
+
+    const [activeUsersCount, setActiveUsersCount] = useState(0);
+    const wsUrl = import.meta.env.VITE_WS_URL;
+    let ws;
+
+    useEffect(() => {
+        ws = new WebSocket(wsUrl);
+
+        ws.onopen = () => {
+            console.log("WebSocket connected");
+        };
+
+        ws.onmessage = (event) => {
+            setActiveUsersCount(parseInt(event.data));
+        };
+
+        ws.onclose = () => {
+            console.log("WebSocket disconnected");
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+            ws.close();
+        };
+    }, []);
+
+    const handleBeforeUnload = () => {
+        ws.close();
+    };
 
     return (
         <div className="navbar">
@@ -49,6 +82,7 @@ const Navbar = () => {
                     More
                 </Link>
             </div>
+            <Watchers activeUsersCount={activeUsersCount}/>
         </div>
     );
 };
