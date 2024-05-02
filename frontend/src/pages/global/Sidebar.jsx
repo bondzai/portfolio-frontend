@@ -11,12 +11,12 @@ const Sidebar = () => {
     const excludedPaths = ["/experience", "/skills", "/projects", "/certifications"];
     const [activeUsersCount, setActiveUsersCount] = useState(0);
 
-    const wsUrl = import.meta.env.VITE_WS_URL;
-    let ws;
-
     const shouldRenderSidebar = () => {
         return !excludedPaths.includes(location.pathname);
     };
+
+    const wsUrl = import.meta.env.VITE_WS_URL;
+    let ws;
 
     useEffect(() => {
         ws = new WebSocket(wsUrl);
