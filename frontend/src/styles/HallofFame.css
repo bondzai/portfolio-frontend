@@ -1,4 +1,4 @@
-.background {
+.hof-background {
     width: 100%;
     height: 100vh;
     background-color: var(--color-primary);
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.footer {
+.hof-footer {
     display: flex;
     font-size: 15px;
     position: absolute;
@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .footer {
+    .hof-footer {
         bottom: 2px;
     }
 }

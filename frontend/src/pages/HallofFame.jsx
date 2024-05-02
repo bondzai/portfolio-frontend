@@ -5,11 +5,11 @@ import "../styles/HallofFame.css";
 
 const HallofFame = () => {
     return (
-        <div className="background">
+        <div className="hof-background">
             <div>
                 <Cube />
             </div>
-            <div className="footer">
+            <div className="hof-footer">
                 <div>
                     <Counter />
                 </div>
