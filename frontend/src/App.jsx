@@ -9,6 +9,7 @@ import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Experience from "./pages/Experience";
 import Stats from "./pages/Stats";
+import HallofFame from "./pages/HallofFame";
 
 import DisplayModal from "./components/DisplayModal";
 
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/certification/:id" element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />
                     <Route path="/experience" element={<Experience />} />
                     <Route path="/stats" element={<Stats />} />
+                    <Route path="/hof" element={<HallofFame />} />
                 </Routes>
             </Router>
         </div>

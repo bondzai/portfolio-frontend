@@ -67,7 +67,7 @@ const Navbar = () => {
                     Home
                 </Link>
                 <Link to="/experience" onClick={handleLinkClick} className={activeLink === "experience" ? "active" : ""}>
-                    Experience
+                    Exp
                 </Link>
                 <Link to="/skills" onClick={handleLinkClick} className={activeLink === "skills" ? "active" : ""}>
                     Skills
@@ -79,7 +79,10 @@ const Navbar = () => {
                     Certs
                 </Link>
                 <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
-                    More
+                    Stats
+                </Link>
+                <Link to="/hof" onClick={handleLinkClick} className={activeLink === "hof" ? "active" : ""}>
+                    Hall of Fame
                 </Link>
             </div>
             <Watchers activeUsersCount={activeUsersCount}/>
