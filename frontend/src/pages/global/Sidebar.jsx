@@ -45,8 +45,6 @@ const Sidebar = () => {
         ws.close();
     };
 
-    const isMobile = window.innerWidth <= 768;
-
     return (
         <div>
             {shouldRenderSidebar() && (
@@ -55,7 +53,6 @@ const Sidebar = () => {
                 </Space>
             )}
 
-        {!isMobile && (
             <div
                 style={{
                     position: 'fixed',
@@ -76,7 +73,6 @@ const Sidebar = () => {
                     </Badge>
                 </Tooltip>
             </div>
-        )}
         </div>
     );
 };
