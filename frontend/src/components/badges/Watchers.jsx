@@ -26,7 +26,7 @@ const Watchers = ({ activeUsersCount }) => {
     return (
         <div style={style}>
             <Tooltip title={`Watching: ${activeUsersCount}`}>
-                <Badge count={activeUsersCount} style={{ backgroundColor: "var(--color-secondary)" }}>
+                <Badge size="small" count={activeUsersCount} style={{ backgroundColor: "green" }}>
                     <Avatar shape="circle" icon={<EyeOutlined />} />
                 </Badge>
             </Tooltip>
