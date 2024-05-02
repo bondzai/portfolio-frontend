@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Space} from 'antd';
 import SocialMediaIcons from "../../components/SocialMediaIcons";
-import { EyeOutlined } from '@ant-design/icons';
-import { Avatar, Badge, Space, Tooltip } from 'antd';
+import Watchers from "../../components/badges/Watchers";
 import "./Sidebar.css";
 
 
@@ -53,26 +53,7 @@ const Sidebar = () => {
                 </Space>
             )}
 
-            <div
-                style={{
-                    position: 'fixed',
-                    padding: '10px 10px',
-                    backgroundColor: 'var(--color-secondary)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '50%',
-                    cursor: 'pointer',
-                    opacity: 0.95,
-                    bottom: "50px",
-                    left: "20px",
-                }}
-            >
-                <Tooltip title={`Active Users: ${activeUsersCount}`}>
-                    <Badge count={activeUsersCount} style={{ backgroundColor: "green" }}>
-                        <Avatar shape="circle" icon={<EyeOutlined />} />
-                    </Badge>
-                </Tooltip>
-            </div>
+            <Watchers activeUsersCount={activeUsersCount}/>
         </div>
     );
 };
