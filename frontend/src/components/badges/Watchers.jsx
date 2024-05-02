@@ -14,8 +14,8 @@ const Watchers = ({ activeUsersCount }) => {
                 borderRadius: '50%',
                 cursor: 'pointer',
                 opacity: 0.95,
-                bottom: "50px",
-                left: "20px",
+                top: "8px",
+                right: "20px",
             }}
         >
             <Tooltip title={`Active Users: ${activeUsersCount}`}>
