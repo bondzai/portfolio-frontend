@@ -1,7 +1,6 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Footer from "./global/Footer";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
