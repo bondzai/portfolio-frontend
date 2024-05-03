@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { Space} from 'antd';
 import SocialMediaIcons from "../../components/SocialMediaIcons";
