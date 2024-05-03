@@ -49,18 +49,6 @@
     font-size: 20px;
 }
 
-.footer {
-    color: var(--text-color-primary);
-    font-size: 14px;
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 @media (max-width: 650px) {
     .about h2 {
         font-size: 20px;

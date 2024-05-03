@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./pages/global/Navbar";
 import Sidebar from "./pages/global/Sidebar";
+import Footer from "./pages/global/Footer";
 
 import Home from "./pages/Home";
 import Skills from "./pages/Skills";
@@ -24,6 +25,7 @@ function App() {
             <Router basename="/">
                 <Navbar />
                 <Sidebar />
+                <Footer />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/skills" element={<Skills />} />
