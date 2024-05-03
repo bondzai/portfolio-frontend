@@ -6,8 +6,8 @@ import "../styles/Stats.css";
 
 const Stats = () => {
     return (
-        <div className="background">
-            <Space direction="vertical" size="large" style={{ display: "flex" }}>
+        <div className="stat-background">
+            <Space direction="vertical" size="large" className="stat-container">
                 <div className="stats-waka">
                     <WakatimeStat />
                 </div>
