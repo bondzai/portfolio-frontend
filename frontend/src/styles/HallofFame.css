@@ -8,12 +8,6 @@
     align-items: center;
 }
 
-.hof-footer {
-    font-size: 15px;
-    position: absolute;
-    bottom: 0.5rem;
-}
-
 @media screen and (max-width: 768px) {
     .hof-footer {
         bottom: 2px;
