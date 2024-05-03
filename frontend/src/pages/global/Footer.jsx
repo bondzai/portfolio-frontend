@@ -14,11 +14,7 @@ const Footer = () => {
     return (
         <div className="footer">
             {isRender() && (
-                <div>
-                    <p>
-                        <Counter />
-                    </p>
-                </div>
+                <Counter />
             )}
         </div>
     );
