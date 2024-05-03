@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-
+import Counter from "../../components/Counter";
 
 const Footer = () => {
     const location = useLocation();

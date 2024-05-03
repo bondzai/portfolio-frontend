@@ -1,7 +1,7 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Counter from "../components/Counter";
+import Footer from "./global/Footer";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
@@ -35,13 +35,7 @@ const Home = () => {
                 />
             </div>
 
-            <div className="footer">
-                <div>
-                    <p>
-                        <Counter />
-                    </p>
-                </div>
-            </div>
+            <Footer />
         </div>
     )
 }
