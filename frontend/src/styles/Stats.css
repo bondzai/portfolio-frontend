@@ -20,15 +20,6 @@
     overflow-y: auto;
 }
 
-.footer {
-    display: flex;
-    font-size: 15px;
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0;
-    right: 0;
-}
-
 @media screen and (max-width: 768px) {
     .stats-waka {
         flex-direction: row;
