@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Space } from 'antd';
 import SocialMediaIcons from "../../components/SocialMediaIcons";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 
 const Content = () => (
     <Space direction="vertical" size="large" style={{ display: "flex" }}>
@@ -12,7 +12,7 @@ const Content = () => (
 
 const Sidebar = () => {
     const location = useLocation();
-    const { width } = useWindowDimensions();
+    const { width, height, screenSize } = useScreenDimensions();
 
     const paths = {
         mobileExcluded: ["/", "/experience", "/skills", "/projects", "/certifications", "/stats"],
@@ -29,7 +29,7 @@ const Sidebar = () => {
 
     return (
         <div>
-            {width <= 850 ? renderSidebar(paths.mobileExcluded) : renderSidebar(paths.excluded)}
+            {(screenSize === ScreenSize.XS || screenSize === ScreenSize.SM) ? renderSidebar(paths.mobileExcluded) : renderSidebar(paths.excluded)}
         </div>
     );
 };
