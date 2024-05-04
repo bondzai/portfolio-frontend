@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/
 import { MdExpandMore } from "react-icons/md"
 import SkillGroup from "../components/SkillGroup";
 import SpinLoader from "../components/loaders/SpinLoader";
-import ScrollButton from "../components/ScrollButon";
+import ScrollButton from "../components/buttons/ScrollButon";
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
 import { globalDelay } from "../utils/constants";
