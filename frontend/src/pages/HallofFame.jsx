@@ -17,28 +17,24 @@ const HeroCard = ({avatar, title, description}) => {
     )
 }
 
-function CarouselItem({props}) {
+const CarouselItem = ({props}) => {
     return (
         <HeroCard {...props}/>
     );
 }
 
-function AutoplayCarousel() {
+const AutoplayCarousel = () => {
     return (
         <div className="carousel-container">
             <div className="carousel-track">
                 {Object.keys(cardDetails).map((detailKey) => {
                     return (
-                        <CarouselItem
-                            props={cardDetails[detailKey]}
-                        ></CarouselItem>
+                        <CarouselItem props={cardDetails[detailKey]} />
                     );
                 })}
                 {Object.keys(cardDetails).map((detailKey) => {
                     return (
-                        <CarouselItem
-                            props={cardDetails[detailKey]}
-                        ></CarouselItem>
+                        <CarouselItem props={cardDetails[detailKey]} />
                     );
                 })}
             </div>
