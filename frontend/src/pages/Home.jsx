@@ -6,7 +6,6 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
 const Home = () => {
-
     return (
         <div className="home">
             <div className="about">

@@ -1,10 +1,12 @@
 import React from "react";
 import { EyeOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Tooltip } from 'antd';
-import { isMobile } from "../../utils/constants.js";
+import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
 
 
 const Watchers = ({ activeUsersCount }) => {
+    const { screenSize } = useScreenDimensions();
+
     const style = {
         position: 'fixed',
         padding: '3px 3px',
@@ -15,7 +17,7 @@ const Watchers = ({ activeUsersCount }) => {
         right: "20px",
     }
 
-    if (isMobile) {
+    if (screenSize === ScreenSize.XS) {
         style.right = "80px"
         style.top = "9px"
     }
