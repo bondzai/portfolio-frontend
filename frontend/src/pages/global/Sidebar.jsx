@@ -4,6 +4,11 @@ import { Space} from 'antd';
 import SocialMediaIcons from "../../components/SocialMediaIcons";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
+const Content = () => (
+    <Space direction="vertical" size="large" style={{ display: "flex" }}>
+        <SocialMediaIcons />
+    </Space>
+)
 
 const Sidebar = () => {
     const location = useLocation();
@@ -17,9 +22,7 @@ const Sidebar = () => {
     return (
         <div>
             {shouldRenderSidebar() && (
-                <Space direction="vertical" size="large" style={{ display: "flex" }}>
-                    <SocialMediaIcons />
-                </Space>
+                <Content />
             )}
         </div>
     );
