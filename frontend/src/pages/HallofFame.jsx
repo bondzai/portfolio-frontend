@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 const HeroCard = ({avatar, title, description}) => {
     return (
-        <Card style={{ width: 300 }}>
+        <Card style={{ width: "300px", height: "200px" }}>
             <Meta
                 avatar={<Avatar src={avatar} />}
                 title={title}
