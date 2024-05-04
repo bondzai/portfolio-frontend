@@ -2,26 +2,14 @@ import React, { useState, useEffect } from "react";
 import SpinLoader from "./loaders/SpinLoader";
 import { getWakatimeStats } from "../apis/rest/WakatimeStats";
 import { globalDelay } from "../utils/constants.js";
-import "./Wakatime.css";
 import PieChart from "../components/cards/Piechart.jsx";
 import CardWithTab from "./cards/CardWithTab.jsx";
+import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
+import "./Wakatime.css";
 
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const maxWidth = 850;
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const { screenSize } = useScreenDimensions();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -73,7 +61,7 @@ const WakatimeStats = () => {
                     Total coding time: {stats.human_readable_total_including_other_language}
                 </h4>
             </div>
-            {windowWidth < maxWidth ? (
+            {(screenSize === ScreenSize.XS) ? (
                 <div className="wakatime-stats-tab-chart">
                     <CardWithTab tabList={tabList} contentList={contentList} />
                 </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { profileImageURL } from "../utils/constants";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
@@ -9,7 +10,7 @@ const Home = () => {
         <div className="home">
             <div className="about">
                 <LazyLoadImage
-                    src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png"
+                    src={ profileImageURL }
                     alt="profile"
                     effect="blur"
                 />

@@ -18,6 +18,7 @@ const SpinLoader = ({ customColor, customHeight}) => {
 
 SpinLoader.propTypes = {
     customColor: PropTypes.string,
+    customHeight: PropTypes.string,
 };
 
 export default SpinLoader;

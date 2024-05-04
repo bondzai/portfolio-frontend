@@ -4,14 +4,13 @@ import Project from "../components/Project";
 import SpinLoader from "../components/loaders/SpinLoader";
 import { getProjectList } from "../apis/rest/Project";
 import { globalDelay, itemsPerPage } from "../utils/constants";
+import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
 import "../styles/Projects.css";
 
 const Projects = () => {
     const [projectList, setProjectList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const maxWidth = 850
-    const [isMobile, setIsMobile] = useState(window.innerWidth < maxWidth);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,17 +30,7 @@ const Projects = () => {
         setCurrentPage(newPage);
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < maxWidth);
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+    const { screenSize } = useScreenDimensions();
 
     if (isLoading) {
         return (
@@ -55,7 +44,7 @@ const Projects = () => {
         <div className="projects">
             <div className="projectList">
                 {
-                    isMobile ? (
+                    (screenSize === ScreenSize.XS) ? (
                         projectList.map((project, index) => (
                             <Project key={index} id={index} {...project} />
                         ))
@@ -67,7 +56,7 @@ const Projects = () => {
                 }
             </div>
             {
-                !isMobile && (
+                !(screenSize === ScreenSize.XS) && (
                     <Stack spacing={2} justifyContent="center" mt={3}>
                         <Pagination
                             count={Math.ceil(projectList.length / itemsPerPage)}

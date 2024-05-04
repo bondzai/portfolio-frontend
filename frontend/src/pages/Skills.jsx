@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/
 import { MdExpandMore } from "react-icons/md"
 import SkillGroup from "../components/SkillGroup";
 import SpinLoader from "../components/loaders/SpinLoader";
-import ScrollButton from "../components/ScrollButon";
+import ScrollButton from "../components/buttons/ScrollButton";
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
 import { globalDelay } from "../utils/constants";
@@ -29,7 +29,9 @@ const accordionStyle = {
 const SkillGroupWraper = ({ topic, skills }) => (
     <Accordion defaultExpanded style={accordionStyle}>
         <AccordionSummary expandIcon={<MdExpandMore />}>
-            <Typography variant="h6">{topic.label}</Typography>
+            <Typography variant="h6">
+                {topic.label}
+            </Typography>
         </AccordionSummary>
         <AccordionDetails>
             <SkillGroup topic={topic.topic} skills={skills} />

@@ -1,26 +1,35 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Space} from 'antd';
+import { Space } from 'antd';
 import SocialMediaIcons from "../../components/SocialMediaIcons";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 
+const Content = () => (
+    <Space direction="vertical" size="large" style={{ display: "flex" }}>
+        <SocialMediaIcons />
+    </Space>
+);
 
 const Sidebar = () => {
     const location = useLocation();
-    const excludedPaths = ["/experience", "/skills", "/projects", "/certifications"];
-    const { width, height } = useWindowDimensions();
+    const { width, height, screenSize } = useScreenDimensions();
 
-    const shouldRenderSidebar = () => {
-        return !excludedPaths.includes(location.pathname);
+    const paths = {
+        mobileExcluded: ["/", "/experience", "/skills", "/projects", "/certifications", "/stats"],
+        excluded: ["/experience", "/skills", "/projects", "/certifications"]
     };
+
+    const shouldRenderSidebar = (excludedPaths) => !excludedPaths.includes(location.pathname);
+
+    const renderSidebar = (excludedPaths) => (
+        <div>
+            {shouldRenderSidebar(excludedPaths) && <Content />}
+        </div>
+    );
 
     return (
         <div>
-            {shouldRenderSidebar() && (
-                <Space direction="vertical" size="large" style={{ display: "flex" }}>
-                    <SocialMediaIcons />
-                </Space>
-            )}
+            {(screenSize === ScreenSize.XS || screenSize === ScreenSize.SM) ? renderSidebar(paths.mobileExcluded) : renderSidebar(paths.excluded)}
         </div>
     );
 };

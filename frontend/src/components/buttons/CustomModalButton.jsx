@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 
-const CustomModal = ({ ...props }) => {
+const CustomModalButton = ({ ...props }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
@@ -35,14 +35,16 @@ const CustomModal = ({ ...props }) => {
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
-                footer={!props.hideButtons && [
-                    <Button key="back" onClick={handleCancel}>
-                        Cancel
-                    </Button>,
-                    <Button key="submit" type="primary" onClick={handleOk}>
-                        OK
-                    </Button>,
-                ]}
+                footer={
+                    !props.hideButtons && [
+                        <Button key="back" onClick={handleCancel}>
+                            Cancel
+                        </Button>,
+                        <Button key="submit" type="primary" onClick={handleOk}>
+                            OK
+                        </Button>,
+                    ]
+                }
                 {...props}
             >
                 {props.content}
@@ -51,4 +53,4 @@ const CustomModal = ({ ...props }) => {
     );
 };
 
-export default CustomModal;
+export default CustomModalButton;
