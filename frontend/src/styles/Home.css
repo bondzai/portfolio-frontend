@@ -16,20 +16,14 @@
     color: var(--text-color-primary);
 }
 
-.about h2 {
-    font-family: "Arial", sans-serif;
-    font-size: 27px;
-    color: var(--text-color-primary);
-}
-
 .about h3 {
-    font-family: "Arial", sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 20px;
     color: var(--text-color-primary);
 }
 
 .about p {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 17px;
     color: var(--text-color-primary);
 }
@@ -47,18 +41,6 @@
     margin-top: 10px;
     width: 55%;
     font-size: 20px;
-}
-
-.footer {
-    color: var(--text-color-primary);
-    font-size: 14px;
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 @media (max-width: 650px) {

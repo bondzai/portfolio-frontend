@@ -9,12 +9,16 @@
     rgba(20, 45, 255, 1) 85%
   );
   --shadow-color: rgba(8, 178, 245, 0.61);
+  --cube-size: 200px;
+  --cube-aura: 100px;
+  --cube-perspective: 800px;
+  --cube-transform: 100px;
 }
 
 .cube-container {
-  width: 200px;
-  height: 200px;
-  perspective: 800px;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  perspective: var(--cube-perspective);
   margin: 50px auto;
 }
 
@@ -28,51 +32,49 @@
 
 .face {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: var(--cube-size);
+  height: var(--cube-size);
   color: rgb(21, 153, 214);
-  font-size: 18px;
-  text-align: center;
-  line-height: 200px;
+  line-height: var(--cube-size);
   background: transparent;
   opacity: 0.9;
   border: 2px solid;
   border-image: var(--border-gradient);
-  box-shadow: 0 0 100px var(--shadow-color);
+  box-shadow: 0 0 var(--cube-aura) var(--shadow-color);
 }
 
 .front {
-  transform: translateZ(100px);
+  transform: translateZ(var(--cube-transform));
   background-color: var(--main-color);
   background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
 }
 
 .back {
-  transform: rotateY(180deg) translateZ(100px);
+  transform: rotateY(180deg) translateZ(var(--cube-transform));
   background-color: var(--main-color);
   background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
 }
 
 .right {
-  transform: rotateY(90deg) translateZ(100px);
+  transform: rotateY(90deg) translateZ(var(--cube-transform));
   background-color: var(--main-color);
   background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
 }
 
 .left {
-  transform: rotateY(-90deg) translateZ(100px);
+  transform: rotateY(-90deg) translateZ(var(--cube-transform));
   background-color: var(--main-color);
   background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
 }
 
 .top {
-  transform: rotateX(90deg) translateZ(100px);
+  transform: rotateX(90deg) translateZ(var(--cube-transform));
   background-color: var(--main-color);
   background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
 }
 
 .bottom {
-  transform: rotateX(-90deg) translateZ(100px);
+  transform: rotateX(-90deg) translateZ(var(--cube-transform));
   background-color: var(--main-color);
   background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
 }

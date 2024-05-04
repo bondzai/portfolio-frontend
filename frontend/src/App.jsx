@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./pages/global/Navbar";
 import Sidebar from "./pages/global/Sidebar";
+import Footer from "./pages/global/Footer";
 
 import Home from "./pages/Home";
 import Skills from "./pages/Skills";
@@ -9,6 +10,7 @@ import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Experience from "./pages/Experience";
 import Stats from "./pages/Stats";
+import HallofFame from "./pages/HallofFame";
 
 import DisplayModal from "./components/DisplayModal";
 
@@ -23,6 +25,7 @@ function App() {
             <Router basename="/">
                 <Navbar />
                 <Sidebar />
+                <Footer />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/skills" element={<Skills />} />
@@ -32,6 +35,7 @@ function App() {
                     <Route path="/certification/:id" element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />
                     <Route path="/experience" element={<Experience />} />
                     <Route path="/stats" element={<Stats />} />
+                    <Route path="/hof" element={<HallofFame />} />
                 </Routes>
             </Router>
         </div>

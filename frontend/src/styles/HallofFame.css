@@ -1,0 +1,15 @@
+.hof-background {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    color: var(--text-color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .hof-footer {
+        bottom: 2px;
+    }
+}

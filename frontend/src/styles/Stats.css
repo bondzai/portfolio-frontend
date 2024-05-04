@@ -1,8 +1,12 @@
-.background {
+.stat-background {
     width: 100%;
     height: 100vh;
     background-color: var(--color-primary);
     color: var(--text-color-primary);
+}
+
+.stat-container {
+    display: flex;
 }
 
 .stats-waka {
@@ -18,15 +22,6 @@
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-}
-
-.footer {
-    display: flex;
-    font-size: 15px;
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0;
-    right: 0;
 }
 
 @media screen and (max-width: 768px) {

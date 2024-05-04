@@ -1,7 +1,6 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Counter from "../components/Counter";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/Home.css";
 
@@ -13,11 +12,10 @@ const Home = () => {
                     src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png"
                     alt="profile"
                     effect="blur"
-                    className="profileImage"
                 />
                 <div className="prompt">
-                    <h2> Hi, I am James-Bond. </h2>
-                    <h3> Software Engineer </h3>
+                    <h3> Hi, I am James-Bond. </h3>
+                    <strong> Software Engineer </strong>
                     <p> Clean, simple & high-quality solution <br /> always sparks joy in my blood. 
                     </p>
                 </div>
@@ -33,14 +31,6 @@ const Home = () => {
                         escapeHtml: false,
                     }}
                 />
-            </div>
-
-            <div className="footer">
-                <div>
-                    <p>
-                        <Counter />
-                    </p>
-                </div>
             </div>
         </div>
     )

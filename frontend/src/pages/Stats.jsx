@@ -2,13 +2,12 @@ import React from "react";
 import { Space } from "antd";
 import WakatimeStat from "../components/WakatimeStats";
 import GitHub from "../components/GitHub";
-import Counter from "../components/Counter";
 import "../styles/Stats.css";
 
 const Stats = () => {
     return (
-        <div className="background">
-            <Space direction="vertical" size="large" style={{ display: "flex" }}>
+        <div className="stat-background">
+            <Space direction="vertical" size="large" className="stat-container">
                 <div className="stats-waka">
                     <WakatimeStat />
                 </div>
@@ -16,11 +15,6 @@ const Stats = () => {
                     <GitHub />
                 </div>
             </Space>
-            <div className="footer">
-                <div>
-                    <Counter />
-                </div>
-            </div>
         </div>
     );
 };

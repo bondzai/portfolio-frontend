@@ -7,13 +7,10 @@ import { isMobile } from "../../utils/constants.js";
 const Watchers = ({ activeUsersCount }) => {
     const style = {
         position: 'fixed',
-        padding: '5px 5px',
+        padding: '3px 3px',
         backgroundColor: 'var(--color-secondary)',
-        color: 'white',
         border: 'none',
         borderRadius: '50%',
-        cursor: 'pointer',
-        opacity: 0.95,
         top: "15px",
         right: "20px",
     }
