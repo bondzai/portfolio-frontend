@@ -16,7 +16,7 @@ const Sidebar = () => {
 
     const paths = {
         mobileExcluded: ["/", "/experience", "/skills", "/projects", "/certifications", "/stats"],
-        excluded: ["/experience", "/skills"]
+        excluded: ["/experience", "/skills", "/projects", "/certifications"]
     };
 
     const shouldRenderSidebar = (excludedPaths) => !excludedPaths.includes(location.pathname);
