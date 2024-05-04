@@ -12,6 +12,7 @@ const Certifications = () => {
     const [certificationList, setCertificationList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
+    const { screenSize } = useScreenDimensions();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,8 +28,6 @@ const Certifications = () => {
     const handleChangePage = (_, newPage) => {
         setCurrentPage(newPage);
     };
-
-    const { screenSize } = useScreenDimensions();
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
