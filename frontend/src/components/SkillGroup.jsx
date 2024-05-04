@@ -11,7 +11,6 @@ const Skill = ({ ...skill }) => {
                     <img
                         src={skill.image_url}
                         alt={skill.name}
-                        style={{ width: "50px", height: "auto" }}
                     />
                 </button>
             </Tooltip>

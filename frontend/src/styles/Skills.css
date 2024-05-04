@@ -51,6 +51,11 @@
     transform: scale(1.1);
 }
 
+.skill img {
+    width: 40px;
+    height: auto;
+}
+
 .skill-item {
     opacity: 0;
     transform: translate3d(20%);

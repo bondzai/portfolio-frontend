@@ -29,7 +29,9 @@ const accordionStyle = {
 const SkillGroupWraper = ({ topic, skills }) => (
     <Accordion defaultExpanded style={accordionStyle}>
         <AccordionSummary expandIcon={<MdExpandMore />}>
-            <Typography variant="h6">{topic.label}</Typography>
+            <Typography variant="h6">
+                {topic.label}
+            </Typography>
         </AccordionSummary>
         <AccordionDetails>
             <SkillGroup topic={topic.topic} skills={skills} />
