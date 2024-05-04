@@ -9,10 +9,6 @@
     rgba(20, 45, 255, 1) 85%
   );
   --shadow-color: rgba(8, 178, 245, 0.61);
-  --cube-size: 200px;
-  --cube-aura: 100px;
-  --cube-perspective: 800px;
-  --cube-transform: 100px;
 }
 
 .cube-container {
