@@ -12,7 +12,6 @@ const Home = () => {
                     src="https://res.cloudinary.com/dbdacfhye/image/upload/v1686461184/Portfolio/profile.png"
                     alt="profile"
                     effect="blur"
-                    className="profileImage"
                 />
                 <div className="prompt">
                     <h2> Hi, I am James-Bond. </h2>
