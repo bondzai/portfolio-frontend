@@ -12,16 +12,27 @@ const Content = () => (
 
 const Sidebar = () => {
     const location = useLocation();
-    const excludedPaths = ["/experience", "/skills", "/projects", "/certifications"];
-    const { width, height } = useWindowDimensions();
+    const mobileExcludedPaths = ["/", "/experience", "/skills", "/projects", "/certifications", "/stats"];
+    const excludedPaths = ["/experience", "/skills"];
+    const { width } = useWindowDimensions();
 
-    const shouldRenderSidebar = () => {
-        return !excludedPaths.includes(location.pathname);
+    const shouldRenderSidebar = (paths) => {
+        return !paths.includes(location.pathname);
     };
+
+    if (width <= 850) {
+        return (
+            <div>
+                {shouldRenderSidebar(mobileExcludedPaths) && (
+                    <Content />
+                )}
+            </div>
+        );
+    }
 
     return (
         <div>
-            {shouldRenderSidebar() && (
+            {shouldRenderSidebar(excludedPaths) && (
                 <Content />
             )}
         </div>
