@@ -20,9 +20,9 @@
     height: 23%;
     border-color: #4b5563;
     width: 65%;
-  }
+}
   
-  .carousel-card {
+.carousel-card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,15 +36,15 @@
     }
     border-radius: 20%;
     background: rgb(41, 40, 40);
-  }
+}
   
-  .carousel-card > img {
+.carousel-card > img {
     height: 80%;
     width: 80%;
     border-radius: 10%;
-  }
+}
   
-  .carousel-track {
+.carousel-track {
     display: flex;
     position: absolute;
     left: 0;
@@ -54,7 +54,7 @@
     gap: 16px;
     width: 200%;
     height: 100%;
-  }
+}
 
 .carousel-track {
     display: flex;
@@ -70,13 +70,13 @@
     &:hover {
         animation-play-state: paused;
     }
-  }
+}
 
-  @keyframes slide {
+@keyframes slide {
     0% {
       left: 0;
     }
     100% {
       left: -100%;
     }
-  }
+}
