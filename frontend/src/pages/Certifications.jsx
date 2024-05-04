@@ -5,14 +5,13 @@ import Certification from "../components/Certification";
 import SpinLoader from "../components/loaders/SpinLoader";
 import { getCertificationList } from "../apis/rest/Certification";
 import { globalDelay, itemsPerPage } from "../utils/constants";
+import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
 import "../styles/Certifications.css";
 
 const Certifications = () => {
     const [certificationList, setCertificationList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const maxWidth = 850
-    const [isMobile, setIsMobile] = useState(window.innerWidth < maxWidth);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,17 +28,7 @@ const Certifications = () => {
         setCurrentPage(newPage);
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < maxWidth);
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+    const { screenSize } = useScreenDimensions();
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
@@ -54,7 +43,7 @@ const Certifications = () => {
         <div className="certifications">
             <div className="certificationList">
             {
-                isMobile ? (
+                (screenSize === ScreenSize.XS) ? (
                     certificationList.map((certification, index) => (
                         <Certification key={startIndex + index} id={startIndex + index} {...certification} />
                     ))
@@ -66,7 +55,7 @@ const Certifications = () => {
             }
             </div>
             {
-                !isMobile && (
+                !(screenSize === ScreenSize.XS) && (
                     <Stack spacing={2} justifyContent="center" mt={3}>
                         <Pagination
                             count={Math.ceil(certificationList.length / itemsPerPage)}
