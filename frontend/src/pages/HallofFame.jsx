@@ -1,26 +1,9 @@
 import React from "react";
 import "../styles/HallofFame.css";
 import { Avatar, Card } from 'antd';
+import { cardDetails } from "../apis/rest/Heroes";
 
 const { Meta } = Card;
-
-const cardDetails = {
-    1: {
-        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=1",
-        title: "Text 1",
-        description: "This is the description 1"
-    },
-    2: {
-        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=1",
-        title: "Text 2",
-        description: "This is the description 2"
-    },
-    3: {
-        avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=1",
-        title: "Text 3",
-        description: "This is the description 3"
-    },
-}
 
 const HeroCard = ({avatar, title, description}) => {
     return (
@@ -35,8 +18,6 @@ const HeroCard = ({avatar, title, description}) => {
 }
 
 function CarouselItem({props}) {
-    console.log("debug")
-    console.log(props)
     return (
         <HeroCard {...props}/>
     );
