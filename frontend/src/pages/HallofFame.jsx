@@ -1,21 +1,7 @@
 import React from "react";
-import { Avatar, Card } from 'antd';
 import { cardDetails } from "../apis/rest/Heroes";
+import { HeroCard } from "../components/cards/HeroCard";
 import "./HallofFame.css";
-
-const { Meta } = Card;
-
-const HeroCard = ({avatar, title, description}) => {
-    return (
-        <Card style={{ width: "300px", height: "200px" }}>
-            <Meta
-                avatar={<Avatar src={avatar} />}
-                title={title}
-                description={description}
-            />
-        </Card>
-    )
-}
 
 const CarouselItem = ({props}) => {
     return (
