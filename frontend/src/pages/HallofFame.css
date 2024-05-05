@@ -41,7 +41,6 @@
     align-items: center;
     position: absolute;
     left: 0;
-    height: 80px;
     gap: 16px;
     width: 200%;
     height: 100%;
@@ -53,9 +52,21 @@
 
 @keyframes slide {
     0% {
-      left: 0;
+        left: 0;
+    }
+    20% {
+        left: -20%;
+    }
+    40% {
+        left: -40%;
+    }
+    60% {
+        left: -60%;
+    }
+    80% {
+        left: -80%;
     }
     100% {
-      left: -100%;
+        left: -100%;
     }
 }

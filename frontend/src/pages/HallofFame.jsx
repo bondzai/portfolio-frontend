@@ -3,6 +3,7 @@ import { cardDetails } from "../apis/rest/Heroes.js";
 import { HeroCard } from "../components/cards/HeroCard";
 import "./HallofFame.css";
 
+
 const CarouselItem = ({props}) => {
     return (
         <HeroCard {...props}/>
@@ -15,12 +16,7 @@ const AutoplayCarousel = () => {
             <div className="carousel-track">
                 {Object.keys(cardDetails).map((detailKey) => {
                     return (
-                        <CarouselItem props={cardDetails[detailKey]} />
-                    );
-                })}
-                {Object.keys(cardDetails).map((detailKey) => {
-                    return (
-                        <CarouselItem props={cardDetails[detailKey]} />
+                        <CarouselItem key={detailKey} props={cardDetails[detailKey]} />
                     );
                 })}
             </div>
