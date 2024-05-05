@@ -2,7 +2,9 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Space } from 'antd';
 import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
+import ScrollButton from "../../components/buttons/ScrollButton";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import useScroll from "../../hooks/useScroll";
 import "./Sidebar.css";
 
 
@@ -15,6 +17,7 @@ const Content = () => (
 const Sidebar = () => {
     const location = useLocation();
     const { width, height, screenSize } = useScreenDimensions();
+    const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
 
     const paths = {
         mobileExcluded: ["/", "/experience", "/skills", "/projects", "/certifications", "/stats"],
@@ -32,6 +35,11 @@ const Sidebar = () => {
     return (
         <div>
             {(screenSize === ScreenSize.XS || screenSize === ScreenSize.SM) ? renderSidebar(paths.mobileExcluded) : renderSidebar(paths.excluded)}
+            <ScrollButton
+                showScrollButton={showScrollButton}
+                scrollToTop={scrollToTop}
+                scrollToBottom={scrollToBottom}
+            />
         </div>
     );
 };

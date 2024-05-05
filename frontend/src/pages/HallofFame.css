@@ -7,12 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-    .hof-footer {
-        bottom: 2px;
-    }
+    text-align: center;
 }
 
 .carousel-container {
@@ -21,7 +16,9 @@
     height: 22%;
     width: 65%;
     color: transparent;
-    box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999; 
+    box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999;
+    cursor: pointer;
+    opacity: 0.95;
 }
   
 .carousel-card {
@@ -38,7 +35,6 @@
     align-items: center;
     position: absolute;
     left: 0;
-    height: 80px;
     gap: 16px;
     width: 200%;
     height: 100%;
@@ -50,9 +46,21 @@
 
 @keyframes slide {
     0% {
-      left: 0;
+        left: 0;
+    }
+    20% {
+        left: -20%;
+    }
+    40% {
+        left: -40%;
+    }
+    60% {
+        left: -60%;
+    }
+    80% {
+        left: -80%;
     }
     100% {
-      left: -100%;
+        left: -100%;
     }
 }

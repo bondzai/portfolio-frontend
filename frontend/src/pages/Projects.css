@@ -28,7 +28,7 @@
     place-items: center;
 }
 
-.projectItem {
+.project-item {
     border-radius: 10px;
     width: 300px;
     height: 300px;
@@ -37,15 +37,16 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.projectItem:hover {
+.project-item:hover {
     transform: scale(1.02);
     box-shadow: 0px 3px 15px rgba(33, 50, 94, 0.7);
     transition: 0.1s ease-in;
 }
 
-.projectItem .bgImage {
+.project-item .bg-image {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 100%;
@@ -55,15 +56,15 @@
     background-size: cover;
 }
 
-.projectItem h1 {
+.project-item h1 {
     font-size: 20px;
 }
 
-.projectItem small {
+.project-item small {
     font-size: 10px;
 }
 
-.projectItem button {
+.project-item button {
     padding: 5px 15px 10px;
     height: 30px;
     width: 85px;
@@ -75,10 +76,22 @@
     color: whitesmoke;
 }
 
-.projectItem button:hover {
+.project-item button:hover {
     filter: brightness(120%);
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
     transition: 0.1s ease-in;
+}
+
+.project-item-control-panel {
+    display: flex;
+    justify-content: center;
+}
+
+.project-item-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -93,7 +106,7 @@
         width: 100%;
     }
 
-    .projectItem {
+    .project-item {
         width: 300px;
         height: 300px;
     }

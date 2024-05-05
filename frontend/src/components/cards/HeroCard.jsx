@@ -1,20 +1,15 @@
 import React from "react";
 import { Avatar, Card, Tooltip } from 'antd';
 import { GithubFilled, LinkOutlined } from '@ant-design/icons';
-import { openInNewTab } from "../../utils/utils.js"
+import { openInNewTab } from "../../utils/utils.js";
+import "./HeroCard.css";
 
 const { Meta } = Card;
 
 export const HeroCard = ({avatar, title, repoUrl, url, description}) => {
     return (
         <Card 
-            style={{ 
-                width: "360px",
-                height: "180px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-            }}
+            className="hero-card"
             actions={[
                 <Tooltip title={repoUrl}>
                     <GithubFilled onClick={() => openInNewTab(repoUrl)} />
