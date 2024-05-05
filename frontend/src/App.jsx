@@ -12,7 +12,7 @@ import Experience from "./pages/Experience";
 import Stats from "./pages/Stats";
 import HallofFame from "./pages/HallofFame";
 
-import DisplayModal from "./components/DisplayModal";
+import DisplayModal from "./components/modals/DisplayModal";
 
 import { getProjectList } from "./apis/rest/Project";
 import { getCertificationList } from "./apis/rest/Certification";
