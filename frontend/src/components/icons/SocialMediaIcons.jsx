@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { Popover } from "antd";
+import React from "react";
+import { Tooltip } from "antd";
 import { AiFillLinkedin, AiOutlineMail, AiFillGithub } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from "react-icons/si";
 import DonationCard from "../cards/DonationCard.jsx";
@@ -42,9 +42,9 @@ const SocialMediaIcons = () => {
                 title="Buy me a coffee"
                 content={<DonationCard />}
                 icon={
-                    <Popover placement="left" title={"Buy me a coffee."} content="" >
+                    <Tooltip title="Buy me a coffee." placement="left">
                         <SiBitcoin className="icon-social" style={{ bottom: "50px", right: rightPosition }}/>
-                    </Popover>
+                    </Tooltip>
                 }
                 hideButtons
             />
