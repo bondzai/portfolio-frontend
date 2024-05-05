@@ -15,7 +15,7 @@ export const cardDetails = {
         description: "https://jeerawut.vercel.app/"
     },
     4: {
-        avatar: "https://cdn-icons-png.flaticon.com/128/11191/11191033.png",
+        avatar: "https://cdn-icons-png.flaticon.com/128/5595/5595500.png",
         title: "Gug",
         description: "https://bt144p-portfolio.vercel.app/"
     },
