@@ -62,13 +62,11 @@ const Skills = () => {
     }
     
     return (
-        <div className="home">
-            <div className="skills">
-                <div className="list">
-                    {skillsData.map((topic) => (
-                        <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
-                    ))}
-                </div>
+        <div className="skills">
+            <div className="list">
+                {skillsData.map((topic) => (
+                    <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
+                ))}
             </div>
             <ScrollButton
                 showScrollButton={showScrollButton}
