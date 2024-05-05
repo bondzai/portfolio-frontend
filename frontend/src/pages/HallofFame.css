@@ -21,7 +21,8 @@
     height: 22%;
     width: 65%;
     color: transparent;
-    box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999; 
+    box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999;
+    cursor: pointer;
 }
   
 .carousel-card {

@@ -1,5 +1,5 @@
 import React from "react";
-import { cardDetails } from "../apis/rest/Heroes";
+import { cardDetails } from "../apis/rest/Heroes.js";
 import { HeroCard } from "../components/cards/HeroCard";
 import "./HallofFame.css";
 
@@ -31,7 +31,7 @@ const AutoplayCarousel = () => {
 const HallofFame = () => {
     return (
         <div className="hof-background" >
-            <h3> Hall of Fame </h3>
+            <h3> Brotherhood </h3>
             <AutoplayCarousel />
             <br />
             <small> Last updated: 2024-05-05 </small>
