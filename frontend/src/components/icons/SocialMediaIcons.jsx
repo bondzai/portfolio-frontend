@@ -2,9 +2,9 @@ import React, {useState, useEffect} from "react";
 import { Popover } from "antd";
 import { AiFillLinkedin, AiOutlineMail, AiFillGithub } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from "react-icons/si";
-import DonationCard from "../components/cards/DonationCard";
-import CustomModalButton from "../components/buttons/CustomModalButton";
-import { openInNewTab } from "../utils/utils.js"
+import DonationCard from "../cards/DonationCard.jsx";
+import CustomModalButton from "../buttons/CustomModalButton.jsx";
+import { openInNewTab } from "../../utils/utils.js"
 
 const donationIconContent = (
     <div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Space } from 'antd';
-import SocialMediaIcons from "../../components/SocialMediaIcons";
+import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 
 const Content = () => (
