@@ -24,6 +24,7 @@
     color: transparent;
     box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999;
     cursor: pointer;
+    opacity: 0.95;
 }
   
 .carousel-card {
