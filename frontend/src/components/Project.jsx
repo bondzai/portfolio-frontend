@@ -1,25 +1,20 @@
 import React from "react";
 import { Empty } from "antd";
 import { useNavigate } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
-import { getLampStatusStyle, getHighlightStatusStyle } from "./StatusStyles";
+import { getLampStatusStyle } from "./StatusStyles";
 import { openInNewTab } from "../utils/utils.js"
+import { StarFilled } from '@ant-design/icons';
+import { Badge } from "antd";
+
 
 const Project = ({ ...project }) => {
     const navigate = useNavigate();
 
     const lampStatusStyle = getLampStatusStyle(project.status);
-    const highlightStatusStyle = getHighlightStatusStyle(project.is_highlight);
 
     return (
         <div className="projectItem" style={{ position: "relative" }}>
-            {
-                project.is_highlight && (
-                    <div className="highlightIcon" style={highlightStatusStyle}>
-                        <AiFillStar size={30} />
-                    </div>
-                )
-            }
+            { project.is_highlight && (<Badge.Ribbon text={<StarFilled />} color="blue" />) }
             {
                 project.image_url ? 
                     (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />) : 
