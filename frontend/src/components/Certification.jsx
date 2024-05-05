@@ -44,7 +44,7 @@ const Certification = ({ ...certification }) => {
                 src={certification.image_url}
                 alt=""
                 effect="blur"
-                className="bgImage"
+                className="bg-image"
             />
         </div>
     );
