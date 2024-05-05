@@ -10,12 +10,6 @@
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
-    .hof-footer {
-        bottom: 2px;
-    }
-}
-
 .carousel-container {
     overflow: hidden;
     position: relative;
