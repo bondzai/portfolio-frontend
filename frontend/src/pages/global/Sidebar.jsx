@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { Space } from 'antd';
 import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import "./Sidebar.css";
+
 
 const Content = () => (
     <Space direction="vertical" size="large" style={{ display: "flex" }}>
