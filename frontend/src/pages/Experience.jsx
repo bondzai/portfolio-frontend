@@ -3,8 +3,6 @@ import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeli
 import { IoMdPulse, IoMdSchool } from "react-icons/io";
 import { FaBookOpenReader } from "react-icons/fa6";
 import { MdWork } from "react-icons/md";
-import ScrollButton from "../components/buttons/ScrollButton";
-import useScroll from "../hooks/useScroll";
 import { Avatar} from "antd";
 import "react-vertical-timeline-component/style.min.css";
 import "./Experience.css";
@@ -42,20 +40,16 @@ const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, ava
             icon={icon}
             iconStyle={iconStyle}
         >
-
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 {avatarSrc && <Avatar size={30} style={avatarStyle} src={avatarSrc} />} &nbsp;
                 <h3 className="vertical-timeline-element-title">{title}</h3>
             </div>
             <p>{formattedContent}</p>
-
-
         </VerticalTimelineElement>
     );
 };
 
 const Experience = () => {
-    const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
     const primaryColor = "#3e497a"
     const lightColor = "royalblue"
     const cardBackgroundColor = "#fff"
@@ -143,13 +137,6 @@ const Experience = () => {
                     avatarSrc="https://scontent.fbkk5-6.fna.fbcdn.net/v/t39.30808-1/292435380_451632743632915_622577729761028579_n.png?stp=dst-png_p200x200&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=DRrgz_Q2XJsQ7kNvgEn4WS3&_nc_ht=scontent.fbkk5-6.fna&oh=00_AfCs9HKqTi1JArnrp3F232ln9ghW_pwsD6sEkObbqJkTQg&oe=6637B948"
                 />
             </VerticalTimeline>
-
-            <ScrollButton
-                showScrollButton={showScrollButton}
-                scrollToTop={scrollToTop}
-                scrollToBottom={scrollToBottom}
-            />
-
         </div>
     );
 };
