@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { profileImageURL } from "../utils/constants";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "../styles/Home.css";
+import "./Home.css";
 
 const Home = () => {
     return (

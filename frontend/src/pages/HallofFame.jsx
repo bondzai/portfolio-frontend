@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/HallofFame.css";
 import { Avatar, Card } from 'antd';
 import { cardDetails } from "../apis/rest/Heroes";
+import "./HallofFame.css";
 
 const { Meta } = Card;
 

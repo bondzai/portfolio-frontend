@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Empty } from "antd";
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineCloseCircle } from "react-icons/ai";
 import { Modal, Box, IconButton } from "@mui/material";
-import "../styles/DisplayModal.css";
+import "./DisplayModal.css";
 
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
     const { id } = useParams();

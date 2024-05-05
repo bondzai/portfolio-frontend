@@ -5,7 +5,7 @@ import SpinLoader from "../components/loaders/SpinLoader";
 import { getProjectList } from "../apis/rest/Project";
 import { globalDelay, itemsPerPage } from "../utils/constants";
 import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
-import "../styles/Projects.css";
+import "./Projects.css";
 
 const Projects = () => {
     const [projectList, setProjectList] = useState([]);
