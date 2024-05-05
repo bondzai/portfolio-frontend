@@ -4,6 +4,14 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Watchers from "../../components/badges/Watchers";
 import "./Navbar.css";
 
+import { Statistic } from 'antd';
+import CountUp from 'react-countup';
+
+
+const formatter = (value) => <CountUp end={value} separator="," />;
+const TotalUsers = ({totalUsersCount}) => (
+    <Statistic title="Active Users" value={totalUsersCount} formatter={formatter} />
+);
 
 const Navbar = () => {
     const [expandNavbar, setExpandNavbar] = useState(false);
@@ -24,6 +32,7 @@ const Navbar = () => {
     }, [location]);
 
     const [activeUsersCount, setActiveUsersCount] = useState(0);
+    const [totalUsersCount, setTotalUsersCount] = useState(0);
     const wsUrl = import.meta.env.VITE_WS_URL;
     let ws;
 
@@ -35,7 +44,22 @@ const Navbar = () => {
         };
 
         ws.onmessage = (event) => {
-            setActiveUsersCount(parseInt(event.data));
+            try {
+                const data = JSON.parse(event.data);
+                let activeUsers = parseInt(data.activeUsers);
+                if (!activeUsers || isNaN(activeUsers)) {
+                    activeUsers = 0;
+                }
+                setActiveUsersCount(activeUsers);
+
+                let totalUsers = parseInt(data.totalUsers);
+                if (!totalUsers || isNaN(totalUsers)) {
+                    totalUsers = 0;
+                }
+                setTotalUsersCount(totalUsers);
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+            }
         };
 
         ws.onclose = () => {
@@ -85,7 +109,7 @@ const Navbar = () => {
                     Hall of Fame
                 </Link>
             </div>
-            <Watchers activeUsersCount={activeUsersCount}/>
+            <Watchers activeUsersCount={activeUsersCount} />
         </div>
     );
 };
