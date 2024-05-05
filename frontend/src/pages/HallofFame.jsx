@@ -30,8 +30,11 @@ const AutoplayCarousel = () => {
 
 const HallofFame = () => {
     return (
-        <div className="hof-background">
+        <div className="hof-background" >
+            <h3> Hall of Fame </h3>
             <AutoplayCarousel />
+            <br />
+            <small> Last updated: 2024-05-05 </small>
         </div>
     );
 };

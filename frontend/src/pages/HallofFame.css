@@ -4,6 +4,7 @@
     background-color: var(--color-primary);
     color: var(--text-color-primary);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
