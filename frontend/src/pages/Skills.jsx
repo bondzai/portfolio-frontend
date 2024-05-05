@@ -3,11 +3,10 @@ import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/
 import { MdExpandMore } from "react-icons/md"
 import SkillGroup from "../components/SkillGroup";
 import SpinLoader from "../components/loaders/SpinLoader";
-import ScrollButton from "../components/buttons/ScrollButton";
-import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
 import { globalDelay } from "../utils/constants";
 import "./Skills.css";
+
 
 const skillsData = [
     { topic: "os", label: "OS" },
@@ -40,7 +39,6 @@ const SkillGroupWraper = ({ topic, skills }) => (
 );
 
 const Skills = () => {
-    const { showScrollButton, scrollToTop, scrollToBottom } = useScroll();
     const [skills, setSkills] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -60,7 +58,7 @@ const Skills = () => {
             <SpinLoader />
         );
     }
-    
+
     return (
         <div className="skills">
             <div className="list">
@@ -68,15 +66,8 @@ const Skills = () => {
                     <SkillGroupWraper key={topic.topic} topic={topic} skills={skills} />
                 ))}
             </div>
-            <ScrollButton
-                showScrollButton={showScrollButton}
-                scrollToTop={scrollToTop}
-                scrollToBottom={scrollToBottom}
-            />
         </div>
     );
-    
-    
 };
 
 export default Skills;
