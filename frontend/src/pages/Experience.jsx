@@ -7,7 +7,7 @@ import ScrollButton from "../components/buttons/ScrollButton";
 import useScroll from "../hooks/useScroll";
 import { Avatar} from "antd";
 import "react-vertical-timeline-component/style.min.css";
-import "../styles/Experience.css";
+import "./Experience.css";
 
 const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, avatarBorderColor  }) => {
     const formatKeyValue = (text) => {

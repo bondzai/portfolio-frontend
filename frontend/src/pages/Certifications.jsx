@@ -6,7 +6,7 @@ import SpinLoader from "../components/loaders/SpinLoader";
 import { getCertificationList } from "../apis/rest/Certification";
 import { globalDelay, itemsPerPage } from "../utils/constants";
 import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
-import "../styles/Certifications.css";
+import "./Certifications.css";
 
 const Certifications = () => {
     const [certificationList, setCertificationList] = useState([]);

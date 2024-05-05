@@ -2,7 +2,7 @@ import React from "react";
 import { Space } from "antd";
 import WakatimeStat from "../components/WakatimeStats";
 import GitHub from "../components/GitHub";
-import "../styles/Stats.css";
+import "./Stats.css";
 
 const Stats = () => {
     return (

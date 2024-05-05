@@ -7,7 +7,7 @@ import ScrollButton from "../components/buttons/ScrollButton";
 import useScroll from "../hooks/useScroll";
 import { getSkillList } from "../apis/rest/Skill";
 import { globalDelay } from "../utils/constants";
-import "../styles/Home.css";
+import "./Skills.css";
 
 const skillsData = [
     { topic: "os", label: "OS" },
