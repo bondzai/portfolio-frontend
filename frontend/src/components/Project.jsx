@@ -13,16 +13,16 @@ const Project = ({ ...project }) => {
     const lampStatusStyle = getLampStatusStyle(project.status);
 
     return (
-        <div className="projectItem" style={{ position: "relative" }}>
+        <div className="project-item">
             { project.is_highlight && (<Badge.Ribbon text={<StarFilled />} color="blue" />) }
             {
                 project.image_url ? 
-                    (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bgImage" />) : 
-                    (<Empty className="bgImage" />)
+                    (<div style={{ backgroundImage: `url(${project.image_url})` }} className="bg-image" />) : 
+                    (<Empty className="bg-image" />)
             }
             <h1> {project.name} </h1>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                <div style={{ width: "70%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div className="project-item-control-panel">
+                <div className="project-item-buttons">
                     <button onClick={() => navigate("/project/" + project.id)}> Detail </button>
                     <button onClick={() => openInNewTab(project.host_url)}> Demo </button>
                     <div style={lampStatusStyle} />
