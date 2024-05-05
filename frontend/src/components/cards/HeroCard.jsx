@@ -13,7 +13,7 @@ export const HeroCard = ({avatar, title, repoUrl, url, description}) => {
                 height: "180px",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between"
+                justifyContent: "space-between",
             }}
             actions={[
                 <Tooltip title={repoUrl}>
