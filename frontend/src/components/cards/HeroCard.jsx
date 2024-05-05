@@ -1,10 +1,11 @@
 import React from "react";
-import { Avatar, Card } from 'antd';
+import { Avatar, Card, Tooltip } from 'antd';
 import { GithubFilled, LinkOutlined } from '@ant-design/icons';
+import { openInNewTab } from "../../utils/utils.js"
 
 const { Meta } = Card;
 
-export const HeroCard = ({avatar, title, description}) => {
+export const HeroCard = ({avatar, title, repoUrl, url, description}) => {
     return (
         <Card 
             style={{ 
@@ -12,11 +13,15 @@ export const HeroCard = ({avatar, title, description}) => {
                 height: "180px",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between"
+                justifyContent: "space-between",
             }}
             actions={[
-                <GithubFilled key="github" />,
-                <LinkOutlined key="link" />
+                <Tooltip title={repoUrl}>
+                    <GithubFilled onClick={() => openInNewTab(repoUrl)} />
+                </Tooltip>, 
+                <Tooltip title={url}>
+                    <LinkOutlined onClick={() => openInNewTab(url)}/>
+                </Tooltip>, 
             ]}
         >
             <Meta
