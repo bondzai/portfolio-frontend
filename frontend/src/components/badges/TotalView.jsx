@@ -36,16 +36,14 @@ const TotalView = ({ totalUsersCount }) => {
 
     return (
         <div style={style}>
-            <Tooltip title="Watching" placement="top">
-                <EyeOutlined style={{ marginRight: '5px' }} />
-                <small>
-                    {firstRender ? (
-                        <CountUp end={totalUsersCount} separator="," />
-                    ) : (
-                        totalUsersCount
-                    )}
-                </small>
-            </Tooltip>
+            <EyeOutlined style={{ marginRight: '5px' }} />
+            <small>
+                {firstRender ? (
+                    <CountUp end={totalUsersCount} separator="," />
+                ) : (
+                    totalUsersCount
+                )}
+            </small>
         </div>
     );
 };
