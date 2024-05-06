@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Background from "./pages/global/Background";
 import Navbar from "./pages/global/Navbar";
 import Sidebar from "./pages/global/Sidebar";
 import Footer from "./pages/global/Footer";
@@ -23,6 +24,7 @@ function App() {
     return (
         <div className="App">
             <Router basename="/">
+                <Background />
                 <Navbar />
                 <Sidebar />
                 <Footer />
