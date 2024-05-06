@@ -21,21 +21,27 @@ const SocialMediaIcons = () => {
                 className="icon-social"
                 style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: 'not-allowed' }}
             />
-            <AiFillLinkedin
-                className="icon-social"
-                style={{ bottom: "200px", right: rightPosition }}
-                onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb/")}
-            />
-            <SiGitbook
-                className="icon-social"
-                style={{ bottom: "150px", right: rightPosition }}
-                onClick={() => openInNewTab("https://thejb.gitbook.io/core")}
-            />
-            <AiFillGithub
-                className="icon-social"
-                style={{ bottom: "100px", right: rightPosition }}
-                onClick={() => openInNewTab("https://github.com/bondzai")}
-            />
+            <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="left">
+                <AiFillLinkedin
+                    className="icon-social"
+                    style={{ bottom: "200px", right: rightPosition }}
+                    onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb")}
+                />
+            </Tooltip>
+            <Tooltip title="https://thejb.gitbook.io/core" placement="left">
+                <SiGitbook
+                    className="icon-social"
+                    style={{ bottom: "150px", right: rightPosition }}
+                    onClick={() => openInNewTab("https://thejb.gitbook.io/core")}
+                />
+            </Tooltip>
+            <Tooltip title="https://github.com/bondzai" placement="left">
+                <AiFillGithub
+                    className="icon-social"
+                    style={{ bottom: "100px", right: rightPosition }}
+                    onClick={() => openInNewTab("https://github.com/bondzai")}
+                    />
+            </Tooltip>
             <CustomModalButton
                 buttonText="Buy me a coffee"
                 title="Buy me a coffee"

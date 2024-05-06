@@ -4,6 +4,7 @@ import { GithubFilled, LinkOutlined } from '@ant-design/icons';
 import { openInNewTab } from "../../utils/utils.js";
 import "./HeroCard.css";
 
+
 const { Meta } = Card;
 
 export const HeroCard = ({avatar, title, repoUrl, url, description}) => {

@@ -50,9 +50,10 @@ const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, ava
 };
 
 const Experience = () => {
-    const primaryColor = "#3e497a"
-    const lightColor = "royalblue"
-    const cardBackgroundColor = "#fff"
+    const timelineElementStyle = {
+        background: "var(--color-secondary)",
+        color: "var(--text-color-primary)",
+    }
 
     const calculateAge = (birthdate) => {
         const today = new Date();
@@ -69,11 +70,11 @@ const Experience = () => {
 
     return (
         <div className="experience">
-            <VerticalTimeline lineColor={primaryColor}>
+            <VerticalTimeline lineColor="var(--color-primary)">
                 <TimelineElement
                     date={`Feb 1994 (Age: ${calculateAge("02/03/1994")})`}
                     icon={<IoMdPulse />}
-                    iconStyle={{ background: primaryColor, color: cardBackgroundColor }}
+                    iconStyle={timelineElementStyle}
                     title="Born in Ubon Rachatani, Thailand"
                     content=""
                 />
@@ -81,7 +82,7 @@ const Experience = () => {
                 <TimelineElement
                     date="2009 - 2012 (3 years)"
                     icon={<IoMdSchool />}
-                    iconStyle={{ background: primaryColor, color: cardBackgroundColor }}
+                    iconStyle={timelineElementStyle}
                     title="Benchama Maharat Ubon Ratchatani"
                     content="High School Diploma Sci-Math"
                 />
@@ -89,7 +90,7 @@ const Experience = () => {
                 <TimelineElement
                     date="2012 - 2016 (4 years)"
                     icon={<IoMdSchool />}
-                    iconStyle={{ background: primaryColor, color: cardBackgroundColor }}
+                    iconStyle={timelineElementStyle}
                     title="King Mongkut's Institute of Technology Ladkrabang"
                     content="Bachelor's Degree Automation Engineering"
                 />
@@ -97,7 +98,7 @@ const Experience = () => {
                 <TimelineElement
                     date="Jul 2016 - Jan 2022 (5 years 7 months)"
                     icon={<MdWork />}
-                    iconStyle={{ background: lightColor, color: cardBackgroundColor }}
+                    iconStyle={timelineElementStyle}
                     title="Synergetech Co., Ltd., Nonthaburi, Thailand"
                     content={`Role: Automation System Engineer
                     Responsibilities:
@@ -111,7 +112,7 @@ const Experience = () => {
                 <TimelineElement
                     date="Jan 2022 - Oct 2022 (10 months)"
                     icon={<FaBookOpenReader />}
-                    iconStyle={{ background: primaryColor, color: cardBackgroundColor }}
+                    iconStyle={timelineElementStyle}
                     title="Self-Learning Journey: Software Development"
                     content={`
                     Q2:
@@ -127,7 +128,7 @@ const Experience = () => {
                 <TimelineElement
                     date={`Nov 2022 - Present (${calculateAge("10/31/2022")})`}
                     icon={<MdWork />}
-                    iconStyle={{ background: lightColor, color: cardBackgroundColor }}
+                    iconStyle={timelineElementStyle}
                     title="Swift Dynamics Co., Ltd., Bangkok, Thailand"
                     content={`Role: Backend Developer
                     Responsibilities:

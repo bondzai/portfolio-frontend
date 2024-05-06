@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { LoadingOutlined } from '@ant-design/icons';
+
 
 const Counter = () => {
     const [age, setAge] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -20,7 +22,7 @@ const Counter = () => {
         if (initializing) {
             setInitializing(false);
         }
-        }, 1000);
+        }, 1500);
 
         return () => clearInterval(intervalId);
     }, [initializing]);
@@ -52,11 +54,11 @@ const Counter = () => {
         <div className="Counter">
             {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
                 <p>
-                    &copy; JB, Publised {age.days}d {age.hours}h {age.minutes}m {age.seconds}s ago.
+                    &copy; JB, Publised: {age.days}d {age.hours}h {age.minutes}m {age.seconds}s ago.
                 </p>
             ) : (
                 <p>
-                    &copy; JB, Calculating website age...
+                    &copy; JB, Calculating website age <LoadingOutlined />
                 </p>
             )}
         </div>

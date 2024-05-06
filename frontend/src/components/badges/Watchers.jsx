@@ -13,7 +13,7 @@ const Watchers = ({ activeUsersCount }) => {
         backgroundColor: 'var(--color-secondary)',
         border: 'none',
         borderRadius: '50%',
-        top: "15px",
+        top: "7px",
         right: "20px",
         zIndex: "10",
     }
