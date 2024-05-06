@@ -33,6 +33,7 @@ const TotalView = ({ totalUsersCount }) => {
     return (
         <div style={style}>
             <small>
+                Total Views: &nbsp;
                 {firstRender ? (
                     <CountUp end={totalUsersCount} separator="," />
                 ) : (
