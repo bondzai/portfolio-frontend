@@ -4,6 +4,7 @@ import {
   DatabaseOutlined,
   CodeOutlined,
   CoffeeOutlined,
+  ReadOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
 import { Badge, Space } from 'antd';
@@ -17,6 +18,7 @@ const StatusIcons = () => (
         <DatabaseOutlined />
         <CodeOutlined />
         <CoffeeOutlined />
+        <ReadOutlined />
         {/* <SyncOutlined spin /> */}
     </Space>
 );
