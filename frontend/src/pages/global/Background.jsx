@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Watchers from "../../components/badges/Watchers";
 import TotalView from "../../components/badges/TotalView";
 
 
@@ -48,8 +47,7 @@ const Background = () => {
 
     return (
         <>
-            <Watchers activeUsersCount={activeUsersCount} />
-            <TotalView totalUsersCount={totalUsersCount} />
+            <TotalView totalUsersCount={activeUsersCount} />
         </>
     );
 };
