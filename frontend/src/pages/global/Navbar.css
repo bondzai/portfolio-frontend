@@ -64,7 +64,7 @@
         width: 95%;
         height: 60px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
         color: var(--text-color-primary);
         text-transform: uppercase;
