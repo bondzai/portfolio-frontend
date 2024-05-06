@@ -19,8 +19,7 @@ const Watchers = ({ activeUsersCount }) => {
     }
 
     if (screenSize === ScreenSize.XS) {
-        style.right = "80px"
-        style.top = "9px"
+        style.top = "10px"
     }
 
     return (

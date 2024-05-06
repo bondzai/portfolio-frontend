@@ -37,7 +37,7 @@ function App() {
                     <Route path="/certification/:id" element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />
                     <Route path="/experience" element={<Experience />} />
                     <Route path="/stats" element={<Stats />} />
-                    <Route path="/hof" element={<HallofFame />} />
+                    <Route path="/more" element={<HallofFame />} />
                 </Routes>
             </Router>
         </div>

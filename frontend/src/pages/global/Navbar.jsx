@@ -25,7 +25,6 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="toggleButton">
-            <h6> {activeLink} </h6>
                 <button onClick={toggleNavbar}>
                     <GiHamburgerMenu />
                 </button>
@@ -49,8 +48,8 @@ const Navbar = () => {
                 <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
                     Stats
                 </Link>
-                <Link to="/hof" onClick={handleLinkClick} className={activeLink === "hof" ? "active" : ""}>
-                    Hall of Fame
+                <Link to="/more" onClick={handleLinkClick} className={activeLink === "more" ? "active" : ""}>
+                    More
                 </Link>
             </div>
         </div>

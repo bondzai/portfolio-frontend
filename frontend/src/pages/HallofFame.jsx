@@ -26,7 +26,7 @@ const AutoplayCarousel = () => {
 
 const HallofFame = () => {
     return (
-        <div className="hof-background" >
+        <div className="more-background" >
             <div style={{width: "70%", marginBottom: "100px"}}>
                 <p>
                     Step into the heart of my blog: the <strong>Brotherhood</strong>.
