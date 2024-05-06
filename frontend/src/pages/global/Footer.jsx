@@ -1,5 +1,5 @@
 import React from "react";
-import Counter from "../../components/Counter";
+import Counter from "../../components/icons/Counter";
 import StatusIcons from "../../components/icons/StatusIcons";
 import "./Footer.css"
 

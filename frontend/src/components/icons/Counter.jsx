@@ -54,7 +54,7 @@ const Counter = () => {
         <div className="Counter">
             {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
                 <p>
-                    &copy; JB, Publised {age.days}d {age.hours}h {age.minutes}m {age.seconds}s ago.
+                    &copy; JB, Publised: {age.days}d {age.hours}h {age.minutes}m {age.seconds}s ago.
                 </p>
             ) : (
                 <p>
