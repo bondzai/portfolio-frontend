@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Statistic } from 'antd';
-import CountUp from 'react-countup';
 import Watchers from "../../components/badges/Watchers";
+import TotalView from "../../components/badges/TotalView";
 
-
-const formatter = (value) => <CountUp end={value} separator="," />;
-const TotalUsers = ({totalUsersCount}) => (
-    <Statistic title="Active Users" value={totalUsersCount} formatter={formatter} />
-);
 
 const Background = () => {
     const [activeUsersCount, setActiveUsersCount] = useState(0);
@@ -53,7 +47,10 @@ const Background = () => {
     };
 
     return (
-        <Watchers activeUsersCount={activeUsersCount} />
+        <>
+            <Watchers activeUsersCount={activeUsersCount} />
+            <TotalView totalUsersCount={totalUsersCount} />
+        </>
     );
 };
 
