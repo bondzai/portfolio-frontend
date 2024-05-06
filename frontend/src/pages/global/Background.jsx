@@ -26,16 +26,10 @@ const Background = () => {
             try {
                 const data = JSON.parse(event.data);
 
-                let activeUsers = parseInt(data.activeUsers);
-                if (!activeUsers || isNaN(activeUsers)) {
-                    activeUsers = 0;
-                }
+                let activeUsers = parseInt(data.activeUsers) || 0;
                 setActiveUsersCount(activeUsers);
 
-                let totalUsers = parseInt(data.totalUsers);
-                if (!totalUsers || isNaN(totalUsers)) {
-                    totalUsers = 0;
-                }
+                let totalUsers = parseInt(data.totalUsers) || 0;
                 setTotalUsersCount(totalUsers);
             } catch (error) {
                 console.error('Error parsing JSON:', error);
