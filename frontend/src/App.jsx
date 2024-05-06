@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Background from "./pages/global/Background";
 import Navbar from "./pages/global/Navbar";
 import Sidebar from "./pages/global/Sidebar";
 import Footer from "./pages/global/Footer";
@@ -10,7 +11,7 @@ import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Experience from "./pages/Experience";
 import Stats from "./pages/Stats";
-import HallofFame from "./pages/HallofFame";
+import More from "./pages/More";
 
 import DisplayModal from "./components/modals/DisplayModal";
 
@@ -23,6 +24,7 @@ function App() {
     return (
         <div className="App">
             <Router basename="/">
+                <Background />
                 <Navbar />
                 <Sidebar />
                 <Footer />
@@ -35,7 +37,7 @@ function App() {
                     <Route path="/certification/:id" element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />
                     <Route path="/experience" element={<Experience />} />
                     <Route path="/stats" element={<Stats />} />
-                    <Route path="/hof" element={<HallofFame />} />
+                    <Route path="/more" element={<More />} />
                 </Routes>
             </Router>
         </div>

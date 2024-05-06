@@ -19,8 +19,7 @@ const SocialMediaIcons = () => {
         <div>
             <AiOutlineMail
                 className="icon-social"
-                style={{ bottom: "250px", right: rightPosition }}
-                onClick={() => openInNewTab("")}
+                style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: 'not-allowed' }}
             />
             <AiFillLinkedin
                 className="icon-social"

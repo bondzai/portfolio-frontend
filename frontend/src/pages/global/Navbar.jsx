@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Watchers from "../../components/badges/Watchers";
 import "./Navbar.css";
 
 
@@ -23,41 +22,9 @@ const Navbar = () => {
         setActiveLink(location.pathname.slice(1));
     }, [location]);
 
-    const [activeUsersCount, setActiveUsersCount] = useState(0);
-    const wsUrl = import.meta.env.VITE_WS_URL;
-    let ws;
-
-    useEffect(() => {
-        ws = new WebSocket(wsUrl);
-
-        ws.onopen = () => {
-            console.log("WebSocket connected");
-        };
-
-        ws.onmessage = (event) => {
-            setActiveUsersCount(parseInt(event.data));
-        };
-
-        ws.onclose = () => {
-            console.log("WebSocket disconnected");
-        };
-
-        window.addEventListener("beforeunload", handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
-            ws.close();
-        };
-    }, []);
-
-    const handleBeforeUnload = () => {
-        ws.close();
-    };
-
     return (
         <div className="navbar">
             <div className="toggleButton">
-            <h6> {activeLink} </h6>
                 <button onClick={toggleNavbar}>
                     <GiHamburgerMenu />
                 </button>
@@ -81,11 +48,10 @@ const Navbar = () => {
                 <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
                     Stats
                 </Link>
-                <Link to="/hof" onClick={handleLinkClick} className={activeLink === "hof" ? "active" : ""}>
-                    Hall of Fame
+                <Link to="/more" onClick={handleLinkClick} className={activeLink === "more" ? "active" : ""}>
+                    More
                 </Link>
             </div>
-            <Watchers activeUsersCount={activeUsersCount}/>
         </div>
     );
 };

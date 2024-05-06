@@ -1,7 +1,7 @@
 import React from "react";
 import { cardDetails } from "../apis/rest/Heroes.js";
-import { HeroCard } from "../components/cards/HeroCard";
-import "./HallofFame.css";
+import { HeroCard } from "../components/cards/HeroCard.jsx";
+import "./More.css";
 
 
 const CarouselItem = ({props}) => {
@@ -24,9 +24,9 @@ const AutoplayCarousel = () => {
     );
 }
 
-const HallofFame = () => {
+const More = () => {
     return (
-        <div className="hof-background" >
+        <div className="more-background" >
             <div style={{width: "70%", marginBottom: "100px"}}>
                 <p>
                     Step into the heart of my blog: the <strong>Brotherhood</strong>.
@@ -46,4 +46,4 @@ const HallofFame = () => {
     );
 };
 
-export default HallofFame;
+export default More;

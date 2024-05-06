@@ -15,11 +15,11 @@ const Watchers = ({ activeUsersCount }) => {
         borderRadius: '50%',
         top: "15px",
         right: "20px",
+        zIndex: "10",
     }
 
     if (screenSize === ScreenSize.XS) {
-        style.right = "80px"
-        style.top = "9px"
+        style.top = "10px"
     }
 
     return (
