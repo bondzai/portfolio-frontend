@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CountUp from 'react-countup';
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
-
+import { EyeOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
 const TotalView = ({ totalUsersCount }) => {
     const { screenSize } = useScreenDimensions();
@@ -18,28 +19,33 @@ const TotalView = ({ totalUsersCount }) => {
     const style = {
         position: 'fixed',
         border: 'none',
-        bottom: "5px",
+        bottom: "2px",
         right: "20px",
         zIndex: "10",
         color: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
     };
 
     if (screenSize === ScreenSize.XS) {
-        style.bottom = "7.5px";
         style.right = "10px";
         style.fontSize = "14px";
     }
 
     return (
         <div style={style}>
-            <small>
-                Total Views: &nbsp;
-                {firstRender ? (
-                    <CountUp end={totalUsersCount} separator="," />
-                ) : (
-                    totalUsersCount
-                )}
-            </small>
+            <Tooltip title="Watching" placement="top">
+                <EyeOutlined style={{ marginRight: '5px' }} />
+                <small>
+                    {firstRender ? (
+                        <CountUp end={totalUsersCount} separator="," />
+                    ) : (
+                        totalUsersCount
+                    )}
+                </small>
+            </Tooltip>
         </div>
     );
 };
