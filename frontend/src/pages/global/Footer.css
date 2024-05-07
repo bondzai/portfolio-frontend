@@ -25,6 +25,12 @@
 .status-icon {
     color: var(--text-color-primary);
     cursor: pointer;
+    padding: 2px;
+}
+
+.status-icon:hover {
+    opacity: 0.8;
+    background-color: var(--color-secondary);
 }
 
 @media screen and (max-width: 768px) {
