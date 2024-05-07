@@ -11,15 +11,15 @@ import { Badge, Space } from 'antd';
 
 
 const StatusIcons = () => (
-    <Space>
+    <Space size={10}>
         <Badge dot>
-            <BellOutlined style={{ color: "white" }} />
+            <BellOutlined className="status-icon" />
         </Badge>
-        <DatabaseOutlined />
-        <CodeOutlined />
-        <CoffeeOutlined />
-        <ReadOutlined />
-        {/* <SyncOutlined spin /> */}
+        <DatabaseOutlined className="status-icon" />
+        <CodeOutlined className="status-icon" />
+        <CoffeeOutlined className="status-icon" />
+        <ReadOutlined className="status-icon" />
+        <SyncOutlined className="status-icon" spin />
     </Space>
 );
 

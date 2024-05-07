@@ -22,6 +22,11 @@
     z-index: 10;
 }
 
+.status-icon {
+    color: var(--text-color-primary);
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .footer {
         font-size: 12px;
