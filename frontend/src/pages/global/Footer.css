@@ -19,6 +19,7 @@
 .status-icons {
     position: fixed;
     left: 2px;
+    z-index: 10;
 }
 
 @media screen and (max-width: 768px) {
