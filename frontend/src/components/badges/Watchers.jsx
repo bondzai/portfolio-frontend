@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
-import { EyeOutlined } from '@ant-design/icons';
+import { EyeOutlined, SyncOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
 const Watchers = ({ activeUsersCount }) => {
     const { screenSize } = useScreenDimensions();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 900);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const style = {
         position: 'fixed',
         border: 'none',
-        bottom: "2px",
+        bottom: "1px",
         right: "20px",
         zIndex: "10",
         color: 'white',
@@ -18,6 +27,14 @@ const Watchers = ({ activeUsersCount }) => {
         justifyContent: 'center',
         textAlign: 'center',
     };
+
+    if (loading) {
+        return (
+            <div style={style}>
+                <SyncOutlined className="status-icon" spin />
+            </div>
+        );
+    }
 
     if (screenSize === ScreenSize.XS) {
         style.right = "10px";
@@ -29,7 +46,7 @@ const Watchers = ({ activeUsersCount }) => {
                 <small> {activeUsersCount} </small>
             </div>
         );
-    };
+    }
 
     return (
         <Tooltip placement="top" title={`Watching: ${activeUsersCount}`}>
