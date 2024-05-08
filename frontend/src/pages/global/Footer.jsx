@@ -1,5 +1,6 @@
 import React from "react";
 import Counter from "../../components/icons/Counter";
+import Coppyright from "../../components/icons/Copyright";
 import StatusIcons from "../../components/icons/StatusIcons";
 import "./Footer.css"
 
@@ -9,7 +10,7 @@ const Footer = () => {
             <div className="status-icons">
                 <StatusIcons />
             </div>
-            <Counter />
+            <Coppyright /> &nbsp; <Counter />
         </div>
     );
 };
