@@ -3,7 +3,7 @@ import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions
 import { EyeOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
-const TotalView = ({ activeUsersCount }) => {
+const Watchers = ({ activeUsersCount }) => {
     const { screenSize } = useScreenDimensions();
 
     const style = {
@@ -40,4 +40,4 @@ const TotalView = ({ activeUsersCount }) => {
     );
 };
 
-export default TotalView;
+export default Watchers;
