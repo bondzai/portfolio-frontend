@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import CountUp from 'react-countup';
+import React, { useEffect } from "react";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
 import { EyeOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
 const TotalView = ({ totalUsersCount }) => {
     const { screenSize } = useScreenDimensions();
-    const [firstRender, setFirstRender] = useState(true);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -32,19 +30,21 @@ const TotalView = ({ totalUsersCount }) => {
     if (screenSize === ScreenSize.XS) {
         style.right = "10px";
         style.fontSize = "14px";
-    }
+        return (
+            <div style={style}>
+                <EyeOutlined style={{ marginRight: '5px' }} />
+                <small> {totalUsersCount} </small>
+            </div>
+        );
+    };
 
     return (
-        <div style={style}>
-            <EyeOutlined style={{ marginRight: '5px' }} />
-            <small>
-                {firstRender ? (
-                    <CountUp end={totalUsersCount} separator="," />
-                ) : (
-                    totalUsersCount
-                )}
-            </small>
-        </div>
+        <Tooltip placement="top" title={`Watching: ${totalUsersCount}`}>
+            <div style={style}>
+                <EyeOutlined style={{ marginRight: '5px' }} />
+                <small> {totalUsersCount} </small>
+            </div>
+        </Tooltip>
     );
 };
 
