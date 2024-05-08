@@ -1,18 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
 import { EyeOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
 const TotalView = ({ totalUsersCount }) => {
     const { screenSize } = useScreenDimensions();
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setFirstRender(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
-    }, []);
 
     const style = {
         position: 'fixed',
