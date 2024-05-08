@@ -1,36 +1,43 @@
 import React from "react";
-import { EyeOutlined } from '@ant-design/icons';
-import { Avatar, Badge, Tooltip } from 'antd';
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
+import { EyeOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
-
-const Watchers = ({ activeUsersCount }) => {
+const TotalView = ({ activeUsersCount }) => {
     const { screenSize } = useScreenDimensions();
 
     const style = {
         position: 'fixed',
-        padding: '3px 3px',
-        backgroundColor: 'var(--color-secondary)',
         border: 'none',
-        borderRadius: '50%',
-        top: "7px",
+        bottom: "2px",
         right: "20px",
         zIndex: "10",
-    }
+        color: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+    };
 
     if (screenSize === ScreenSize.XS) {
-        style.top = "10px"
-    }
+        style.right = "10px";
+        style.fontSize = "14px";
+        return (
+            <div style={style}>
+                <EyeOutlined style={{ marginRight: '5px' }} />
+                <small> {activeUsersCount} </small>
+            </div>
+        );
+    };
 
     return (
-        <div style={style}>
-            <Tooltip title={`Watching: ${activeUsersCount}`}>
-                <Badge size="small" count={activeUsersCount} style={{ backgroundColor: "green" }}>
-                    <Avatar shape="circle" icon={<EyeOutlined />} />
-                </Badge>
-            </Tooltip>
-        </div>
-    )
-}
+        <Tooltip placement="top" title={`Watching: ${activeUsersCount}`}>
+            <div style={style}>
+                <EyeOutlined style={{ marginRight: '5px' }} />
+                <small> {activeUsersCount} </small>
+            </div>
+        </Tooltip>
+    );
+};
 
-export default Watchers;
+export default TotalView;
