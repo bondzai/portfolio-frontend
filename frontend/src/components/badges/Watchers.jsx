@@ -22,6 +22,7 @@ const Watchers = ({ activeUsersCount }) => {
     if (screenSize === ScreenSize.XS) {
         style.right = "10px";
         style.fontSize = "14px";
+
         return (
             <div style={style}>
                 <EyeOutlined style={{ marginRight: '5px' }} />
