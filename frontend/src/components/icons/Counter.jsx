@@ -9,27 +9,27 @@ const Counter = () => {
     useEffect(() => {
         const startTime = new Date("2022-10-23T00:00:00");
         const intervalId = setInterval(() => {
-        const now = new Date();
-        const diffInMs = now - startTime;
+            const now = new Date();
+            const diffInMs = now - startTime;
 
-        const days = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
+            const days = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
 
-        setAge({ days, hours, minutes, seconds });
+            setAge({ days, hours, minutes, seconds });
 
-        if (initializing) {
-            setInitializing(false);
-        }
-        }, 1500);
+            if (initializing) {
+                setInitializing(false);
+            }
+        }, 1000);
 
         return () => clearInterval(intervalId);
     }, [initializing]);
 
     const handleAnimation = () => {
         const animationDuration = 1000;
-        const steps = 20;
+        const steps = 100;
         const increment = age.seconds / steps;
 
         let currentSeconds = 0;
