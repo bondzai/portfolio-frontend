@@ -23,7 +23,7 @@ export const MemoryUsage = () => {
 
     return (
         <div style={{ cursor: "default" }}>
-            <Tooltip placement="top" title="Current tab memory usage">
+            <Tooltip placement="top" title="Memory usage">
                 <DatabaseOutlined className="status-icon" /> <small>{memoryUsage}</small>
             </Tooltip>
         </div>
