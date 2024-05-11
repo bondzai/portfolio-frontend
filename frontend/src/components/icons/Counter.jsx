@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { LoadingOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
 
 const Counter = () => {
     const [age, setAge] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [initializing, setInitializing] = useState(true);
+    const startTime = new Date("2022-10-23T00:00:00");
 
     useEffect(() => {
-        const startTime = new Date("2022-10-23T00:00:00");
         const intervalId = setInterval(() => {
             const now = new Date();
             const diffInMs = now - startTime;
@@ -21,7 +22,7 @@ const Counter = () => {
 
             if (initializing) {
                 setInitializing(false);
-            }
+            };
         }, 1000);
 
         return () => clearInterval(intervalId);
@@ -34,33 +35,31 @@ const Counter = () => {
 
         let currentSeconds = 0;
         const interval = setInterval(() => {
-        if (currentSeconds >= age.seconds) {
-            clearInterval(interval);
-            return;
-        }
+            if (currentSeconds >= age.seconds) {
+                clearInterval(interval);
+                return;
+            };
 
-        currentSeconds += increment;
-        setAge({ ...age, seconds: Math.floor(currentSeconds) });
+            currentSeconds += increment;
+            setAge(prevAge => ({ ...prevAge, seconds: Math.floor(currentSeconds) }));
         }, animationDuration / steps);
     };
 
     useEffect(() => {
         if (!initializing) {
             handleAnimation();
-        }
+        };
     }, [initializing]);
 
     return (
-        <div className="Counter">
-            {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
-                <p>
-                    Publised: {age.days}d {age.hours}h {age.minutes}m {age.seconds}s ago.
-                </p>
-            ) : (
-                <p>
-                    Calculating website age <LoadingOutlined />
-                </p>
-            )}
+        <div style={{cursor: "default"}}>
+            <Tooltip placement="top" title="Elapsed time since initial deployment.">
+                {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
+                    <p> : {age.days}d {age.hours}h {age.minutes}m {age.seconds}s </p>
+                ) : (
+                    <p> : <LoadingOutlined /> </p>
+                )}
+            </Tooltip>
         </div>
     );
 }
