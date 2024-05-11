@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { DatabaseOutlined } from '@ant-design/icons';
+import { DatabaseOutlined, SyncOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
 
 export const MemoryUsage = () => {
     const [memoryUsage, setMemoryUsage] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const updateMemoryUsage = () => {
@@ -20,6 +21,22 @@ export const MemoryUsage = () => {
 
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return (
+            <div>
+                <DatabaseOutlined className="status-icon" /> <SyncOutlined className="status-icon" spin />
+            </div>
+        );
+    }
 
     return (
         <div style={{ cursor: "default" }}>
