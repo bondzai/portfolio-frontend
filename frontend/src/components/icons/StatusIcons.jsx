@@ -7,16 +7,15 @@ import {
   ReadOutlined,
 } from '@ant-design/icons';
 import { Badge, Space, Tooltip, Popover } from 'antd';
+import { MemoryUsage } from './PerformanceMonitor';
 
 
 const StatusIcons = () => (
     <Space>
+        <MemoryUsage/>
         <Badge dot>
             <BellOutlined className="status-icon" />
         </Badge>
-        <Popover content="content" title="Title" trigger="hover">
-            <DatabaseOutlined className="status-icon" />
-        </Popover>
         <Tooltip placement="top" title="test">
             <CodeOutlined className="status-icon" />
         </Tooltip>
