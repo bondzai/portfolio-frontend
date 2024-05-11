@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Spin } from "antd";
 import "./SpinLoader.css";
 
+
 const SpinLoader = ({ customColor, customHeight}) => {
     const dynamicStyle = {
         "--custom-spin-color": customColor || "#1677ff",

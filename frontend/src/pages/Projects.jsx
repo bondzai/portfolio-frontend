@@ -7,6 +7,7 @@ import { globalDelay, itemsPerPage } from "../utils/constants";
 import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
 import "./Projects.css";
 
+
 const Projects = () => {
     const [projectList, setProjectList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

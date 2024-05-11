@@ -7,6 +7,7 @@ import { Avatar} from "antd";
 import "react-vertical-timeline-component/style.min.css";
 import "./Experience.css";
 
+
 const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, avatarBorderColor  }) => {
     const formatKeyValue = (text) => {
         const parts = text.split(':');

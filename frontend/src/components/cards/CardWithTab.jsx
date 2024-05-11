@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card } from 'antd';
 
+
 const CardWithTab = ({tabList, contentList}) => {
     const [activeTabKey, setActiveTabKey] = useState(tabList[0].key || "");
     const onTab1Change = (key) => {

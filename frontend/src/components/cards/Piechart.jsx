@@ -1,6 +1,7 @@
 import React from "react";
 import ReactEcharts from 'echarts-for-react';
 
+
 const PieChart = ({ data, title }) => {
     const tooltip = {
         trigger: 'item',

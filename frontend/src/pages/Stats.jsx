@@ -4,6 +4,7 @@ import WakatimeStat from "../components/WakatimeStats";
 import GitHub from "../components/GitHub";
 import "./Stats.css";
 
+
 const Stats = () => {
     return (
         <div className="stat-background">
