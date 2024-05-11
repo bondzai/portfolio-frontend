@@ -20,8 +20,7 @@ const MemoryUsage = () => {
 
     return (
         <div>
-            <p>Memory Usage:</p>
-            <p>{memoryUsage}</p>
+            <small>Memory Usage : {memoryUsage}</small>
         </div>
     );
 };
