@@ -1,24 +1,20 @@
 import React from 'react';
 import {
-  BellOutlined,
-  DatabaseOutlined,
   CodeOutlined,
   CoffeeOutlined,
   ReadOutlined,
 } from '@ant-design/icons';
-import { Badge, Space } from 'antd';
+import { Space } from 'antd';
 import { MemoryUsage } from './PerformanceMonitor';
-
+import NotificationIcon from './Notification';
 
 const StatusIcons = () => (
     <Space>
-        <MemoryUsage/>
-        <Badge dot>
-            <BellOutlined className="status-icon" />
-        </Badge>
+        <MemoryUsage />
         <CodeOutlined className="status-icon" />
         <CoffeeOutlined className="status-icon" />
         <ReadOutlined className="status-icon" />
+        <NotificationIcon />
     </Space>
 );
 
