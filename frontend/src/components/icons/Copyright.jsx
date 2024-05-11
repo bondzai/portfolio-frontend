@@ -3,7 +3,9 @@ import React from "react";
 
 const Coppyright = () => {
     return (
-        <p> &copy; JB </p>
+        <div style={{cursor: "default"}}>
+            <p> &copy; JB </p>
+        </div>
     );
 }
 
