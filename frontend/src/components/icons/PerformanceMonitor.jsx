@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { DatabaseOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 
-const MemoryUsage = () => {
+
+export const MemoryUsage = () => {
     const [memoryUsage, setMemoryUsage] = useState(null);
 
     useEffect(() => {
@@ -9,7 +12,7 @@ const MemoryUsage = () => {
                 const { usedJSHeapSize, totalJSHeapSize } = performance.memory;
                 const memoryUsedInMB = (usedJSHeapSize / (1024 * 1024)).toFixed(2);
                 const totalMemoryInMB = (totalJSHeapSize / (1024 * 1024)).toFixed(2);
-                setMemoryUsage(`${memoryUsedInMB} MB / ${totalMemoryInMB} MB`);
+                setMemoryUsage(`${memoryUsedInMB}/${totalMemoryInMB} MB`);
             }
         };
 
@@ -19,10 +22,10 @@ const MemoryUsage = () => {
     }, []);
 
     return (
-        <div>
-            <small>Memory Usage : {memoryUsage}</small>
+        <div style={{ cursor: "default" }}>
+            <Tooltip placement="top" title="Current tab memory usage">
+                <DatabaseOutlined className="status-icon" /> <small>{memoryUsage}</small>
+            </Tooltip>
         </div>
     );
 };
-
-export default MemoryUsage;
