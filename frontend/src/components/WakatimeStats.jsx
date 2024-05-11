@@ -7,6 +7,7 @@ import CardWithTab from "./cards/CardWithTab.jsx";
 import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
 import "./Wakatime.css";
 
+
 const WakatimeStats = () => {
     const [stats, setStats] = useState(null);
     const { screenSize } = useScreenDimensions();
@@ -61,7 +62,7 @@ const WakatimeStats = () => {
                     Total coding time: {stats.human_readable_total_including_other_language}
                 </h4>
             </div>
-            {(screenSize === ScreenSize.XS) ? (
+            {(screenSize === ScreenSize.XS || screenSize === ScreenSize.SM || screenSize === ScreenSize.MD) ? (
                 <div className="wakatime-stats-tab-chart">
                     <CardWithTab tabList={tabList} contentList={contentList} />
                 </div>

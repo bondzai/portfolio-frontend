@@ -5,9 +5,10 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineCloseCircle } from "r
 import { Modal, Box, IconButton } from "@mui/material";
 import "./DisplayModal.css";
 
+
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
-    const { id } = useParams();
     const navigate = useNavigate();
+    const { id } = useParams();
     const [current, setCurrent] = useState(Number(id));
     const [dataList, setDataList] = useState([]);
     const [dataListFetched, setDataListFetched] = useState(false);

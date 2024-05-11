@@ -2,6 +2,7 @@ import React  from "react";
 import PropTypes from "prop-types";
 import './Cube.css';
 
+
 const Cube = ({ size, aura, transform, perspective }) => {
     const dynamicStyle = {
         "--cube-size": size || "200px",

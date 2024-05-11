@@ -8,6 +8,7 @@ import { globalDelay, itemsPerPage } from "../utils/constants";
 import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
 import "./Certifications.css";
 
+
 const Certifications = () => {
     const [certificationList, setCertificationList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

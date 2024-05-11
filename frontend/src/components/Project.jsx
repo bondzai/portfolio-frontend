@@ -5,15 +5,11 @@ import { StarFilled } from '@ant-design/icons';
 import { getLampStatusStyle } from "./StatusStyles";
 import { openInNewTab } from "../utils/utils.js";
 
+
 const Project = ({ ...project }) => {
+    if (!project) return <Empty />;
+
     const navigate = useNavigate();
-
-    if (!project) {
-        return <Empty />;
-    }
-
-    const lampStatusStyle = getLampStatusStyle(project.status);
-
     const renderHighlightBadge = () => (
         <Badge.Ribbon text={<StarFilled />} color="blue" />
     );
@@ -41,7 +37,7 @@ const Project = ({ ...project }) => {
                     <button onClick={() => openInNewTab(project.host_url)}>
                         Demo
                     </button>
-                    <div style={lampStatusStyle} />
+                    <div style={getLampStatusStyle(project.status)} />
                 </div>
             </div>
             <div>

@@ -20,7 +20,8 @@ import { getCertificationList } from "./apis/rest/Certification";
 
 import "./App.css";
 
-function App() {
+
+const App = () => {
     return (
         <div className="App">
             <Router basename="/">
