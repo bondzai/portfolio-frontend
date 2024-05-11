@@ -6,7 +6,7 @@ import {
   CoffeeOutlined,
   ReadOutlined,
 } from '@ant-design/icons';
-import { Badge, Space, Tooltip, Popover } from 'antd';
+import { Badge, Space } from 'antd';
 import { MemoryUsage } from './PerformanceMonitor';
 
 
@@ -16,9 +16,7 @@ const StatusIcons = () => (
         <Badge dot>
             <BellOutlined className="status-icon" />
         </Badge>
-        <Tooltip placement="top" title="test">
-            <CodeOutlined className="status-icon" />
-        </Tooltip>
+        <CodeOutlined className="status-icon" />
         <CoffeeOutlined className="status-icon" />
         <ReadOutlined className="status-icon" />
     </Space>
