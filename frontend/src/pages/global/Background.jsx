@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Watchers from "../../components/badges/Watchers";
+import Watchers from "../../components/icons/Watchers";
 
 
 const Background = () => {
