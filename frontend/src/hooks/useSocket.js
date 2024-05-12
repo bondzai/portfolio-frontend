@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 
-const useSocket = (url, handleMessage) => {
+const useSocket = (url, handleMessage, handleOpen, handleClose) => {
     const [ws, setWs] = useState(null);
 
     useEffect(() => {
         const socket = new WebSocket(url);
 
         socket.onopen = () => {
-            console.log("WebSocket connected");
+            handleOpen ? handleOpen() : console.log("WebSocket connected");
         };
 
         socket.onmessage = (event) => {
-            handleMessage(event);
+            handleMessage ? handleMessage(event) : console.log("Message received:", event.data);
         };
 
         socket.onclose = () => {
-            console.log("WebSocket disconnected");
+            handleClose ? handleClose() : console.log("WebSocket disconnected");
         };
 
         setWs(socket);
@@ -29,7 +29,7 @@ const useSocket = (url, handleMessage) => {
         const handleBeforeUnload = () => {
             if (ws) {
                 ws.close();
-            }
+            };
         };
 
         window.addEventListener("beforeunload", handleBeforeUnload);
