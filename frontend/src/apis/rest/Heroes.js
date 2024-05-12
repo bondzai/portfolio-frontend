@@ -1,4 +1,4 @@
-export const cardDetails = {
+export const avengers = {
     0: {
         avatar: "https://avatars.githubusercontent.com/u/4670056?v=4",
         title: "Anthony",
@@ -51,7 +51,7 @@ export const cardDetails = {
 }
 
 if (import.meta.env.DEV) {
-    cardDetails[Object.keys(cardDetails).length + 1] = {
+    avengers[Object.keys(avengers).length + 1] = {
         avatar: "https://avatars.githubusercontent.com/u/168957872?v=4",
         title: "Anonymous",
         url: "",
