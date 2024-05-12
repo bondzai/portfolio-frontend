@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Watchers from "../../components/icons/Watchers";
 import useSocket from "../../hooks/useSocket";
+
 
 const Background = () => {
     const [activeUsersCount, setActiveUsersCount] = useState(0);
@@ -17,11 +17,7 @@ const Background = () => {
         }
     }, [data]);
 
-    return (
-        <>
-            <Watchers activeUsersCount={activeUsersCount} />
-        </>
-    );
+    return [activeUsersCount, totalUsersCount];
 };
 
 export default Background;
