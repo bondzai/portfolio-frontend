@@ -8,7 +8,7 @@ import "./Footer.css"
 
 
 const Footer = () => {
-    const [activeUsersCount, totalUsersCount] = Users();
+    const [activeUsersCount] = Users();
 
     return (
         <div className="footer">
