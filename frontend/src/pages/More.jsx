@@ -28,7 +28,7 @@ const AutoplayCarousel = () => {
 const More = () => {
     return (
         <div className="more-background" >
-            <div style={{width: "70%", marginBottom: "100px"}}>
+            <div style={{width: "60%", marginBottom: "100px"}}>
                 <p>
                     Step into the heart of my blog: the <strong>Brotherhood</strong>.
                 </p>
@@ -40,8 +40,10 @@ const More = () => {
                 Thanks for reading, <br />
                 James Bond
             </div>
+            <div style={{width: "60%"}}>
+                <Avengers />
+            </div>
             <AutoplayCarousel />
-            <Avengers />
             <br />
             <small> Last updated: 2024-05-05 </small>
         </div>
