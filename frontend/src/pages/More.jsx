@@ -28,7 +28,7 @@ const AutoplayCarousel = () => {
 const More = () => {
     return (
         <div className="more-background" >
-            <div style={{width: "60%", marginBottom: "100px"}}>
+            <div style={{width: "60%", marginBottom: "40px"}}>
                 <p>
                     Step into the heart of my blog: the <strong>Brotherhood</strong>.
                 </p>
