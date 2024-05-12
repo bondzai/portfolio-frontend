@@ -4,17 +4,19 @@ import { openInNewTab } from "../../utils/utils.js";
 import { avengers } from '../../apis/rest/Heroes.js';
 
 
-const Avenger = ({ avatar, title, repoUrl}) => {
+const Avenger = ({ avatar, title, repoUrl, url}) => {
     const tooltipContent = (
         <div>
             {title}: ({repoUrl})
         </div>
     );
 
+    const link = url || repoUrl;
+
     return (
         <div style={{ cursor: "pointer", marginRight: "10px", marginBottom: "10px" }}>
              <Tooltip title={tooltipContent}>
-                <Avatar size={40} src={avatar} onClick={() => openInNewTab(repoUrl)} />
+                <Avatar size={40} src={avatar} onClick={() => openInNewTab(link)} />
             </Tooltip>
         </div>
     );
@@ -37,6 +39,7 @@ const Avengers = () => {
                                 avatar={avenger.avatar}
                                 title={avenger.title}
                                 repoUrl={avenger.repoUrl}
+                                url={avenger.url}
                             />
                         ))}
                     </div>
