@@ -3,12 +3,12 @@ import Counter from "../../components/icons/Counter";
 import Coppyright from "../../components/icons/Copyright";
 import StatusIcons from "../../components/icons/StatusIcons";
 import Watchers from "../../components/icons/Watchers";
-import Background from "./Background";
+import { Users } from "../../apis/websocket/๊Users";
 import "./Footer.css"
 
 
 const Footer = () => {
-    const [activeUsersCount, totalUsersCount] = Background();
+    const [activeUsersCount, totalUsersCount] = Users();
 
     return (
         <div className="footer">
