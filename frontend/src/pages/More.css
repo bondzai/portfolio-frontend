@@ -38,7 +38,7 @@
     gap: 16px;
     width: 200%;
     height: 100%;
-    animation: slide 30s linear infinite;
+    animation: slide 90s linear infinite;
     &:hover {
         animation-play-state: paused;
     }
