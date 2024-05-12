@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import BrandIcon from "../../components/icons/BrandIcon";
 import "./Navbar.css";
 
 
@@ -24,6 +25,7 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
+            <BrandIcon />
             <div className="toggleButton">
                 <button onClick={toggleNavbar}>
                     <GiHamburgerMenu />
