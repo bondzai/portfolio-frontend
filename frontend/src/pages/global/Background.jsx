@@ -7,8 +7,6 @@ const Background = () => {
     const [activeUsersCount, setActiveUsersCount] = useState(0);
     const [totalUsersCount, setTotalUsersCount] = useState(0);
 
-    const wsUrl = import.meta.env.VITE_WS_URL;
-
     const handleMessage = (event) => {
         const data = JSON.parse(event.data);
 
@@ -19,7 +17,8 @@ const Background = () => {
         setTotalUsersCount(totalUsers);
     };
 
-    const ws = useSocket(wsUrl, handleMessage);
+    const wsUrl = import.meta.env.VITE_WS_URL;
+    useSocket(wsUrl, handleMessage);
 
     return (
         <>
