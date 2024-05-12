@@ -1,49 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Watchers from "../../components/icons/Watchers";
+import useSocket from "../../hooks/useSocket";
 
 
 const Background = () => {
     const [activeUsersCount, setActiveUsersCount] = useState(0);
     const [totalUsersCount, setTotalUsersCount] = useState(0);
+
     const wsUrl = import.meta.env.VITE_WS_URL;
-    let ws;
 
-    useEffect(() => {
-        ws = new WebSocket(wsUrl);
+    const handleMessage = (event) => {
+        const data = JSON.parse(event.data);
 
-        ws.onopen = () => {
-            console.log("WebSocket connected");
-        };
+        let activeUsers = parseInt(data.activeUsers) || 0;
+        setActiveUsersCount(activeUsers);
 
-        ws.onmessage = (event) => {
-            try {
-                const data = JSON.parse(event.data);
-
-                let activeUsers = parseInt(data.activeUsers) || 0;
-                setActiveUsersCount(activeUsers);
-
-                let totalUsers = parseInt(data.totalUsers) || 0;
-                setTotalUsersCount(totalUsers);
-            } catch (error) {
-                console.error('Error parsing JSON:', error);
-            }
-        };
-
-        ws.onclose = () => {
-            console.log("WebSocket disconnected");
-        };
-
-        window.addEventListener("beforeunload", handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
-            ws.close();
-        };
-    }, []);
-
-    const handleBeforeUnload = () => {
-        ws.close();
+        let totalUsers = parseInt(data.totalUsers) || 0;
+        setTotalUsersCount(totalUsers);
     };
+
+    const ws = useSocket(wsUrl, handleMessage);
 
     return (
         <>
