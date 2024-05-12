@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 const useScrollEffect = () => {
     const [showScrollButton, setShowScrollButton] = useState(false);
     const behavior = "smooth"
