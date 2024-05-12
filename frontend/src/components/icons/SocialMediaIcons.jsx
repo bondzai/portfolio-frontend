@@ -6,6 +6,7 @@ import DonationCard from "../cards/DonationCard.jsx";
 import CustomModalButton from "../buttons/CustomModalButton.jsx";
 import { openInNewTab } from "../../utils/utils.js"
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import Draggable from "react-draggable";
 
 
 const SocialMediaIcons = () => {
@@ -18,10 +19,12 @@ const SocialMediaIcons = () => {
 
     return (
         <div>
-            <AiOutlineMail
-                className="icon-social"
-                style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: 'not-allowed' }}
-            />
+            <Draggable>
+                <AiOutlineMail
+                    className="icon-social"
+                    style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: "move"}}
+                    />
+            </Draggable>
             <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="left">
                 <AiFillLinkedin
                     className="icon-social"
