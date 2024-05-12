@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  CodeOutlined,
-  CoffeeOutlined,
-  ReadOutlined,
+    CodeOutlined,
+    CoffeeOutlined,
+    ReadOutlined,
 } from '@ant-design/icons';
 import { Space } from 'antd';
 import { MemoryUsage } from './PerformanceMonitor';
