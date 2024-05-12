@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useSocket = (url, handleMessage, handleOpen, handleClose) => {
+const useSocket = (url, handleOpen, handleClose) => {
     const [ws, setWs] = useState(null);
+    const [receivedData, setReceivedData] = useState(null);
 
     useEffect(() => {
         const socket = new WebSocket(url);
@@ -11,7 +12,7 @@ const useSocket = (url, handleMessage, handleOpen, handleClose) => {
         };
 
         socket.onmessage = (event) => {
-            handleMessage ? handleMessage(event) : console.log("Message received:", event.data);
+            setReceivedData(event.data);
         };
 
         socket.onclose = () => {
@@ -29,7 +30,7 @@ const useSocket = (url, handleMessage, handleOpen, handleClose) => {
         const handleBeforeUnload = () => {
             if (ws) {
                 ws.close();
-            };
+            }
         };
 
         window.addEventListener("beforeunload", handleBeforeUnload);
@@ -39,7 +40,7 @@ const useSocket = (url, handleMessage, handleOpen, handleClose) => {
         };
     }, [ws]);
 
-    return ws;
+    return { ws, receivedData };
 };
 
 export default useSocket;

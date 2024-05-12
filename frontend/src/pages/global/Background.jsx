@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Watchers from "../../components/icons/Watchers";
 import useSocket from "../../hooks/useSocket";
-
 
 const Background = () => {
     const [activeUsersCount, setActiveUsersCount] = useState(0);
     const [totalUsersCount, setTotalUsersCount] = useState(0);
 
-    const handleMessage = (event) => {
-        const data = JSON.parse(event.data);
-
-        let activeUsers = parseInt(data.activeUsers) || 0;
-        setActiveUsersCount(activeUsers);
-
-        let totalUsers = parseInt(data.totalUsers) || 0;
-        setTotalUsersCount(totalUsers);
-    };
-
     const wsUrl = import.meta.env.VITE_WS_URL;
-    useSocket(wsUrl, handleMessage);
+    const { receivedData } = useSocket(wsUrl);
+    const data = JSON.parse(receivedData);
+
+    useEffect(() => {
+        if (data) {
+            setActiveUsersCount(data.activeUsers);
+            setTotalUsersCount(data.totalUsers);
+        }
+    }, [data]);
 
     return (
         <>
