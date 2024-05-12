@@ -1,12 +1,19 @@
 import React from 'react';
-import { Avatar, Tooltip } from 'antd';
+import { Avatar, Tooltip, Row, Col } from 'antd';
 import { openInNewTab } from "../../utils/utils.js";
 import { avengers } from '../../apis/rest/Heroes.js';
 
-const Avenger = ({ avatar, title, repoUrl, url, description }) => {
+
+const Avenger = ({ avatar, title, repoUrl}) => {
+    const tooltipContent = (
+        <div>
+            {title}: ({repoUrl})
+        </div>
+    );
+
     return (
-        <div style={{ cursor: "pointer" }}>
-            <Tooltip title={title}>
+        <div style={{ cursor: "pointer", marginRight: "10px", marginBottom: "10px" }}>
+             <Tooltip title={tooltipContent}>
                 <Avatar size={40} src={avatar} onClick={() => openInNewTab(repoUrl)} />
             </Tooltip>
         </div>
@@ -15,18 +22,26 @@ const Avenger = ({ avatar, title, repoUrl, url, description }) => {
 
 const Avengers = () => {
     return (
-        <div style={{ display: "flex", marginTop: "30px", marginBottom: "20px" }}>
-            {Object.values(avengers).map((avenger) => (
-                <Avenger 
-                    key={avenger.title} 
-                    avatar={avenger.avatar} 
-                    title={avenger.title} 
-                    repoUrl={avenger.repoUrl} 
-                    url={avenger.url} 
-                    description={avenger.description} 
-                />
-            ))}
-        </div>
+        <Row>
+            <Col>
+                <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "20px"
+                    }}>
+                        {Object.values(avengers).map((avenger) => (
+                            <Avenger 
+                                key={avenger.title}
+                                avatar={avenger.avatar}
+                                title={avenger.title}
+                                repoUrl={avenger.repoUrl}
+                            />
+                        ))}
+                    </div>
+            </Col>
+        </Row>
     );
 }
 
