@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Tooltip, Row, Col } from 'antd';
 import { openInNewTab } from "../../utils/utils.js";
-import { avengers } from '../../apis/rest/Heroes.js';
+import { avengers } from '../../apis/rest/Avengers.js';
 
 
 const Avenger = ({ avatar, title, repoUrl, url}) => {
