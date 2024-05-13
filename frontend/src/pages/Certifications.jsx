@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import Certification from "../components/Certification";
+import Certification from "../components/cards/Certification";
 import SpinLoader from "../components/loaders/SpinLoader";
 import { getCertificationList } from "../apis/rest/Certification";
 import { globalDelay, itemsPerPage } from "../utils/constants";
