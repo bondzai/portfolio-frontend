@@ -1,5 +1,5 @@
 import React from "react";
-import { avengers } from "../apis/rest/Heroes.js";
+import { avengers } from "../apis/rest/Avengers.js";
 import { HeroCard } from "../components/cards/HeroCard.jsx";
 import Avengers from "../components/icons/Avengers.jsx";
 import "./More.css";

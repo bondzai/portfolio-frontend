@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import Certification from "../components/Certification";
+import Certification from "../components/cards/Certification";
 import SpinLoader from "../components/loaders/SpinLoader";
 import { getCertificationList } from "../apis/rest/Certification";
 import { globalDelay, itemsPerPage } from "../utils/constants";
@@ -33,15 +33,11 @@ const Certifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
 
-    if (isLoading) {
-        return (
-            <SpinLoader />
-        );
-    };
+    if (isLoading) return <SpinLoader />;
 
     return (
         <div className="certifications">
-            <div className="certificationList">
+            <div className="certification-list">
             {
                 (screenSize === ScreenSize.XS) ? (
                     certificationList.map((certification, index) => (

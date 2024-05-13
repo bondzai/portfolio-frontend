@@ -1,6 +1,10 @@
 FRONT := ./frontend
 BACK := ./backend
 
+# The leading - tells make not to error if the target folder is empty.
+-include $(FRONT)/Makefile.*
+-include $(BACK)/Makefile.*
+
 .PHONY: init front-init back-init front-run
 
 init: front-init back-init
