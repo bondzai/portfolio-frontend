@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import { Card } from 'antd';
 import useRotation from "../hooks/useRotation";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 
 const Certification = ({ ...certification }) => {
@@ -22,16 +23,14 @@ const Certification = ({ ...certification }) => {
             onClick={handleClick} 
             onMouseMove={handleMouseMove} 
             onMouseLeave={handleMouseLeave}
-            style={{
-                transform: `perspective(600px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
-            }}
+            style={{ transform: `perspective(600px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`}}
         >
-            <LazyLoadImage
-                src={certification.image_url}
-                alt=""
-                effect="blur"
-                className="bg-image"
-            />
+        <Card
+            hoverable
+            style={{ width: 400, height: 300 }}
+            cover={<LazyLoadImage src={certification.image_url} effect="blur" className="bg-image" />}
+        >
+        </Card>
         </div>
     );
 };
