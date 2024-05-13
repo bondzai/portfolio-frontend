@@ -36,4 +36,8 @@
     .footer {
         font-size: 12px;
     }
+
+    .status-icons {
+        display: none;
+    }
 }
