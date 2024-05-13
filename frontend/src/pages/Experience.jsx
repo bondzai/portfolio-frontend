@@ -3,7 +3,8 @@ import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeli
 import { IoMdPulse, IoMdSchool } from "react-icons/io";
 import { FaBookOpenReader } from "react-icons/fa6";
 import { MdWork } from "react-icons/md";
-import { Avatar} from "antd";
+import { BiSort } from "react-icons/bi";
+import { Avatar } from "antd";
 import "react-vertical-timeline-component/style.min.css";
 import "./Experience.css";
 
@@ -177,8 +178,8 @@ const Experience = () => {
 
     return (
         <div className="experience">
-            <button onClick={toggleOrder}>
-                {reverseOrder ? "Reverse" : "Normal"}
+            <button onClick={toggleOrder} className="icon">
+                <BiSort />
             </button>
             <VerticalTimeline lineColor="var(--color-primary)">
                 {timelineElements}
