@@ -4,7 +4,7 @@ import { IoMdPulse, IoMdSchool } from "react-icons/io";
 import { FaBookOpenReader } from "react-icons/fa6";
 import { MdWork } from "react-icons/md";
 import { BiSort } from "react-icons/bi";
-import { Avatar } from "antd";
+import { Avatar, Tooltip } from "antd";
 import "react-vertical-timeline-component/style.min.css";
 import "./Experience.css";
 
@@ -178,9 +178,11 @@ const Experience = () => {
 
     return (
         <div className="experience">
-            <button onClick={toggleOrder} className="icon">
-                <BiSort />
-            </button>
+            <Tooltip title="Click to forward/reverse timeline." placement="left">
+                <button onClick={toggleOrder} className="icon">
+                    <BiSort />
+                </button>
+            </Tooltip>
             <VerticalTimeline lineColor="var(--color-primary)">
                 {timelineElements}
             </VerticalTimeline>
