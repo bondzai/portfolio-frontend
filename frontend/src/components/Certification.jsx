@@ -18,20 +18,14 @@ const Certification = ({ ...certification }) => {
     };
 
     return (
-        <div 
+        <Card
+            cover={<LazyLoadImage src={certification.image_url} effect="blur" className="bg-image" />}
             className="certification" 
             onClick={handleClick} 
             onMouseMove={handleMouseMove} 
             onMouseLeave={handleMouseLeave}
             style={{ transform: `perspective(600px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`}}
-        >
-        <Card
-            hoverable
-            style={{ width: 400, height: 300 }}
-            cover={<LazyLoadImage src={certification.image_url} effect="blur" className="bg-image" />}
-        >
-        </Card>
-        </div>
+        />
     );
 };
 
