@@ -33,11 +33,7 @@ const Certifications = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleCertifications = certificationList.slice(startIndex, startIndex + itemsPerPage);
 
-    if (isLoading) {
-        return (
-            <SpinLoader />
-        );
-    };
+    if (isLoading) return <SpinLoader />;
 
     return (
         <div className="certifications">
