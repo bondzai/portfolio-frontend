@@ -41,7 +41,7 @@ const Certifications = () => {
 
     return (
         <div className="certifications">
-            <div className="certificationList">
+            <div className="certification-list">
             {
                 (screenSize === ScreenSize.XS) ? (
                     certificationList.map((certification, index) => (
