@@ -1,0 +1,38 @@
+.github-calendar-background {
+    border-radius: 10px;
+    width: 100vh;
+    height: auto;
+    box-shadow: 0px 3px 15px rgba(58, 58, 58, 0.2);
+    background-color: var(--color-deep);
+    color: var(--text-color-primary);
+    padding-top: 0.8rem;
+    padding-bottom: 1.5rem;
+}
+
+.github-calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.github-calendar {
+    width: 70%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github-calendar-title-center {
+    text-align: center;
+    color: var(--text-color-primary);
+}
+
+.github-calendar-title-center h3 {
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-size: 16px;
+}

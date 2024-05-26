@@ -1,0 +1,90 @@
+:root {
+  --main-color: #0093e9;
+  --gradient-start: #0093e9;
+  --gradient-end: #80d0c7;
+  --border-gradient: linear-gradient(
+    90deg,
+    rgba(14, 8, 110, 1) 0%,
+    rgba(15, 15, 167, 1) 26%,
+    rgba(20, 45, 255, 1) 85%
+  );
+  --shadow-color: rgba(8, 178, 245, 0.61);
+}
+
+.cube-container {
+  width: var(--cube-size);
+  height: var(--cube-size);
+  perspective: var(--cube-perspective);
+  margin: 50px auto;
+}
+
+.cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 15s infinite linear;
+}
+
+.face {
+  position: absolute;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  color: rgb(21, 153, 214);
+  line-height: var(--cube-size);
+  background: transparent;
+  opacity: 0.9;
+  border: 2px solid;
+  border-image: var(--border-gradient);
+  box-shadow: 0 0 var(--cube-aura) var(--shadow-color);
+}
+
+.front {
+  transform: translateZ(var(--cube-transform));
+  background-color: var(--main-color);
+  background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(var(--cube-transform));
+  background-color: var(--main-color);
+  background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(var(--cube-transform));
+  background-color: var(--main-color);
+  background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(var(--cube-transform));
+  background-color: var(--main-color);
+  background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(var(--cube-transform));
+  background-color: var(--main-color);
+  background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(var(--cube-transform));
+  background-color: var(--main-color);
+  background-image: linear-gradient(160deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.cube-container:hover .cube {
+  animation-play-state: paused;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}

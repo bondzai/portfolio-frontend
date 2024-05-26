@@ -1,0 +1,37 @@
+.experience {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+.experience .icon {
+    position: fixed;
+    padding: 10px 10px;
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.95;
+    transition: opacity 0.3s, visibility 0.3s;
+    top: 70px;
+    right: 20px;
+    z-index: 10;
+    width: 35px;
+}
+
+.experience .icon:hover {
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.experience .icon.visible {
+    opacity: 0.9;
+    visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+    .experience .icon {
+        right: 10px;
+    }
+}

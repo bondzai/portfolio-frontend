@@ -1,0 +1,37 @@
+.stat-background {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    color: var(--text-color-primary);
+}
+
+.stat-container {
+    display: flex;
+}
+
+.stats-waka {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.stats-github {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .stats-waka {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .stats-github {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
