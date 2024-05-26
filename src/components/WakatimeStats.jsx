@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import SpinLoader from "./loaders/SpinLoader";
-import { getWakatimeStats } from "../apis/rest/WakatimeStats";
+import SpinLoader from "./loaders/SpinLoader.jsx";
+import { getWakatimeStats } from "../apis/rest/WakatimeStats.js";
 import { globalDelay } from "../utils/constants.js";
-import PieChart from "../components/cards/Piechart.jsx";
+import PieChart from "./cards/Piechart.jsx";
 import CardWithTab from "./cards/CardWithTab.jsx";
-import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
+import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions.js";
 import "./Wakatime.css";
 
 

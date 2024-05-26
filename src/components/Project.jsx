@@ -2,7 +2,7 @@ import React from "react";
 import { Empty, Badge } from "antd";
 import { useNavigate } from "react-router-dom";
 import { StarFilled } from '@ant-design/icons';
-import { getLampStatusStyle } from "./StatusStyles";
+import { getLampStatusStyle } from "./StatusStyles.jsx";
 import { openInNewTab } from "../utils/utils.js";
 
 

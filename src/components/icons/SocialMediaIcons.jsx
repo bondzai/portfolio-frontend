@@ -5,7 +5,7 @@ import { SiGitbook, SiBitcoin } from "react-icons/si";
 import DonationCard from "../cards/DonationCard.jsx";
 import CustomModalButton from "../buttons/CustomModalButton.jsx";
 import { openInNewTab } from "../../utils/utils.js"
-import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
 import Draggable from "react-draggable";
 
 
