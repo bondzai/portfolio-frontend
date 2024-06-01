@@ -5,7 +5,7 @@ import { CustomSortEnum } from "../../utils/choices.js";
 const getCertificationList = () => getList({
     urls: BACKEND_URLS,
     endpoint: "/certifications/",
-    customSort: CustomSortEnum.DESCENDING,
+    customSort: CustomSortEnum.ASCENDING,
 })
 
 export { getCertificationList }

@@ -5,7 +5,7 @@ import { CustomSortEnum } from "../../utils/choices.js";
 const getProjectList = () => getList({
     urls: BACKEND_URLS,
     endpoint: "/projects/",
-    customSort: CustomSortEnum.DESCENDING,
+    customSort: CustomSortEnum.ASCENDING,
 })
 
 export { getProjectList }
