@@ -10,12 +10,17 @@
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-}
+    
+    h6 {
+        font-size: 17px;
+        font-weight: bold;
+        color: #3e497a;
+    }
 
-.skills h6 {
-    font-size: 17px;
-    font-weight: bold;
-    color: #3e497a;
+    .list {
+        list-style: none;
+        width: 75%;
+    }
 }
 
 .skill-list {
@@ -24,11 +29,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     place-items: center;
-}
-
-.skills .list {
-    list-style: none;
-    width: 75%;
 }
 
 .skill {
