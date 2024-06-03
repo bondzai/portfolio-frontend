@@ -34,27 +34,27 @@
 .skill {
     margin-bottom: 15px;
     background: none;
-}
 
-.skill button {
-    cursor: pointer;
-    outline: none;
-    border-radius: 50%;
-    border-style: none;
-    background-color: transparent;
-    width: 60px;
-    height: auto;
-}
+    button {
+        cursor: pointer;
+        outline: none;
+        border-radius: 50%;
+        border-style: none;
+        background-color: transparent;
+        width: 60px;
+        height: auto;
+    }
 
-.skill button:hover {
-    filter: brightness(105%);
-    transition: 0.1s ease-in;
-    transform: scale(1.1);
-}
+    button:hover {
+        filter: brightness(105%);
+        transition: 0.1s ease-in;
+        transform: scale(1.1);
+    }
 
-.skill img {
-    width: 40px;
-    height: auto;
+    img {
+        width: 40px;
+        height: auto;
+    }
 }
 
 .skill-item {
