@@ -10,12 +10,17 @@
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-}
+    
+    h6 {
+        font-size: 17px;
+        font-weight: bold;
+        color: #3e497a;
+    }
 
-.skills h6 {
-    font-size: 17px;
-    font-weight: bold;
-    color: #3e497a;
+    .list {
+        list-style: none;
+        width: 75%;
+    }
 }
 
 .skill-list {
@@ -26,35 +31,30 @@
     place-items: center;
 }
 
-.skills .list {
-    list-style: none;
-    width: 75%;
-}
-
 .skill {
     margin-bottom: 15px;
     background: none;
-}
 
-.skill button {
-    cursor: pointer;
-    outline: none;
-    border-radius: 50%;
-    border-style: none;
-    background-color: transparent;
-    width: 60px;
-    height: auto;
-}
+    button {
+        cursor: pointer;
+        outline: none;
+        border-radius: 50%;
+        border-style: none;
+        background-color: transparent;
+        width: 60px;
+        height: auto;
+    }
 
-.skill button:hover {
-    filter: brightness(105%);
-    transition: 0.1s ease-in;
-    transform: scale(1.1);
-}
+    button:hover {
+        filter: brightness(105%);
+        transition: 0.1s ease-in;
+        transform: scale(1.1);
+    }
 
-.skill img {
-    width: 40px;
-    height: auto;
+    img {
+        width: 40px;
+        height: auto;
+    }
 }
 
 .skill-item {

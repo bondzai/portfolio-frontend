@@ -137,7 +137,7 @@ const Experience = () => {
             - Concentrating efforts on designing and developing a variety of backend services while collaborating with fellow engineers through coding and code reviews.
             - Tackling challenges to master backend engineering, deepen understanding of software architectural patterns (with a focus on microservices and event-driven architecture), and expand knowledge in DevSecOps and cloud technologies.
             `,
-            avatarSrc: "https://scontent.fbkk5-6.fna.fbcdn.net/v/t39.30808-1/292435380_451632743632915_622577729761028579_n.png?stp=dst-png_p200x200&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=DRrgz_Q2XJsQ7kNvgEn4WS3&_nc_ht=scontent.fbkk5-6.fna&oh=00_AfCs9HKqTi1JArnrp3F232ln9ghW_pwsD6sEkObbqJkTQg&oe=6637B948",
+            avatarSrc: null,
             avatarBorderColor: null
         },
         {
@@ -150,7 +150,7 @@ const Experience = () => {
             - Collaborating with team members to implement and optimize core stack components using Golang, Apache Kafka, Apache APISIX, and gRPC protocol.
             - Particular emphasis on microservices architecture and optimizing data streaming efficiency.
             `,
-            avatarSrc: "https://scontent.fbkk5-6.fna.fbcdn.net/v/t39.30808-6/271695293_5120976787936934_222433247332051886_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=TBNWaANkdYsQ7kNvgG5e4OV&_nc_ht=scontent.fbkk5-6.fna&oh=00_AfAaQVfDVqEqFk5py3w7zd0ePq-IJOvpVWI4xG7NRh_PoQ&oe=66417BD8",
+            avatarSrc: null,
             avatarBorderColor: null
         },
     ];
