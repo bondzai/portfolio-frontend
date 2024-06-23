@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/getVersion.js",
-    "build": "vite build && echo '/* /index.html  200' | cat >dist/_redirects && react-scripts build",
+    "build": "vite build && echo '/* /index.html  200' | cat >dist/_redirects",
     "preview": "vite preview",
     "firebase-deploy": "yarn run build && firebase deploy"
   },
