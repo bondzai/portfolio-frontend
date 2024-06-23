@@ -1,6 +1,6 @@
 .projects {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 50px;
     color: var(--color-secondary);
     font-size: 20px;
     height: auto;
@@ -109,10 +109,6 @@
     .project-item {
         width: 300px;
         height: 300px;
-    }
-
-    .projectToolbar {
-        margin-top: 30px;
     }
 
     .pagination-container {
