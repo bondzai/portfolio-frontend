@@ -4,7 +4,7 @@ import Counter from "../../components/icons/Counter";
 import Coppyright from "../../components/icons/Copyright";
 import StatusIcons from "../../components/icons/StatusIcons";
 import Watchers from "../../components/icons/Watchers";
-import { Users } from "../../apis/websocket/๊Users";
+import { Users } from "../../apis/websocket/Users";
 import "./Footer.css";
 
 
