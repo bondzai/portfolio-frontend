@@ -202,6 +202,13 @@ export const avengers = {
         repoUrl: "https://github.com/Whatchawrawit/",
         description: "",
     },
+    27: {
+        avatar: "https://avatars.githubusercontent.com/u/46487715?v=4",
+        title: "God Koe",
+        url: "",
+        repoUrl: "https://github.com/5A681/",
+        description: "",
+    },
 }
 
 if (import.meta.env.DEV) {
