@@ -17,16 +17,26 @@ const ExtraInfoIcon = () => (
     </Tooltip>
 );
 
-const AvatarWithTooltip = () => (
+const AvatarWithTooltip = ({ iconUrl }) => (
     <Tooltip title="Extra information">
-        <Avatar size={21} style={{ backgroundColor: "#3e497a" }} icon={<UserOutlined />} />
+        <img
+            src={iconUrl}
+            alt="network-icon"
+            style={{
+                width: 21,
+                height: 21,
+                borderRadius: "50%",
+                backgroundColor: "#fff",
+                border: "1px solid #ccc",
+            }}
+        />
     </Tooltip>
 );
 
-const InputWithIcons = ({ value, handleCopyToClipboard }) => (
+const InputWithIcons = ({ value, handleCopyToClipboard, iconUrl }) => (
     <Input
         value={value}
-        prefix={<AvatarWithTooltip />}
+        prefix={<AvatarWithTooltip iconUrl={iconUrl} />}
         suffix={
             <>
                 <CopyToClipboardIcon value={value} onClick={handleCopyToClipboard} />
@@ -58,6 +68,7 @@ const DonationCard = () => {
             <div className="donation-card-tail">
                 <InputWithIcons
                     className="donation-card-address"
+                    iconUrl={selectedOption?.iconUrl}
                     value={selectedOption?.value}
                     handleCopyToClipboard={handleCopyToClipboard}
                 />
