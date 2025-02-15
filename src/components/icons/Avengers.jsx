@@ -27,12 +27,13 @@ const Avengers = () => {
         <Row>
             <Col>
                 <div style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginBottom: "20px"
-                    }}>
+                        display: "flex",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: "20px"
+                    }}
+                >
                         {Object.values(avengers).map((avenger) => (
                             <Avenger 
                                 key={avenger.title}
@@ -42,7 +43,7 @@ const Avengers = () => {
                                 url={avenger.url}
                             />
                         ))}
-                    </div>
+                </div>
             </Col>
         </Row>
     );

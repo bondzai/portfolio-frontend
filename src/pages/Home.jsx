@@ -5,7 +5,6 @@ import { profileImageURL, hoverProfileImageURL } from "../utils/constants";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "./Home.css";
 
-
 const Home = () => {
     const [isHovered, setIsHovered] = useState(false);
 

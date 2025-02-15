@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Input, QRCode, Select, Tooltip, Avatar, message } from "antd";
-import { InfoCircleOutlined, UserOutlined, CopyOutlined } from "@ant-design/icons";
+import { Input, QRCode, Select, Tooltip, message } from "antd";
+import { InfoCircleOutlined, CopyOutlined } from "@ant-design/icons";
 import { cryptoWallets } from "../../apis/rest/Wallets";
 import "./DonationCard.css";
 
