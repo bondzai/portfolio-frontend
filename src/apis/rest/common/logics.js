@@ -11,10 +11,10 @@ const customSortResponse = (customSort, response) => {
 };
 
 // Helper function to fetch data from multiple URLs
-const fetchFromUrls = async (urls, headers, defaultData, transform) => {
+const fetchFromUrls = async (urls, headers, defaultData, transform, waitingTime = 3000) => {
     for (const url of urls) {
         try {
-            const response = await axios.get(url, { headers });
+            const response = await axios.get(url, { headers, timeout: waitingTime });
             const result = transform(response);
             if (result !== undefined) {
                 return result;
@@ -56,7 +56,7 @@ export const getList = async ({ ...Props }) => {
         }
         // If response.data is not an array, try the next URL
         return undefined;
-    });
+    }, Props.waitingTime);
 };
 
 // Fetch a single object from the provided URLs
@@ -70,5 +70,5 @@ export const getSingleObject = async ({ ...Props }) => {
         ? { Authorization: `Bearer ${import.meta.env.VITE_DEV_TOKEN}` }
         : {};
 
-    return await fetchFromUrls(urls, headers, Props.defaultData, (response) => response.data);
+    return await fetchFromUrls(urls, headers, Props.defaultData, (response) => response.data, Props.waitingTime);
 };
