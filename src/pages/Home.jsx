@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { HoverContext } from "../contexts/HoverContext";
 import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { profileImageURL, hoverProfileImageURL } from "../utils/constants";
@@ -6,7 +7,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import "./Home.css";
 
 const Home = () => {
-    const [isHovered, setIsHovered] = useState(false);
+    const { isHovered, setIsHovered } = useContext(HoverContext);
 
     return (
         <div className="home">

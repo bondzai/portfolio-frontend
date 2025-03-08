@@ -18,27 +18,39 @@ import { getProjectList } from "./apis/rest/Project";
 import { getCertificationList } from "./apis/rest/Certification";
 
 import "./App.css";
-
+import { HoverProvider, HoverContext } from './contexts/HoverContext';
+import { useContext } from 'react';
 
 const App = () => {
+    const HoverWrapper = ({ children }) => {
+        const { setIsHovered } = useContext(HoverContext);
+        return (
+            <div onMouseEnter={() => setIsHovered(false)} onMouseLeave={() => setIsHovered(true)}>
+                {children}
+            </div>
+        );
+    };
+
     return (
         <div className="App">
-            <Router basename="/">
-                <Navbar />
-                <Sidebar />
-                <Footer />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/skills" element={<Skills />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/project/:id" element={<DisplayModal getDataList={getProjectList} dataRoutePath="/projects" />} />
-                    <Route path="/certifications" element={<Certifications />} />
-                    <Route path="/certification/:id" element={<DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" />} />
-                    <Route path="/experience" element={<Experience />} />
-                    <Route path="/stats" element={<Stats />} />
-                    <Route path="/more" element={<More />} />
-                </Routes>
-            </Router>
+            <HoverProvider>
+                <Router basename="/">
+                    <Navbar />
+                    <Sidebar />
+                    <Footer />
+                    <Routes>
+                        <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
+                        <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
+                        <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                        <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
+                        <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
+                        <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                        <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
+                        <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
+                        <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
+                    </Routes>
+                </Router>
+            </HoverProvider>
         </div>
     );
 }
