@@ -1,30 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
 :root {
-    --color-primary: #21325e;
-    --color-secondary: #3e497a;
-    --color-deep: #1a2949;
-    --text-color-primary: whitesmoke;
     --font-family-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-family-secondary: "Source Sans Pro", sans-serif;
 }
 
 body.light {
-    --text-color-primary: #000;
     --color-primary: #f0f0f0;
+    --color-secondary: #d9d9d9;
+    --color-deep: #c2c2c2;
+    --text-color-primary: #000;
 }
 
 body.dark {
-    --text-color-primary: whitesmoke;
     --color-primary: #21325e;
+    --color-secondary: #3e497a;
+    --color-deep: #1a2949;
+    --text-color-primary: #f5f5f5;
 }
 
-body.dim {
-    --text-color-primary: #ccc;
-    --color-primary: #324a66;
-}
-
- body {
+body {
     display: flex;
     flex-direction: column;
     font-family: var(--font-family-secondary);
@@ -32,8 +27,8 @@ body.dim {
     color: var(--text-color-primary);
     padding: 0;
     margin: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
-
 
 ::-webkit-scrollbar {
     width: 2px;

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const themeOptions = ['light', 'dark', 'dim'];
+const themeOptions = ['light', 'dark'];
 
 const ThemeContext = createContext();
 
