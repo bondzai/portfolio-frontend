@@ -1,27 +1,26 @@
 import React from 'react';
+import { FloatButton } from 'antd';
 import { useTheme } from '../../contexts/ThemeContext';
-import { FaCheck } from 'react-icons/fa';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const ThemeSwitcher = () => {
-    const { theme, toggleTheme, themeOptions, setCustomTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme();
 
     return (
-        <div className="theme-switcher">
-            <div className="theme-options">
-                {themeOptions.map((t) => (
-                    <button
-                        key={t}
-                        className={`theme-option ${theme === t ? 'selected' : ''}`}
-                        onClick={() => setCustomTheme(t)}
-                    >
-                        {t.charAt(0).toUpperCase() + t.slice(1)}
-                        {theme === t && (
-                            <FaCheck className="theme-check-icon" />
-                        )}
-                    </button>
-                ))}
-            </div>
-        </div>
+        <FloatButton
+            tooltip={<div>{theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}</div>}
+            onClick={toggleTheme}
+            icon={theme === 'dark' ? <FaMoon size={12} /> : <FaSun size={12} />}
+            style={{
+                position: 'fixed',
+                top: '8px',
+                right: '24px',
+                opacity: 0.9,
+                zIndex: 1000,
+                width: '32px',
+                height: '32px'
+            }}
+        />
     );
 };
 
