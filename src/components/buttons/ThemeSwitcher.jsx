@@ -13,12 +13,12 @@ const ThemeSwitcher = () => {
             icon={theme === 'dark' ? <FaMoon size={12} /> : <FaSun size={12} />}
             style={{
                 position: 'fixed',
-                top: '8px',
-                right: '24px',
+                top: '10px',
+                left: '8px',
                 opacity: 0.9,
                 zIndex: 1000,
-                width: '32px',
-                height: '32px'
+                width: '30px',
+                height: '30px',
             }}
         />
     );
