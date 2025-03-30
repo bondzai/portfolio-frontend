@@ -1,8 +1,8 @@
 .icon-social {
     position: fixed;
     padding: 10px 10px;
-    background-color: var(--color-secondary);
-    color: white;
+    background-color: var(--const-secondary-color);
+    color: var(--const-primary-text-color);
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -19,8 +19,8 @@
     bottom: 50px;
     right: 20px;
     padding: 10px 10px;
-    background-color: var(--color-secondary);
-    color: white;
+    background-color: var(--const-secondary-color);
+    color: var(--const-primary-text-color);
     border: none;
     border-radius: 50%;
     cursor: pointer;

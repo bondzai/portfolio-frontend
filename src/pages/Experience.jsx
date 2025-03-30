@@ -9,7 +9,7 @@ import "react-vertical-timeline-component/style.min.css";
 import "./Experience.css";
 
 
-const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, avatarBorderColor  }) => {
+const TimelineElement = ({ date, icon, title, content, avatarSrc, avatarBorderColor }) => {
     const formatKeyValue = (text) => {
         const parts = text.split(':');
         if (parts.length === 2) {
@@ -30,20 +30,16 @@ const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, ava
         </React.Fragment>
     ));
 
-    const avatarStyle = {
-        backgroundColor: "transparent",
-        border: avatarBorderColor ? `1px solid ${avatarBorderColor}` : "none"
-    };
-
     return (
         <VerticalTimelineElement
             className="vertical-timeline-elemt--education"
             date={date}
             icon={icon}
-            iconStyle={iconStyle}
+            iconClassName="timeline-icon"
         >
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                {avatarSrc && <Avatar size={30} style={avatarStyle} src={avatarSrc} />} &nbsp;
+            <div className="timeline-element-header">
+                {avatarSrc && <Avatar size={30} className="timeline-avatar" src={avatarSrc} />}
+                &nbsp;
                 <h3 className="vertical-timeline-element-title">{title}</h3>
             </div>
             <p>{formattedContent}</p>
@@ -53,11 +49,6 @@ const TimelineElement = ({ date, icon, iconStyle, title, content, avatarSrc, ava
 
 const Experience = () => {
     const [reverseOrder, setReverseOrder] = useState(false);
-
-    const timelineElementStyle = {
-        background: "var(--color-secondary)",
-        color: "var(--text-color-primary)",
-    }
 
     const calculateAge = (birthdate) => {
         const today = new Date();
@@ -113,7 +104,6 @@ const Experience = () => {
         {
             date: "Jan 2022 - Oct 2022 (10 months)",
             icon: <FaBookOpenReader />,
-            iconStyle: {timelineElementStyle},
             title: "Self-Learning Journey: Software Development",
             content: `
             Q2:
@@ -130,7 +120,6 @@ const Experience = () => {
         {
             date: "Nov 2022 -May 2024 (1 year 7 months)",
             icon: <MdWork />,
-            iconStyle: {timelineElementStyle},
             title: "Swift Dynamics Co., Ltd., Bangkok, Thailand",
             content: `Role: Backend Developer
             Responsibilities:
@@ -143,7 +132,6 @@ const Experience = () => {
         {
             date: `May 2024 - Present (${calculateAge("05/08/2024")})`,
             icon: <MdWork />,
-            iconStyle: {timelineElementStyle},
             title: "Zero Friction Co., Ltd., Bangkok, Thailand",
             content: `Role: Software Engineer
             Responsibilities:
@@ -162,7 +150,6 @@ const Experience = () => {
                 key={index}
                 date={element.date}
                 icon={element.icon}
-                iconStyle={timelineElementStyle}
                 title={element.title}
                 content={element.content}
                 avatarSrc={element.avatarSrc}
@@ -170,7 +157,7 @@ const Experience = () => {
             />
         ));
         return reverseOrder ? elements.reverse() : elements;
-    }, [reverseOrder, timelineElementStyle, timelineElementsData]);
+    }, [reverseOrder, timelineElementsData]);
 
     const toggleOrder = () => {
         setReverseOrder(!reverseOrder);
@@ -183,7 +170,7 @@ const Experience = () => {
                     <BiSort />
                 </button>
             </Tooltip>
-            <VerticalTimeline lineColor="var(--text-color-primary)">
+            <VerticalTimeline>
                 {timelineElements}
             </VerticalTimeline>
         </div>

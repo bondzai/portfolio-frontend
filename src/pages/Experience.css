@@ -8,12 +8,12 @@
 .experience .icon {
     position: fixed;
     padding: 10px 10px;
-    background-color: var(--color-secondary);
-    color: white;
+    background-color: var(--const-secondary-color);
+    color: var(--const-primary-text-color);
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    opacity: 0.95;
+    opacity: 0.9;
     transition: opacity 0.3s, visibility 0.3s;
     top: 70px;
     right: 20px;
@@ -33,7 +33,7 @@
 
 /* Custom styling for vertical timeline */
 .vertical-timeline-element-content {
-    color: var(--color-primary, #f0f0f0);
+    color: var(--const-primary-color);
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
@@ -46,9 +46,16 @@
     box-shadow: 0 5px 12px var(--color-secondary, #f5f5f5);
 }
 
+
+.timeline-icon {
+    background: var(--color-secondary);
+    color: var(--text-color-primary);
+    box-shadow: 0 0 0 4px var(--text-color-primary), inset 0 2px 0 rgba(0, 0, 0, .08), 0 3px 0 4px rgba(0, 0, 0, .05);
+}
+
 .vertical-timeline-element-date {
     font-size: 0.9rem;
-    color: var(--color-primary);
+    color: var(--text-color-primary);
     margin-bottom: 8px;
 }
 
