@@ -1,26 +1,26 @@
 import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
+import { FaCheck } from 'react-icons/fa';
 
 const ThemeSwitcher = () => {
     const { theme, toggleTheme, themeOptions, setCustomTheme } = useTheme();
 
     return (
-        <div>
-            <p>Current theme: {theme}</p>
-            <button onClick={toggleTheme}>
-                Cycle Theme
-            </button>
-            <select
-                value={theme}
-                onChange={(e) => setCustomTheme(e.target.value)}
-                style={{ marginLeft: '10px' }}
-            >
+        <div className="theme-switcher">
+            <div className="theme-options">
                 {themeOptions.map((t) => (
-                    <option key={t} value={t}>
+                    <button
+                        key={t}
+                        className={`theme-option ${theme === t ? 'selected' : ''}`}
+                        onClick={() => setCustomTheme(t)}
+                    >
                         {t.charAt(0).toUpperCase() + t.slice(1)}
-                    </option>
+                        {theme === t && (
+                            <FaCheck className="theme-check-icon" />
+                        )}
+                    </button>
                 ))}
-            </select>
+            </div>
         </div>
     );
 };
