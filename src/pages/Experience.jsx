@@ -183,7 +183,7 @@ const Experience = () => {
                     <BiSort />
                 </button>
             </Tooltip>
-            <VerticalTimeline lineColor="var(--color-primary)">
+            <VerticalTimeline lineColor="var(--text-color-primary)">
                 {timelineElements}
             </VerticalTimeline>
         </div>

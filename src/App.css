@@ -3,13 +3,17 @@
 :root {
     --font-family-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-family-secondary: "Source Sans Pro", sans-serif;
+    --const-primary-color: #21325e;
+    --const-secondary-color: #3e497a;
+    --const-primary-text-color: #f5f5f5;
 }
 
 body.light {
-    --color-primary: #f0f0f0;
+    --color-primary: #f5f5f5;
     --color-secondary: #d9d9d9;
     --color-deep: #c2c2c2;
-    --text-color-primary: #000;
+    --text-color-primary: #21325e;
+    --text-color-secondary: #3e497a;
 }
 
 body.dark {
@@ -17,6 +21,7 @@ body.dark {
     --color-secondary: #3e497a;
     --color-deep: #1a2949;
     --text-color-primary: #f5f5f5;
+    --text-color-secondary: #d9d9d9;
 }
 
 body {

@@ -1,7 +1,7 @@
 .projects {
     width: 100%;
     margin-top: 50px;
-    color: var(--color-secondary);
+    color: #21325e;
     font-size: 20px;
     height: auto;
     display: flex;
@@ -33,7 +33,8 @@
     width: 300px;
     height: 300px;
     margin: 10px;
-    box-shadow: 0px 3px 15px rgba(58, 58, 58, 0.2);
+    background-color: #e0e0e0;
+    box-shadow: 0px 1px 8px var(--text-color-primary);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -42,7 +43,7 @@
 
 .project-item:hover {
     transform: scale(1.02);
-    box-shadow: 0px 3px 15px rgba(33, 50, 94, 0.7);
+    box-shadow: 0px 3px 15px var(--text-color-primary);
     transition: 0.1s ease-in;
 }
 
@@ -73,7 +74,7 @@
     border: none;
     cursor: pointer;
     background: var(--color-secondary);
-    color: whitesmoke;
+    color: var(--text-color-primary);
 }
 
 .project-item button:hover {

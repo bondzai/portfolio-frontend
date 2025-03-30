@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-primary);
-    color: var(--text-color-primary);
+    background-color: var(--const-primary-color);
+    color: var(--const-primary-text-color);
     font-size: 14px;
     position: fixed;
     bottom: 0;
@@ -13,7 +13,7 @@
     z-index: 2;
     padding: 0;
     margin: 0;
-    border-top: 1px solid var(--color-secondary);
+    border-top: 1px solid var(--const-secondary-color);
 }
 
 .status-icons {
@@ -23,13 +23,13 @@
 }
 
 .status-icon {
-    color: var(--text-color-primary);
+    color: var(--const-primary-text-color);
     padding: 2px;
 }
 
 .status-icon:hover {
     opacity: 0.8;
-    background-color: var(--color-secondary);
+    background-color: var(--const-secondary-color);
 }
 
 @media screen and (max-width: 768px) {
