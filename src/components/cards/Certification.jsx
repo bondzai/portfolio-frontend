@@ -30,3 +30,4 @@ const Certification = ({ ...certification }) => {
 };
 
 export default Certification;
+
