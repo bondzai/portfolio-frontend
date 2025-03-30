@@ -19,12 +19,14 @@ const SocialMediaIcons = () => {
 
     return (
         <div>
+
             <Draggable>
                 <AiOutlineMail
                     className="icon-social"
                     style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: "move"}}
-                    />
+                />
             </Draggable>
+
             <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="left">
                 <AiFillLinkedin
                     className="icon-social"
@@ -32,6 +34,7 @@ const SocialMediaIcons = () => {
                     onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb")}
                 />
             </Tooltip>
+
             <Tooltip title="https://thejb.gitbook.io/core" placement="left">
                 <SiGitbook
                     className="icon-social"
@@ -39,13 +42,15 @@ const SocialMediaIcons = () => {
                     onClick={() => openInNewTab("https://thejb.gitbook.io/core")}
                 />
             </Tooltip>
+
             <Tooltip title="https://github.com/bondzai" placement="left">
                 <AiFillGithub
                     className="icon-social"
                     style={{ bottom: "100px", right: rightPosition }}
                     onClick={() => openInNewTab("https://github.com/bondzai")}
-                    />
+                />
             </Tooltip>
+
             <CustomModalButton
                 buttonText="Buy me a coffee"
                 title="Buy me a coffee"
@@ -57,6 +62,7 @@ const SocialMediaIcons = () => {
                 }
                 hideButtons
             />
+
         </div>
     );
 };
