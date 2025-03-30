@@ -63,6 +63,12 @@ const Projects = () => {
                             count={Math.ceil(projectList.length / itemsPerPage)}
                             page={currentPage}
                             onChange={handleChangePage}
+                            sx={{
+                                '& .MuiPaginationItem-root': {
+                                    color: 'var(--text-color-primary)',
+                                    fontWeight: 'bold'
+                                }
+                            }}
                         />
                     </Stack>
                 )

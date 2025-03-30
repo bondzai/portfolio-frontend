@@ -19,6 +19,7 @@ import { getCertificationList } from "./apis/rest/Certification";
 
 import "./App.css";
 import { HoverProvider, HoverContext } from './contexts/HoverContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { useContext } from 'react';
 
 const App = () => {
@@ -33,24 +34,26 @@ const App = () => {
 
     return (
         <div className="App">
-            <HoverProvider>
-                <Router basename="/">
-                    <Navbar />
-                    <Sidebar />
-                    <Footer />
-                    <Routes>
-                        <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
-                        <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
-                        <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
-                        <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
-                        <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
-                        <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
-                        <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
-                        <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                        <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
-                    </Routes>
-                </Router>
-            </HoverProvider>
+            <ThemeProvider>
+                <HoverProvider>
+                    <Router basename="/">
+                        <Navbar />
+                        <Sidebar />
+                        <Footer />
+                        <Routes>
+                            <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
+                            <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
+                            <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                            <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
+                            <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
+                            <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                            <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
+                            <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
+                            <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
+                        </Routes>
+                    </Router>
+                </HoverProvider>
+            </ThemeProvider>
         </div>
     );
 }

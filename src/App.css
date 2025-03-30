@@ -1,21 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
 :root {
-    --text-color-primary: whitesmoke;
+    --font-family-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-family-secondary: "Source Sans Pro", sans-serif;
+    --const-primary-color: #21325e;
+    --const-secondary-color: #3e497a;
+    --const-primary-text-color: #f5f5f5;
+}
+
+body.light {
+    --color-primary: #f5f5f5;
+    --color-secondary: #d9d9d9;
+    --color-deep: #c2c2c2;
+    --text-color-primary: #21325e;
+    --text-color-secondary: #3e497a;
+}
+
+body.dark {
     --color-primary: #21325e;
     --color-secondary: #3e497a;
     --color-deep: #1a2949;
-    --font-family-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-family-secondary: "Source Sans Pro", sans-serif;
+    --text-color-primary: #f5f5f5;
+    --text-color-secondary: #d9d9d9;
 }
 
 body {
     display: flex;
     flex-direction: column;
     font-family: var(--font-family-secondary);
+    background-color: var(--color-primary);
+    color: var(--text-color-primary);
     padding: 0;
     margin: 0;
-    background-color: #f0f0f0;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 ::-webkit-scrollbar {
