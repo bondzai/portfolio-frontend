@@ -10,10 +10,33 @@ export const ThemeProvider = ({ children }) => {
         return savedTheme && themeOptions.includes(savedTheme) ? savedTheme : 'dark';
     });
 
+    const playSound = () => {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const bufferDuration = 0.02;
+        const bufferSize = audioCtx.sampleRate * bufferDuration;
+        const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            output[i] = Math.random() * 2 - 1;
+        }
+        const noiseSource = audioCtx.createBufferSource();
+        noiseSource.buffer = noiseBuffer;
+
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + bufferDuration);
+
+        noiseSource.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        noiseSource.start();
+    };
+
     const toggleTheme = () => {
         const currentIndex = themeOptions.indexOf(theme);
         const nextIndex = (currentIndex + 1) % themeOptions.length;
         setTheme(themeOptions[nextIndex]);
+        playSound();
     };
 
     const setCustomTheme = (newTheme) => {
