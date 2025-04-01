@@ -63,8 +63,11 @@
     background: var(--text-color-primary) !important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1170px) {
     .experience .icon {
         right: 10px;
+    }
+    .vertical-timeline-element-content {
+        margin-left: 60px;
     }
 }

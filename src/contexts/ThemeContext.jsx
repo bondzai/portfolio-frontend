@@ -23,7 +23,7 @@ export const ThemeProvider = ({ children }) => {
         noiseSource.buffer = noiseBuffer;
 
         const gainNode = audioCtx.createGain();
-        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.03, audioCtx.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + bufferDuration);
 
         noiseSource.connect(gainNode);
