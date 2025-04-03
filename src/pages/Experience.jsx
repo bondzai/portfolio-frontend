@@ -98,7 +98,7 @@ const Experience = () => {
                 - Proficient in industrial automation and control system programming, including PLC, SCADA, MES, and database integration.
                 - Successfully implemented analog signals, digital devices, I/O servers, and various 3rd-party integrations utilizing preferred protocols.
             `,
-            avatarSrc: "/syner.png",
+            avatarSrc: null,
             avatarBorderColor: null
         },
         {
