@@ -1,4 +1,3 @@
-import React from "react";
 import { Empty, Card, Badge, Avatar, Tooltip } from "antd";
 import { InfoCircleOutlined, PlayCircleOutlined, ExclamationCircleOutlined, StarFilled } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";

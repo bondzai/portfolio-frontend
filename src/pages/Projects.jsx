@@ -42,7 +42,7 @@ const Projects = () => {
     }
 
     return (
-        <div className="projects">
+        <div className="projects" style={{ position: 'relative', minHeight: '85vh' }}>
             <div className="projectList">
                 {
                     (screenSize === ScreenSize.XS) ? (
@@ -58,7 +58,11 @@ const Projects = () => {
             </div>
             {
                 !(screenSize === ScreenSize.XS) && (
-                    <Stack spacing={2} justifyContent="center" mt={3}>
+                    <Stack
+                        spacing={2}
+                        justifyContent="center"
+                        style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}
+                    >
                         <Pagination
                             count={Math.ceil(projectList.length / itemsPerPage)}
                             page={currentPage}
