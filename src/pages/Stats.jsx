@@ -1,7 +1,7 @@
 import React from "react";
 import { Space } from "antd";
 import WakatimeStat from "../components/WakatimeStats";
-import GitHub from "../components/GitHub";
+import GitHub from "../components/cards/GitHub";
 import "./Stats.css";
 
 
