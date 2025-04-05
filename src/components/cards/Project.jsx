@@ -1,8 +1,8 @@
 import { Empty, Card, Badge, Avatar, Tooltip } from "antd";
 import { InfoCircleOutlined, PlayCircleOutlined, ExclamationCircleOutlined, StarFilled } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
-import { getLampStatusStyle } from "./StatusStyles.jsx";
-import { openInNewTab } from "../utils/utils.js";
+import { getLampStatusStyle } from "../StatusStyles.jsx";
+import { openInNewTab } from "../../utils/utils.js";
 
 const { Meta } = Card;
 

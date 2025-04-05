@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Pagination, Stack } from "@mui/material";
-import Project from "../components/Project";
+import Project from "../components/cards/Project";
 import SpinLoader from "../components/loaders/SpinLoader";
 import { getProjectList } from "../apis/rest/Project";
 import { globalDelay, itemsPerPage } from "../utils/constants";
