@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-import { MdExpandMore } from "react-icons/md"
-import SkillGroup from "../components/SkillGroup";
+import SkillGroupWraper from "../components/cards/SkillGroup";
 import SpinLoader from "../components/loaders/SpinLoader";
 import { getSkillList } from "../apis/rest/Skill";
 import { globalDelay } from "../utils/constants";
@@ -19,24 +17,6 @@ const skillsData = [
     { topic: "automation", label: "Industrial automation & IoT" },
 ];
 
-const accordionStyle = {
-    borderRadius: "10px",
-    boxShadow: "0px 3px 15px rgba(58, 58, 58, 0.2)",
-    marginBottom: "5px",
-};
-
-const SkillGroupWraper = ({ topic, skills }) => (
-    <Accordion defaultExpanded style={accordionStyle}>
-        <AccordionSummary expandIcon={<MdExpandMore />}>
-            <Typography variant="h6">
-                {topic.label}
-            </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-            <SkillGroup topic={topic.topic} skills={skills} />
-        </AccordionDetails>
-    </Accordion>
-);
 
 const Skills = () => {
     const [skills, setSkills] = useState([]);
