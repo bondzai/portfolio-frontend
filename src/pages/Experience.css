@@ -21,10 +21,6 @@
     width: 35px;
 }
 
-.experience .icon:hover {
-    box-shadow: 0 0 10px rgb(255, 255, 255);
-}
-
 .experience .icon.visible {
     opacity: 0.9;
     visibility: visible;
@@ -36,14 +32,12 @@
     color: var(--const-primary-color);
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin: 10px 0;
 }
 
 .vertical-timeline-element-content:hover {
     transform: scale(1.02);
-    box-shadow: 0 5px 12px var(--color-secondary, #f5f5f5);
 }
 
 

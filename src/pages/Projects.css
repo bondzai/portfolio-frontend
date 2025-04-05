@@ -13,14 +13,14 @@
     animation-fill-mode: forwards;
 }
 
-.projects .projectTitle {
+.projects .project-title {
     color: var(--color-secondary);
     text-align: center;
     font-size: 60px;
     font-weight: bolder;
 }
 
-.projectList {
+.project-list {
     width: 70vw;
     height: auto;
     display: grid;
@@ -79,7 +79,7 @@
 
 .project-item button:hover {
     filter: brightness(120%);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 15px var(--text-color-secondary);
     transition: 0.1s ease-in;
 }
 
@@ -96,13 +96,13 @@
 }
 
 @media only screen and (max-width: 1300px) {
-    .projectList {
+    .project-list {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media only screen and (max-width: 850px) {
-    .projectList {
+    .project-list {
         grid-template-columns: 1fr;
         width: 100%;
     }
@@ -110,9 +110,5 @@
     .project-item {
         width: 300px;
         height: 300px;
-    }
-
-    .pagination-container {
-        display: none;
     }
 }
