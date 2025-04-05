@@ -1,6 +1,6 @@
 import React from "react";
 import { Space } from "antd";
-import WakatimeStat from "../components/WakatimeStats";
+import WakatimeStat from "../components/cards/WakatimeStats";
 import GitHub from "../components/cards/GitHub";
 import "./Stats.css";
 
