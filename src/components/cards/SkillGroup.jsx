@@ -1,6 +1,8 @@
 import React from "react";
-import { openInNewTab } from "../utils/utils.js";
+import { openInNewTab } from "../../utils/utils.js";
 import { Tooltip } from "antd";
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
+import { MdExpandMore } from "react-icons/md"
 
 
 const Skill = ({ ...skill }) => {
@@ -32,4 +34,23 @@ const SkillGroup = ({ skills, topic }) => {
     );
 };
 
-export default SkillGroup;
+const accordionStyle = {
+    borderRadius: "10px",
+    boxShadow: "0px 3px 15px rgba(58, 58, 58, 0.2)",
+    marginBottom: "5px",
+};
+
+const SkillGroupWraper = ({ topic, skills }) => (
+    <Accordion defaultExpanded style={accordionStyle}>
+        <AccordionSummary expandIcon={<MdExpandMore />}>
+            <Typography variant="h6">
+                {topic.label}
+            </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+            <SkillGroup topic={topic.topic} skills={skills} />
+        </AccordionDetails>
+    </Accordion>
+);
+
+export default SkillGroupWraper;
