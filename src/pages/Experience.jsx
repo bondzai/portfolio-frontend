@@ -14,9 +14,9 @@ const TimelineElement = ({ date, icon, title, content, avatarSrc, avatarBorderCo
         const parts = text.split(':');
         if (parts.length === 2) {
             return (
-                <>
+                <React.Fragment>
                     <strong>{parts[0]}</strong>:{parts[1]}
-                </>
+                </React.Fragment>
             );
         } else {
             return text;

@@ -32,9 +32,9 @@ export const MemoryUsage = () => {
 
     if (loading) {
         return (
-            <div>
+            <React.Fragment>
                 <DatabaseOutlined className="status-icon" /> <SyncOutlined className="status-icon" spin />
-            </div>
+            </React.Fragment>
         );
     }
 

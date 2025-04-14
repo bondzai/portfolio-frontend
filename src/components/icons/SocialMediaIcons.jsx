@@ -18,8 +18,7 @@ const SocialMediaIcons = () => {
     };
 
     return (
-        <div>
-
+        <React.Fragment>
             <Draggable>
                 <AiOutlineMail
                     className="icon-social"
@@ -62,8 +61,7 @@ const SocialMediaIcons = () => {
                 }
                 hideButtons
             />
-
-        </div>
+        </React.Fragment>
     );
 };
 
