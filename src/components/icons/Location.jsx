@@ -22,7 +22,7 @@ const LocationComponent = () => {
     };
 
     return (
-        <div>
+        <React.Fragment>
             {location ? (
                 <p>
                     Latitude: {location.latitude}, Longitude: {location.longitude}
@@ -30,7 +30,7 @@ const LocationComponent = () => {
             ) : (
                 <button onClick={getLocation}>Get Location</button>
             )}
-        </div>
+        </React.Fragment>
     );
     };
 

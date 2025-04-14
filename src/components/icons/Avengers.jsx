@@ -6,9 +6,9 @@ import { avengers } from '../../apis/rest/Avengers.js';
 
 const Avenger = ({ avatar, title, repoUrl, url}) => {
     const tooltipContent = (
-        <div>
+        <React.Fragment>
             {title}: ({repoUrl})
-        </div>
+        </React.Fragment>
     );
 
     const link = url || repoUrl;
