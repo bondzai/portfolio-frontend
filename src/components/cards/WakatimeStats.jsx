@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SpinLoader from "../loaders/SpinLoader.jsx";
-import { getWakatimeStats } from "../../apis/rest/WakatimeStats.js";
+import { getWakatimeStats, transformChartData } from "../../apis/rest/WakatimeStats.js";
 import { globalDelay } from "../../utils/constants.js";
 import PieChart from "./Piechart.jsx";
 import CardWithTab from "./CardWithTab.jsx";
@@ -28,11 +28,11 @@ const WakatimeStats = () => {
                 <SpinLoader customColor="whitesmoke" customHeight="330px" />
             </div>
         );
-    };
+    }
 
-    const os = stats.operating_systems.map(item => ({ value: item.percent, name: item.name, text: item.text }));
-    const editor = stats.editors.map(item => ({ value: item.percent, name: item.name, text: item.text }));
-    const language = stats.languages.map(item => ({ value: item.percent, name: item.name, text: item.text }));
+    const os = transformChartData(stats.operating_systems);
+    const editor = transformChartData(stats.editors);
+    const language = transformChartData(stats.languages);
 
     const tabList = [
         {

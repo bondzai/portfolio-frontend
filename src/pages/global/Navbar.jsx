@@ -41,13 +41,10 @@ const Navbar = () => {
                     Skills
                 </Link>
                 <Link to="/projects" onClick={handleLinkClick} className={activeLink === "projects" ? "active" : ""}>
-                    Labs
+                    Projects
                 </Link>
                 <Link to="/certifications" onClick={handleLinkClick} className={activeLink === "certifications" ? "active" : ""}>
                     Certs
-                </Link>
-                <Link to="/stats" onClick={handleLinkClick} className={activeLink === "stats" ? "active" : ""}>
-                    Stats
                 </Link>
                 <Link to="/more" onClick={handleLinkClick} className={activeLink === "more" ? "active" : ""}>
                     More
