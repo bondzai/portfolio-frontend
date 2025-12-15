@@ -9,7 +9,7 @@ import "./DisplayModal.css";
 const DisplayModal = ({ getDataList, dataRoutePath }) => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const [current, setCurrent] = useState(Number(id));
+    const [current, setCurrent] = useState(id);
     const [dataList, setDataList] = useState([]);
     const [dataListFetched, setDataListFetched] = useState(false);
 
@@ -41,14 +41,22 @@ const DisplayModal = ({ getDataList, dataRoutePath }) => {
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, [current, dataListFetched]);
+    }, [current, dataListFetched, dataList]);
 
     const slideForward = () => {
-        setCurrent(prev => (prev === 1 ? dataList.length : prev - 1));
+        const currentIndex = dataList.findIndex(item => item.id === current);
+        if (currentIndex !== -1) {
+            const nextIndex = (currentIndex + 1) % dataList.length;
+            setCurrent(dataList[nextIndex].id);
+        }
     };
 
     const slideBack = () => {
-        setCurrent(prev => (prev === dataList.length ? 1 : prev + 1));
+        const currentIndex = dataList.findIndex(item => item.id === current);
+        if (currentIndex !== -1) {
+            const prevIndex = (currentIndex - 1 + dataList.length) % dataList.length;
+            setCurrent(dataList[prevIndex].id);
+        }
     };
 
     const closeModal = () => {
