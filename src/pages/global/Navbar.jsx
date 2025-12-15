@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ThemeSwitcher from "../../components/buttons/ThemeSwitcher";
+import DownloadResumeButton from "../../components/buttons/DownloadResumeButton";
 import "./Navbar.css";
 
 
@@ -51,6 +52,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <ThemeSwitcher />
+            <DownloadResumeButton />
         </div>
     );
 };
