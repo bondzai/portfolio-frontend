@@ -284,7 +284,7 @@ const defaultData = [
     },
     {
         "id": "665abccb73aa09d61a46e021",
-        "image_url": "https://symbols-electrical.getvecta.com/stencil_262/71_rockwell-automation-icon.05b6277eb8.svg",
+        "image_url": "https://www.rockwellautomation.com/content/dam/rockwell-automation/sites/images/logos/2019_Logo_rgb_RA_Bug-LeftText_color.svg",
         "is_showing": true,
         "name": "Rockwell",
         "topic": "automation",
