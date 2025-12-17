@@ -21,7 +21,8 @@ const Home = () => {
                 />
                 <div className="prompt">
                     <h3> Hi, I am James-Bond. </h3>
-                    <p> <strong>  Architect | Engineer | Builder </strong> </p>
+                    <p> <strong>  Architect | Engineer | Entrepreneur </strong> </p>
+                    <p> <strong>  Blockchain Enthusiast </strong> </p>
                     <p> “Clean, simple, & high-quality solution <br /> always sparks joy in my blood.” </p>
                 </div>
                 <Typewriter
