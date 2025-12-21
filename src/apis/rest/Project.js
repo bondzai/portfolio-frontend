@@ -13,6 +13,18 @@ export { getProjectList }
 
 const defaultData = [
     {
+        "id": "565abccb73aa09d61a46dffe",
+        "host_url": "https://zero-buddy.onrender.com",
+        "image_url": "https://res.cloudinary.com/dbdacfhye/image/upload/v1766303918/Portfolio/project-zero-buddy.png",
+        "is_highlight": true,
+        "is_sleep": false,
+        "language": "Javascript",
+        "name": "Zero-Buddy",
+        "source_url": "https://github.com/bondzai/zero-buddy",
+        "status": "online",
+        "tools": ""
+    },
+    {
         "id": "665abccb73aa09d61a46dffe",
         "host_url": "https://apollo-catstronauts-server.introbond.repl.co",
         "image_url": "https://res.cloudinary.com/dbdacfhye/image/upload/v1694937857/Portfolio/projects/project-cats-server.png",
