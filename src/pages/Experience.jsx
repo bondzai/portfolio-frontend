@@ -130,13 +130,29 @@ const Experience = () => {
             avatarBorderColor: null
         },
         {
-            date: `May 2024 - Present (${calculateAge("05/08/2024")})`,
+            date: `May 2024 - Dec 2025 (${calculateAge("05/08/2024")})`,
             icon: <MdWork />,
             title: "Zero Friction Co., Ltd., Bangkok, Thailand",
             content: `Role: Software Engineer
             Responsibilities:
             - Collaborating with team members to implement and optimize core stack components using Golang, Apache Kafka, Apache APISIX, and gRPC protocol.
             - Particular emphasis on microservices architecture and optimizing data streaming efficiency.
+            `,
+            avatarSrc: null,
+            avatarBorderColor: null
+        },
+        {
+            date: `Jan 2026 - Present (${calculateAge("01/15/2026")})`,
+            icon: <MdWork />,
+            title: "Vulcan Coalition Co., Ltd., Bangkok, Thailand",
+            content: `Role: Senior Software Engineer
+            Responsibilities:
+            - Design, develop, and maintain high-quality frontend and backend systems.
+            - Architect scalable, maintainable software that aligns with product and business goals.
+            - Collaborate with AI engineers to build smart, automated product experiences.
+            - Implement and maintain CI/CD pipelines for smooth, zero-drama deployments.
+            - Conduct code reviews and mentor junior developers to raise team standards.
+            - Stay updated with emerging technologies and best practices in software development.
             `,
             avatarSrc: null,
             avatarBorderColor: null
