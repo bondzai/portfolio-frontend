@@ -209,6 +209,13 @@ export const avengers = {
         repoUrl: "https://github.com/5A681/",
         description: "",
     },
+    28: {
+        avatar: "https://avatars.githubusercontent.com/u/118100445?v=4",
+        title: "Tommy",
+        url: "",
+        repoUrl: "https://github.com/emmitt-k/",
+        description: "",
+    },
 }
 
 if (import.meta.env.DEV) {
