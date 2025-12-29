@@ -13,6 +13,30 @@ export { getProjectList }
 
 const defaultData = [
     {
+        "id": "565abccb73aa09d61a46dfbe",
+        "host_url": "https://honorledger.com",
+        "image_url": "https://res.cloudinary.com/dbdacfhye/image/upload/c_thumb,w_200,g_face/v1767001943/Portfolio/honor-ledger.png",
+        "is_highlight": true,
+        "is_sleep": false,
+        "language": "Javascript",
+        "name": "Honor Ledger",
+        "source_url": "",
+        "status": "online",
+        "tools": ""
+    },
+    {
+        "id": "565abccb73aa09d61a46dfae",
+        "host_url": "https://decentera.org",
+        "image_url": "https://res.cloudinary.com/dbdacfhye/image/upload/c_thumb,w_200,g_face/v1767001954/Portfolio/decentera.png",
+        "is_highlight": true,
+        "is_sleep": false,
+        "language": "Javascript",
+        "name": "Decentera",
+        "source_url": "",
+        "status": "online",
+        "tools": ""
+    },
+    {
         "id": "565abccb73aa09d61a46dffe",
         "host_url": "https://zero-buddy.onrender.com",
         "image_url": "https://res.cloudinary.com/dbdacfhye/image/upload/v1766303918/Portfolio/project-zero-buddy.png",
