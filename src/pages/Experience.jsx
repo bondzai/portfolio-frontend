@@ -142,7 +142,7 @@ const Experience = () => {
             avatarBorderColor: null
         },
         {
-            date: `Jan 2026 - Present (${calculateAge("01/15/2026")})`,
+            date: `Dec 2025 - Present (${calculateAge("24/12/2025")})`,
             icon: <MdWork />,
             title: "Vulcan Coalition Co., Ltd., Bangkok, Thailand",
             content: `Role: Senior Software Engineer
