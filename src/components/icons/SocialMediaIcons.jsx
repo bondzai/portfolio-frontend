@@ -1,6 +1,6 @@
 import React from "react";
 import { Tooltip } from "antd";
-import { AiFillLinkedin, AiOutlineMail, AiFillGithub } from "react-icons/ai"
+import { AiFillLinkedin, AiOutlineMail, AiFillGithub, AiFillYoutube } from "react-icons/ai"
 import { SiGitbook, SiBitcoin } from "react-icons/si";
 import DonationCard from "../cards/DonationCard.jsx";
 import CustomModalButton from "../buttons/CustomModalButton.jsx";
@@ -19,18 +19,26 @@ const SocialMediaIcons = () => {
 
     return (
         <React.Fragment>
-            <Draggable>
-                <AiOutlineMail
-                    className="icon-social"
-                    style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: "move"}}
-                />
-            </Draggable>
-
             <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="left">
                 <AiFillLinkedin
                     className="icon-social"
-                    style={{ bottom: "200px", right: rightPosition }}
+                    style={{ bottom: "300px", right: rightPosition }}
                     onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb")}
+                />
+            </Tooltip>
+
+            <Draggable>
+                <AiOutlineMail
+                    className="icon-social"
+                    style={{ bottom: "250px", right: rightPosition, opacity: 0.6, cursor: "move" }}
+                />
+            </Draggable>
+
+            <Tooltip title="https://www.youtube.com/@VibeVanilla" placement="left">
+                <AiFillYoutube
+                    className="icon-social"
+                    style={{ bottom: "200px", right: rightPosition }}
+                    onClick={() => openInNewTab("https://www.youtube.com/@VibeVanilla")}
                 />
             </Tooltip>
 
@@ -56,7 +64,7 @@ const SocialMediaIcons = () => {
                 content={<DonationCard />}
                 icon={
                     <Tooltip title="Buy me a coffee." placement="left">
-                        <SiBitcoin className="icon-social" style={{ bottom: "50px", right: rightPosition }}/>
+                        <SiBitcoin className="icon-social" style={{ bottom: "50px", right: rightPosition }} />
                     </Tooltip>
                 }
                 hideButtons
