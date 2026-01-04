@@ -32,6 +32,32 @@ const App = () => {
         );
     };
 
+    const MainContent = () => (
+        <div className="main-content">
+            <section id="home" className="section">
+                <HoverWrapper><Home /></HoverWrapper>
+            </section>
+            <section id="experience" className="section">
+                <HoverWrapper><Experience /></HoverWrapper>
+            </section>
+            <section id="skills" className="section">
+                <HoverWrapper><Skills /></HoverWrapper>
+            </section>
+            <section id="projects" className="section">
+                <HoverWrapper><Projects /></HoverWrapper>
+            </section>
+            <section id="certifications" className="section">
+                <HoverWrapper><Certifications /></HoverWrapper>
+            </section>
+            <section id="stats" className="section">
+                <HoverWrapper><Stats /></HoverWrapper>
+            </section>
+            <section id="more" className="section">
+                <HoverWrapper><More /></HoverWrapper>
+            </section>
+        </div>
+    );
+
     return (
         <div className="App">
             <ThemeProvider>
@@ -41,21 +67,22 @@ const App = () => {
                         <Sidebar />
                         <Footer />
                         <Routes>
-                            <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
-                            <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
-                            <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                            <Route path="/" element={<MainContent />} />
                             <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
-                            <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
                             <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
-                            <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
-                            <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                            <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
+                            {/* Fallback for direct links */}
+                            <Route path="/experience" element={<MainContent />} />
+                            <Route path="/skills" element={<MainContent />} />
+                            <Route path="/projects" element={<MainContent />} />
+                            <Route path="/certifications" element={<MainContent />} />
+                            <Route path="/stats" element={<MainContent />} />
+                            <Route path="/more" element={<MainContent />} />
                         </Routes>
                     </Router>
                 </HoverProvider>
             </ThemeProvider>
         </div>
     );
-}
+};
 
 export default App;

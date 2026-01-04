@@ -8,21 +8,54 @@ import "./Navbar.css";
 
 const Navbar = () => {
     const [expandNavbar, setExpandNavbar] = useState(false);
-    const [activeLink, setActiveLink] = useState("");
+    const [activeSection, setActiveSection] = useState("home");
     const location = useLocation();
 
     const toggleNavbar = () => {
         setExpandNavbar((prev) => !prev);
     };
 
-    const handleLinkClick = (e) => {
-        setActiveLink(e.target.innerText);
+    const handleLinkClick = (id) => {
         setExpandNavbar(false);
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     useEffect(() => {
-        setActiveLink(location.pathname.slice(1));
-    }, [location]);
+        const sections = ["home", "experience", "skills", "projects", "certifications", "more"];
+        const observerOptions = {
+            root: null,
+            rootMargin: "-50% 0px -50% 0px",
+            threshold: 0
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        sections.forEach((id) => {
+            const element = document.getElementById(id);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const navLinks = [
+        { id: "home", label: "Home" },
+        { id: "experience", label: "Exp" },
+        { id: "skills", label: "Skills" },
+        { id: "projects", label: "Projects" },
+        { id: "certifications", label: "Certs" },
+        { id: "more", label: "More" },
+    ];
 
     return (
         <div className="navbar">
@@ -32,27 +65,24 @@ const Navbar = () => {
                 </button>
             </div>
             <div className={`links ${expandNavbar ? "open" : "closed"}`}>
-                <Link to="/" onClick={handleLinkClick} className={activeLink === "" ? "active" : ""}>
-                    Home
-                </Link>
-                <Link to="/experience" onClick={handleLinkClick} className={activeLink === "experience" ? "active" : ""}>
-                    Exp
-                </Link>
-                <Link to="/skills" onClick={handleLinkClick} className={activeLink === "skills" ? "active" : ""}>
-                    Skills
-                </Link>
-                <Link to="/projects" onClick={handleLinkClick} className={activeLink === "projects" ? "active" : ""}>
-                    Projects
-                </Link>
-                <Link to="/certifications" onClick={handleLinkClick} className={activeLink === "certifications" ? "active" : ""}>
-                    Certs
-                </Link>
-                <Link to="/more" onClick={handleLinkClick} className={activeLink === "more" ? "active" : ""}>
-                    More
-                </Link>
+                {navLinks.map((link) => (
+                    <a
+                        key={link.id}
+                        href={`#${link.id}`}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleLinkClick(link.id);
+                        }}
+                        className={activeSection === link.id ? "active" : ""}
+                    >
+                        {link.label}
+                    </a>
+                ))}
             </div>
-            <ThemeSwitcher />
-            <DownloadResumeButton />
+            <div className="nav-actions">
+                <ThemeSwitcher />
+                <DownloadResumeButton />
+            </div>
         </div>
     );
 };
