@@ -1,7 +1,7 @@
 export const cryptoWallets = [
     {
         id: 0,
-        value: "17vaHmR4A8T5dXTPPfbF8bHTFzPBFZptev",
+        value: "bc1qufrxnwegmyzd2zxpmm0cg904uu4c4el8kw33kn",
         label: "Bitcoin Network",
         iconUrl: "https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=029",
     },
