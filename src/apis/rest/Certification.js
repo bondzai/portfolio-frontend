@@ -11,8 +11,15 @@ const getCertificationList = () => getList({
 
 const defaultData = [
     {
+        "id": "665abcca73aa09d61a46dff3",
+        "description": "",
+        "image_url": "https://res.cloudinary.com/dbdacfhye/image/upload/v1767605854/Portfolio/cirtifications/Cir-Zero-Friction.png",
+        "name": "Most Appreciated Colleague Award, Zero Friction Co., Ltd. · 2025",
+        "other_url": ""
+    },
+    {
         "id": "665abcca73aa09d61a46dff2",
-        "description": "Apollo GraphQL",
+        "description": "",
         "image_url": "https://udemy-certificate.s3.amazonaws.com/image/UC-bcfe1fae-8e05-44ee-9626-0657d6238ecd.jpg",
         "name": "Go-Microservices",
         "other_url": ""
