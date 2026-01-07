@@ -329,6 +329,14 @@ const defaultData = [
         "name": "Wireguard",
         "topic": "tools",
         "url": "https://www.wireguard.com/"
+    },
+    {
+        "id": "677df98e569992f08579af6a",
+        "image_url": "https://www.vectorlogo.zone/logos/tailscale/tailscale-icon.svg",
+        "is_showing": true,
+        "name": "Tailscale",
+        "topic": "tools",
+        "url": "https://tailscale.com/"
     }
 ]
 
