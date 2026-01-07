@@ -332,7 +332,7 @@ const defaultData = [
     },
     {
         "id": "677df98e569992f08579af6a",
-        "image_url": "https://www.vectorlogo.zone/logos/tailscale/tailscale-icon.svg",
+        "image_url": "https://cdn.brandfetch.io/id7QyaLp8E/w/768/h/768/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
         "is_showing": true,
         "name": "Tailscale",
         "topic": "tools",
