@@ -321,6 +321,14 @@ const defaultData = [
         "name": "Elastic",
         "topic": "database",
         "url": "https://www.elastic.co/"
+    },
+    {
+        "id": "665c4e84dba3b853e64ff67d",
+        "image_url": "https://www.vectorlogo.zone/logos/wireguard/wireguard-icon.svg",
+        "is_showing": true,
+        "name": "Wireguard",
+        "topic": "tools",
+        "url": "https://www.wireguard.com/"
     }
 ]
 
