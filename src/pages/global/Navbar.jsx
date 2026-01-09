@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ThemeSwitcher from "../../components/buttons/ThemeSwitcher";
-import DownloadResumeButton from "../../components/buttons/DownloadResumeButton";
 import "./Navbar.css";
 
 
@@ -35,6 +34,9 @@ const Navbar = () => {
                 <Link to="/" onClick={handleLinkClick} className={activeLink === "" ? "active" : ""}>
                     Home
                 </Link>
+                <Link to="/about" onClick={handleLinkClick} className={activeLink === "about" ? "active" : ""}>
+                    About
+                </Link>
                 <Link to="/experience" onClick={handleLinkClick} className={activeLink === "experience" ? "active" : ""}>
                     Exp
                 </Link>
@@ -52,7 +54,6 @@ const Navbar = () => {
                 </Link>
             </div>
             <ThemeSwitcher />
-            <DownloadResumeButton />
         </div>
     );
 };

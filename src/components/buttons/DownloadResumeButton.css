@@ -1,0 +1,51 @@
+.resume-btn {
+    background-color: var(--color-secondary) !important;
+    border-color: var(--color-secondary) !important;
+    font-family: var(--font-family-secondary) !important;
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 0 25px !important;
+    height: 45px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.resume-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4) !important;
+    background-color: #4facfe !important;
+    /* Brighter blue on hover */
+    border-color: #4facfe !important;
+}
+
+.resume-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Subtle shine effect on hover */
+.resume-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.resume-btn:hover::after {
+    left: 150%;
+    transition: left 0.7s ease-in-out;
+}

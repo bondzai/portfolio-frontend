@@ -9,6 +9,7 @@ import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Experience from "./pages/Experience";
+import About from "./pages/About";
 import Stats from "./pages/Stats";
 import More from "./pages/More";
 
@@ -47,6 +48,7 @@ const App = () => {
                             <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
                             <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
                             <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                            <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
                             <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
                             <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
                             <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />

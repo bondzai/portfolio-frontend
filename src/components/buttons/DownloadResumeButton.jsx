@@ -1,6 +1,7 @@
 import React from 'react';
-import { FloatButton } from 'antd';
+import { Button } from 'antd';
 import { FaDownload } from 'react-icons/fa';
+import "./DownloadResumeButton.css";
 
 const DownloadResumeButton = () => {
     const handleDownload = () => {
@@ -13,20 +14,15 @@ const DownloadResumeButton = () => {
     };
 
     return (
-        <FloatButton
-            tooltip="Download Resume"
+        <Button
+            type="primary"
             onClick={handleDownload}
-            icon={<FaDownload size={12} />}
-            style={{
-                position: 'fixed',
-                top: '10px',
-                left: '48px',
-                opacity: 0.9,
-                zIndex: 1000,
-                width: '30px',
-                height: '30px',
-            }}
-        />
+            icon={<FaDownload />}
+            size="large"
+            className="resume-btn"
+        >
+            Download Resume
+        </Button>
     );
 };
 
