@@ -6,12 +6,6 @@ import useRotation from "../../hooks/useRotation";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 
-const Badge = ({ text }) => (
-    <div className="badge-container">
-        <span className="badge-text">{text}</span>
-    </div>
-);
-
 const Certification = ({ ...certification }) => {
     const { rotation, handleMouseMove, handleMouseLeave } = useRotation();
     const [isHovered, setIsHovered] = useState(false);
@@ -28,10 +22,6 @@ const Certification = ({ ...certification }) => {
         setIsHovered(false);
         handleMouseLeave();
     };
-
-    // Extract year or use default 'CERT' for badge
-    const yearMatch = certification.name.match(/\b20\d{2}\b/);
-    const badgeText = yearMatch ? yearMatch[0] : "CERT";
 
     return (
         <Card
@@ -51,7 +41,6 @@ const Certification = ({ ...certification }) => {
             <div className="cert-content">
                 <span className="cert-title">{certification.name}</span>
             </div>
-            <Badge text={badgeText} />
         </Card>
     );
 };
