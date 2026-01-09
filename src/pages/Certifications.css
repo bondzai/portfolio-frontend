@@ -27,16 +27,48 @@
     width: 400px;
     height: 300px;
     margin-bottom: 55px;
-    transition: transform 0.5s;
-    box-shadow: 0px 1px 5px var(--text-color-secondary);
+    transition: all 0.5s ease;
+
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Ensure visibility on top of glass */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine Effect */
+.certification::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .certification:hover {
-    filter: brightness(101%);
-    box-shadow: 0px 3px 15px var(--text-color-secondary);
-    transition: 0.1s ease-in;
-    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
+}
+
+.certification:hover::before {
+    left: 125%;
+    transition: left 0.7s ease-in-out;
 }
 
 .certification .bg-image {
