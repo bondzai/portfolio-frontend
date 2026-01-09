@@ -67,24 +67,31 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--text-color-primary) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #e0e0e0;
+    /* High contrast solid color */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
 }
 
 .about-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-color-secondary);
     font-style: italic;
-    opacity: 0.8;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.about-resume-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .about-content {
     font-size: 1.15rem;
     line-height: 1.8;
     color: var(--text-color-primary);
+    margin-top: 30px;
 }
 
 .about-text-block {
@@ -105,12 +112,6 @@
     color: #4facfe;
     /* Brighter, more readable blue */
     text-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
-}
-
-.about-actions {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
