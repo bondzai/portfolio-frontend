@@ -25,7 +25,8 @@
     align-items: center;
     text-align: center;
     width: 400px;
-    height: 300px;
+    height: 380px;
+    /* Extended height for title */
     margin-bottom: 55px;
     transition: all 0.5s ease;
 
@@ -73,11 +74,64 @@
 
 .certification .bg-image {
     width: 100%;
-    height: 290px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 5px;
+    height: 280px;
+    /* Reduced to fit title */
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.cert-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slight separation */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.cert-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* Badge Styles */
+.badge-container {
+    position: absolute;
+    top: 20px;
+    right: -8px;
+    /* Stick out slightly */
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    /* Gold/Orange gradient */
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    z-index: 5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.badge-container::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    border-top: 6px solid #b8860b;
+    /* Darker gold for fold effect */
+    border-right: 8px solid transparent;
 }
 
 @media only screen and (max-width: 1550px) {
