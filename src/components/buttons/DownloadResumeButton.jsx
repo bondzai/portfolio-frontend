@@ -1,5 +1,5 @@
 import React from 'react';
-import { FloatButton } from 'antd';
+import { Button } from 'antd';
 import { FaDownload } from 'react-icons/fa';
 
 const DownloadResumeButton = () => {
@@ -13,20 +13,26 @@ const DownloadResumeButton = () => {
     };
 
     return (
-        <FloatButton
-            tooltip="Download Resume"
+        <Button
+            type="primary"
             onClick={handleDownload}
-            icon={<FaDownload size={12} />}
+            icon={<FaDownload />}
+            size="large"
             style={{
-                position: 'fixed',
-                top: '10px',
-                left: '48px',
-                opacity: 0.9,
-                zIndex: 1000,
-                width: '30px',
-                height: '30px',
+                backgroundColor: 'var(--color-secondary)',
+                borderColor: 'var(--color-secondary)',
+                fontFamily: 'var(--font-family-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '0 25px',
+                height: '45px',
+                borderRadius: '8px',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)',
             }}
-        />
+        >
+            Download Resume
+        </Button>
     );
 };
 
