@@ -32,6 +32,16 @@
     background-color: var(--const-secondary-color);
 }
 
+.footer-right-actions {
+    position: fixed;
+    right: 20px;
+    bottom: 2px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 @media screen and (max-width: 768px) {
     .footer {
         font-size: 12px;
@@ -39,5 +49,9 @@
 
     .status-icons {
         display: none;
+    }
+
+    .footer-right-actions {
+        right: 10px;
     }
 }

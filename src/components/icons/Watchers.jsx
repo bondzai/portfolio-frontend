@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions.js";
-import { EyeOutlined, SyncOutlined } from '@ant-design/icons';
+import { EyeOutlined, EyeInvisibleOutlined, SyncOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
+import "./Watchers.css";
 
 
-const Watchers = ({ activeUsersCount }) => {
+const Watchers = ({ activeUsersCount, isConnected }) => {
     const { screenSize } = useScreenDimensions();
     const [loading, setLoading] = useState(true);
 
@@ -17,11 +18,6 @@ const Watchers = ({ activeUsersCount }) => {
     }, []);
 
     const style = {
-        position: 'fixed',
-        border: 'none',
-        bottom: "1px",
-        right: "20px",
-        zIndex: "10",
         color: 'white',
         display: 'flex',
         alignItems: 'center',
@@ -37,23 +33,28 @@ const Watchers = ({ activeUsersCount }) => {
         );
     }
 
+    const badge = <div className={`status-badge ${isConnected ? "connected" : "disconnected"}`} />;
+    const tooltipTitle = `Watching: ${activeUsersCount} • ${isConnected ? "Connected" : "Disconnected"}`;
+    const Icon = isConnected ? EyeOutlined : EyeInvisibleOutlined;
+
     if (screenSize === ScreenSize.XS) {
-        style.right = "10px";
         style.fontSize = "14px";
 
         return (
             <div style={style}>
-                <EyeOutlined style={{ marginRight: '5px' }} />
+                <Icon style={{ marginRight: '5px' }} />
                 <small> {activeUsersCount} </small>
+                {badge}
             </div>
         );
     }
 
     return (
-        <Tooltip placement="top" title={`Watching: ${activeUsersCount}`}>
+        <Tooltip placement="top" title={tooltipTitle}>
             <div style={style}>
-                <EyeOutlined style={{ marginRight: '5px' }} />
+                <Icon style={{ marginRight: '5px' }} />
                 <small> {activeUsersCount} </small>
+                {badge}
             </div>
         </Tooltip>
     );

@@ -5,7 +5,6 @@ import Coppyright from "../../components/icons/Copyright";
 import StatusIcons from "../../components/icons/StatusIcons";
 import Watchers from "../../components/icons/Watchers";
 import BrandIcon from "../../components/icons/BrandIcon";
-import NetworkStatus from "../../components/NetworkStatus";
 import { Users } from "../../apis/websocket/Users";
 import "./Footer.css";
 
@@ -21,9 +20,10 @@ const Footer = () => {
                 <StatusIcons />
             </div>
             <Coppyright /> &nbsp; <Counter />
-            <BrandIcon />
-            <Watchers activeUsersCount={activeUsersCount} />
-            <NetworkStatus isConnected={isConnected} />
+            <div className="footer-right-actions">
+                <BrandIcon />
+                <Watchers activeUsersCount={activeUsersCount} isConnected={isConnected} />
+            </div>
         </AntFooter>
     );
 };
