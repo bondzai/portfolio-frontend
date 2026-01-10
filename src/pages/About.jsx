@@ -18,7 +18,7 @@ const About = () => {
                 
                 <div className="about-content">
                     <p className="about-text-block">
-                        I specialize in high-performance backends and micro-services, ensuring clean code and scalable architecture. I combine this engineering depth with a strategic business mindset, focusing on balancing cost, performance, and sustainable value to build systems that deliver real-world impact.
+                        I specialize in <strong>high-performance backends</strong> and <strong>micro-services</strong>, ensuring <strong>clean code</strong> and <strong>scalable architecture</strong>. I combine this engineering depth with a <strong>strategic business mindset</strong>, focusing on balancing <strong>cost, performance, and sustainable value</strong> to build systems that deliver real-world impact.
                     </p>
                     <p className="about-text-block">
                         My passion lies at the intersection of <strong>Software Engineering</strong> and <strong>Economics</strong>. 
