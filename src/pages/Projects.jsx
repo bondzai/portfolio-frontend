@@ -31,6 +31,7 @@ const Projects = () => {
 
     return (
         <div className="projects" style={{ position: 'relative', minHeight: '85vh' }}>
+            <h1 style={{ textAlign: 'center', margin: '20px 0', color: 'white' }}>Verify, Don't Trust</h1>
             <div className="project-list">
                 {
                     projectList.map((project, index) => (

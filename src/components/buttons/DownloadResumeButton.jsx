@@ -1,28 +1,79 @@
 import React from 'react';
-import { Button } from 'antd';
-import { FaDownload } from 'react-icons/fa';
+import { Button, Modal } from 'antd';
+import { FaDownload, FaEye } from 'react-icons/fa';
 import "./DownloadResumeButton.css";
 
 const DownloadResumeButton = () => {
+    const RESUME_URL = "https://drive.google.com/uc?export=download&id=1j325QVi7U5c1Go2O4rL0F65-rq3ul_OR";
+
+    const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
+
+    // Extract file ID from Google Drive URL
+    const getFileId = (url) => {
+        try {
+            const urlObj = new URL(url);
+            return urlObj.searchParams.get("id");
+        } catch (e) {
+            return null;
+        }
+    };
+
+    const fileId = getFileId(RESUME_URL);
+    const previewUrl = fileId ? `https://drive.google.com/file/d/${fileId}/preview` : null;
+
     const handleDownload = () => {
-        const link = document.createElement('a');
-        link.href = '/resume.pdf';
-        link.download = 'resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        if (!RESUME_URL) {
+            const link = document.createElement('a');
+            link.href = '/resume.pdf';
+            link.download = 'resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            window.open(RESUME_URL, '_blank');
+        }
     };
 
     return (
-        <Button
-            type="primary"
-            onClick={handleDownload}
-            icon={<FaDownload />}
-            size="large"
-            className="resume-btn"
-        >
-            Download Resume
-        </Button>
+        <div className="resume-btn-container">
+            <Button
+                type="primary"
+                onClick={previewUrl ? () => setIsPreviewOpen(true) : handleDownload}
+                icon={previewUrl ? <FaEye /> : <FaDownload />}
+                size="large"
+                className="resume-btn"
+            >
+                View Resume
+            </Button>
+            <Modal
+                title="Resume Preview"
+                open={isPreviewOpen}
+                onCancel={() => setIsPreviewOpen(false)}
+                footer={[
+                    <Button key="close" onClick={() => setIsPreviewOpen(false)}>
+                        Close
+                    </Button>
+                ]}
+                width={800}
+                centered
+            >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                    <span style={{ fontSize: '16px', fontWeight: '500', color: '#555' }}>
+                        Last Update: December 2025
+                    </span>
+                    <Button key="download" type="primary" onClick={handleDownload} icon={<FaDownload />}>
+                        Download
+                    </Button>
+                </div>
+                <iframe
+                    src={previewUrl}
+                    width="100%"
+                    height="600px"
+                    style={{ border: 'none' }}
+                    title="Resume Preview"
+                />
+            </Modal>
+        </div>
     );
 };
 
