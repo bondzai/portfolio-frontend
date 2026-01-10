@@ -35,34 +35,21 @@ const DownloadResumeButton = () => {
     };
 
     return (
-        <div className="resume-btn-container" style={{ display: 'flex', gap: '10px' }}>
+        <div className="resume-btn-container">
             <Button
                 type="primary"
-                onClick={handleDownload}
-                icon={<FaDownload />}
+                onClick={previewUrl ? () => setIsPreviewOpen(true) : handleDownload}
+                icon={previewUrl ? <FaEye /> : <FaDownload />}
                 size="large"
                 className="resume-btn"
             >
-                Download Resume
+                View Resume
             </Button>
-            {previewUrl && (
-                <Button
-                    onClick={() => setIsPreviewOpen(true)}
-                    icon={<FaEye />}
-                    size="large"
-                    className="resume-preview-btn"
-                >
-                    Preview
-                </Button>
-            )}
             <Modal
                 title="Resume Preview"
                 open={isPreviewOpen}
                 onCancel={() => setIsPreviewOpen(false)}
                 footer={[
-                    <Button key="download" type="primary" onClick={handleDownload} icon={<FaDownload />}>
-                        Download
-                    </Button>,
                     <Button key="close" onClick={() => setIsPreviewOpen(false)}>
                         Close
                     </Button>
@@ -70,6 +57,14 @@ const DownloadResumeButton = () => {
                 width={800}
                 centered
             >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                    <span style={{ fontSize: '16px', fontWeight: '500', color: '#555' }}>
+                        Last Update: December 2025
+                    </span>
+                    <Button key="download" type="primary" onClick={handleDownload} icon={<FaDownload />}>
+                        Download
+                    </Button>
+                </div>
                 <iframe
                     src={previewUrl}
                     width="100%"
