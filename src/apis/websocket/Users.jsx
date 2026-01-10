@@ -7,7 +7,7 @@ export const Users = () => {
     const [totalUsersCount, setTotalUsersCount] = useState(0);
 
     const wsUrl = import.meta.env.VITE_WS_URL;
-    const { receivedData } = useSocket(wsUrl);
+    const { receivedData, isConnected } = useSocket(wsUrl);
     const data = JSON.parse(receivedData);
 
     useEffect(() => {
@@ -17,5 +17,5 @@ export const Users = () => {
         }
     }, [data]);
 
-    return [activeUsersCount, totalUsersCount];
+    return [activeUsersCount, totalUsersCount, isConnected];
 };

@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 const useSocket = (url, handleOpen, handleClose) => {
     const [ws, setWs] = useState(null);
     const [receivedData, setReceivedData] = useState(null);
+    const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
         const socket = new WebSocket(url);
 
         socket.onopen = () => {
+            setIsConnected(true);
             handleOpen ? handleOpen() : console.log("WebSocket connected");
         };
 
@@ -17,6 +19,7 @@ const useSocket = (url, handleOpen, handleClose) => {
         };
 
         socket.onclose = () => {
+            setIsConnected(false);
             handleClose ? handleClose() : console.log("WebSocket disconnected");
         };
 
@@ -41,7 +44,7 @@ const useSocket = (url, handleOpen, handleClose) => {
         };
     }, [ws]);
 
-    return { ws, receivedData };
+    return { ws, receivedData, isConnected };
 };
 
 export default useSocket;
