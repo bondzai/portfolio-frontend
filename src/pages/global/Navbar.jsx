@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import ThemeSwitcher from "../../components/buttons/ThemeSwitcher";
 import "./Navbar.css";
 
 
@@ -53,7 +52,6 @@ const Navbar = () => {
                     More
                 </Link>
             </div>
-            <ThemeSwitcher />
         </div>
     );
 };

@@ -6,17 +6,8 @@
     --const-primary-color: #21325e;
     --const-secondary-color: #3e497a;
     --const-primary-text-color: #f5f5f5;
-}
 
-body.light {
-    --color-primary: #f5f5f5;
-    --color-secondary: #d9d9d9;
-    --color-deep: #c2c2c2;
-    --text-color-primary: #21325e;
-    --text-color-secondary: #3e497a;
-}
-
-body.dark {
+    /* Hardcoded Dark Theme Variables */
     --color-primary: #21325e;
     --color-secondary: #3e497a;
     --color-deep: #1a2949;

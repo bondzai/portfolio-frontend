@@ -20,7 +20,6 @@ import { getCertificationList } from "./apis/rest/Certification";
 
 import "./App.css";
 import { HoverProvider, HoverContext } from './contexts/HoverContext';
-import { ThemeProvider } from './contexts/ThemeContext';
 import { useContext } from 'react';
 
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
 
     return (
         <div className="App">
-            <ThemeProvider>
                 <HoverProvider>
                     <Router basename="/">
                         <Navbar />
@@ -55,7 +53,6 @@ const App = () => {
                         </Routes>
                     </Router>
                 </HoverProvider>
-            </ThemeProvider>
         </div>
     );
 }
