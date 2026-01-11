@@ -19,6 +19,14 @@ const defaultData = [
         "url": "https://go.dev/"
     },
     {
+        "id": "rust-lang-generated-id",
+        "image_url": "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-icon.svg",
+        "is_showing": true,
+        "name": "Rust",
+        "topic": "language",
+        "url": "https://www.rust-lang.org/"
+    },
+    {
         "id": "665abccb73aa09d61a46e000",
         "image_url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
         "is_showing": true,
@@ -29,7 +37,7 @@ const defaultData = [
     {
         "id": "665abccb73aa09d61a46e001",
         "image_url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
-        "is_showing": false,
+        "is_showing": true,
         "name": "TypeScript",
         "topic": "language",
         "url": "https://www.typescriptlang.org/"

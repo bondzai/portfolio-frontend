@@ -1,58 +1,143 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { GiHamburgerMenu } from "react-icons/gi";
-import "./Navbar.css";
+import { Menu, Drawer, Button, ConfigProvider } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 
+const NAV_ITEMS = [
+    { label: "Home", key: "", path: "/" },
+    { label: "About", key: "about", path: "/about" },
+    { label: "Experience", key: "experience", path: "/experience" },
+    { label: "Skills", key: "skills", path: "/skills" },
+    { label: "Projects", key: "projects", path: "/projects" },
+    { label: "Certs", key: "certifications", path: "/certifications" },
+    { label: "More", key: "more", path: "/more" },
+];
 
 const Navbar = () => {
-    const [expandNavbar, setExpandNavbar] = useState(false);
-    const [activeLink, setActiveLink] = useState("");
     const location = useLocation();
-
-    const toggleNavbar = () => {
-        setExpandNavbar((prev) => !prev);
-    };
-
-    const handleLinkClick = (e) => {
-        setActiveLink(e.target.innerText);
-        setExpandNavbar(false);
-    };
+    const { screenSize } = useScreenDimensions();
+    const [current, setCurrent] = useState("");
+    const [drawerVisible, setDrawerVisible] = useState(false);
 
     useEffect(() => {
-        setActiveLink(location.pathname.slice(1));
+        const path = location.pathname.substring(1);
+        if (location.pathname === "/") {
+            setCurrent("");
+        } else {
+            // Find active key based on path start
+            const activeItem = NAV_ITEMS.find(item => item.key === path || (item.key && path.startsWith(item.key)));
+            if (activeItem) {
+                setCurrent(activeItem.key);
+            }
+        }
     }, [location]);
 
+    const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
+
+    const menuItems = NAV_ITEMS.map(item => ({
+        label: <Link to={item.path}>{item.label}</Link>,
+        key: item.key,
+    }));
+
+    const showDrawer = () => setDrawerVisible(true);
+    const closeDrawer = () => setDrawerVisible(false);
+
+    // Theme Customization for smoother UI
+    const themeConfig = {
+        components: {
+            Menu: {
+                // Backgrounds
+                colorBgElevated: "var(--color-primary)",
+                itemBg: "transparent",
+                
+                // Colors
+                itemColor: "var(--text-color-primary)",
+                itemSelectedColor: "#f0f2f5", // Soft white/grey for text
+                itemHoverColor: "#ffffff",
+                
+                // Selection Background (Smoother highlight)
+                controlItemBgActive: "rgba(255, 255, 255, 0.1)", // Subtle translucent white
+                controlItemBgHover: "rgba(255, 255, 255, 0.05)",
+                
+                // Horizontal Line (if applicable)
+                horizontalItemSelectedColor: "#f0f2f5",
+            },
+            Drawer: {
+                colorBgElevated: "var(--color-primary)",
+                colorText: "var(--text-color-primary)",
+            }
+        },
+        token: {
+            colorPrimary: "#f0f2f5", // Main accent color
+        }
+    };
+
     return (
-        <div className="navbar">
-            <div className="toggleButton">
-                <button onClick={toggleNavbar}>
-                    <GiHamburgerMenu />
-                </button>
+        <ConfigProvider theme={themeConfig}>
+            <div style={{
+                position: "fixed",
+                top: 0,
+                width: "100%",
+                zIndex: 1000,
+                background: "var(--color-primary)",
+                borderBottom: "1px solid var(--color-secondary)",
+                padding: "0 20px",
+                boxSizing: "border-box"
+            }}>
+                {isMobile ? (
+                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", height: "50px" }}>
+                         <span style={{
+                            position: "absolute",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            color: "var(--text-color-primary)",
+                            fontSize: "18px",
+                            fontWeight: "600",
+                            userSelect: "none"
+                        }}>
+                            {NAV_ITEMS.find(item => item.key === current)?.label || "Home"}
+                        </span>
+                        <Button 
+                            type="text" 
+                            onClick={showDrawer} 
+                            icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />} 
+                        />
+                        <Drawer
+                            title={<span style={{ color: "var(--text-color-primary)" }}>Menu</span>}
+                            placement="right"
+                            width={250}
+                            onClose={closeDrawer}
+                            open={drawerVisible}
+                            closeIcon={<span style={{ color: "var(--text-color-primary)" }}>X</span>}
+                        >
+                            <Menu
+                                mode="vertical"
+                                selectedKeys={[current]}
+                                items={menuItems}
+                                onClick={closeDrawer}
+                                style={{ background: "transparent", borderRight: "none" }}
+                            />
+                        </Drawer>
+                    </div>
+                ) : (
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <Menu
+                            mode="horizontal"
+                            selectedKeys={[current]}
+                            items={menuItems}
+                            style={{
+                                background: "transparent",
+                                borderBottom: "none",
+                                justifyContent: "center",
+                                width: "100%",
+                                fontSize: "16px"
+                            }}
+                        />
+                    </div>
+                )}
             </div>
-            <div className={`links ${expandNavbar ? "open" : "closed"}`}>
-                <Link to="/" onClick={handleLinkClick} className={activeLink === "" ? "active" : ""}>
-                    Home
-                </Link>
-                <Link to="/about" onClick={handleLinkClick} className={activeLink === "about" ? "active" : ""}>
-                    About
-                </Link>
-                <Link to="/experience" onClick={handleLinkClick} className={activeLink === "experience" ? "active" : ""}>
-                    Exp
-                </Link>
-                <Link to="/skills" onClick={handleLinkClick} className={activeLink === "skills" ? "active" : ""}>
-                    Skills
-                </Link>
-                <Link to="/projects" onClick={handleLinkClick} className={activeLink === "projects" ? "active" : ""}>
-                    Projects
-                </Link>
-                <Link to="/certifications" onClick={handleLinkClick} className={activeLink === "certifications" ? "active" : ""}>
-                    Certs
-                </Link>
-                <Link to="/more" onClick={handleLinkClick} className={activeLink === "more" ? "active" : ""}>
-                    More
-                </Link>
-            </div>
-        </div>
+        </ConfigProvider>
     );
 };
 
