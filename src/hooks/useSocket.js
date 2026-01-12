@@ -7,7 +7,15 @@ const useSocket = (url, handleOpen, handleClose) => {
     const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
-        const socket = new WebSocket(url);
+        let deviceId = localStorage.getItem("device_id");
+        if (!deviceId) {
+            deviceId = crypto.randomUUID();
+            localStorage.setItem("device_id", deviceId);
+        }
+
+        const socketUrl = new URL(url);
+        socketUrl.searchParams.append("device_id", deviceId);
+        const socket = new WebSocket(socketUrl.toString());
 
         socket.onopen = () => {
             setIsConnected(true);
