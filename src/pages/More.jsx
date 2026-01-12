@@ -30,12 +30,12 @@ const More = () => {
         <div className="more-background" >
             <div style={{width: "60%", marginBottom: "40px"}}>
                 <p>
-                    Step into the heart of my blog: the <strong>Brotherhood</strong>.
+                    Welcome to the <strong>Brotherhood</strong>.
                 </p>
                 <p>
-                    “Here, I pay homage to the remarkable souls who've guided and supported my software engineering journey. <br />
-                    Each name etched in this <strong>Hall of Fame</strong> reflects the profound impact of their mentorship. With deep respect and humility, <br />
-                    I invite you to explore the <strong>Brotherhood</strong>—a place where gratitude and resilience shine bright, illuminating our path forward.”
+                    “This space honors the people who shaped my journey as a software engineer. <br />
+                    Each name here represents real guidance, real support, and real impact. <br />
+                    This is my way of saying thank you—to those who helped me move forward.”
                 </p>
                 Thanks for reading, <br />
                 James Bond
@@ -45,7 +45,7 @@ const More = () => {
             </div>
             <AutoplayCarousel />
             <br />
-            <small> Last updated: 2024-05-05 </small>
+            <small> Last updated: 2026-01-12 </small>
         </div>
     );
 };
