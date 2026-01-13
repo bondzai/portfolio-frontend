@@ -49,13 +49,6 @@ export const avengers = {
         description: "",
     },
     7: {
-        avatar: "https://avatars.githubusercontent.com/u/123813313?v=4",
-        title: "Force",
-        url: "",
-        repoUrl: "https://github.com/force445/",
-        description: "",
-    },
-    7: {
         avatar: "https://avatars.githubusercontent.com/u/56217133?v=4",
         title: "Ohm",
         url: "",
@@ -214,6 +207,20 @@ export const avengers = {
         title: "Tommy",
         url: "",
         repoUrl: "https://github.com/emmitt-k/",
+        description: "",
+    },
+    29: {
+        avatar: "https://avatars.githubusercontent.com/u/123813313?v=4",
+        title: "Force",
+        url: "https://force-naphat-portfolio-sigma.vercel.app/",
+        repoUrl: "https://github.com/force445/",
+        description: "",
+    },
+    30: {
+        avatar: "https://avatars.githubusercontent.com/u/187376798?v=4",
+        title: "Park",
+        url: "https://park-surakiat.vercel.app/",
+        repoUrl: "https://github.com/SurakiatP/",
         description: "",
     },
 }
