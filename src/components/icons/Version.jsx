@@ -6,7 +6,7 @@ import "./ServerStatus.css";
 
 const Version = () => {
     return (
-        <Tooltip title={versionData.changelog || `Version ${versionData.version}`}>
+        <Tooltip title={versionData.changelog || `Version ${versionData.version}`} getPopupContainer={() => document.body}>
             <span className="version-display">
                 <BranchesOutlined style={{ marginRight: '4px' }} />
                 {versionData.version}

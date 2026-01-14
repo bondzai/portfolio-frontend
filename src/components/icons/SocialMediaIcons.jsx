@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Tooltip, Popover, Button } from "antd";
 import { AiFillLinkedin, AiOutlineMail, AiFillGithub, AiFillYoutube, AiOutlineShareAlt } from "react-icons/ai"
-import { SiGitbook, SiBitcoin } from "react-icons/si";
+import { SiGitbook, SiBitcoin, SiWakatime } from "react-icons/si";
 import DonationCard from "../cards/DonationCard.jsx";
 import CustomModalButton from "../buttons/CustomModalButton.jsx";
 import { openInNewTab } from "../../utils/utils.js"
@@ -36,7 +36,7 @@ const SocialMediaIcons = () => {
 
     const SocialContent = (
         <div style={{ display: "flex", gap: "15px", alignItems: "center", flexWrap: "wrap", justifyContent: "center", maxWidth: "200px" }}>
-            <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="top">
+            <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="top" getPopupContainer={() => document.body}>
                 <span onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb")}>
                     <AiFillLinkedin
                         style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
@@ -44,7 +44,7 @@ const SocialMediaIcons = () => {
                 </span>
             </Tooltip>
 
-            <Tooltip title="Mail" placement="top">
+            <Tooltip title="Mail" placement="top" getPopupContainer={() => document.body}>
                 <span>
                     <AiOutlineMail
                         style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
@@ -52,7 +52,7 @@ const SocialMediaIcons = () => {
                 </span>
             </Tooltip>
 
-            <Tooltip title="https://www.youtube.com/@VibeVanilla" placement="top">
+            <Tooltip title="https://www.youtube.com/@VibeVanilla" placement="top" getPopupContainer={() => document.body}>
                 <span onClick={() => openInNewTab("https://www.youtube.com/@VibeVanilla")}>
                     <AiFillYoutube
                         style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
@@ -60,7 +60,7 @@ const SocialMediaIcons = () => {
                 </span>
             </Tooltip>
 
-            <Tooltip title="https://thejb.gitbook.io/core" placement="top">
+            <Tooltip title="https://thejb.gitbook.io/core" placement="top" getPopupContainer={() => document.body}>
                 <span onClick={() => openInNewTab("https://thejb.gitbook.io/core")}>
                     <SiGitbook
                         style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
@@ -68,9 +68,17 @@ const SocialMediaIcons = () => {
                 </span>
             </Tooltip>
 
-            <Tooltip title="https://github.com/bondzai" placement="top">
+            <Tooltip title="https://github.com/bondzai" placement="top" getPopupContainer={() => document.body}>
                 <span onClick={() => openInNewTab("https://github.com/bondzai")}>
                     <AiFillGithub
+                        style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
+                    />
+                </span>
+            </Tooltip>
+
+            <Tooltip title="https://wakatime.com/@bondzai" placement="topRight" getPopupContainer={() => document.body}>
+                <span onClick={() => openInNewTab("https://wakatime.com/@bondzai")}>
+                    <SiWakatime
                         style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
                     />
                 </span>
@@ -81,7 +89,7 @@ const SocialMediaIcons = () => {
                 title="Buy me a coffee"
                 content={<DonationCard />}
                 icon={
-                    <Tooltip title="Buy me a coffee." placement="top">
+                    <Tooltip title="Buy me a coffee." placement="topRight" getPopupContainer={() => document.body}>
                         <span>
                             <SiBitcoin style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }} />
                         </span>
