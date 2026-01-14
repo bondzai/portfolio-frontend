@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Drawer, Button, ConfigProvider } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import {
+    MenuOutlined, RocketFilled, ThunderboltFilled,
+    ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
+    IdcardFilled
+} from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
 
 const NAV_ITEMS = [
-    { label: "About", key: "about", path: "/about" },
-    { label: "Experience", key: "experience", path: "/experience" },
-    { label: "Skills", key: "skills", path: "/skills" },
-    { label: "Projects", key: "projects", path: "/projects" },
-    { label: "Certifications", key: "certifications", path: "/certifications" },
+    { label: "About", key: "about", path: "/about", icon: <IdcardFilled /> },
+    { label: "Experience", key: "experience", path: "/experience", icon: <RocketFilled /> },
+    { label: "Skills", key: "skills", path: "/skills", icon: <ThunderboltFilled /> },
+    { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
+    { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
     {
         label: "More",
         key: "more-group",
+        icon: <AppstoreFilled />,
         children: [
-            { label: "Brotherhood", key: "brotherhood", path: "/brotherhood" },
-            { label: "Blog", key: "blog", path: "/blog" }
+            { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
+            { label: "Blog", key: "blog", path: "/blog", icon: <ReadFilled /> }
         ]
     },
 ];
@@ -52,15 +57,35 @@ const Navbar = () => {
 
     const mapItems = (items) => {
         return items.map(item => {
+            const styledIcon = item.icon ? React.cloneElement(item.icon, { style: { fontSize: isMobile ? '16px' : '18px', marginBottom: isMobile ? '0' : '4px' } }) : null;
+
+            // Conditional Layout
+            // Mobile: Standard Horizontal (Icon Right/Left automatic)
+            // Desktop: Stacked Vertical (Icon Top, Text Bottom)
+            const labelContent = isMobile ? (
+                <span style={{ fontSize: '16px', fontWeight: 500, marginLeft: '10px' }}>{item.label}</span>
+            ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: '1', padding: '4px 0' }}>
+                    {styledIcon}
+                    <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.5px', textTransform: 'uppercase', marginTop: '4px' }}>
+                        {item.label}
+                    </span>
+                </div>
+            );
+
             if (item.children) {
                 return {
-                    label: item.label,
+                    label: isMobile ? <span>{styledIcon} {labelContent}</span> : labelContent,
                     key: item.key,
                     children: mapItems(item.children)
                 };
             }
+
             return {
-                label: <Link to={item.path}>{item.label}</Link>,
+                label: <Link to={item.path} style={{ display: isMobile ? 'flex' : 'block', alignItems: 'center', color: 'inherit' }}>
+                    {isMobile && styledIcon}
+                    {labelContent}
+                </Link>,
                 key: item.key,
             };
         });
@@ -83,6 +108,9 @@ const Navbar = () => {
                 itemColor: "var(--text-color-primary)",
                 itemSelectedColor: "#f0f2f5", // Soft white/grey for text
                 itemHoverColor: "#ffffff",
+
+                // Font
+                fontSize: 14, // Smaller text for better UX
 
                 // Selection Background (Smoother highlight)
                 controlItemBgActive: "rgba(255, 255, 255, 0.1)", // Subtle translucent white
@@ -160,6 +188,7 @@ const Navbar = () => {
                                 items={menuItems}
                                 onClick={closeDrawer}
                                 style={{ background: "transparent", borderRight: "none" }}
+                                expandIcon={() => null}
                             />
                         </Drawer>
                     </div>
@@ -174,7 +203,8 @@ const Navbar = () => {
                                 borderBottom: "none",
                                 justifyContent: "flex-start",
                                 width: "100%",
-                                fontSize: "16px"
+                                fontSize: "14px", // Matches theme config
+                                fontWeight: 500
                             }}
                         />
                     </div>
