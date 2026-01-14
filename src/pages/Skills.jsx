@@ -15,8 +15,8 @@ const skillsData = [
     { topic: "language", label: "Languages", i: "language", x: 0, y: 0, w: 1, h: 4, icon: <FaCode /> },
     { topic: ["frontend", "backend"], label: "Frameworks & Libraries", i: "frameworks", x: 1, y: 0, w: 1, h: 4, icon: <FaLayerGroup /> },
     { topic: "database", label: "Databases & Caches", i: "database", x: 2, y: 0, w: 1, h: 3, icon: <FaDatabase /> },
-    { topic: "os", label: "OS", i: "os", x: 1, y: 5, w: 1, h: 2, icon: <FaTerminal /> },
-    { topic: "commu", label: "Protocols & Communication Technologies", i: "commu", x: 0, y: 5, w: 1, h: 3, icon: <FaNetworkWired /> },
+    { topic: "os", label: "OS", i: "os", x: 0, y: 5, w: 1, h: 2, icon: <FaTerminal /> },
+    { topic: "commu", label: "Protocols & Communication Technologies", i: "commu", x: 1, y: 5, w: 1, h: 3, icon: <FaNetworkWired /> },
     { topic: "tools", label: "DevOps & Infrastructures", i: "tools", x: 2, y: 5, w: 1, h: 3, icon: <FaTools /> },
     { topic: "automation", label: "IoT & Automation Engineering Stuff", i: "automation", x: 0, y: 8, w: 1, h: 2, icon: <FaRobot /> },
 ];
