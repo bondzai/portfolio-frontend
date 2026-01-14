@@ -9,6 +9,8 @@ const OSWindow = ({
     title = "Application",
     isOpen,
     onClose,
+    onMinimize = null,
+    isMinimized = false,
     children,
     width: initialWidth = 400,
     height: initialHeight = 500,
@@ -90,10 +92,12 @@ const OSWindow = ({
         top: 0,
         left: 0,
         transform: 'none',
-        borderRadius: 0
+        borderRadius: 0,
+        display: isMinimized ? 'none' : 'block'
     } : {
         width: size.width,
-        height: size.height
+        height: size.height,
+        display: isMinimized ? 'none' : 'block'
     };
 
     return ReactDOM.createPortal(
@@ -116,7 +120,7 @@ const OSWindow = ({
                         {title}
                     </div>
                     <div className="window-controls">
-                        <button className="control-btn minimize" onClick={onClose}>
+                        <button className="control-btn minimize" onClick={onMinimize || onClose}>
                             <MinusOutlined />
                         </button>
                         <button className="control-btn maximize" onClick={toggleMaximize}>

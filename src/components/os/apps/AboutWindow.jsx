@@ -3,13 +3,15 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import OSWindow from '../OSWindow';
 import packageJson from '../../../../package.json';
 
-const AboutWindow = ({ isOpen, onClose }) => {
+const AboutWindow = ({ isOpen, onClose, onMinimize, isMinimized }) => {
     return (
         <OSWindow
             title="About System"
             icon={<InfoCircleOutlined />}
             isOpen={isOpen}
             onClose={onClose}
+            onMinimize={onMinimize}
+            isMinimized={isMinimized}
             width={400}
             height={320}
         >

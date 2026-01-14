@@ -3,7 +3,7 @@ import { Row, Col, Card, Progress } from 'antd';
 import { LineChartOutlined, DesktopOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import OSWindow from '../OSWindow';
 
-const ResourcesWindow = ({ isOpen, onClose, activeUsersCount, isConnected }) => {
+const ResourcesWindow = ({ isOpen, onClose, onMinimize, isMinimized, activeUsersCount, isConnected }) => {
     // Internal Mock Resource Data
     const [cpuUsage, setCpuUsage] = useState(30);
     const [memUsage, setMemUsage] = useState(45);
@@ -24,6 +24,8 @@ const ResourcesWindow = ({ isOpen, onClose, activeUsersCount, isConnected }) => 
             icon={<LineChartOutlined />}
             isOpen={isOpen}
             onClose={onClose}
+            onMinimize={onMinimize}
+            isMinimized={isMinimized}
             width={400}
             height={350}
         >

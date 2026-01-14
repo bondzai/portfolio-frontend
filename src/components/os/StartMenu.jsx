@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Popover, Tooltip } from 'antd';
-import { AppstoreOutlined, CalculatorOutlined, BulbOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, CalculatorOutlined, BulbOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined, ReadOutlined } from '@ant-design/icons';
 import './StartMenu.css';
 
-const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onOpenResources, onOpenAbout }) => {
+const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onOpenResources, onOpenAbout, onOpenGuide }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOpenChange = (newOpen) => {
+        setIsOpen(newOpen);
+    };
+
+    const handleAppClick = (action) => {
+        if (action) action();
+        setIsOpen(false);
+    };
 
     const menuContent = (
         <div className="start-menu-content">
@@ -20,30 +30,41 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
                         <span className="app-badge dev">DEV</span>
                     </div>
                 </Tooltip>
-                <div className="app-list-item" onClick={onOpenFeatureRequest}>
+
+                <div className="app-list-item" onClick={() => handleAppClick(onOpenFeatureRequest)}>
                     <div className="app-icon-bg feature">
                         <BulbOutlined />
                     </div>
                     <span className="app-name">Feature Request</span>
                     <span className="app-badge beta">BETA</span>
                 </div>
-                <div className="app-list-item" onClick={onOpenSettings}>
+
+                <div className="app-list-item" onClick={() => handleAppClick(onOpenSettings)}>
                     <div className="app-icon-bg settings">
                         <SettingOutlined />
                     </div>
                     <span className="app-name">System Settings</span>
                 </div>
-                <div className="app-list-item" onClick={onOpenResources}>
+
+                <div className="app-list-item" onClick={() => handleAppClick(onOpenResources)}>
                     <div className="app-icon-bg resource">
                         <LineChartOutlined />
                     </div>
                     <span className="app-name">System Resources</span>
                 </div>
-                <div className="app-list-item" onClick={onOpenAbout}>
+
+                <div className="app-list-item" onClick={() => handleAppClick(onOpenAbout)}>
                     <div className="app-icon-bg about-app">
                         <InfoCircleOutlined />
                     </div>
                     <span className="app-name">About System</span>
+                </div>
+
+                <div className="app-list-item" onClick={() => handleAppClick(onOpenGuide)}>
+                    <div className="app-icon-bg guide">
+                        <ReadOutlined />
+                    </div>
+                    <span>System Guide</span>
                 </div>
             </div>
         </div>
@@ -53,8 +74,10 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
         <Popover
             content={menuContent}
             trigger="click"
+            open={isOpen}
+            onOpenChange={handleOpenChange}
             placement="topLeft"
-            overlayClassName="start-menu-popover"
+            classNames={{ root: 'start-menu-popover' }}
             getPopupContainer={() => document.body}
         >
             <Tooltip title="Start" placement="top">

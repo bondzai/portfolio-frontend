@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, message, Tooltip } from 'antd';
 import { BulbOutlined, SendOutlined } from '@ant-design/icons';
 import OSWindow from '../OSWindow';
 
 const { TextArea } = Input;
 
-const FeatureWindow = ({ isOpen, onClose }) => {
+const FeatureWindow = ({ isOpen, onClose, onMinimize, isMinimized }) => {
     const handleFeatureSubmit = () => {
         message.success("Feature request sent to developer!");
         onClose();
@@ -17,6 +17,8 @@ const FeatureWindow = ({ isOpen, onClose }) => {
             icon={<BulbOutlined />}
             isOpen={isOpen}
             onClose={onClose}
+            onMinimize={onMinimize}
+            isMinimized={isMinimized}
             width={400}
             height={350}
         >

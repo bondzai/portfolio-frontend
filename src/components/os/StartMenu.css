@@ -109,9 +109,15 @@
     background: linear-gradient(135deg, #8E2DE2, #4A00E0);
 }
 
+.app-icon-bg.guide {
+    background: linear-gradient(135deg, #FFB75E, #ED8F03);
+}
+
 .app-icon-bg.about-app {
     background: linear-gradient(135deg, #11998e, #38ef7d);
-}/* Badge Styles */
+}
+
+/* Badge Styles */
 .app-badge {
     font-size: 9px;
     font-weight: 700;
