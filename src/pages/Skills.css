@@ -16,12 +16,39 @@
     width: 100%;
     max-width: 1400px;
     /* Wider max-width for dashboard view */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    /* Responsive columns */
-    gap: 20px;
-    /* Space between cards */
+    /* Grid styles removed as per instruction */
     align-items: start;
+}
+
+/* RGL Container */
+.react-grid-layout {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.react-grid-item {
+    transition: all 0.2s ease;
+    cursor: grab;
+    /* Indicate draggable */
+}
+
+.react-grid-item:active {
+    cursor: grabbing;
+    /* Indicate dragging action */
+}
+
+/* While dragging */
+.react-grid-item.react-grid-placeholder {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px;
+    opacity: 0.5;
+}
+
+/* Resizable Handle Customization (Optional) */
+.react-resizable-handle {
+    background-image: none;
+    /* Hide default ugly handle if desired, or style it */
 }
 
 /* Glassmorphism Panel */
@@ -50,11 +77,22 @@
 /* Header (Static) */
 .accordion-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* Align left */
     align-items: center;
+    gap: 12px;
+    /* Space between icon and text */
     padding: 15px 20px;
     background: rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.accordion-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-secondary);
+    font-size: 18px;
 }
 
 .accordion-title {

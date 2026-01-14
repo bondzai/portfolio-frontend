@@ -1,8 +1,8 @@
 {
   "name": "portfolio",
-  "homepage": "https://thejb.onrender.com/",
+  "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "1.6.4",
+  "version": "1.7.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -29,6 +29,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.6",
+    "react-grid-layout": "^1.4.4",
     "react-github-calendar": "^3.4.0",
     "react-icons": "^4.6.0",
     "react-infinite-scroll-component": "^6.1.0",

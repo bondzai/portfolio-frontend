@@ -41,6 +41,7 @@ const SkillGroupWraper = ({ topic, skills }) => {
             <div
                 className="accordion-header"
             >
+                {topic.icon && <span className="accordion-icon-container">{topic.icon}</span>}
                 <h6 className="accordion-title">
                     {topic.label}
                 </h6>
