@@ -39,7 +39,6 @@ const Footer = () => {
             <div className="footer-section footer-right">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <SocialMediaIcons />
-                    <Version />
                 </div>
             </div>
         </AntFooter>
