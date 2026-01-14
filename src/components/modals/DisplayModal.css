@@ -1,104 +1,236 @@
-.root-display {
-    margin-top: 90px;
-    width: 100%;
-    height: 80%;
+/* Full Screen Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 2000;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: fadeInModal 0.3s ease-out;
 }
 
-.display-image {
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin: 2%;
+/* Glass Modal Content */
+.modal-content {
+    width: 90%;
+    max-width: 1200px;
+    height: 85vh;
+    background: rgba(255, 255, 255, 0.08);
+    /* Dark glass */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 24px;
+    display: flex;
     overflow: hidden;
-    background-position: center;
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-
-.arrow-left {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    font-size: 2rem;
-    z-index: 10;
-    cursor: pointer;
-}
-
-.arrow-right {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    font-size: 2rem;
-    z-index: 10;
-    cursor: pointer;
-}
-
-.close-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 2rem;
-    z-index: 10;
-    cursor: pointer;
-}
-
-.close-icon {
-    font-size: 36px;
+    position: relative;
     color: white;
-    opacity: 0.7;
-    transition: opacity 0.2s ease-in-out;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: 24px;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(90deg);
+}
+
+/* Layout: Split View */
+.modal-image-section {
+    flex: 1.5;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.modal-details-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.2);
+    /* Slightly darker right side */
+    backdrop-filter: blur(20px);
+    overflow-y: auto;
+}
+
+/* Typography */
+.modal-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    background: linear-gradient(to right, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Metadata Grid */
+.modal-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meta-item label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+}
+
+.meta-item span {
+    font-size: 16px;
+    color: white;
+}
+
+/* Action Buttons */
+.modal-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.glass-action-btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
 }
 
-.close-icon:hover {
-    opacity: 1;
+.glass-action-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
 }
 
-@media only screen and (max-width: 2000px) {
-    .root-display img {
-        width: 60%;
+.glass-action-btn.primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+}
+
+.glass-action-btn.primary:hover {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 50;
+    font-size: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-prev {
+    left: 20px;
+}
+
+.nav-next {
+    right: 20px;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
-@media only screen and (max-width: 1550px) {
-    .root-display img {
-        width: 60%;
-        padding-top: 0%;
-        padding-bottom: 10%;
+@media (max-width: 900px) {
+    .modal-content {
+        flex-direction: column;
+        height: 90vh;
+        overflow-y: auto;
     }
-}
 
-@media only screen and (max-width: 1300px) {
-    .root-display img {
-        width: 60%;
-        padding-top: 10%;
-        padding-bottom: 10%;
+    .modal-image-section {
+        flex: none;
+        height: 40%;
     }
-}
 
-@media only screen and (max-width: 1100px) {
-    .root-display img {
-        width: 60%;
-        padding-top: 15%;
-        padding-bottom: 40%;
+    .modal-details-section {
+        flex: none;
+        padding: 20px;
     }
-}
 
-@media only screen and (max-width: 850px) {
-    .root-display img {
-        width: 100%;
-        padding-top: 45%;
-        padding-bottom: 65%;
-    }
-}
-
-@media (max-width: 768px) {
-    .root-display {
-        display: none;
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        background: rgba(0, 0, 0, 0.7);
     }
 }

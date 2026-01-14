@@ -1,49 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Card } from 'antd';
-import useRotation from "../../hooks/useRotation";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-
 const Certification = ({ ...certification }) => {
-    const { rotation, handleMouseMove, handleMouseLeave } = useRotation();
-    const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate();
 
-    const disableClick = window.matchMedia("(max-width: 600px)").matches;
     const handleClick = () => {
-        if (!disableClick) {
-            navigate("/certification/" + certification.id);
-        }
-    };
-
-    const onMouseLeave = () => {
-        setIsHovered(false);
-        handleMouseLeave();
+        // Simple navigation without logic check for now, can be sophisticated if needed
+        navigate("/certification/" + certification.id);
     };
 
     return (
-        <Card
-            className="certification" 
-            onClick={handleClick} 
-            onMouseMove={handleMouseMove} 
-            onMouseLeave={onMouseLeave}
-            onMouseEnter={() => setIsHovered(true)}
-            style={{ 
-                transform: `perspective(600px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) ${isHovered ? 'scale(1.02) translateY(-5px)' : ''}`
-            }}
-            bodyStyle={{ padding: 0, height: '100%', display: 'flex', flexDirection: 'column' }}
-        >
+        <div className="cert-card" onClick={handleClick}>
             <div className="cert-image-container">
-                 <LazyLoadImage src={certification.image_url} effect="blur" className="bg-image" />
+                <LazyLoadImage
+                    src={certification.image_url}
+                    effect="blur"
+                    alt={certification.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
             </div>
             <div className="cert-content">
                 <span className="cert-title">{certification.name}</span>
             </div>
-        </Card>
+        </div>
     );
 };
 
 export default Certification;
-
