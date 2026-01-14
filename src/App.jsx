@@ -34,25 +34,25 @@ const App = () => {
 
     return (
         <div className="App">
-                <HoverProvider>
-                    <Router basename="/">
-                        <Navbar />
-                        <Sidebar />
-                        <Footer />
-                        <Routes>
-                            <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
-                            <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
-                            <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
-                            <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
-                            <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
-                            <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
-                            <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
-                            <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
-                            <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                            <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
-                        </Routes>
-                    </Router>
-                </HoverProvider>
+            <HoverProvider>
+                <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                    <Navbar />
+                    <Sidebar />
+                    <Footer />
+                    <Routes>
+                        <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
+                        <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
+                        <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                        <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
+                        <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
+                        <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                        <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
+                        <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
+                        <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
+                        <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
+                    </Routes>
+                </Router>
+            </HoverProvider>
         </div>
     );
 }

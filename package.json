@@ -2,7 +2,7 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "1.7.4",
+  "version": "1.7.5",
   "changelog": "-",
   "type": "module",
   "scripts": {

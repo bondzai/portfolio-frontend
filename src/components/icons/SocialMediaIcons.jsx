@@ -37,37 +37,43 @@ const SocialMediaIcons = () => {
     const SocialContent = (
         <div style={{ display: "flex", gap: "15px", alignItems: "center", flexWrap: "wrap", justifyContent: "center", maxWidth: "200px" }}>
             <Tooltip title="https://www.linkedin.com/in/0xthejb" placement="top">
-                <AiFillLinkedin
-                    style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
-                    onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb")}
-                />
+                <span onClick={() => openInNewTab("https://www.linkedin.com/in/0xthejb")}>
+                    <AiFillLinkedin
+                        style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
+                    />
+                </span>
             </Tooltip>
 
             <Tooltip title="Mail" placement="top">
-                <AiOutlineMail
-                    style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
-                />
+                <span>
+                    <AiOutlineMail
+                        style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
+                    />
+                </span>
             </Tooltip>
 
             <Tooltip title="https://www.youtube.com/@VibeVanilla" placement="top">
-                <AiFillYoutube
-                    style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
-                    onClick={() => openInNewTab("https://www.youtube.com/@VibeVanilla")}
-                />
+                <span onClick={() => openInNewTab("https://www.youtube.com/@VibeVanilla")}>
+                    <AiFillYoutube
+                        style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
+                    />
+                </span>
             </Tooltip>
 
             <Tooltip title="https://thejb.gitbook.io/core" placement="top">
-                <SiGitbook
-                    style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
-                    onClick={() => openInNewTab("https://thejb.gitbook.io/core")}
-                />
+                <span onClick={() => openInNewTab("https://thejb.gitbook.io/core")}>
+                    <SiGitbook
+                        style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
+                    />
+                </span>
             </Tooltip>
 
             <Tooltip title="https://github.com/bondzai" placement="top">
-                <AiFillGithub
-                    style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
-                    onClick={() => openInNewTab("https://github.com/bondzai")}
-                />
+                <span onClick={() => openInNewTab("https://github.com/bondzai")}>
+                    <AiFillGithub
+                        style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
+                    />
+                </span>
             </Tooltip>
 
             <CustomModalButton
@@ -76,7 +82,9 @@ const SocialMediaIcons = () => {
                 content={<DonationCard />}
                 icon={
                     <Tooltip title="Buy me a coffee." placement="top">
-                        <SiBitcoin style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }} />
+                        <span>
+                            <SiBitcoin style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }} />
+                        </span>
                     </Tooltip>
                 }
                 hideButtons

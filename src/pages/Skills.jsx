@@ -5,6 +5,7 @@ import { getSkillList } from "../apis/rest/Skill";
 import { globalDelay } from "../utils/constants";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { FaCode, FaLayerGroup, FaDatabase, FaNetworkWired, FaTerminal, FaTools, FaRobot } from "react-icons/fa";
+import useScreenDimensions, { ScreenSize } from "../hooks/useScreenDimensions";
 import "./Skills.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -25,6 +26,8 @@ const skillsData = [
 const Skills = () => {
     const [skills, setSkills] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { screenSize } = useScreenDimensions();
+    const isMobile = screenSize === ScreenSize.XS;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -82,8 +85,8 @@ const Skills = () => {
                 breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                 cols={{ lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 }}
                 rowHeight={60}
-                isDraggable={true}
-                isResizable={true}
+                isDraggable={!isMobile}
+                isResizable={!isMobile}
                 margin={[20, 20]}
             >
                 {skillsData.map((topic) => (
