@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "2.0.0",
-  "changelog": "Initial OS Mode Release",
+  "version": "2.0.1",
+  "changelog": "Background Apps state management & OS Mode",
   "type": "module",
   "scripts": {
     "dev": "vite",

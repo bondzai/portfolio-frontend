@@ -1,0 +1,152 @@
+/* TaskManager.css */
+
+.task-manager-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.task-manager-icon:hover .anticon {
+    color: white !important;
+    transform: scale(1.1);
+}
+
+/* Blinking Animation for Notification Badge */
+@keyframes pulse-yellow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+        opacity: 1;
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(255, 204, 0, 0);
+        opacity: 0.8;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+        opacity: 1;
+    }
+}
+
+.notification-badge .ant-badge-dot {
+    background: #ffcc00 !important;
+    /* Yellow */
+    width: 10px;
+    height: 10px;
+    animation: pulse-yellow 2s infinite;
+    box-shadow: 0 0 8px #ffcc00;
+}
+
+.task-manager-popover .ant-popover-inner {
+    background: rgba(20, 20, 30, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+    overflow: hidden;
+}
+
+.task-manager-popover .ant-popover-arrow {
+    display: none !important;
+}
+
+.task-manager-content {
+    width: 260px;
+    padding: 15px;
+}
+
+.task-manager-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+}
+
+.empty-tasks {
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.task-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.task-item .task-name {
+    flex: 1;
+    font-size: 13px;
+}
+
+.task-item .restore-icon {
+    font-size: 16px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+    color: #52c41a;
+}
+
+.task-item:hover .restore-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Reusing icon backgrounds from StartMenu but scaled down if needed */
+.task-icon-bg {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.task-icon-bg.calculator {
+    background: linear-gradient(135deg, #FF9966, #FF5E62);
+}
+
+.task-icon-bg.feature {
+    background: linear-gradient(135deg, #56CCF2, #2F80ED);
+}
+
+.task-icon-bg.settings {
+    background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+}
+
+.task-icon-bg.resources {
+    background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+}
+
+.task-icon-bg.about {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+}

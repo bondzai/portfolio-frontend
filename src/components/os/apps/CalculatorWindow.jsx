@@ -2,13 +2,15 @@ import React from 'react';
 import { CalculatorOutlined } from '@ant-design/icons';
 import OSWindow from '../OSWindow';
 
-const CalculatorWindow = ({ isOpen, onClose }) => {
+const CalculatorWindow = ({ isOpen, onClose, onMinimize, isMinimized }) => {
     return (
         <OSWindow
             title="Calculator"
             icon={<CalculatorOutlined />}
             isOpen={isOpen}
             onClose={onClose}
+            onMinimize={onMinimize}
+            isMinimized={isMinimized}
             width={320}
             height={480}
         >

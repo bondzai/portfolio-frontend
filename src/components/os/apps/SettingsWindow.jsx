@@ -3,7 +3,7 @@ import { SettingOutlined } from '@ant-design/icons';
 import { message } from 'antd';
 import OSWindow from '../OSWindow';
 
-const SettingsWindow = ({ isOpen, onClose }) => {
+const SettingsWindow = ({ isOpen, onClose, onMinimize, isMinimized }) => {
 
     const applyTheme = (theme) => {
         const root = document.documentElement;
@@ -39,6 +39,8 @@ const SettingsWindow = ({ isOpen, onClose }) => {
             icon={<SettingOutlined />}
             isOpen={isOpen}
             onClose={onClose}
+            onMinimize={onMinimize}
+            isMinimized={isMinimized}
             width={350}
             height={250}
         >
