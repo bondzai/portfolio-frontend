@@ -5,11 +5,11 @@ FROM node:18-alpine AS build
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json to the working directory
-COPY package.json ./
+# Copy package.json and yarn.lock to the working directory
+COPY package.json yarn.lock ./
 
-# Install dependencies (without lockfile)
-RUN yarn install
+# Install dependencies (frozen lockfile for CI speed)
+RUN yarn install --frozen-lockfile
 
 # Copy the rest of the application code
 COPY . .
