@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { avengers } from "../apis/rest/Avengers.js";
 import { HeroCard } from "../components/cards/HeroCard.jsx";
-import Avengers from "../components/icons/Avengers.jsx";
+import AvengersModal from "../components/modals/AvengersModal.jsx";
+import { TeamOutlined } from "@ant-design/icons";
 import "./More.css";
 
-
-const CarouselItem = ({props}) => {
+const CarouselItem = ({ props }) => {
     return (
-        <HeroCard {...props}/>
+        <div style={{ margin: '0 10px' }}>
+            <HeroCard {...props} />
+        </div>
     );
 }
 
 const AutoplayCarousel = () => {
+    // Duplicate data to create seamless loop
+    const items = Object.keys(avengers);
+    const duplicatedItems = [...items, ...items, ...items];
+
     return (
         <div className="carousel-container">
             <div className="carousel-track">
-                {Object.keys(avengers).map((detailKey) => {
+                {duplicatedItems.map((detailKey, index) => {
                     return (
-                        <CarouselItem key={detailKey} props={avengers[detailKey]} />
+                        <CarouselItem key={`${detailKey}-${index}`} props={avengers[detailKey]} />
                     );
                 })}
             </div>
@@ -26,9 +32,11 @@ const AutoplayCarousel = () => {
 }
 
 const More = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
-        <div className="more-background" >
-            <div style={{width: "60%", marginBottom: "40px"}}>
+        <div className="more-background">
+            <div className="more-content">
                 <p>
                     Welcome to the <strong>Brotherhood</strong>.
                 </p>
@@ -37,15 +45,22 @@ const More = () => {
                     Each name here represents real guidance, real support, and real impact. <br />
                     This is my way of saying thank you—to those who helped me move forward.”
                 </p>
-                Thanks for reading, <br />
-                James Bond
+                <p style={{ marginTop: '20px', fontStyle: 'italic', fontSize: '14px' }}>
+                    Thanks for reading, <br />
+                    <strong>James Bond</strong>
+                </p>
             </div>
-            <div style={{width: "60%"}}>
-                <Avengers />
-            </div>
+
             <AutoplayCarousel />
-            <br />
-            <small> Last updated: 2026-01-12 </small>
+
+            <div className="view-more-container">
+                <button className="view-more-btn" onClick={() => setIsModalOpen(true)}>
+                    <TeamOutlined />
+                    <span>View All</span>
+                </button>
+            </div>
+
+            <AvengersModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
     );
 };

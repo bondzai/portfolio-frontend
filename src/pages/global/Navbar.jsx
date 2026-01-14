@@ -10,7 +10,7 @@ const NAV_ITEMS = [
     { label: "Experience", key: "experience", path: "/experience" },
     { label: "Skills", key: "skills", path: "/skills" },
     { label: "Projects", key: "projects", path: "/projects" },
-    { label: "Certs", key: "certifications", path: "/certifications" },
+    { label: "Certifications", key: "certifications", path: "/certifications" },
     { label: "More", key: "more", path: "/more" },
 ];
 
@@ -50,16 +50,16 @@ const Navbar = () => {
                 // Backgrounds
                 colorBgElevated: "var(--color-primary)",
                 itemBg: "transparent",
-                
+
                 // Colors
                 itemColor: "var(--text-color-primary)",
                 itemSelectedColor: "#f0f2f5", // Soft white/grey for text
                 itemHoverColor: "#ffffff",
-                
+
                 // Selection Background (Smoother highlight)
                 controlItemBgActive: "rgba(255, 255, 255, 0.1)", // Subtle translucent white
                 controlItemBgHover: "rgba(255, 255, 255, 0.05)",
-                
+
                 // Horizontal Line (if applicable)
                 horizontalItemSelectedColor: "#f0f2f5",
             },
@@ -87,7 +87,7 @@ const Navbar = () => {
             }}>
                 {isMobile ? (
                     <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", height: "50px" }}>
-                         <span style={{
+                        <span style={{
                             position: "absolute",
                             left: "50%",
                             transform: "translateX(-50%)",
@@ -98,10 +98,10 @@ const Navbar = () => {
                         }}>
                             {NAV_ITEMS.find(item => item.key === current)?.label || "Home"}
                         </span>
-                        <Button 
-                            type="text" 
-                            onClick={showDrawer} 
-                            icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />} 
+                        <Button
+                            type="text"
+                            onClick={showDrawer}
+                            icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />}
                         />
                         <Drawer
                             title={<span style={{ color: "var(--text-color-primary)" }}>Menu</span>}

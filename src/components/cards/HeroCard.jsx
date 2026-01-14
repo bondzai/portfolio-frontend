@@ -1,30 +1,36 @@
 import React from "react";
-import { Avatar, Card, Tooltip } from 'antd';
-import { GithubFilled, LinkOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
+import { GithubOutlined, LinkOutlined } from '@ant-design/icons';
 import { openInNewTab } from "../../utils/utils.js";
 import "./HeroCard.css";
 
-
-const { Meta } = Card;
-
-export const HeroCard = ({avatar, title, repoUrl, url, description}) => {
+export const HeroCard = ({ avatar, title, repoUrl, url, description }) => {
     return (
-        <Card 
-            className="hero-card"
-            actions={[
-                <Tooltip title={repoUrl}>
-                    <GithubFilled onClick={() => openInNewTab(repoUrl)} />
-                </Tooltip>, 
-                <Tooltip title={url}>
-                    <LinkOutlined onClick={() => openInNewTab(url)}/>
-                </Tooltip>, 
-            ]}
-        >
-            <Meta
-                avatar={<Avatar src={avatar} />}
-                title={title}
-                description={description}
-            />
-        </Card>
+        <div className="hero-card">
+            <div className="hero-header">
+                <img src={avatar} alt={title} className="hero-avatar" />
+                <div className="hero-info">
+                    <div className="hero-title">{title}</div>
+                    <div className="hero-desc">{description}</div>
+                </div>
+            </div>
+
+            <div className="hero-actions">
+                {repoUrl && (
+                    <Tooltip title="GitHub">
+                        <div className="hero-btn" onClick={() => openInNewTab(repoUrl)}>
+                            <GithubOutlined />
+                        </div>
+                    </Tooltip>
+                )}
+                {url && (
+                    <Tooltip title="Website">
+                        <div className="hero-btn" onClick={() => openInNewTab(url)}>
+                            <LinkOutlined />
+                        </div>
+                    </Tooltip>
+                )}
+            </div>
+        </div>
     )
 }

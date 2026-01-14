@@ -1,66 +1,125 @@
 .more-background {
     width: 100%;
-    height: 100vh;
-    background-color: var(--color-primary);
-    color: var(--text-color-primary);
+    min-height: 100vh;
+    padding-top: 70px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    overflow-x: hidden;
+    animation: fadeInAnimation ease 1s forwards;
+    box-sizing: border-box;
+}
+
+.more-content {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
     text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.more-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+.more-content strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.avengers-grid {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .carousel-container {
     overflow: hidden;
     position: relative;
-    height: 22%;
-    width: 65%;
-    color: transparent;
-    box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999;
-    cursor: pointer;
-    opacity: 0.95;
-}
-  
-.carousel-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 220px;
     width: 100%;
-    height: 100%;
+    max-width: 1200px;
+    padding: 20px 0;
+
+    /* Fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .carousel-track {
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 0;
-    gap: 16px;
-    width: 200%;
-    height: 100%;
-    animation: slide 90s linear infinite;
-    &:hover {
-        animation-play-state: paused;
-    }
+    gap: 20px;
+    width: max-content;
+    animation: slide 240s linear infinite;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.view-more-container {
+    margin: 40px 0;
+}
+
+.view-more-btn {
+    padding: 10px 24px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.view-more-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes slide {
     0% {
-        left: 0;
+        transform: translateX(0);
     }
-    20% {
-        left: -20%;
-    }
-    40% {
-        left: -40%;
-    }
-    60% {
-        left: -60%;
-    }
-    80% {
-        left: -80%;
-    }
+
     100% {
-        left: -100%;
+        transform: translateX(-50%);
     }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+small {
+    margin-top: auto;
+    color: rgba(255, 255, 255, 0.3);
 }
