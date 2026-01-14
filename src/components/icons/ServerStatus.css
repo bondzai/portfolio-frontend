@@ -1,0 +1,133 @@
+.server-status-trigger {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+}
+
+.server-status-trigger:hover {
+    opacity: 0.8;
+}
+
+.version-display {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: monospace;
+}
+
+.watcher-display {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+}
+
+.watcher-icon {
+    font-size: 14px;
+}
+
+.watcher-count {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.status-badge {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-left: 2px;
+}
+
+.status-badge.connected {
+    background-color: #52c41a;
+    box-shadow: 0 0 4px #52c41a;
+}
+
+.status-badge.disconnected {
+    background-color: #ff4d4f;
+    box-shadow: 0 0 4px #ff4d4f;
+}
+
+/* Popover Internal Dots */
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #52c41a;
+}
+
+.status-dot.offline {
+    background-color: #ff4d4f;
+}
+
+/* Popover Styling */
+.server-status-overlay .ant-popover-inner {
+    background: rgba(20, 20, 30, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    color: white;
+    min-width: 200px;
+}
+
+.server-status-popover {
+    padding: 12px;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-text {
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.metric-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.metric-icon {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.metric-value {
+    font-weight: 500;
+    color: white;
+}
+
+.metric-value.good {
+    color: #52c41a;
+}
+
+.metric-value.bad {
+    color: #ff4d4f;
+}
+
+.status-footer {
+    margin-top: 10px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: right;
+}

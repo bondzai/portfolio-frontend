@@ -1,21 +1,19 @@
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    /* Distribute space between left, center, right */
     align-items: center;
     background: rgba(33, 50, 94, 0.7);
-    /* Darker glass background */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: white !important;
-    /* Force white text */
     font-size: 13px;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     height: 36px;
-    /* Slightly taller for modern feel */
     z-index: 1000;
     padding: 0 20px;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
@@ -26,35 +24,28 @@
     color: white !important;
 }
 
-.status-icons {
-    position: absolute;
-    left: 15px;
+/* 3-Column Layout */
+.footer-section {
     display: flex;
     align-items: center;
-    gap: 8px;
+    flex: 1;
+    /* Each section takes equal width to ensure center stays centered */
 }
 
-.status-icon {
-    display: flex;
-    align-items: center;
+/* Left Section - Aligned Start */
+.footer-left {
+    justify-content: flex-start;
+}
+
+/* Center Section - Aligned Center */
+.footer-center {
     justify-content: center;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s;
-    opacity: 0.8;
-}
-
-.status-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 1;
-}
-
-.footer-right-actions {
-    position: absolute;
-    right: 15px;
-    display: flex;
-    align-items: center;
     gap: 15px;
+}
+
+/* Right Section - Aligned End */
+.footer-right {
+    justify-content: flex-end;
 }
 
 /* Responsive adjustments */
@@ -66,15 +57,10 @@
         gap: 5px;
     }
 
-    .status-icons {
-        position: relative;
-        left: auto;
-        margin-bottom: 5px;
-    }
-
-    .footer-right-actions {
-        position: relative;
-        right: auto;
-        margin-top: 5px;
+    .footer-section {
+        justify-content: center;
+        /* Center everything on mobile */
+        width: 100%;
+        flex: none;
     }
 }

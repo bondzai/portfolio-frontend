@@ -1,12 +1,12 @@
 import React from "react";
 
 
-const Coppyright = () => {
+const Copyright = () => {
     return (
-        <div style={{cursor: "default"}}>
+        <div style={{ cursor: "default" }}>
             <p> &copy; JB </p>
         </div>
     );
 }
 
-export default Coppyright;
+export default Copyright;
