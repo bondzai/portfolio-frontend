@@ -144,3 +144,38 @@
     border-radius: 0;
     border: none;
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .window-header {
+        height: 50px;
+        padding: 0 20px;
+    }
+
+    .window-title {
+        font-size: 16px;
+    }
+
+    .window-controls {
+        gap: 15px;
+    }
+
+    .control-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    /* specific close button enhancement */
+    .control-btn.close {
+        width: 32px;
+        /* Even larger for close */
+        height: 32px;
+    }
+
+    /* Always show icons on mobile for clarity */
+    .control-btn svg {
+        display: flex;
+        color: rgba(0, 0, 0, 0.5);
+    }
+}
