@@ -11,17 +11,21 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
                 <span>Applications</span>
             </div>
             <div className="start-menu-list">
-                <div className="app-list-item" onClick={onOpenCalculator}>
-                    <div className="app-icon-bg calc">
-                        <CalculatorOutlined />
+                <Tooltip title="In Development" placement="right">
+                    <div className="app-list-item disabled">
+                        <div className="app-icon-bg calc">
+                            <CalculatorOutlined />
+                        </div>
+                        <span className="app-name">Calculator</span>
+                        <span className="app-badge dev">DEV</span>
                     </div>
-                    <span className="app-name">Calculator</span>
-                </div>
+                </Tooltip>
                 <div className="app-list-item" onClick={onOpenFeatureRequest}>
                     <div className="app-icon-bg feature">
                         <BulbOutlined />
                     </div>
                     <span className="app-name">Feature Request</span>
+                    <span className="app-badge beta">BETA</span>
                 </div>
                 <div className="app-list-item" onClick={onOpenSettings}>
                     <div className="app-icon-bg settings">

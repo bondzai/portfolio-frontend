@@ -111,4 +111,42 @@
 
 .app-icon-bg.about-app {
     background: linear-gradient(135deg, #11998e, #38ef7d);
+}/* Badge Styles */
+.app-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-left: auto;
+    /* Push to right if desired, or gap */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.app-badge.beta {
+    background: linear-gradient(135deg, #FF9966, #FF5E62);
+    color: white;
+}
+
+.app-badge.dev {
+    background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Disabled State */
+.app-list-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    /* Optional: if we want to blocking totally */
+}
+
+/* If we want the tooltip to trigger, pointer-events must be auto on the wrapper, but click disabled? 
+   Better to handle disabled logic in JSX and just use styling here.
+*/
+.app-list-item.disabled:hover {
+    background: transparent;
 }

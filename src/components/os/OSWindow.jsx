@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 import { CloseOutlined, MinusOutlined } from '@ant-design/icons';
+import { isMobile } from '../../utils/constants';
 import './OSWindow.css';
 
 const OSWindow = ({
@@ -17,8 +18,17 @@ const OSWindow = ({
     const [isMaximized, setIsMaximized] = useState(false);
 
     // Track State for restoration
-    const [size, setSize] = useState({ width: initialWidth, height: initialHeight });
-    const [position, setPosition] = useState({ x: 50, y: 100 }); // Reasonable default
+    const [size, setSize] = useState(() =>
+        isMobile
+            ? { width: window.innerWidth * 0.9, height: window.innerHeight * 0.8 }
+            : { width: initialWidth, height: initialHeight }
+    );
+
+    const [position, setPosition] = useState(() =>
+        isMobile
+            ? { x: window.innerWidth * 0.05, y: 60 }
+            : { x: 50, y: 100 }
+    );
     const [preMaxState, setPreMaxState] = useState(null);
 
     // Resize state
