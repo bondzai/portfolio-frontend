@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "1.7.7",
-  "changelog": "-",
+  "version": "2.0.0",
+  "changelog": "Initial OS Mode Release",
   "type": "module",
   "scripts": {
     "dev": "vite",

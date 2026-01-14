@@ -1,27 +1,45 @@
 import React from 'react';
 import { Popover, Tooltip } from 'antd';
-import { AppstoreOutlined, CalculatorOutlined, BulbOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, CalculatorOutlined, BulbOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import './StartMenu.css';
 
-const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest }) => {
+const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onOpenResources, onOpenAbout }) => {
 
     const menuContent = (
         <div className="start-menu-content">
             <div className="start-menu-header">
                 <span>Applications</span>
             </div>
-            <div className="start-menu-grid">
-                <div className="app-icon-item" onClick={onOpenCalculator}>
+            <div className="start-menu-list">
+                <div className="app-list-item" onClick={onOpenCalculator}>
                     <div className="app-icon-bg calc">
                         <CalculatorOutlined />
                     </div>
-                    <span>Calculator</span>
+                    <span className="app-name">Calculator</span>
                 </div>
-                <div className="app-icon-item" onClick={onOpenFeatureRequest}>
+                <div className="app-list-item" onClick={onOpenFeatureRequest}>
                     <div className="app-icon-bg feature">
                         <BulbOutlined />
                     </div>
-                    <span>Feature Req</span>
+                    <span className="app-name">Feature Request</span>
+                </div>
+                <div className="app-list-item" onClick={onOpenSettings}>
+                    <div className="app-icon-bg settings">
+                        <SettingOutlined />
+                    </div>
+                    <span className="app-name">System Settings</span>
+                </div>
+                <div className="app-list-item" onClick={onOpenResources}>
+                    <div className="app-icon-bg resource">
+                        <LineChartOutlined />
+                    </div>
+                    <span className="app-name">System Resources</span>
+                </div>
+                <div className="app-list-item" onClick={onOpenAbout}>
+                    <div className="app-icon-bg about-app">
+                        <InfoCircleOutlined />
+                    </div>
+                    <span className="app-name">About System</span>
                 </div>
             </div>
         </div>

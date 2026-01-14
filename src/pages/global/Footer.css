@@ -3,7 +3,7 @@
     justify-content: space-between;
     /* Distribute space between left, center, right */
     align-items: center;
-    background: rgba(33, 50, 94, 0.7);
+    background: rgba(var(--color-primary-rgb), 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);

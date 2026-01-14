@@ -49,43 +49,48 @@
     letter-spacing: 1px;
 }
 
-.start-menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.app-icon-item {
+/* List Layout */
+.start-menu-list {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+
+.app-list-item {
+    display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    padding: 10px 5px;
-    border-radius: 10px;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    color: var(--text-color-primary, #fff);
+    /* Fallback to white if var not set */
+    text-decoration: none;
 }
 
-.app-icon-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+.app-list-item:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.app-icon-item span {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
+.app-list-item .app-name {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .app-icon-bg {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
     color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    /* Prevent squeezing/stretching in flex containers */
 }
 
 .app-icon-bg.calc {
@@ -94,4 +99,16 @@
 
 .app-icon-bg.feature {
     background: linear-gradient(135deg, #56CCF2, #2F80ED);
+}
+
+.app-icon-bg.settings {
+    background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+}
+
+.app-icon-bg.resource {
+    background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+}
+
+.app-icon-bg.about-app {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
 }
