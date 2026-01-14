@@ -3,9 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import BrandLogo from "../../components/common/BrandLogo";
 
 const NAV_ITEMS = [
-    { label: "Home", key: "", path: "/" },
     { label: "About", key: "about", path: "/about" },
     { label: "Experience", key: "experience", path: "/experience" },
     { label: "Skills", key: "skills", path: "/skills" },
@@ -115,6 +115,18 @@ const Navbar = () => {
                 padding: "0 20px",
                 boxSizing: "border-box"
             }}>
+                {/* Minimal Logo - Desktop & Mobile */}
+                <Link to="/" style={{
+                    position: "absolute",
+                    left: "20px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1001,
+                    display: 'block' // Ensure content is displayed
+                }}>
+                    <BrandLogo size={26} />
+                </Link>
+
                 {isMobile ? (
                     <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", height: "50px" }}>
                         <span style={{
@@ -126,7 +138,8 @@ const Navbar = () => {
                             fontWeight: "600",
                             userSelect: "none"
                         }}>
-                            {NAV_ITEMS.find(item => item.key === current)?.label || "Home"}
+                            {/* Logic to show label, fallback to nothing if Home/empty */}
+                            {NAV_ITEMS.find(item => item.key === current)?.label || ""}
                         </span>
                         <Button
                             type="text"
@@ -151,7 +164,7 @@ const Navbar = () => {
                         </Drawer>
                     </div>
                 ) : (
-                    <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div style={{ display: "flex", justifyContent: "flex-start", marginLeft: "50px" }}>
                         <Menu
                             mode="horizontal"
                             selectedKeys={[current]}
@@ -159,7 +172,7 @@ const Navbar = () => {
                             style={{
                                 background: "transparent",
                                 borderBottom: "none",
-                                justifyContent: "center",
+                                justifyContent: "flex-start",
                                 width: "100%",
                                 fontSize: "16px"
                             }}
