@@ -78,7 +78,7 @@ const defaultData = [
         "id": "next-js-id",
         "image_url": "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg",
         "is_showing": true,
-        "name": "Next.js",
+        "name": "NextJS",
         "topic": "frontend",
         "url": "https://nextjs.org/"
     },
@@ -110,7 +110,7 @@ const defaultData = [
         "id": "express-id",
         "image_url": "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg",
         "is_showing": true,
-        "name": "Express",
+        "name": "ExpressJS",
         "topic": "backend",
         "url": "https://expressjs.com"
     },
@@ -371,6 +371,14 @@ const defaultData = [
         "url": "https://www.arduino.cc/"
     },
     {
+        "id": "redhat-id",
+        "image_url": "https://www.vectorlogo.zone/logos/redhat/redhat-icon.svg",
+        "is_showing": true,
+        "name": "Red Hat",
+        "topic": "os",
+        "url": "https://www.redhat.com/"
+    },
+    {
         "id": "rockwell-id",
         "image_url": "https://www.rockwellautomation.com/content/dam/rockwell-automation/sites/images/logos/2019_Logo_rgb_RA_Bug-LeftText_color.svg",
         "is_showing": true,
@@ -395,6 +403,14 @@ const defaultData = [
         "url": "https://grpc.io/"
     },
     {
+        "id": "rest-api-id",
+        "image_url": "",
+        "is_showing": true,
+        "name": "REST",
+        "topic": "commu",
+        "url": "https://en.wikipedia.org/wiki/REST"
+    },
+    {
         "id": "apisix-id",
         "image_url": "https://apisix.apache.org/img/logo2.svg",
         "is_showing": true,
@@ -417,7 +433,23 @@ const defaultData = [
         "name": "Tailscale",
         "topic": "tools",
         "url": "https://tailscale.com/"
-    }
+    },
+    {
+        "id": "terraform-id",
+        "image_url": "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+        "is_showing": true,
+        "name": "Terraform",
+        "topic": "tools",
+        "url": "https://www.terraform.io/"
+    },
+    {
+        "id": "ansible-id",
+        "image_url": "https://www.vectorlogo.zone/logos/ansible/ansible-icon.svg",
+        "is_showing": true,
+        "name": "Ansible",
+        "topic": "tools",
+        "url": "https://www.ansible.com/"
+    },
 ]
 
 export { getSkillList }
