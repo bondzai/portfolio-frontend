@@ -1,81 +1,58 @@
-import { Empty, Card, Badge, Avatar, Tooltip } from "antd";
+import React from "react";
+import { Empty, Tooltip } from "antd";
 import {
-    InfoCircleOutlined,
     PlayCircleOutlined,
-    ExclamationCircleOutlined,
-    StarFilled,
     MoonOutlined
 } from '@ant-design/icons';
-import { useNavigate } from "react-router-dom";
-import { getLampStatusStyle } from "../decorators/StatusStyles.jsx";
 import { openInNewTab } from "../../utils/utils.js";
-
-const { Meta } = Card;
 
 const Project = ({ ...project }) => {
     if (!project) return <Empty />;
 
-    // const navigate = useNavigate();
+    return (
+        <div className="project-card">
+            {/* Glass Status Badge (Top Right) */}
+            {project.is_sleep && (
+                <Tooltip title="Status: Sleeping (Auto-sleeps on inactivity)">
+                    <div className="status-glass">
+                        <MoonOutlined />
+                    </div>
+                </Tooltip>
+            )}
 
-    const cover = project.image_url ? (
-        <img
-            alt={project.name}
-            src={project.image_url}
-            style={{ width: '100%', height: '120px', objectFit: 'cover' }}
-        />
-    ) : null;
+            {/* Cover Image */}
+            {project.image_url && (
+                <div className="project-cover">
+                    <img
+                        alt={project.name}
+                        src={project.image_url}
+                        loading="lazy"
+                    />
+                    {/* Glass Action Button (Solid, visible on hover) */}
+                    <div className="glass-btn" onClick={() => openInNewTab(project.host_url)}>
+                        <PlayCircleOutlined />
+                        <span>Demo</span>
+                    </div>
+                </div>
+            )}
 
-    const actions = [
-        // <InfoCircleOutlined onClick={() => navigate(`/project/${project.id}`)} key="detail" />,
-        <PlayCircleOutlined onClick={() => openInNewTab(project.host_url)} key="demo" />,
-        // <ExclamationCircleOutlined style={getLampStatusStyle(project.status)} key="status" />,
-        project.is_sleep && (
-            <Tooltip title="Automatically sleep after a period of inactivity." key="sleep">
-                <MoonOutlined />
-            </Tooltip>
-        )
-    ].filter(Boolean);
-
-    const cardComponent = (
-        <Card
-            style={{ width: 320, height: 240, margin: '10px', borderRadius: '8px', overflow: 'hidden' }}
-            cover={cover}
-        >
-            <div style={{ height: 'calc(100% - 120px)', padding: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '24px' }}>
-                <Meta
-                    avatar={project.avatar ? <Avatar src={project.avatar} /> : null}
-                    title={project.name}
-                    style={{ textAlign: 'center', width: '100%' }}
-                />
-                <div
-                    style={{
-                        display: 'flex',
-                        width: '100%',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                    }}
-                >
-                    {actions}
+            <div className="project-content">
+                {/* Header with Avatar and Title */}
+                <div className="project-header">
+                    {project.avatar && (
+                        <img
+                            src={project.avatar}
+                            alt={`${project.name} avatar`}
+                            className="project-avatar"
+                        />
+                    )}
+                    <h3 className="project-title" title={project.name}>
+                        {project.name}
+                    </h3>
                 </div>
             </div>
-        </Card>
+        </div>
     );
-
-    // if (project.is_highlight) {
-    //     return (
-    //         <Badge.Ribbon
-    //             text={
-    //                 <StarFilled style={{ fontSize: '12px', transform: 'translateY(2px)' }} />
-    //             }
-    //             color="blue"
-    //             placement="end"
-    //         >
-    //             {cardComponent}
-    //         </Badge.Ribbon>
-    //     );
-    // }
-
-    return cardComponent;
 };
 
 export default Project;
