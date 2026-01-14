@@ -6,11 +6,16 @@ const Skill = ({ ...skill }) => {
     return (
         <div className="skill">
             <Tooltip title={skill.name}>
-                <button onClick={() => openInNewTab(skill.url)}>
-                    <img
-                        src={skill.image_url}
-                        alt={skill.name}
-                    />
+                <button
+                    onClick={() => openInNewTab(skill.url)}
+                    onMouseDown={(e) => e.stopPropagation()}
+                >
+                    {skill.image_url && (
+                        <img
+                            src={skill.image_url}
+                            alt={skill.name}
+                        />
+                    )}
                     <span className="skill-name">{skill.name}</span>
                 </button>
             </Tooltip>
