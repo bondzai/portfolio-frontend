@@ -55,9 +55,9 @@ const Counter = () => {
         <div style={{ cursor: "default" }}>
             <Tooltip placement="top" title="Elapsed time since initial deployment.">
                 {age.days !== 0 || age.hours !== 0 || age.minutes !== 0 || age.seconds !== 0 ? (
-                    <small>{age.days}d {age.hours}h {age.minutes}m {age.seconds}s </small>
+                    <span>{age.days}d {age.hours}h {age.minutes}m {age.seconds}s </span>
                 ) : (
-                    <p> <LoadingOutlined /> </p>
+                    <span> <LoadingOutlined /> </span>
                 )}
             </Tooltip>
         </div>

@@ -4,7 +4,7 @@ import React from "react";
 const Copyright = () => {
     return (
         <div style={{ cursor: "default" }}>
-            <p> &copy; JB </p>
+            <span> &copy; JB </span>
         </div>
     );
 }

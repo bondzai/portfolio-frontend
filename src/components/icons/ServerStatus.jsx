@@ -81,9 +81,7 @@ const ServerStatus = ({ activeUsersCount, isConnected }) => {
             arrow={false}
         >
             <div className="server-status-trigger">
-                {/* Version Display */}
-                <span className="version-display">V:{versionData.version}</span>
-                <div className={`status-badge ${isConnected ? 'connected' : 'disconnected'}`} style={{ marginLeft: '8px' }}></div>
+                <div className={`status-badge ${isConnected ? 'connected' : 'disconnected'}`}></div>
             </div>
         </Popover>
     );

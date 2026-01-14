@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import Watcher from "../../components/icons/Watcher";
 import Copyright from "../../components/icons/Copyright";
 import Counter from "../../components/icons/Counter";
+import Version from "../../components/icons/Version";
 import ServerStatus from "../../components/icons/ServerStatus";
 import { Users } from "../../apis/websocket/Users";
 import "./Footer.css";
@@ -15,9 +16,12 @@ const Footer = () => {
 
     return (
         <AntFooter className="footer">
-            {/* Left: Watcher (Eye) */}
+            {/* Left: System Status & Watcher */}
             <div className="footer-section footer-left">
-                <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <ServerStatus activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                    <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                </div>
             </div>
 
             {/* Center: Copyright & Counter */}
@@ -29,9 +33,9 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Right: System Status */}
+            {/* Right: Version Only */}
             <div className="footer-section footer-right">
-                <ServerStatus activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                <Version />
             </div>
         </AntFooter>
     );

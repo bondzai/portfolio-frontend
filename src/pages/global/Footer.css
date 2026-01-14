@@ -20,8 +20,11 @@
 }
 
 /* Ensure all children inherit white color */
+/* Ensure all children inherit white color and font size */
 .footer * {
     color: white !important;
+    font-size: 13px !important;
+    /* Force consistent size for all elements */
 }
 
 /* 3-Column Layout */
