@@ -7,34 +7,44 @@ const useSocket = (url, handleOpen, handleClose) => {
     const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
+        if (!url) return;
+
         let deviceId = localStorage.getItem("device_id");
         if (!deviceId) {
             deviceId = crypto.randomUUID();
             localStorage.setItem("device_id", deviceId);
         }
 
-        const socketUrl = new URL(url);
-        socketUrl.searchParams.append("device_id", deviceId);
-        const socket = new WebSocket(socketUrl.toString());
+        let socket;
+        try {
+            const socketUrl = new URL(url);
+            socketUrl.searchParams.append("device_id", deviceId);
+            socket = new WebSocket(socketUrl.toString());
 
-        socket.onopen = () => {
-            setIsConnected(true);
-            handleOpen ? handleOpen() : console.log("WebSocket connected");
-        };
+            socket.onopen = () => {
+                setIsConnected(true);
+                handleOpen ? handleOpen() : console.log("WebSocket connected");
+            };
 
-        socket.onmessage = (event) => {
-            setReceivedData(event.data);
-        };
+            socket.onmessage = (event) => {
+                setReceivedData(event.data);
+            };
 
-        socket.onclose = () => {
+            socket.onclose = () => {
+                setIsConnected(false);
+                handleClose ? handleClose() : console.log("WebSocket disconnected");
+            };
+
+            setWs(socket);
+        } catch (error) {
+            console.error("Invalid WebSocket URL:", error);
             setIsConnected(false);
-            handleClose ? handleClose() : console.log("WebSocket disconnected");
-        };
-
-        setWs(socket);
+        }
 
         return () => {
-            socket.close();
+            if (socket) {
+                socket.close();
+            }
         };
     }, [url]);
 
