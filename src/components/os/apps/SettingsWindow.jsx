@@ -39,11 +39,6 @@ const SettingsWindow = ({ isOpen, onClose, onMinimize, isMinimized }) => {
         root.style.setProperty('--color-deep', deep);
         root.style.setProperty('--color-highlight', highlight);
 
-        // Simple text contrast logic (if very dark, use light text)
-        // For now defaulting to light text as the OS is dark mode optimized
-        root.style.setProperty('--text-color-primary', '#f5f5f5');
-        root.style.setProperty('--text-color-secondary', '#d9d9d9');
-
         setPrimaryColor(colorHex);
     };
 
@@ -56,7 +51,19 @@ const SettingsWindow = ({ isOpen, onClose, onMinimize, isMinimized }) => {
     };
 
     const resetTheme = () => {
-        applyTheme('#21325e');
+        const root = document.documentElement;
+        // Restore exact defaults from App.css
+        root.style.setProperty('--const-primary-color', '#21325e');
+        root.style.setProperty('--const-secondary-color', '#3e497a');
+        root.style.setProperty('--color-primary', '#21325e');
+        root.style.setProperty('--color-primary-rgb', '33, 50, 94');
+        root.style.setProperty('--color-secondary', '#3e497a');
+        root.style.setProperty('--color-deep', '#1a2949');
+        root.style.setProperty('--color-highlight', '#4facfe'); // Original highlight
+        root.style.setProperty('--text-color-primary', '#f5f5f5');
+        root.style.setProperty('--text-color-secondary', '#d9d9d9');
+
+        setPrimaryColor('#21325e');
         message.success("Restored Default Theme");
     };
 
