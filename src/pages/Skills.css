@@ -1,100 +1,146 @@
 .skills {
-    margin-top: 80px;
+    margin-top: 120px;
+    /* Increased top margin for "gentle space" */
     margin-bottom: 35px;
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Start from top */
     align-items: center;
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    
-    h6 {
-        font-size: 17px;
-        font-weight: bold;
-        color: #3e497a;
-    }
-
-    .list {
-        list-style: none;
-        width: 75%;
-    }
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.skill-list {
-    margin-top: 10px;
-    height: auto;
+.skills .list {
+    width: 100%;
+    max-width: 1400px;
+    /* Wider max-width for dashboard view */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* Responsive columns */
+    gap: 20px;
+    /* Space between cards */
+    align-items: start;
 }
 
-.skill {
-    margin-bottom: 15px;
-    background: none;
-
-    button {
-        cursor: pointer;
-        outline: none;
-        border-radius: 50%;
-        border-style: none;
-        background-color: transparent;
-        width: 60px;
-        height: auto;
-    }
-
-    button:hover {
-        filter: brightness(105%);
-        transition: 0.1s ease-in;
-        transform: scale(1.1);
-    }
-
-    img {
-        width: 40px;
-        height: auto;
-    }
+/* Glassmorphism Panel */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    /* Fill grid cell height if needed, but auto is better for diverse content */
+    display: flex;
+    flex-direction: column;
 }
 
-.skill-item {
-    opacity: 0;
-    transform: translate3d(20%);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+.glass-panel:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
-.skill-item.animate {
-    opacity: 1;
-    transform: translate3d(0%);
+/* Header (Static) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media only screen and (max-width: 1300px) {
-    .skill-list {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
+.accordion-title {
+    margin: 0;
+    font-size: 16px;
+    /* Slightly smaller for compactness */
+    font-weight: 600;
+    color: var(--text-color-primary);
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
 }
 
-@media only screen and (max-width: 900px) {
-    .skill-list {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+/* Accordion Content */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-grow: 1;
+    /* Allow content to fill flex space */
 }
 
-@media only screen and (max-width: 700px) {
-    .skill-list {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+.accordion-content.expanded {
+    max-height: 1000px;
+    /* Allow expansion */
 }
 
-@media only screen and (max-width: 500px) {
-    .skill-list {
-        grid-template-columns: 1fr 1fr;
-    }
+.accordion-inner {
+    padding: 15px;
+    /* Tighter padding */
 }
 
-@media only screen and (max-width: 300px) {
-    .skill-list {
+/* Skill Icons Grid */
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* Use flex wrap instead of grid for icons to fill tighter */
+    gap: 12px;
+    justify-content: flex-start;
+    /* Align left */
+}
+
+.skill button {
+    cursor: pointer;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    /* Pill padding */
+    border-radius: 20px;
+    /* Pill radius */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    /* Space between icon and text */
+    transition: all 0.2s ease;
+    width: auto;
+    /* Fit content */
+    height: 48px;
+    /* Fixed height for consistency */
+    min-width: 120px;
+    /* Ensure not too small */
+}
+
+.skill button:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skill img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.skill-name {
+    font-size: 14px;
+    color: var(--text-color-primary);
+    font-weight: 500;
+    white-space: nowrap;
+    /* Prevent line breaks */
+}
+
+@media only screen and (max-width: 768px) {
+    .skills .list {
         grid-template-columns: 1fr;
-        width: 100%;
+        /* Stack on mobile */
     }
 }

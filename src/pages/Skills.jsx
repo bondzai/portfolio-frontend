@@ -7,14 +7,13 @@ import "./Skills.css";
 
 
 const skillsData = [
-    { topic: "os", label: "OS" },
-    { topic: "language", label: "Programming Languages" },
-    { topic: "frontend", label: "Frontend" },
-    { topic: "backend", label: "Backend" },
+    { topic: "language", label: "Languages" },
+    { topic: ["frontend", "backend"], label: "Frameworks & Libraries" },
     { topic: "database", label: "Databases & Caches" },
-    { topic: "commu", label: "Communication Technology & protocols" },
-    { topic: "tools", label: "Infra & More" },
-    { topic: "automation", label: "Industrial automation & IoT" },
+    { topic: "commu", label: "Protocols, APIs, & Communication Technologies" },
+    { topic: "os", label: "OS" },
+    { topic: "tools", label: "DevOps & Infrastructures" },
+    { topic: "automation", label: "Industrial Automation & IoT" },
 ];
 
 

@@ -1,9 +1,6 @@
 import React from "react";
 import { openInNewTab } from "../../utils/utils.js";
 import { Tooltip } from "antd";
-import { Accordion, AccordionSummary, Typography, AccordionDetails } from "@mui/material";
-import { MdExpandMore } from "react-icons/md"
-
 
 const Skill = ({ ...skill }) => {
     return (
@@ -14,6 +11,7 @@ const Skill = ({ ...skill }) => {
                         src={skill.image_url}
                         alt={skill.name}
                     />
+                    <span className="skill-name">{skill.name}</span>
                 </button>
             </Tooltip>
         </div>
@@ -22,6 +20,9 @@ const Skill = ({ ...skill }) => {
 
 const SkillGroup = ({ skills, topic }) => {
     const skillGroupByTopic = skills.filter((skill) => {
+        if (Array.isArray(topic)) {
+            return topic.includes(skill.topic) && skill.is_showing === true;
+        }
         return skill.topic === topic && skill.is_showing === true;
     });
 
@@ -34,23 +35,25 @@ const SkillGroup = ({ skills, topic }) => {
     );
 };
 
-const accordionStyle = {
-    borderRadius: "10px",
-    boxShadow: "0px 3px 15px rgba(58, 58, 58, 0.2)",
-    marginBottom: "5px",
+const SkillGroupWraper = ({ topic, skills }) => {
+    return (
+        <div className="glass-panel">
+            <div
+                className="accordion-header"
+            >
+                <h6 className="accordion-title">
+                    {topic.label}
+                </h6>
+            </div>
+            <div
+                className="accordion-content expanded"
+            >
+                <div className="accordion-inner">
+                    <SkillGroup topic={topic.topic} skills={skills} />
+                </div>
+            </div>
+        </div>
+    );
 };
-
-const SkillGroupWraper = ({ topic, skills }) => (
-    <Accordion defaultExpanded style={accordionStyle}>
-        <AccordionSummary expandIcon={<MdExpandMore />}>
-            <Typography variant="h6">
-                {topic.label}
-            </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-            <SkillGroup topic={topic.topic} skills={skills} />
-        </AccordionDetails>
-    </Accordion>
-);
 
 export default SkillGroupWraper;
