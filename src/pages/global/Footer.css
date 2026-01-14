@@ -2,56 +2,79 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--const-primary-color);
-    color: var(--const-primary-text-color);
-    font-size: 14px;
+    background: rgba(33, 50, 94, 0.7);
+    /* Darker glass background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: white !important;
+    /* Force white text */
+    font-size: 13px;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 20px;
-    z-index: 2;
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid var(--const-secondary-color);
+    height: 36px;
+    /* Slightly taller for modern feel */
+    z-index: 1000;
+    padding: 0 20px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure all children inherit white color */
+.footer * {
+    color: white !important;
 }
 
 .status-icons {
-    position: fixed;
-    left: 2px;
-    z-index: 10;
-}
-
-.status-icon {
-    color: var(--const-primary-text-color);
-    padding: 2px;
-}
-
-.status-icon:hover {
-    opacity: 0.8;
-    background-color: var(--const-secondary-color);
-}
-
-.footer-right-actions {
-    position: fixed;
-    right: 20px;
-    bottom: 2px;
-    z-index: 10;
+    position: absolute;
+    left: 15px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+.status-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    opacity: 0.8;
+}
+
+.status-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.footer-right-actions {
+    position: absolute;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .footer {
-        font-size: 12px;
+        height: auto;
+        padding: 10px 0;
+        flex-direction: column;
+        gap: 5px;
     }
 
     .status-icons {
-        display: none;
+        position: relative;
+        left: auto;
+        margin-bottom: 5px;
     }
 
     .footer-right-actions {
-        right: 10px;
+        position: relative;
+        right: auto;
+        margin-top: 5px;
     }
 }

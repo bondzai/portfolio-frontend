@@ -80,7 +80,9 @@ const Navbar = () => {
                 top: 0,
                 width: "100%",
                 zIndex: 1000,
-                background: "var(--color-primary)",
+                background: "rgba(33, 50, 94, 0.7)",
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
                 borderBottom: "1px solid var(--color-secondary)",
                 padding: "0 20px",
                 boxSizing: "border-box"
