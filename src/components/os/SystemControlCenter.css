@@ -1,0 +1,328 @@
+/* Popover/Overlay Container */
+.control-center-overlay .ant-popover-inner {
+    background: rgba(20, 20, 30, 0.85) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 18px !important;
+    padding: 0 !important;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6) !important;
+    overflow: hidden;
+}
+
+.control-center-overlay .ant-popover-arrow {
+    display: none !important;
+}
+
+/* Main Content Wrapper */
+.control-center-popover {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+.section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+}
+
+/* Section 1: System Status */
+.section-status {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.status-badge-text {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.status-badge-text.online {
+    background: rgba(82, 196, 26, 0.2);
+    color: #52c41a;
+    border: 1px solid rgba(82, 196, 26, 0.3);
+}
+
+.status-badge-text.offline {
+    background: rgba(255, 77, 79, 0.2);
+    color: #ff4d4f;
+    border: 1px solid rgba(255, 77, 79, 0.3);
+}
+
+/* Status Grid 2x2 */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.status-item {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-icon {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.status-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-info .label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.status-info .value {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 0;
+}
+
+/* Section 2: Task Manager */
+.section-tasks {
+    padding: 16px;
+    flex: 1;
+    min-height: 150px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.kill-all-btn {
+    font-size: 10px;
+    color: #ff4d4f;
+    cursor: pointer;
+    background: rgba(255, 77, 79, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 77, 79, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.kill-all-btn:hover {
+    background: rgba(255, 77, 79, 0.25);
+    border-color: #ff4d4f;
+    color: #fff;
+}
+
+.task-list-container {
+    height: 180px;
+    /* Fixed height for scroll */
+}
+
+.task-list-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar styling */
+.task-list-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.task-list-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.task-list-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.control-task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-task-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.task-name-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.action-icon {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: translateX(5px);
+}
+
+.control-task-item:hover .action-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.action-icon.restore {
+    color: #52c41a;
+}
+
+.action-icon.restore:hover {
+    background: rgba(82, 196, 26, 0.2);
+}
+
+.action-icon.close {
+    color: #ff4d4f;
+}
+
+.action-icon.close:hover {
+    background: rgba(255, 77, 79, 0.2);
+}
+
+.empty-state {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    gap: 10px;
+}
+
+/* Footer Info */
+.footer-info {
+    text-align: center;
+    padding: 8px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Trigger Styles */
+.trigger-icon-wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 10px;
+    position: relative;
+    /* For absolute positioning of dot */
+}
+
+/* Base LED Dot */
+.server-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    box-shadow: 0 0 0 2px #202020;
+    /* Cutout effect from icon */
+    transition: all 0.3s ease;
+}
+
+/* Green (Online/Idle) - No Blink */
+.server-status-dot.online {
+    background-color: #52c41a;
+    box-shadow: 0 0 0 2px #202020, 0 0 5px #52c41a;
+    animation: none;
+}
+
+/* Red (Offline) - Blink */
+.server-status-dot.offline {
+    background-color: #ff4d4f;
+    box-shadow: 0 0 0 2px #202020, 0 0 5px #ff4d4f;
+    animation: blink-red 1s infinite;
+}
+
+/* Yellow (Active/Running Apps) - Blink */
+.server-status-dot.active {
+    background-color: #ffcc00;
+    box-shadow: 0 0 0 2px #202020, 0 0 5px #ffcc00;
+    animation: blink-yellow 1s infinite;
+}
+
+@keyframes blink-red {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes blink-yellow {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

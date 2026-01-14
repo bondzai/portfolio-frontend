@@ -3,10 +3,9 @@ import { Layout } from "antd";
 import Watcher from "../../components/icons/Watcher";
 import Copyright from "../../components/icons/Copyright";
 import Counter from "../../components/icons/Counter";
-import ServerStatus from "../../components/icons/ServerStatus";
 import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import StartMenu from "../../components/os/StartMenu";
-import TaskManager from "../../components/os/TaskManager";
+import SystemControlCenter from "../../components/os/SystemControlCenter";
 import FeatureTour from "../../components/common/FeatureTour";
 import { Users } from "../../apis/websocket/Users";
 import "./Footer.css";
@@ -25,8 +24,7 @@ const Footer = () => {
 
     // Tour Refs
     const startRef = useRef(null);
-    const taskRef = useRef(null);
-    const statusRef = useRef(null);
+    const controlRef = useRef(null);
 
     // OS Window States
     const [isCalcOpen, setIsCalcOpen] = useState(false);
@@ -141,17 +139,15 @@ const Footer = () => {
 
                     <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
 
-                    <div ref={taskRef}>
-                        <TaskManager
+                    <div ref={controlRef}>
+                        <SystemControlCenter
                             runningApps={runningApps}
                             onRestore={openApp}
                             onClose={closeApp}
                             onCloseAll={closeAllApps}
+                            activeUsersCount={activeUsersCount}
+                            isConnected={isConnected}
                         />
-                    </div>
-
-                    <div ref={statusRef}>
-                        <ServerStatus activeUsersCount={activeUsersCount} isConnected={isConnected} />
                     </div>
 
                     <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
@@ -178,7 +174,7 @@ const Footer = () => {
             <FeatureTour
                 isOpen={isTourOpen}
                 onClose={handleCloseTour}
-                refs={{ startRef, taskRef, statusRef }}
+                refs={{ startRef, controlRef }}
             />
 
             {/* OS Windows */}
