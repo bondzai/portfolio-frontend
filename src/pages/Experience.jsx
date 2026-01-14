@@ -9,29 +9,83 @@ import "./Experience.css";
 
 
 const TimelineElement = ({ date, icon, title, content, avatarSrc, avatarBorderColor }) => {
+    // Helper to format "Key: Value" strings
     const formatKeyValue = (text) => {
         const parts = text.split(':');
-        if (parts.length === 2) {
+        if (parts.length >= 2) {
+            // Ensure we join the rest in case there are multiple colons
+            const key = parts[0];
+            const val = parts.slice(1).join(':');
             return (
-                <React.Fragment>
-                    <strong>{parts[0]}</strong>:{parts[1]}
-                </React.Fragment>
+                <span>
+                    <strong style={{ color: '#fff' }}>{key}</strong>:{val}
+                </span>
             );
-        } else {
-            return text;
         }
+        return text;
     };
 
-    const formattedContent = content.split('\n').map((item, index) => (
-        <React.Fragment key={index}>
-            {formatKeyValue(item)}
-            <br />
-        </React.Fragment>
-    ));
+    // Parse content into structured elements (bullets vs text)
+    const parseContent = (text) => {
+        const lines = text.split('\n');
+        const elements = [];
+        let currentBulletList = [];
+
+        lines.forEach((line, index) => {
+            const trimmedLine = line.trim();
+            if (!trimmedLine) return; // Skip empty lines
+
+            if (trimmedLine.startsWith('-')) {
+                // Remove the dash and add to current list
+                currentBulletList.push(trimmedLine.substring(1).trim());
+            } else {
+                // If we have a list building up, push it now
+                if (currentBulletList.length > 0) {
+                    elements.push(
+                        <ul key={`list-${index}`} className="experience-bullet-list">
+                            {currentBulletList.map((item, i) => (
+                                <li key={i}>{formatKeyValue(item)}</li>
+                            ))}
+                        </ul>
+                    );
+                    currentBulletList = [];
+                }
+                // Push the regular text line
+                elements.push(
+                    <div key={`text-${index}`} className="experience-text-line">
+                        {formatKeyValue(trimmedLine)}
+                    </div>
+                );
+            }
+        });
+
+        // Flush any remaining bullets at the end
+        if (currentBulletList.length > 0) {
+            elements.push(
+                <ul key="list-end" className="experience-bullet-list">
+                    {currentBulletList.map((item, i) => (
+                        <li key={i}>{formatKeyValue(item)}</li>
+                    ))}
+                </ul>
+            );
+        }
+
+        return elements;
+    };
 
     return (
         <VerticalTimelineElement
-            className="vertical-timeline-elemt--education"
+            className="vertical-timeline-element--work"
+            contentStyle={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                color: '#fff',
+                borderRadius: '16px',
+                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
+            }}
+            contentArrowStyle={{ borderRight: '7px solid rgba(255, 255, 255, 0.1)' }}
             date={date}
             icon={icon}
             iconClassName="timeline-icon"
@@ -41,7 +95,9 @@ const TimelineElement = ({ date, icon, title, content, avatarSrc, avatarBorderCo
                 &nbsp;
                 <h3 className="vertical-timeline-element-title">{title}</h3>
             </div>
-            <p>{formattedContent}</p>
+            <div className="vertical-timeline-element-content-body">
+                {parseContent(content)}
+            </div>
         </VerticalTimelineElement>
     );
 };

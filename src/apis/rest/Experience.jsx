@@ -95,7 +95,7 @@ const defaultData = [
         avatarBorderColor: null
     },
     {
-        date: `Dec 2025 - Present (${calculateAge("12/24/2025")})`,
+        date: `Jan 2026 - Present (${calculateAge("01/14/2026")})`,
         icon: <MdWork />,
         title: "Vulcan Coalition Co., Ltd., Bangkok, Thailand",
         content: `Role: Senior Software Engineer

@@ -29,39 +29,83 @@
 
 /* Custom styling for vertical timeline */
 .vertical-timeline-element-content {
-    color: var(--const-primary-color);
-    border-radius: 8px;
-    padding: 15px;
+    /* Background handled by inline style in component for glass effect */
+    padding: 25px !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin: 10px 0;
 }
 
 .vertical-timeline-element-content:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
-
 .timeline-icon {
-    background: var(--color-secondary);
-    color: var(--text-color-primary);
-    box-shadow: 0 0 0 4px var(--text-color-primary), inset 0 2px 0 rgba(0, 0, 0, .08), 0 3px 0 4px rgba(0, 0, 0, .05);
+    background: var(--color-secondary) !important;
+    color: var(--text-color-primary) !important;
+    box-shadow: 0 0 0 4px var(--text-color-primary), inset 0 2px 0 rgba(0, 0, 0, .08), 0 3px 0 4px rgba(0, 0, 0, .05) !important;
+}
+
+.vertical-timeline-element-title {
+    color: #fff !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.vertical-timeline-element-subtitle {
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .vertical-timeline-element-date {
     font-size: 0.9rem;
-    color: var(--text-color-primary);
+    color: rgba(255, 255, 255, 0.6) !important;
     margin-bottom: 8px;
+    padding-bottom: 0 !important;
 }
 
 .vertical-timeline::before {
-    background: var(--text-color-primary) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 @media screen and (max-width: 1170px) {
     .experience .icon {
         right: 10px;
     }
+
     .vertical-timeline-element-content {
         margin-left: 60px;
     }
+}
+
+.experience-bullet-list {
+    list-style-type: none;
+    /* We will use custom bullets */
+    padding-left: 0;
+    margin: 15px 0;
+}
+
+.experience-bullet-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.experience-bullet-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+    /* Subtler bullet color */
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    top: -2px;
+}
+
+.experience-text-line {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
 }
