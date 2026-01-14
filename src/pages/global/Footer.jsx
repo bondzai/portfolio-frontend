@@ -113,6 +113,16 @@ const Footer = () => {
         // We do NOT set isOpen to false here.
     };
 
+    const closeAllApps = () => {
+        setRunningApps([]);
+        setMinimizedApps([]);
+        setIsCalcOpen(false);
+        setIsFeatureOpen(false);
+        setIsSettingsOpen(false);
+        setIsResourcesOpen(false);
+        setIsAboutOpen(false);
+    };
+
     return (
         <AntFooter className="footer">
             {/* Left: System Status & Watcher & Start Menu */}
@@ -132,7 +142,12 @@ const Footer = () => {
                     <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
 
                     <div ref={taskRef}>
-                        <TaskManager runningApps={runningApps} onRestore={openApp} />
+                        <TaskManager
+                            runningApps={runningApps}
+                            onRestore={openApp}
+                            onClose={closeApp}
+                            onCloseAll={closeAllApps}
+                        />
                     </div>
 
                     <div ref={statusRef}>

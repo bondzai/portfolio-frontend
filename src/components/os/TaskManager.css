@@ -68,6 +68,26 @@
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clear-all-btn {
+    font-size: 10px;
+    color: #ff4d4f;
+    cursor: pointer;
+    background: rgba(255, 77, 79, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 77, 79, 0.2);
+}
+
+.clear-all-btn:hover {
+    background: rgba(255, 77, 79, 0.3);
+    color: #fff;
+    border-color: #ff4d4f;
 }
 
 .empty-tasks {
@@ -118,6 +138,27 @@
     transform: translateX(0);
 }
 
+.task-item .close-task-icon {
+    font-size: 16px;
+    opacity: 0;
+    transform: translateX(5px);
+    transition: all 0.2s ease;
+    color: #ff4d4f;
+    margin-left: 8px;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.task-item:hover .close-task-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.task-item .close-task-icon:hover {
+    background: rgba(255, 77, 79, 0.2);
+    transform: scale(1.1);
+}
+
 /* Reusing icon backgrounds from StartMenu but scaled down if needed */
 .task-icon-bg {
     width: 28px;
@@ -147,6 +188,6 @@
     background: linear-gradient(135deg, #8E2DE2, #4A00E0);
 }
 
-.task-icon-bg.about {
+.task-icon-bg.about-task {
     background: linear-gradient(135deg, #11998e, #38ef7d);
 }

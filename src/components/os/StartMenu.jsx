@@ -77,7 +77,7 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
             open={isOpen}
             onOpenChange={handleOpenChange}
             placement="topLeft"
-            overlayClassName="start-menu-popover"
+            classNames={{ root: 'start-menu-popover' }}
             getPopupContainer={() => document.body}
         >
             <Tooltip title="Start" placement="top">
