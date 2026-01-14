@@ -3,7 +3,7 @@ import { avengers } from "../apis/rest/Avengers.js";
 import { HeroCard } from "../components/cards/HeroCard.jsx";
 import AvengersModal from "../components/modals/AvengersModal.jsx";
 import { TeamOutlined } from "@ant-design/icons";
-import "./More.css";
+import "./Brotherhood.css";
 
 const CarouselItem = ({ props }) => {
     return (
@@ -31,12 +31,12 @@ const AutoplayCarousel = () => {
     );
 }
 
-const More = () => {
+const Brotherhood = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className="more-background">
-            <div className="more-content">
+        <div className="brotherhood-container">
+            <div className="brotherhood-content">
                 <p>
                     Welcome to the <strong>Brotherhood</strong>.
                 </p>
@@ -65,4 +65,4 @@ const More = () => {
     );
 };
 
-export default More;
+export default Brotherhood;

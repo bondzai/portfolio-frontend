@@ -11,7 +11,8 @@ import Certifications from "./pages/Certifications";
 import Experience from "./pages/Experience";
 import About from "./pages/About";
 import Stats from "./pages/Stats";
-import More from "./pages/More";
+import Brotherhood from "./pages/Brotherhood";
+import Blog from "./pages/Blog";
 
 import DisplayModal from "./components/modals/DisplayModal";
 
@@ -49,7 +50,8 @@ const App = () => {
                         <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
                         <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
                         <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                        <Route path="/more" element={<HoverWrapper><More /></HoverWrapper>} />
+                        <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
+                        <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
                     </Routes>
                 </Router>
             </HoverProvider>

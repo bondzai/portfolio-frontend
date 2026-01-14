@@ -1,4 +1,4 @@
-.more-background {
+.brotherhood-container {
     width: 100%;
     min-height: 100vh;
     padding-top: 70px;
@@ -11,7 +11,7 @@
     box-sizing: border-box;
 }
 
-.more-content {
+.brotherhood-content {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -25,14 +25,14 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.more-content p {
+.brotherhood-content p {
     font-size: 16px;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 20px;
 }
 
-.more-content strong {
+.brotherhood-content strong {
     color: #fff;
     font-weight: 700;
 }

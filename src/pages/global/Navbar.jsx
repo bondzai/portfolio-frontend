@@ -11,7 +11,14 @@ const NAV_ITEMS = [
     { label: "Skills", key: "skills", path: "/skills" },
     { label: "Projects", key: "projects", path: "/projects" },
     { label: "Certifications", key: "certifications", path: "/certifications" },
-    { label: "More", key: "more", path: "/more" },
+    {
+        label: "More",
+        key: "more-group",
+        children: [
+            { label: "Brotherhood", key: "brotherhood", path: "/brotherhood" },
+            { label: "Blog", key: "blog", path: "/blog" }
+        ]
+    },
 ];
 
 const Navbar = () => {
@@ -25,20 +32,41 @@ const Navbar = () => {
         if (location.pathname === "/") {
             setCurrent("");
         } else {
-            // Find active key based on path start
-            const activeItem = NAV_ITEMS.find(item => item.key === path || (item.key && path.startsWith(item.key)));
-            if (activeItem) {
-                setCurrent(activeItem.key);
-            }
+            // Flatten items for search if needed, or simple check
+            const findKey = (items) => {
+                for (const item of items) {
+                    if (item.key === path || (item.key && path.startsWith(item.key))) return item.key;
+                    if (item.children) {
+                        const childKey = findKey(item.children);
+                        if (childKey) return childKey;
+                    }
+                }
+                return null;
+            };
+            const activeKey = findKey(NAV_ITEMS);
+            if (activeKey) setCurrent(activeKey);
         }
     }, [location]);
 
     const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
 
-    const menuItems = NAV_ITEMS.map(item => ({
-        label: <Link to={item.path}>{item.label}</Link>,
-        key: item.key,
-    }));
+    const mapItems = (items) => {
+        return items.map(item => {
+            if (item.children) {
+                return {
+                    label: item.label,
+                    key: item.key,
+                    children: mapItems(item.children)
+                };
+            }
+            return {
+                label: <Link to={item.path}>{item.label}</Link>,
+                key: item.key,
+            };
+        });
+    };
+
+    const menuItems = mapItems(NAV_ITEMS);
 
     const showDrawer = () => setDrawerVisible(true);
     const closeDrawer = () => setDrawerVisible(false);
