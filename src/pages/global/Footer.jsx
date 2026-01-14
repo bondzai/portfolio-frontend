@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Layout } from "antd";
 import Watcher from "../../components/icons/Watcher";
 import Copyright from "../../components/icons/Copyright";
@@ -7,6 +7,7 @@ import ServerStatus from "../../components/icons/ServerStatus";
 import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import StartMenu from "../../components/os/StartMenu";
 import TaskManager from "../../components/os/TaskManager";
+import FeatureTour from "../../components/common/FeatureTour";
 import { Users } from "../../apis/websocket/Users";
 import "./Footer.css";
 
@@ -22,6 +23,11 @@ const { Footer: AntFooter } = Layout;
 const Footer = () => {
     const [activeUsersCount, , isConnected] = Users();
 
+    // Tour Refs
+    const startRef = useRef(null);
+    const taskRef = useRef(null);
+    const statusRef = useRef(null);
+
     // OS Window States
     const [isCalcOpen, setIsCalcOpen] = useState(false);
     const [isFeatureOpen, setIsFeatureOpen] = useState(false);
@@ -34,6 +40,29 @@ const Footer = () => {
 
     // List of minimized apps (hidden but running)
     const [minimizedApps, setMinimizedApps] = useState([]);
+
+    // Tour State
+    const [isTourOpen, setIsTourOpen] = useState(false);
+
+    useEffect(() => {
+        // Build a tour trigger check
+        const hasSeenTour = localStorage.getItem('has_seen_v2_tour');
+        if (!hasSeenTour) {
+            const timer = setTimeout(() => {
+                setIsTourOpen(true);
+            }, 1500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    const handleStartTour = () => {
+        setIsTourOpen(true);
+    };
+
+    const handleCloseTour = () => {
+        setIsTourOpen(false);
+        localStorage.setItem('has_seen_v2_tour', 'true');
+    };
 
     const openApp = (appId) => {
         // Add to running apps if not present
@@ -89,16 +118,27 @@ const Footer = () => {
             {/* Left: System Status & Watcher & Start Menu */}
             <div className="footer-section footer-left">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                    <StartMenu
-                        onOpenCalculator={() => openApp('calculator')}
-                        onOpenFeatureRequest={() => openApp('feature')}
-                        onOpenSettings={() => openApp('settings')}
-                        onOpenResources={() => openApp('resources')}
-                        onOpenAbout={() => openApp('about')}
-                    />
+                    <div ref={startRef}>
+                        <StartMenu
+                            onOpenCalculator={() => openApp('calculator')}
+                            onOpenFeatureRequest={() => openApp('feature')}
+                            onOpenSettings={() => openApp('settings')}
+                            onOpenResources={() => openApp('resources')}
+                            onOpenAbout={() => openApp('about')}
+                            onOpenGuide={handleStartTour}
+                        />
+                    </div>
+
                     <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
-                    <TaskManager runningApps={runningApps} onRestore={openApp} />
-                    <ServerStatus activeUsersCount={activeUsersCount} isConnected={isConnected} />
+
+                    <div ref={taskRef}>
+                        <TaskManager runningApps={runningApps} onRestore={openApp} />
+                    </div>
+
+                    <div ref={statusRef}>
+                        <ServerStatus activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                    </div>
+
                     <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
                 </div>
             </div>
@@ -118,6 +158,13 @@ const Footer = () => {
                     <SocialMediaIcons />
                 </div>
             </div>
+
+            {/* Tour Component */}
+            <FeatureTour
+                isOpen={isTourOpen}
+                onClose={handleCloseTour}
+                refs={{ startRef, taskRef, statusRef }}
+            />
 
             {/* OS Windows */}
             <CalculatorWindow

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Popover, Tooltip } from 'antd';
-import { AppstoreOutlined, CalculatorOutlined, BulbOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, CalculatorOutlined, BulbOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined, ReadOutlined } from '@ant-design/icons';
 import './StartMenu.css';
 
-const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onOpenResources, onOpenAbout }) => {
+const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onOpenResources, onOpenAbout, onOpenGuide }) => {
 
     const menuContent = (
         <div className="start-menu-content">
@@ -44,6 +44,13 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
                         <InfoCircleOutlined />
                     </div>
                     <span className="app-name">About System</span>
+                </div>
+
+                <div className="app-list-item" onClick={onOpenGuide}>
+                    <div className="app-icon-bg guide">
+                        <ReadOutlined />
+                    </div>
+                    <span>System Guide</span>
                 </div>
             </div>
         </div>
