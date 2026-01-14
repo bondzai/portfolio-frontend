@@ -12,6 +12,20 @@ import './ServerStatus.css';
 
 const ServerStatus = ({ activeUsersCount, isConnected }) => {
     const [memoryUsage, setMemoryUsage] = useState({ used: 0, total: 0 });
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Auto-show tooltip on mount
+    useEffect(() => {
+        setIsOpen(true);
+        const timer = setTimeout(() => {
+            setIsOpen(false);
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const handleOpenChange = (newOpen) => {
+        setIsOpen(newOpen);
+    };
 
     // Memory monitor
     useEffect(() => {
@@ -76,6 +90,8 @@ const ServerStatus = ({ activeUsersCount, isConnected }) => {
         <Popover
             content={content}
             trigger="hover"
+            open={isOpen}
+            onOpenChange={handleOpenChange}
             placement="topRight"
             overlayClassName="server-status-overlay"
             arrow={false}

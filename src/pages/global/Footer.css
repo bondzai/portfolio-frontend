@@ -52,18 +52,23 @@
 }
 
 /* Responsive adjustments */
-@media screen and (max-width: 768px) {
+/* Responsive adjustments */
+@media screen and (max-width: 576px) {
     .footer {
         height: auto;
-        padding: 10px 0;
-        flex-direction: column;
+        padding: 5px 15px;
+        /* Minimal padding */
+        flex-wrap: wrap;
         gap: 5px;
+        /* Reduced gap to fit more on line */
+        justify-content: space-between;
+        /* Match desktop alignment */
     }
 
     .footer-section {
-        justify-content: center;
-        /* Center everything on mobile */
-        width: 100%;
         flex: none;
+        /* Allow sections to shrink/grow based on content */
     }
+
+    /* Hide some gaps on mobile if needed or adjust Layout */
 }

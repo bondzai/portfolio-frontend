@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "1.7.3",
-  "changelog": "1.7.3 - Refined footer layout and optimized status indicators.",
+  "version": "1.7.4",
+  "changelog": "-",
   "type": "module",
   "scripts": {
     "dev": "vite",

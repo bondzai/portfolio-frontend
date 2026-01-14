@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Layout } from "antd";
 import Watcher from "../../components/icons/Watcher";
@@ -5,6 +6,7 @@ import Copyright from "../../components/icons/Copyright";
 import Counter from "../../components/icons/Counter";
 import Version from "../../components/icons/Version";
 import ServerStatus from "../../components/icons/ServerStatus";
+import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import { Users } from "../../apis/websocket/Users";
 import "./Footer.css";
 
@@ -33,9 +35,12 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Right: Version Only */}
+            {/* Right: Social Media & Version */}
             <div className="footer-section footer-right">
-                <Version />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <SocialMediaIcons />
+                    <Version />
+                </div>
             </div>
         </AntFooter>
     );
