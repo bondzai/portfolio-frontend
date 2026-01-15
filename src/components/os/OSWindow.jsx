@@ -107,6 +107,7 @@ const OSWindow = ({
             position={isMaximized ? { x: 0, y: 0 } : position}
             onDrag={onDrag}
             disabled={isMaximized}
+            cancel=".window-controls"
         >
             <div
                 ref={nodeRef}
