@@ -295,7 +295,19 @@ const Navbar = () => {
                 fontWeight: "600",
                 userSelect: "none"
             }}>
-                {NAV_ITEMS.find(item => item.key === current)?.label || ""}
+                {(() => {
+                    const findLabel = (items) => {
+                        for (const item of items) {
+                            if (item.key === current) return item.label;
+                            if (item.children) {
+                                const childLabel = findLabel(item.children);
+                                if (childLabel) return childLabel;
+                            }
+                        }
+                        return "";
+                    };
+                    return findLabel(NAV_ITEMS);
+                })()}
             </span>
             <div ref={hamburgerRef}>
                 <Button
