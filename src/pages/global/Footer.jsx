@@ -7,10 +7,11 @@ import Counter from "../../components/icons/Counter";
 import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import StartMenu from "../../components/os/StartMenu";
 import SystemControlCenter from "../../components/os/SystemControlCenter";
-import FeatureTour from "../../components/common/FeatureTour";
+// import FeatureTour from "../../components/common/FeatureTour"; // Lifted to App
 import { Users } from "../../apis/websocket/Users";
 import { usePopup } from "../../contexts/PopupContext";
 import { useWindow } from "../../contexts/WindowContext";
+import { useTour } from "../../contexts/TourContext";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import "./Footer.css";
 
@@ -42,37 +43,21 @@ const Footer = () => {
 
     const [activeUsersCount, , isConnected] = Users();
 
+    // Tour Context
+    const { openTour, registerRef } = useTour();
+
     // Tour Refs
     const startRef = useRef(null);
     const controlRef = useRef(null);
 
-    // Tour State
-    const [isTourOpen, setIsTourOpen] = useState(false);
-
+    // Register refs with context
     useEffect(() => {
-        // Build a tour trigger check
-        // Wait for popupQueue to be empty
-        if (popupQueue.length > 0) return;
-
-        // Disable tour on mobile
-        if (isMobile) return;
-
-        const hasSeenTour = localStorage.getItem('has_seen_v2_tour');
-        if (!hasSeenTour) {
-            const timer = setTimeout(() => {
-                setIsTourOpen(true);
-            }, 1500);
-            return () => clearTimeout(timer);
-        }
-    }, [popupQueue, isMobile]);
+        registerRef('startRef', startRef);
+        registerRef('controlRef', controlRef);
+    }, [registerRef]);
 
     const handleStartTour = () => {
-        setIsTourOpen(true);
-    };
-
-    const handleCloseTour = () => {
-        setIsTourOpen(false);
-        localStorage.setItem('has_seen_v2_tour', 'true');
+        openTour();
     };
 
     return (
@@ -128,12 +113,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Tour Component */}
-            <FeatureTour
-                isOpen={isTourOpen}
-                onClose={handleCloseTour}
-                refs={{ startRef, controlRef }}
-            />
+            {/* Tour Component removed - Lifted to App level via TourContext */}
 
             {/* OS Windows */}
             <CalculatorWindow

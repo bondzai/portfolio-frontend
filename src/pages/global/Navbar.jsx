@@ -4,10 +4,11 @@ import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
     MenuOutlined, RocketFilled, ThunderboltFilled,
     ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
-    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined
+    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, QuestionCircleOutlined
 } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
+import { useTour } from "../../contexts/TourContext";
 
 const NAV_ITEMS = [
     { label: "Home", key: "home", path: "/", icon: <HomeFilled /> },
@@ -206,8 +207,17 @@ const Navbar = () => {
 
     // Let's filter based on isMobile.
     // User request: "show setting in desktop mode also"
-    // NAV_ITEMS now includes Home and Settings directly.
-    const activeItems = NAV_ITEMS;
+    // Register Hamburger Ref for Tour
+    const { registerRef } = useTour();
+    const hamburgerRef = React.useRef(null);
+
+    useEffect(() => {
+        if (isMobile) {
+            registerRef('hamburgerRef', hamburgerRef);
+        }
+    }, [isMobile, registerRef]);
+
+    const activeItems = [...NAV_ITEMS];
     const menuItems = mapItems(activeItems);
 
     const showDrawer = () => setDrawerVisible(true);
@@ -226,11 +236,13 @@ const Navbar = () => {
             }}>
                 {NAV_ITEMS.find(item => item.key === current)?.label || ""}
             </span>
-            <Button
-                type="text"
-                onClick={showDrawer}
-                icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />}
-            />
+            <div ref={hamburgerRef}>
+                <Button
+                    type="text"
+                    onClick={showDrawer}
+                    icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />}
+                />
+            </div>
             <Drawer
                 title={<span style={{ color: "var(--text-color-primary)" }}>Menu</span>}
                 placement="right"
