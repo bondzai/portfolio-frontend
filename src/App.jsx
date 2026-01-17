@@ -26,64 +26,55 @@ import { HoverProvider, HoverContext } from './contexts/HoverContext';
 import { PopupProvider, usePopup } from './contexts/PopupContext';
 import { WindowProvider } from './contexts/WindowContext';
 import GenericPopup from "./components/common/GenericPopup";
+import WelcomeMessage from "./components/common/WelcomeMessage";
 import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
 
-// Component to handle mobile limitation check via PopupContext
-const MobileLimitationManager = () => {
+// Unified System Popup Manager (Scalable)
+// To add more popups, you can chain useEffects or add logic here.
+const SystemPopupManager = () => {
     const { screenSize } = useScreenDimensions();
     const { addPopup } = usePopup();
 
     useEffect(() => {
         const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
-        if (isMobile) {
-            addPopup({
-                id: 'mobile-limitation',
-                title: 'Desktop Experience Recommended',
-                content: (
-                    <>
-                        <p>You are currently viewing this portfolio on a mobile device.</p>
-                        <p>Some advanced features (like the OS simulation, Start Menu, and System Stats) are optimized for larger screens.</p>
-                        <p>Please switch to a desktop or tablet for the full interactive experience.</p>
-                    </>
-                ),
-                oncePerSession: true,
-                okText: "I Understand",
-                trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
-            });
-        }
-    }, [screenSize, addPopup]);
-
-    return null;
-};
-
-// Component to handle Welcome Popup
-const WelcomePopupManager = () => {
-    const { addPopup } = usePopup();
-
-    useEffect(() => {
-        // Check if welcome popup has been seen forever (or use session if preferred, but "welcome" implies once)
         const hasSeenWelcome = localStorage.getItem('has_seen_welcome_v2');
+
+        // Example: If you want to scale up, add another check here for 'has_seen_promo' etc.
+        // if (!hasSeenPromo) { ... }
 
         if (!hasSeenWelcome) {
             addPopup({
-                id: 'welcome-popup',
-                title: 'System Online',
+                id: 'system-welcome',
+                title: 'System Notification',
                 content: (
-                    <>
-                        <p>Welcome to Portfolio OS v2.0</p>
-                        <p style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
-                            Patch 2.0.1: Enhanced Mobile Experience, New Popup System, and UI Polish.
-                        </p>
-                    </>
+                    <WelcomeMessage
+                        align="center"
+                        title="Welcome"
+                        subTitle="Portfolio OS v2.0.1"
+                        message={
+                            <p>Welcome to my digital workspace. Feel free to explore the apps, windows, and features I've built.</p>
+                        }
+                        footer={isMobile ? (
+                            <div style={{
+                                padding: '10px',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                borderRadius: '8px',
+                                borderLeft: '3px solid #ffcc00'
+                            }}>
+                                <p style={{ margin: 0, fontSize: '13px', fontStyle: 'italic' }}>
+                                    <strong>* Info:</strong> You are using a mobile device. For the full OS experience (Start Menu, draggable windows), please try a desktop screen.
+                                </p>
+                            </div>
+                        ) : null}
+                    />
                 ),
-                onceForever: true, // Uses localStorage via context logic
+                onceForever: true,
                 okText: "Enter System",
                 trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
             });
-            // Mark as seen immediately so it doesn't queue again if re-mounted (Context handles this primarily, but good safety)
             localStorage.setItem('has_seen_welcome_v2', 'true');
         }
-    }, [addPopup]);
+    }, [addPopup, screenSize]);
 
     return null;
 };
@@ -108,8 +99,7 @@ const App = () => {
                             <Sidebar />
                             <Footer />
                             <GenericPopup />
-                            <WelcomePopupManager />
-                            <MobileLimitationManager />
+                            <SystemPopupManager />
                             <Routes>
                                 <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
                                 <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
