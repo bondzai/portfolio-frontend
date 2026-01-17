@@ -15,7 +15,7 @@ const WelcomeMessage = ({
     subTitle = "Portfolio OS v2.0.1",
     message,
     footer,
-    signature = "JB"
+    signature = "James Bond"
 }) => {
 
     const textAlign = align === 'center' ? 'center' : align === 'right' ? 'right' : 'left';

@@ -14,15 +14,6 @@ const ServerStatus = ({ activeUsersCount, isConnected }) => {
     const [memoryUsage, setMemoryUsage] = useState({ used: 0, total: 0 });
     const [isOpen, setIsOpen] = useState(false);
 
-    // Auto-show tooltip on mount
-    useEffect(() => {
-        setIsOpen(true);
-        const timer = setTimeout(() => {
-            setIsOpen(false);
-        }, 3000);
-        return () => clearTimeout(timer);
-    }, []);
-
     const handleOpenChange = (newOpen) => {
         setIsOpen(newOpen);
     };
@@ -93,7 +84,7 @@ const ServerStatus = ({ activeUsersCount, isConnected }) => {
             open={isOpen}
             onOpenChange={handleOpenChange}
             placement="topRight"
-            overlayClassName="server-status-overlay"
+            classNames={{ root: "server-status-overlay" }}
             arrow={false}
         >
             <div className="server-status-trigger">

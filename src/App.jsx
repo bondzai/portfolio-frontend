@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import Stats from "./pages/Stats";
 import Brotherhood from "./pages/Brotherhood";
 import Blog from "./pages/Blog";
+import Roadmap from "./pages/Roadmap";
 
 import DisplayModal from "./components/modals/DisplayModal";
 
@@ -113,6 +114,7 @@ const App = () => {
                                 <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
                                 <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
                                 <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
+                                <Route path="/roadmap" element={<HoverWrapper><Roadmap /></HoverWrapper>} />
                             </Routes>
                         </Router>
                     </HoverProvider>

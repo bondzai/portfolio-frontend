@@ -4,7 +4,7 @@ import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
     MenuOutlined, RocketFilled, ThunderboltFilled,
     ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
-    IdcardFilled, HomeFilled, SettingFilled
+    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined
 } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
@@ -16,14 +16,35 @@ const NAV_ITEMS = [
     { label: "Skills", key: "skills", path: "/skills", icon: <ThunderboltFilled /> },
     { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
-    { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled /> },
+    { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
+    { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: { text: "Beta", color: "#1890ff" } },
     {
         label: "More",
         key: "more-group",
         icon: <AppstoreFilled />,
         children: [
-            { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
-            { label: "Blog", key: "blog", path: "/blog", icon: <ReadFilled /> }
+            {
+                label: "Blog",
+                key: "blog",
+                path: "/blog",
+                icon: <ReadFilled />,
+                badge: { text: "Beta", color: "#1890ff" }
+            },
+            {
+                label: "Roadmap",
+                key: "roadmap",
+                path: "/roadmap",
+                icon: <RocketFilled />,
+                badge: { text: "Beta", color: "#1890ff" }
+            },
+            {
+                label: "Art Studio",
+                key: "art-studio",
+                path: "#",
+                icon: <BgColorsOutlined />,
+                badge: { text: "Soon", color: "#faad14" },
+                onClick: (e) => e.preventDefault() // Prevent navigation for coming soon
+            }
         ]
     },
 ];
@@ -81,16 +102,67 @@ const Navbar = () => {
 
     const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
 
-    const mapItems = (items) => {
+    const mapItems = (items, isSubMenu = false) => {
         return items.map(item => {
             const styledIcon = item.icon ? React.cloneElement(item.icon, { style: { fontSize: isMobile ? '16px' : '18px', marginBottom: isMobile ? '0' : '4px' } }) : null;
 
-            // Conditional Layout
-            const labelContent = isMobile ? (
-                <span style={{ fontSize: '16px', fontWeight: 500, marginLeft: '10px' }}>{item.label}</span>
+            // Determines if we should use the horizontal row layout (Mobile or Desktop Dropdown)
+            // or the default vertical column layout (Desktop Top Level)
+            const useRowLayout = isMobile || (isSubMenu && !isMobile);
+
+            const labelContent = useRowLayout ? (
+                <span style={{
+                    fontSize: isMobile ? '16px' : '14px',
+                    fontWeight: 500,
+                    marginLeft: isMobile ? '10px' : '0px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '100%',
+                    gap: isMobile ? '12px' : '12px' // Added gap for spacing
+                }}>
+                    {/* For Desktop SubMenu, put Icon to the left if needed */}
+                    {!isMobile && isSubMenu && <span>{styledIcon}</span>}
+
+                    {item.label}
+
+                    {item.badge && (
+                        <span style={{
+                            backgroundColor: item.badge.color,
+                            color: 'white',
+                            fontSize: '9px',
+                            padding: '2px 8px', // Increased padding for "smooth" pill look
+                            borderRadius: '12px', // More rounded
+                            marginLeft: 'auto', // Push to right end if width is full, or just '10px'
+                            fontWeight: '600',
+                            letterSpacing: '0.5px',
+                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)', // Subtle shadow
+                            lineHeight: '1.2'
+                        }}>
+                            {item.badge.text}
+                        </span>
+                    )}
+                </span>
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: '1', padding: '4px 0' }}>
-                    {styledIcon}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                        {styledIcon}
+                        {item.badge && (
+                            <span style={{
+                                marginLeft: '6px',
+                                backgroundColor: item.badge.color,
+                                color: 'white',
+                                fontSize: '8px',
+                                padding: '1px 5px',
+                                borderRadius: '10px',
+                                fontWeight: 'bold',
+                                lineHeight: '1',
+                                // Optional: adjust slightly up to align center-ish with icon or top
+                                transform: 'translateY(-2px)'
+                            }}>
+                                {item.badge.text}
+                            </span>
+                        )}
+                    </div>
                     <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.5px', textTransform: 'uppercase', marginTop: '4px' }}>
                         {item.label}
                     </span>
@@ -101,7 +173,7 @@ const Navbar = () => {
                 return {
                     label: isMobile ? <span>{styledIcon} {labelContent}</span> : labelContent,
                     key: item.key,
-                    children: mapItems(item.children)
+                    children: mapItems(item.children, true)
                 };
             }
 

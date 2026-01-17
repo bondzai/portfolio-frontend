@@ -47,15 +47,9 @@ const SystemControlCenter = ({ runningApps = [], onRestore, onClose, onCloseAll,
     const [isOpen, setIsOpen] = useState(false);
 
     // Auto-show tooltip on mount (Tour effect)
+    // Auto-show tooltip removed by user request
     useEffect(() => {
-        const hasSeenTour = localStorage.getItem('has_seen_v2_tour');
-        if (!hasSeenTour) {
-            setIsOpen(true);
-            const timer = setTimeout(() => {
-                setIsOpen(false);
-            }, 3000);
-            return () => clearTimeout(timer);
-        }
+        // Kept empty or removed entirely.
     }, []);
 
     const handleOpenChange = (newOpen) => {
