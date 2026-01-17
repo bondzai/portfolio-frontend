@@ -1,0 +1,68 @@
+.glass-tour .ant-tour-inner {
+    background: rgba(20, 25, 35, 0.6) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+    border-radius: 12px !important;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.glass-tour .ant-tour-title {
+    color: #ffffff !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.glass-tour .ant-tour-description {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.glass-tour .ant-tour-close {
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: color 0.3s;
+}
+
+.glass-tour .ant-tour-close:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Arrow / Pointer */
+.glass-tour .ant-tour-arrow-content {
+    background: rgba(20, 25, 35, 0.6) !important;
+}
+
+/* Buttons */
+.glass-tour .ant-btn-primary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.glass-tour .ant-btn-primary:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.glass-tour .ant-btn-default {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.glass-tour .ant-btn-default:hover {
+    color: white !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Dots */
+.glass-tour .ant-tour-dot {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.glass-tour .ant-tour-dot-active {
+    background: #1890ff !important;
+}

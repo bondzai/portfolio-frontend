@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { Tour } from 'antd';
+import { Tour, ConfigProvider } from 'antd';
+
+import './FeatureTour.css';
 
 const FeatureTour = ({ isOpen, onClose, refs }) => {
     const { startRef, controlRef } = refs;
@@ -10,13 +12,13 @@ const FeatureTour = ({ isOpen, onClose, refs }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'rgba(var(--color-primary-rgb), 0.1)',
-        backdropFilter: 'blur(5px)'
+        background: 'rgba(255, 255, 255, 0.03)', // Very subtle for glass theme
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
     };
 
     const iconStyle = {
         fontSize: 50,
-        color: 'var(--color-primary)'
+        textShadow: '0 0 20px rgba(24, 144, 255, 0.5)' // Glowing neon effect for icons
     };
 
     const steps = [
@@ -43,18 +45,36 @@ const FeatureTour = ({ isOpen, onClose, refs }) => {
     ];
 
     return (
-        <Tour
-            open={isOpen}
-            onClose={onClose}
-            steps={steps}
-            mask={{
-                style: {
-                    boxShadow: 'inset 0 0 15px #fff',
+        <ConfigProvider
+            theme={{
+                token: {
+                    colorText: 'rgba(255, 255, 255, 0.85)',
+                    colorTextHeading: '#ffffff',
+                    colorPrimary: '#1890ff',
+                    borderRadiusLG: 12
                 },
-                color: 'rgba(0, 0, 0, 0.6)',
+                components: {
+                    Tour: {
+                        fontSize: 14,
+                        fontWeightStrong: 600
+                    }
+                }
             }}
-            type="primary"
-        />
+        >
+            <Tour
+                open={isOpen}
+                onClose={onClose}
+                steps={steps}
+                rootClassName="glass-tour"
+                mask={{
+                    style: {
+                        backdropFilter: 'blur(4px)',
+                    },
+                    color: 'rgba(0, 0, 0, 0.8)',
+                }}
+                type="primary"
+            />
+        </ConfigProvider>
     );
 };
 
