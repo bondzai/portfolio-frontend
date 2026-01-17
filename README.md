@@ -40,6 +40,19 @@ yarn install
 yarn dev
 ```
 
+### With Makefile (Optional)
+
+You can also use `make` commands if you prefer. These commands automatically handle `nvm` version switching (assuming NVM is installed).
+
+```bash
+make setup      # Install yarn (global) and project dependencies
+make install    # Install dependencies (yarn install)
+make dev        # Start development server
+make build      # Build for production
+make preview    # Preview production build
+make deploy     # Deploy to Firebase
+```
+
 ## Scripts
 
 | Command | Description |

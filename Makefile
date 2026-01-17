@@ -1,12 +1,28 @@
-NODE_VERSION := 14.18.0
+NODE_VERSION := 18
 NVM_USE := . ${HOME}/.nvm/nvm.sh && nvm use $(NODE_VERSION)
 
+.PHONY: setup install dev build preview deploy docker-build docker-run docker-down
 
-.PHONY: run docker-build docker-run docker-down
+# Setup project (install yarn and dependencies)
+setup:
+	@$(NVM_USE) && npm install -g yarn && yarn install
 
-run:
-	@$(NVM_USE) && npm run dev
+install:
+	@$(NVM_USE) && yarn install
 
+dev:
+	@$(NVM_USE) && yarn dev
+
+build:
+	@$(NVM_USE) && yarn build
+
+preview:
+	@$(NVM_USE) && yarn preview
+
+deploy:
+	@$(NVM_USE) && yarn firebase-deploy
+
+# Docker commands
 docker-build:
 	docker-compose build
 
