@@ -8,6 +8,8 @@ import StartMenu from "../../components/os/StartMenu";
 import SystemControlCenter from "../../components/os/SystemControlCenter";
 import FeatureTour from "../../components/common/FeatureTour";
 import { Users } from "../../apis/websocket/Users";
+import { usePopup } from "../../contexts/PopupContext";
+import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import "./Footer.css";
 
 // OS Apps
@@ -20,6 +22,10 @@ import AboutWindow from "../../components/os/apps/AboutWindow";
 const { Footer: AntFooter } = Layout;
 
 const Footer = () => {
+    const { screenSize } = useScreenDimensions();
+    const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
+    const { popupQueue } = usePopup();
+
     const [activeUsersCount, , isConnected] = Users();
 
     // Tour Refs
@@ -44,6 +50,9 @@ const Footer = () => {
 
     useEffect(() => {
         // Build a tour trigger check
+        // Wait for popupQueue to be empty
+        if (popupQueue.length > 0) return;
+
         const hasSeenTour = localStorage.getItem('has_seen_v2_tour');
         if (!hasSeenTour) {
             const timer = setTimeout(() => {
@@ -51,7 +60,7 @@ const Footer = () => {
             }, 1500);
             return () => clearTimeout(timer);
         }
-    }, []);
+    }, [popupQueue]);
 
     const handleStartTour = () => {
         setIsTourOpen(true);
@@ -126,29 +135,33 @@ const Footer = () => {
             {/* Left: System Status & Watcher & Start Menu */}
             <div className="footer-section footer-left">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                    <div ref={startRef}>
-                        <StartMenu
-                            onOpenCalculator={() => openApp('calculator')}
-                            onOpenFeatureRequest={() => openApp('feature')}
-                            onOpenSettings={() => openApp('settings')}
-                            onOpenResources={() => openApp('resources')}
-                            onOpenAbout={() => openApp('about')}
-                            onOpenGuide={handleStartTour}
-                        />
-                    </div>
+                    {!isMobile && (
+                        <>
+                            <div ref={startRef}>
+                                <StartMenu
+                                    onOpenCalculator={() => openApp('calculator')}
+                                    onOpenFeatureRequest={() => openApp('feature')}
+                                    onOpenSettings={() => openApp('settings')}
+                                    onOpenResources={() => openApp('resources')}
+                                    onOpenAbout={() => openApp('about')}
+                                    onOpenGuide={handleStartTour}
+                                />
+                            </div>
 
-                    <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
+                            <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
 
-                    <div ref={controlRef}>
-                        <SystemControlCenter
-                            runningApps={runningApps}
-                            onRestore={openApp}
-                            onClose={closeApp}
-                            onCloseAll={closeAllApps}
-                            activeUsersCount={activeUsersCount}
-                            isConnected={isConnected}
-                        />
-                    </div>
+                            <div ref={controlRef}>
+                                <SystemControlCenter
+                                    runningApps={runningApps}
+                                    onRestore={openApp}
+                                    onClose={closeApp}
+                                    onCloseAll={closeAllApps}
+                                    activeUsersCount={activeUsersCount}
+                                    isConnected={isConnected}
+                                />
+                            </div>
+                        </>
+                    )}
 
                     <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
                 </div>

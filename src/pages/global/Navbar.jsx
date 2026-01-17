@@ -26,6 +26,30 @@ const NAV_ITEMS = [
     },
 ];
 
+// Theme Config
+const themeConfig = {
+    components: {
+        Menu: {
+            colorBgElevated: "var(--color-primary)",
+            itemBg: "transparent",
+            itemColor: "var(--text-color-primary)",
+            itemSelectedColor: "#f0f2f5",
+            itemHoverColor: "#ffffff",
+            fontSize: 14,
+            controlItemBgActive: "rgba(255, 255, 255, 0.1)",
+            controlItemBgHover: "rgba(255, 255, 255, 0.05)",
+            horizontalItemSelectedColor: "#f0f2f5",
+        },
+        Drawer: {
+            colorBgElevated: "var(--color-primary)",
+            colorText: "var(--text-color-primary)",
+        }
+    },
+    token: {
+        colorPrimary: "#f0f2f5",
+    }
+};
+
 const Navbar = () => {
     const location = useLocation();
     const { screenSize } = useScreenDimensions();
@@ -96,38 +120,61 @@ const Navbar = () => {
     const showDrawer = () => setDrawerVisible(true);
     const closeDrawer = () => setDrawerVisible(false);
 
-    // Theme Customization for smoother UI
-    const themeConfig = {
-        components: {
-            Menu: {
-                // Backgrounds
-                colorBgElevated: "var(--color-primary)",
-                itemBg: "transparent",
+    const MobileNav = () => (
+        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", height: "50px" }}>
+            <span style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                color: "var(--text-color-primary)",
+                fontSize: "18px",
+                fontWeight: "600",
+                userSelect: "none"
+            }}>
+                {NAV_ITEMS.find(item => item.key === current)?.label || ""}
+            </span>
+            <Button
+                type="text"
+                onClick={showDrawer}
+                icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />}
+            />
+            <Drawer
+                title={<span style={{ color: "var(--text-color-primary)" }}>Menu</span>}
+                placement="right"
+                width={250}
+                onClose={closeDrawer}
+                open={drawerVisible}
+                closeIcon={<span style={{ color: "var(--text-color-primary)" }}>X</span>}
+            >
+                <Menu
+                    mode="vertical"
+                    selectedKeys={[current]}
+                    items={menuItems}
+                    onClick={closeDrawer}
+                    style={{ background: "transparent", borderRight: "none" }}
+                    expandIcon={() => null}
+                />
+            </Drawer>
+        </div>
+    );
 
-                // Colors
-                itemColor: "var(--text-color-primary)",
-                itemSelectedColor: "#f0f2f5", // Soft white/grey for text
-                itemHoverColor: "#ffffff",
-
-                // Font
-                fontSize: 14, // Smaller text for better UX
-
-                // Selection Background (Smoother highlight)
-                controlItemBgActive: "rgba(255, 255, 255, 0.1)", // Subtle translucent white
-                controlItemBgHover: "rgba(255, 255, 255, 0.05)",
-
-                // Horizontal Line (if applicable)
-                horizontalItemSelectedColor: "#f0f2f5",
-            },
-            Drawer: {
-                colorBgElevated: "var(--color-primary)",
-                colorText: "var(--text-color-primary)",
-            }
-        },
-        token: {
-            colorPrimary: "#f0f2f5", // Main accent color
-        }
-    };
+    const DesktopNav = () => (
+        <div style={{ display: "flex", justifyContent: "flex-start", marginLeft: "50px" }}>
+            <Menu
+                mode="horizontal"
+                selectedKeys={[current]}
+                items={menuItems}
+                style={{
+                    background: "transparent",
+                    borderBottom: "none",
+                    justifyContent: "flex-start",
+                    width: "100%",
+                    fontSize: "14px",
+                    fontWeight: 500
+                }}
+            />
+        </div>
+    );
 
     return (
         <ConfigProvider theme={themeConfig}>
@@ -150,65 +197,12 @@ const Navbar = () => {
                     top: "50%",
                     transform: "translateY(-50%)",
                     zIndex: 1001,
-                    display: 'block' // Ensure content is displayed
+                    display: 'block'
                 }}>
                     <BrandLogo size={26} />
                 </Link>
 
-                {isMobile ? (
-                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", height: "50px" }}>
-                        <span style={{
-                            position: "absolute",
-                            left: "50%",
-                            transform: "translateX(-50%)",
-                            color: "var(--text-color-primary)",
-                            fontSize: "18px",
-                            fontWeight: "600",
-                            userSelect: "none"
-                        }}>
-                            {/* Logic to show label, fallback to nothing if Home/empty */}
-                            {NAV_ITEMS.find(item => item.key === current)?.label || ""}
-                        </span>
-                        <Button
-                            type="text"
-                            onClick={showDrawer}
-                            icon={<MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />}
-                        />
-                        <Drawer
-                            title={<span style={{ color: "var(--text-color-primary)" }}>Menu</span>}
-                            placement="right"
-                            width={250}
-                            onClose={closeDrawer}
-                            open={drawerVisible}
-                            closeIcon={<span style={{ color: "var(--text-color-primary)" }}>X</span>}
-                        >
-                            <Menu
-                                mode="vertical"
-                                selectedKeys={[current]}
-                                items={menuItems}
-                                onClick={closeDrawer}
-                                style={{ background: "transparent", borderRight: "none" }}
-                                expandIcon={() => null}
-                            />
-                        </Drawer>
-                    </div>
-                ) : (
-                    <div style={{ display: "flex", justifyContent: "flex-start", marginLeft: "50px" }}>
-                        <Menu
-                            mode="horizontal"
-                            selectedKeys={[current]}
-                            items={menuItems}
-                            style={{
-                                background: "transparent",
-                                borderBottom: "none",
-                                justifyContent: "flex-start",
-                                width: "100%",
-                                fontSize: "14px", // Matches theme config
-                                fontWeight: 500
-                            }}
-                        />
-                    </div>
-                )}
+                {isMobile ? <MobileNav /> : <DesktopNav />}
             </div>
         </ConfigProvider>
     );

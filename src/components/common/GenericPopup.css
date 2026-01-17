@@ -1,0 +1,59 @@
+.ios-popup-wrapper .ant-modal-content {
+    border-radius: 14px !important;
+    overflow: hidden;
+}
+
+/* Title */
+.ios-popup-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+/* Content Area */
+.ios-popup-content {
+    padding: 20px 16px 16px;
+    text-align: center;
+}
+
+.ios-popup-message {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #000;
+}
+
+/* Footer Area */
+.ios-popup-footer {
+    display: flex;
+    border-top: 1px solid rgba(60, 60, 67, 0.29);
+    /* iOS Separator Color */
+    height: 44px;
+}
+
+/* Button */
+.ios-popup-button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #007AFF;
+    /* iOS Blue */
+    font-size: 17px;
+    font-weight: 600;
+    /* Bold for Primary Action */
+    cursor: pointer;
+    transition: background 0.2s;
+    height: 100%;
+}
+
+.ios-popup-button:active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.ios-popup-button:first-child {
+    border-bottom-left-radius: 14px;
+}
+
+.ios-popup-button:last-child {
+    border-bottom-right-radius: 14px;
+}
