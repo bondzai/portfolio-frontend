@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "2.0.3",
-  "changelog": "Background Apps state management fix, System guide tour",
+  "version": "2.0.4",
+  "changelog": "Mobile navbar icon style fix",
   "type": "module",
   "scripts": {
     "dev": "vite",

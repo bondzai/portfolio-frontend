@@ -111,18 +111,29 @@ const Navbar = () => {
             // or the default vertical column layout (Desktop Top Level)
             const useRowLayout = isMobile || (isSubMenu && !isMobile);
 
+            // Per User Request: Show children name in center when in mobile (Submenu Parent)
+            const isSubMenuParent = !!item.children;
+            const centerSubMenuTitle = isMobile && isSubMenuParent;
+
             const labelContent = useRowLayout ? (
                 <span style={{
                     fontSize: isMobile ? '16px' : '14px',
                     fontWeight: 500,
-                    marginLeft: isMobile ? '10px' : '0px',
+                    marginLeft: centerSubMenuTitle ? '0' : (isMobile ? '10px' : '0px'),
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: centerSubMenuTitle ? 'center' : 'flex-start', // Center if mobile submenu parent
                     width: '100%',
-                    gap: isMobile ? '12px' : '12px' // Added gap for spacing
+                    gap: isMobile ? '12px' : '12px'
                 }}>
                     {/* For Desktop SubMenu, put Icon to the left if needed */}
                     {!isMobile && isSubMenu && <span>{styledIcon}</span>}
+                    {/* For Mobile SubMenu Parent, maybe hiding icon or keeping it? "Show children name in center". 
+                        Usually centering means the text is the focus. 
+                        Let's keep the icon but center the whole flex content. 
+                        Actually, Ant Menu Submenu title rendering might prevent perfect centering due to arrow.
+                        Let's try flex center.
+                    */}
 
                     {item.label}
 
@@ -131,12 +142,12 @@ const Navbar = () => {
                             backgroundColor: item.badge.color,
                             color: 'white',
                             fontSize: '9px',
-                            padding: '2px 8px', // Increased padding for "smooth" pill look
-                            borderRadius: '12px', // More rounded
-                            marginLeft: 'auto', // Push to right end if width is full, or just '10px'
+                            padding: '2px 8px',
+                            borderRadius: '12px',
+                            marginLeft: centerSubMenuTitle ? '8px' : 'auto', // Adjust margin logic
                             fontWeight: '600',
                             letterSpacing: '0.5px',
-                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)', // Subtle shadow
+                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
                             lineHeight: '1.2'
                         }}>
                             {item.badge.text}
@@ -157,7 +168,6 @@ const Navbar = () => {
                                 borderRadius: '10px',
                                 fontWeight: 'bold',
                                 lineHeight: '1',
-                                // Optional: adjust slightly up to align center-ish with icon or top
                                 transform: 'translateY(-2px)'
                             }}>
                                 {item.badge.text}
@@ -172,7 +182,58 @@ const Navbar = () => {
 
             if (item.children) {
                 return {
-                    label: isMobile ? <span>{styledIcon} {labelContent}</span> : labelContent,
+                    label: isMobile ? (
+                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            {styledIcon} <span style={{ marginLeft: 8 }}>{item.label}</span>
+                            {/* Badge logic inside parent label if needed, but item.label is just string usually. 
+                                Wait, item.label in NAV_ITEMS is string.
+                                mapItems uses item.label string in the labelContent (span) above.
+                                So I should use labelContent.
+                                But I need to force center it.
+                             */}
+                            {/* Let's re-use labelContent but ensured it's centered above via centerSubMenuTitle flag */}
+                        </div>
+                        // Actually, labelContent above handles the layout. I just need to return it.
+                        // But Ant Menu adds an arrow for SubMenu. 
+                        // I'll return labelContent which now has center logic.
+                    ) : labelContent,
+                    key: item.key,
+                    children: mapItems(item.children, true)
+                };
+            }
+
+            // Wait, I need to clean up my logic. 
+            // If item.children, I return an object with label.
+            // My previous code: label: isMobile ? <span>{styledIcon} {labelContent}</span> : labelContent
+            // But labelContent ALREADY contains item.label and icon logic is mixed.
+            // In previous code:
+            // const styledIcon = ...
+            // labelContent (row layout) = <span> ... {item.label} ... </span>
+            // if (item.children) return { label: isMobile ? <span>{styledIcon} {labelContent}</span> ... }
+            // Wait, labelContent didn't have the icon in mobile before?
+            // "marginLeft: isMobile ? '10px'"
+            // "gap: isMobile ? '12px'"
+            // It seems labelContent was just the text part container?
+            // No, look at previous code:
+            // labelContent = <span ...> {!isMobile && isSubMenu && <span>{styledIcon}</span>} {item.label} ... </span>
+            // So labelContent DOES NOT have the icon if isMobile.
+            // And `if (item.children) label: isMobile ? <span>{styledIcon} {labelContent}</span>`
+            // So the icon was prepended.
+
+            // I want to center everything.
+            // I will simplify.
+
+            if (item.children) {
+                return {
+                    label: isMobile ? (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                            {styledIcon}
+                            {/* We used labelContent before, which had styles. Let's use it but maybe override? */}
+                            {/* Actually, let's just use labelContent if I update labelContent to handle isMobile icon inclusion? */}
+                            {/* Let's stick to the previous pattern but wrap in centering div */}
+                            {labelContent}
+                        </div>
+                    ) : labelContent,
                     key: item.key,
                     children: mapItems(item.children, true)
                 };
@@ -234,7 +295,19 @@ const Navbar = () => {
                 fontWeight: "600",
                 userSelect: "none"
             }}>
-                {NAV_ITEMS.find(item => item.key === current)?.label || ""}
+                {(() => {
+                    const findLabel = (items) => {
+                        for (const item of items) {
+                            if (item.key === current) return item.label;
+                            if (item.children) {
+                                const childLabel = findLabel(item.children);
+                                if (childLabel) return childLabel;
+                            }
+                        }
+                        return "";
+                    };
+                    return findLabel(NAV_ITEMS);
+                })()}
             </span>
             <div ref={hamburgerRef}>
                 <Button
@@ -249,7 +322,9 @@ const Navbar = () => {
                 width={250}
                 onClose={closeDrawer}
                 open={drawerVisible}
-                closeIcon={<span style={{ color: "var(--text-color-primary)" }}>X</span>}
+                closeIcon={
+                    <MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />
+                }
             >
                 <Menu
                     mode="vertical"

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { compareVersions } from '../utils/versionUtils';
 
 const PopupContext = createContext();
 
@@ -8,10 +9,24 @@ export const PopupProvider = ({ children }) => {
     const [popupQueue, setPopupQueue] = useState([]);
 
     const addPopup = (popup) => {
-        const { id, oncePerSession, onceForever } = popup;
+        const { id, oncePerSession, onceForever, version } = popup;
 
         // Check Access Logic
-        if (onceForever && localStorage.getItem(`popup_ack_${id}`)) return;
+        if (onceForever) {
+            const storedAck = localStorage.getItem(`popup_ack_${id}`);
+            if (version) {
+                // If versioned, check if stored version is >= current version
+                // Fix: parseFloat('2.0.3') stops at '2'. distinct strings comparison needed.
+                const storedVersion = storedAck || '0';
+
+                // If stored version is greater or equal to current popup version, don't show
+                if (compareVersions(storedVersion, version.toString()) >= 0) return;
+            } else {
+                // Fallback to boolean check
+                if (storedAck) return;
+            }
+        }
+
         if (oncePerSession && sessionStorage.getItem(`popup_ack_${id}`)) return;
 
         // Avoid duplicates in current queue
@@ -25,7 +40,10 @@ export const PopupProvider = ({ children }) => {
         // Acknowledge logic
         const popup = popupQueue.find(p => p.id === id);
         if (popup) {
-            if (popup.onceForever) localStorage.setItem(`popup_ack_${id}`, 'true');
+            if (popup.onceForever) {
+                const value = popup.version ? popup.version.toString() : 'true';
+                localStorage.setItem(`popup_ack_${id}`, value);
+            }
             if (popup.oncePerSession) sessionStorage.setItem(`popup_ack_${id}`, 'true');
         }
 
