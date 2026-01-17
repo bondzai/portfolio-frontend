@@ -1,0 +1,100 @@
+/* MacOS Dark Glass Theme */
+.mac-popup-wrapper .ant-modal-content {
+    background: rgba(16, 18, 27, 0.7) !important;
+    /* Dark OS Window color */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* Header */
+.mac-popup-header {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+/* Traffic Lights */
+.mac-traffic-lights {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    /* Absolute positioning to keep title centered if needed, or flex if standard */
+    left: 12px;
+}
+
+.mac-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.mac-button.close {
+    background: #ff5f56;
+}
+
+.mac-button.close:hover {
+    filter: brightness(0.8);
+}
+
+.mac-button.minimize {
+    background: #f5c342;
+    cursor: default;
+    /* No action for popup */
+}
+
+.mac-button.maximize {
+    background: #28c940;
+    cursor: default;
+}
+
+/* Title */
+.mac-popup-title {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    user-select: none;
+}
+
+/* Content */
+.mac-popup-content {
+    padding: 24px 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Footer Action */
+.mac-popup-footer {
+    padding: 0 20px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.mac-popup-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 6px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.mac-popup-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
