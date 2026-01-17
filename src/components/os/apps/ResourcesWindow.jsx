@@ -4,16 +4,34 @@ import { LineChartOutlined, DesktopOutlined, ThunderboltOutlined } from '@ant-de
 import OSWindow from '../OSWindow';
 
 const ResourcesWindow = ({ isOpen, onClose, onMinimize, isMinimized, activeUsersCount, isConnected }) => {
-    // Internal Mock Resource Data
-    const [cpuUsage, setCpuUsage] = useState(30);
-    const [memUsage, setMemUsage] = useState(45);
+    // Browser Resource Data
+    const [memory, setMemory] = useState({ used: 0, total: 0, limit: 0, percent: 0 });
+    const [cpuCores, setCpuCores] = useState(navigator.hardwareConcurrency || 4); // Default to 4 if unknown
 
     useEffect(() => {
         if (isOpen) {
-            const interval = setInterval(() => {
-                setCpuUsage(prev => Math.min(100, Math.max(5, prev + (Math.random() * 10 - 5))));
-                setMemUsage(prev => Math.min(100, Math.max(20, prev + (Math.random() * 6 - 3))));
-            }, 2000);
+            const updateResources = () => {
+                // Memory (Chrome only property)
+                if (performance && performance.memory) {
+                    const { usedJSHeapSize, totalJSHeapSize, jsHeapSizeLimit } = performance.memory;
+                    // Convert to MB
+                    const used = usedJSHeapSize / (1024 * 1024);
+                    const limit = jsHeapSizeLimit / (1024 * 1024);
+
+                    setMemory({
+                        used: used.toFixed(1),
+                        total: (totalJSHeapSize / (1024 * 1024)).toFixed(1),
+                        limit: limit.toFixed(1),
+                        percent: Math.min(100, (used / limit) * 100) // Percent of tab limit
+                    });
+                } else {
+                    // Fallback for non-Chrome browsers
+                    setMemory({ used: 'N/A', limit: 'N/A', percent: 0 });
+                }
+            };
+
+            updateResources();
+            const interval = setInterval(updateResources, 2000);
             return () => clearInterval(interval);
         }
     }, [isOpen]);
@@ -35,9 +53,9 @@ const ResourcesWindow = ({ isOpen, onClose, onMinimize, isMinimized, activeUsers
                         <Card bordered={false} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
                             <div style={{ textAlign: 'center', color: 'white' }}>
                                 <DesktopOutlined style={{ fontSize: '24px', color: '#52c41a', marginBottom: '8px' }} />
-                                <div style={{ fontSize: '12px', opacity: 0.7 }}>CPU Usage</div>
-                                <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{Math.round(cpuUsage)}%</div>
-                                <Progress percent={Math.round(cpuUsage)} showInfo={false} strokeColor="#52c41a" size="small" />
+                                <div style={{ fontSize: '12px', opacity: 0.7 }}>CPU Cores</div>
+                                <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{cpuCores}</div>
+                                <div style={{ fontSize: '10px', opacity: 0.5 }}>Logical Processors</div>
                             </div>
                         </Card>
                     </Col>
@@ -45,9 +63,10 @@ const ResourcesWindow = ({ isOpen, onClose, onMinimize, isMinimized, activeUsers
                         <Card bordered={false} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
                             <div style={{ textAlign: 'center', color: 'white' }}>
                                 <ThunderboltOutlined style={{ fontSize: '24px', color: '#1890ff', marginBottom: '8px' }} />
-                                <div style={{ fontSize: '12px', opacity: 0.7 }}>Memory</div>
-                                <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{Math.round(memUsage)}%</div>
-                                <Progress percent={Math.round(memUsage)} showInfo={false} strokeColor="#1890ff" size="small" />
+                                <div style={{ fontSize: '12px', opacity: 0.7 }}>JS Heap Memory</div>
+                                <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{memory.used} MB</div>
+                                <Progress percent={memory.percent} showInfo={false} strokeColor="#1890ff" size="small" />
+                                <div style={{ fontSize: '10px', opacity: 0.5, marginTop: '4px' }}>of {memory.limit} MB Limit</div>
                             </div>
                         </Card>
                     </Col>

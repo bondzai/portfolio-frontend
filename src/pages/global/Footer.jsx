@@ -8,7 +8,7 @@ import SocialMediaIcons from "../../components/icons/SocialMediaIcons";
 import StartMenu from "../../components/os/StartMenu";
 import SystemControlCenter from "../../components/os/SystemControlCenter";
 // import FeatureTour from "../../components/common/FeatureTour"; // Lifted to App
-import { Users } from "../../apis/websocket/Users";
+import { useUsers } from "../../apis/websocket/Users";
 import { usePopup } from "../../contexts/PopupContext";
 import { useWindow } from "../../contexts/WindowContext";
 import { useTour } from "../../contexts/TourContext";
@@ -41,7 +41,7 @@ const Footer = () => {
         isWindowMinimized
     } = useWindow();
 
-    const [activeUsersCount, , isConnected] = Users();
+    const [activeUsersCount, , isConnected] = useUsers();
 
     // Tour Context
     const { openTour, registerRef } = useTour();
