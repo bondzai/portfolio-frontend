@@ -6,22 +6,36 @@ import DonationCard from "../cards/DonationCard.jsx";
 import CustomModalButton from "../buttons/CustomModalButton.jsx";
 import { openInNewTab } from "../../utils/utils.js"
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import { usePopup } from "../../contexts/PopupContext";
 
 const SocialMediaIcons = () => {
     const { screenSize } = useScreenDimensions();
+    const { popupQueue } = usePopup();
     const isMobile = screenSize === ScreenSize.XS;
     const [isOpen, setIsOpen] = useState(false);
+    const hasTriggered = React.useRef(false); // Track if we've already shown the tooltip
 
     // Auto-show popover on mobile first connect
     useEffect(() => {
-        if (isMobile) {
-            setIsOpen(true);
-            const timer = setTimeout(() => {
-                setIsOpen(false);
-            }, 3000);
-            return () => clearTimeout(timer);
+        if (isMobile && !hasTriggered.current) {
+            // Add a small delay to allow App.jsx to populate the queue
+            const initTimer = setTimeout(() => {
+                // Wait for popups to close. 
+                // If queue is populated now, this will allow us to wait properly.
+                if (popupQueue.length > 0) return;
+
+                hasTriggered.current = true;
+                setIsOpen(true);
+                const closeTimer = setTimeout(() => {
+                    setIsOpen(false);
+                }, 3000);
+
+                return () => clearTimeout(closeTimer);
+            }, 1000); // 1s delay to be safe and ensure "Welcome" has registered
+
+            return () => clearTimeout(initTimer);
         }
-    }, [isMobile]);
+    }, [isMobile, popupQueue]);
 
     const handleOpenChange = (newOpen) => {
         setIsOpen(newOpen);

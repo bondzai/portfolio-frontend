@@ -53,6 +53,9 @@ const Footer = () => {
         // Wait for popupQueue to be empty
         if (popupQueue.length > 0) return;
 
+        // Disable tour on mobile
+        if (isMobile) return;
+
         const hasSeenTour = localStorage.getItem('has_seen_v2_tour');
         if (!hasSeenTour) {
             const timer = setTimeout(() => {
@@ -60,7 +63,7 @@ const Footer = () => {
             }, 1500);
             return () => clearTimeout(timer);
         }
-    }, [popupQueue]);
+    }, [popupQueue, isMobile]);
 
     const handleStartTour = () => {
         setIsTourOpen(true);

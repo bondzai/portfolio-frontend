@@ -45,7 +45,8 @@ const MobileLimitationManager = () => {
                     </>
                 ),
                 oncePerSession: true,
-                okText: "I Understand"
+                okText: "I Understand",
+                trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
             });
         }
     }, [screenSize, addPopup]);
@@ -74,7 +75,8 @@ const WelcomePopupManager = () => {
                     </>
                 ),
                 onceForever: true, // Uses localStorage via context logic
-                okText: "Enter System"
+                okText: "Enter System",
+                trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
             });
             // Mark as seen immediately so it doesn't queue again if re-mounted (Context handles this primarily, but good safety)
             localStorage.setItem('has_seen_welcome_v2', 'true');
