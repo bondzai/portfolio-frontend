@@ -4,17 +4,19 @@ import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
     MenuOutlined, RocketFilled, ThunderboltFilled,
     ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
-    IdcardFilled
+    IdcardFilled, HomeFilled, SettingFilled
 } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
 
 const NAV_ITEMS = [
+    { label: "Home", key: "home", path: "/", icon: <HomeFilled /> },
     { label: "About", key: "about", path: "/about", icon: <IdcardFilled /> },
     { label: "Experience", key: "experience", path: "/experience", icon: <RocketFilled /> },
     { label: "Skills", key: "skills", path: "/skills", icon: <ThunderboltFilled /> },
     { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
+    { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled /> },
     {
         label: "More",
         key: "more-group",
@@ -84,8 +86,6 @@ const Navbar = () => {
             const styledIcon = item.icon ? React.cloneElement(item.icon, { style: { fontSize: isMobile ? '16px' : '18px', marginBottom: isMobile ? '0' : '4px' } }) : null;
 
             // Conditional Layout
-            // Mobile: Standard Horizontal (Icon Right/Left automatic)
-            // Desktop: Stacked Vertical (Icon Top, Text Bottom)
             const labelContent = isMobile ? (
                 <span style={{ fontSize: '16px', fontWeight: 500, marginLeft: '10px' }}>{item.label}</span>
             ) : (
@@ -105,6 +105,17 @@ const Navbar = () => {
                 };
             }
 
+            // Handle pure onClick items (like Settings)
+            if (item.onClick) {
+                return {
+                    label: <div onClick={item.onClick} style={{ display: isMobile ? 'flex' : 'flex', flexDirection: isMobile ? 'row' : 'column', alignItems: 'center', color: 'inherit', cursor: 'pointer' }}>
+                        {isMobile && styledIcon}
+                        {labelContent}
+                    </div>,
+                    key: item.key,
+                };
+            }
+
             return {
                 label: <Link to={item.path} style={{ display: isMobile ? 'flex' : 'block', alignItems: 'center', color: 'inherit' }}>
                     {isMobile && styledIcon}
@@ -115,7 +126,17 @@ const Navbar = () => {
         });
     };
 
-    const menuItems = mapItems(NAV_ITEMS);
+    // Use augmented items specifically for the Mobile Drawer if desired, or global?
+    // User request: "menu in mobile mode... must include home... and setting"
+    // implies Desktop might not need it, or maybe it does.
+    // "Home" is usually redundant on desktop if Logo clicks to home.
+    // "Settings" on desktop is in the OS bar (Footer).
+
+    // Let's filter based on isMobile.
+    // User request: "show setting in desktop mode also"
+    // NAV_ITEMS now includes Home and Settings directly.
+    const activeItems = NAV_ITEMS;
+    const menuItems = mapItems(activeItems);
 
     const showDrawer = () => setDrawerVisible(true);
     const closeDrawer = () => setDrawerVisible(false);

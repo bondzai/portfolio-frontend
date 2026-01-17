@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Layout } from "antd";
 import Watcher from "../../components/icons/Watcher";
 import Copyright from "../../components/icons/Copyright";
@@ -9,41 +10,41 @@ import SystemControlCenter from "../../components/os/SystemControlCenter";
 import FeatureTour from "../../components/common/FeatureTour";
 import { Users } from "../../apis/websocket/Users";
 import { usePopup } from "../../contexts/PopupContext";
+import { useWindow } from "../../contexts/WindowContext";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import "./Footer.css";
 
 // OS Apps
 import CalculatorWindow from "../../components/os/apps/CalculatorWindow";
 import FeatureWindow from "../../components/os/apps/FeatureWindow";
-import SettingsWindow from "../../components/os/apps/SettingsWindow";
 import ResourcesWindow from "../../components/os/apps/ResourcesWindow";
 import AboutWindow from "../../components/os/apps/AboutWindow";
 
 const { Footer: AntFooter } = Layout;
 
 const Footer = () => {
+    const navigate = useNavigate();
     const { screenSize } = useScreenDimensions();
     const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
     const { popupQueue } = usePopup();
+
+    // Window Context
+    const {
+        runningApps,
+        minimizedApps,
+        openWindow,
+        closeWindow,
+        minimizeWindow,
+        closeAll,
+        isWindowOpen,
+        isWindowMinimized
+    } = useWindow();
 
     const [activeUsersCount, , isConnected] = Users();
 
     // Tour Refs
     const startRef = useRef(null);
     const controlRef = useRef(null);
-
-    // OS Window States
-    const [isCalcOpen, setIsCalcOpen] = useState(false);
-    const [isFeatureOpen, setIsFeatureOpen] = useState(false);
-    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-    const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-    const [isAboutOpen, setIsAboutOpen] = useState(false);
-
-    // Dynamic list of running apps
-    const [runningApps, setRunningApps] = useState([]);
-
-    // List of minimized apps (hidden but running)
-    const [minimizedApps, setMinimizedApps] = useState([]);
 
     // Tour State
     const [isTourOpen, setIsTourOpen] = useState(false);
@@ -74,65 +75,6 @@ const Footer = () => {
         localStorage.setItem('has_seen_v2_tour', 'true');
     };
 
-    const openApp = (appId) => {
-        // Add to running apps if not present
-        if (!runningApps.includes(appId)) {
-            setRunningApps(prev => [...prev, appId]);
-        }
-
-        // Remove from minimized apps if present (Restore)
-        if (minimizedApps.includes(appId)) {
-            setMinimizedApps(prev => prev.filter(id => id !== appId));
-        }
-
-        // Set Open State
-        switch (appId) {
-            case 'calculator': setIsCalcOpen(true); break;
-            case 'feature': setIsFeatureOpen(true); break;
-            case 'settings': setIsSettingsOpen(true); break;
-            case 'resources': setIsResourcesOpen(true); break;
-            case 'about': setIsAboutOpen(true); break;
-            default: break;
-        }
-    };
-
-    const closeApp = (appId) => {
-        // Remove from running apps
-        setRunningApps(prev => prev.filter(id => id !== appId));
-        // Remove from minimized apps
-        setMinimizedApps(prev => prev.filter(id => id !== appId));
-
-        // Set Closed State
-        switch (appId) {
-            case 'calculator': setIsCalcOpen(false); break;
-            case 'feature': setIsFeatureOpen(false); break;
-            case 'settings': setIsSettingsOpen(false); break;
-            case 'resources': setIsResourcesOpen(false); break;
-            case 'about': setIsAboutOpen(false); break;
-            default: break;
-        }
-    };
-
-    const minimizeApp = (appId) => {
-        // Add to minimized apps
-        if (!minimizedApps.includes(appId)) {
-            setMinimizedApps(prev => [...prev, appId]);
-        }
-
-        // Ensure it stays "Open" (mounted) so state is preserved
-        // We do NOT set isOpen to false here.
-    };
-
-    const closeAllApps = () => {
-        setRunningApps([]);
-        setMinimizedApps([]);
-        setIsCalcOpen(false);
-        setIsFeatureOpen(false);
-        setIsSettingsOpen(false);
-        setIsResourcesOpen(false);
-        setIsAboutOpen(false);
-    };
-
     return (
         <AntFooter className="footer">
             {/* Left: System Status & Watcher & Start Menu */}
@@ -142,11 +84,11 @@ const Footer = () => {
                         <>
                             <div ref={startRef}>
                                 <StartMenu
-                                    onOpenCalculator={() => openApp('calculator')}
-                                    onOpenFeatureRequest={() => openApp('feature')}
-                                    onOpenSettings={() => openApp('settings')}
-                                    onOpenResources={() => openApp('resources')}
-                                    onOpenAbout={() => openApp('about')}
+                                    onOpenCalculator={() => openWindow('calculator')}
+                                    onOpenFeatureRequest={() => openWindow('feature')}
+                                    onOpenSettings={() => navigate('/settings')}
+                                    onOpenResources={() => openWindow('resources')}
+                                    onOpenAbout={() => openWindow('about')}
                                     onOpenGuide={handleStartTour}
                                 />
                             </div>
@@ -156,9 +98,9 @@ const Footer = () => {
                             <div ref={controlRef}>
                                 <SystemControlCenter
                                     runningApps={runningApps}
-                                    onRestore={openApp}
-                                    onClose={closeApp}
-                                    onCloseAll={closeAllApps}
+                                    onRestore={openWindow}
+                                    onClose={closeWindow}
+                                    onCloseAll={closeAll}
                                     activeUsersCount={activeUsersCount}
                                     isConnected={isConnected}
                                 />
@@ -195,36 +137,31 @@ const Footer = () => {
 
             {/* OS Windows */}
             <CalculatorWindow
-                isOpen={isCalcOpen}
-                onClose={() => closeApp('calculator')}
-                onMinimize={() => minimizeApp('calculator')}
-                isMinimized={minimizedApps.includes('calculator')}
+                isOpen={isWindowOpen('calculator')}
+                onClose={() => closeWindow('calculator')}
+                onMinimize={() => minimizeWindow('calculator')}
+                isMinimized={isWindowMinimized('calculator')}
             />
             <FeatureWindow
-                isOpen={isFeatureOpen}
-                onClose={() => closeApp('feature')}
-                onMinimize={() => minimizeApp('feature')}
-                isMinimized={minimizedApps.includes('feature')}
+                isOpen={isWindowOpen('feature')}
+                onClose={() => closeWindow('feature')}
+                onMinimize={() => minimizeWindow('feature')}
+                isMinimized={isWindowMinimized('feature')}
             />
-            <SettingsWindow
-                isOpen={isSettingsOpen}
-                onClose={() => closeApp('settings')}
-                onMinimize={() => minimizeApp('settings')}
-                isMinimized={minimizedApps.includes('settings')}
-            />
+            {/* SettingsWindow removed (migrated to /settings page) */}
             <ResourcesWindow
-                isOpen={isResourcesOpen}
-                onClose={() => closeApp('resources')}
-                onMinimize={() => minimizeApp('resources')}
-                isMinimized={minimizedApps.includes('resources')}
+                isOpen={isWindowOpen('resources')}
+                onClose={() => closeWindow('resources')}
+                onMinimize={() => minimizeWindow('resources')}
+                isMinimized={isWindowMinimized('resources')}
                 activeUsersCount={activeUsersCount}
                 isConnected={isConnected}
             />
             <AboutWindow
-                isOpen={isAboutOpen}
-                onClose={() => closeApp('about')}
-                onMinimize={() => minimizeApp('about')}
-                isMinimized={minimizedApps.includes('about')}
+                isOpen={isWindowOpen('about')}
+                onClose={() => closeWindow('about')}
+                onMinimize={() => minimizeWindow('about')}
+                isMinimized={isWindowMinimized('about')}
             />
         </AntFooter>
     );

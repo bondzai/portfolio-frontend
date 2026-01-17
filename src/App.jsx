@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Experience from "./pages/Experience";
 import About from "./pages/About";
+import Settings from "./pages/Settings";
 import Stats from "./pages/Stats";
 import Brotherhood from "./pages/Brotherhood";
 import Blog from "./pages/Blog";
@@ -23,6 +24,7 @@ import "./App.css";
 import { useContext, useEffect } from 'react';
 import { HoverProvider, HoverContext } from './contexts/HoverContext';
 import { PopupProvider, usePopup } from './contexts/PopupContext';
+import { WindowProvider } from './contexts/WindowContext';
 import GenericPopup from "./components/common/GenericPopup";
 import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
 
@@ -99,29 +101,32 @@ const App = () => {
     return (
         <div className="App">
             <PopupProvider>
-                <HoverProvider>
-                    <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-                        <Navbar />
-                        <Sidebar />
-                        <Footer />
-                        <GenericPopup />
-                        <WelcomePopupManager />
-                        <MobileLimitationManager />
-                        <Routes>
-                            <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
-                            <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
-                            <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
-                            <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
-                            <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
-                            <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
-                            <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
-                            <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
-                            <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                            <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
-                            <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
-                        </Routes>
-                    </Router>
-                </HoverProvider>
+                <WindowProvider>
+                    <HoverProvider>
+                        <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                            <Navbar />
+                            <Sidebar />
+                            <Footer />
+                            <GenericPopup />
+                            <WelcomePopupManager />
+                            <MobileLimitationManager />
+                            <Routes>
+                                <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
+                                <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
+                                <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                                <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
+                                <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
+                                <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                                <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
+                                <Route path="/settings" element={<HoverWrapper><Settings /></HoverWrapper>} />
+                                <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
+                                <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
+                                <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
+                                <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
+                            </Routes>
+                        </Router>
+                    </HoverProvider>
+                </WindowProvider>
             </PopupProvider>
         </div>
     );
