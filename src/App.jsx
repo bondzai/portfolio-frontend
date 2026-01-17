@@ -30,6 +30,7 @@ import { TourProvider } from './contexts/TourContext';
 import GenericPopup from "./components/common/GenericPopup";
 import WelcomeMessage from "./components/common/WelcomeMessage";
 import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
+import pkg from "../package.json"; // Import package.json to get version
 
 // Unified System Popup Manager (Scalable)
 // To add more popups, you can chain useEffects or add logic here.
@@ -39,43 +40,42 @@ const SystemPopupManager = () => {
 
     useEffect(() => {
         const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
-        const hasSeenWelcome = localStorage.getItem('has_seen_welcome_v2');
+        // User Request: Use version from package.json
+        const appVersion = pkg.version;
 
         // Example: If you want to scale up, add another check here for 'has_seen_promo' etc.
         // if (!hasSeenPromo) { ... }
 
-        if (!hasSeenWelcome) {
-            addPopup({
-                id: 'system-welcome',
-                title: 'System Notification',
-                content: (
-                    <WelcomeMessage
-                        align="center"
-                        title="Welcome"
-                        subTitle="Portfolio OS v2.0.1"
-                        message={
-                            <p>Welcome to my digital workspace. Feel free to explore the apps, windows, and features I've built.</p>
-                        }
-                        footer={isMobile ? (
-                            <div style={{
-                                padding: '10px',
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                borderRadius: '8px',
-                                borderLeft: '3px solid #ffcc00'
-                            }}>
-                                <p style={{ margin: 0, fontSize: '13px', fontStyle: 'italic' }}>
-                                    <strong>* Info:</strong> You are using a mobile device. For the full OS experience (Start Menu, draggable windows), please try a desktop screen.
-                                </p>
-                            </div>
-                        ) : null}
-                    />
-                ),
-                onceForever: true,
-                okText: "Enter System",
-                trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
-            });
-            localStorage.setItem('has_seen_welcome_v2', 'true');
-        }
+        addPopup({
+            id: 'system_welcome_version',
+            title: 'System Notification',
+            version: appVersion,
+            content: (
+                <WelcomeMessage
+                    align="center"
+                    title="Welcome"
+                    subTitle="Portfolio OS v2.0.1"
+                    message={
+                        <p>Welcome to my digital workspace. Feel free to explore the apps, windows, and features I've built.</p>
+                    }
+                    footer={isMobile ? (
+                        <div style={{
+                            padding: '10px',
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            borderRadius: '8px',
+                            borderLeft: '3px solid #ffcc00'
+                        }}>
+                            <p style={{ margin: 0, fontSize: '13px', fontStyle: 'italic' }}>
+                                <strong>* Info:</strong> You are using a mobile device. For the full OS experience (Start Menu, draggable windows), please try a desktop screen.
+                            </p>
+                        </div>
+                    ) : null}
+                />
+            ),
+            onceForever: true,
+            okText: "Enter System",
+            trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
+        });
     }, [addPopup, screenSize]);
 
     return null;
