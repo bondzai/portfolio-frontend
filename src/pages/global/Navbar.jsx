@@ -311,20 +311,7 @@ const Navbar = () => {
                 onClose={closeDrawer}
                 open={drawerVisible}
                 closeIcon={
-                    <div style={{
-                        width: '12px',
-                        height: '12px',
-                        borderRadius: '50%',
-                        backgroundColor: '#ff5f56', // macOS Red
-                        border: '1px solid #e0443e',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: '0 0 5px rgba(0,0,0,0.1)',
-                        cursor: 'pointer'
-                    }}>
-                        {/* Optional interior symbol, or just blank like traffic light */}
-                    </div>
+                    <MenuOutlined style={{ color: "var(--text-color-primary)", fontSize: "20px" }} />
                 }
             >
                 <Menu
