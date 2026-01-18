@@ -4,18 +4,13 @@ import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { profileImageURL, hoverProfileImageURL } from "../utils/constants";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import MatrixRain from "../components/effects/MatrixRain";
 import "./Home.css";
-
-import useScreenDimensions from "../hooks/useScreenDimensions";
 
 const Home = () => {
     const { isHovered, setIsHovered } = useContext(HoverContext);
-    const { width, height } = useScreenDimensions();
 
     return (
         <div className="home">
-            <MatrixRain active={isHovered} width={width} height={height} />
             <div className="about">
                 <div
                     className="profile-container"
