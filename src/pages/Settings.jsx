@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { ColorPicker, Button, message, Switch, Card } from "antd";
+import React, { useState, useContext } from "react";
+import { ColorPicker, Button, message, Switch, Slider, Card } from "antd";
 import { UndoOutlined, BgColorsOutlined, SoundOutlined, GlobalOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import { SystemContext } from "../contexts/SystemContext";
 import "./Settings.css";
 
 const Settings = () => {
+    const { backgroundEffect, setBackgroundEffect, matrixSpeed, setMatrixSpeed } = useContext(SystemContext);
     const [primaryColor, setPrimaryColor] = useState(
         getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#21325e'
     );
@@ -93,6 +95,34 @@ const Settings = () => {
                                 showText
                             />
                         </div>
+
+                        <div className="settings-item">
+                            <div className="settings-label">
+                                <strong>Background Effect</strong>
+                                <span>Toggle immersive Matrix Rain animation.</span>
+                            </div>
+                            <Switch
+                                checked={backgroundEffect === 'matrix'}
+                                onChange={(checked) => setBackgroundEffect(checked ? 'matrix' : 'none')}
+                            />
+                        </div>
+
+                        {backgroundEffect === 'matrix' && (
+                            <div className="settings-item">
+                                <div className="settings-label">
+                                    <strong>Rain Speed</strong>
+                                    <span>Adjust the falling speed of the code.</span>
+                                </div>
+                                <div style={{ width: '150px' }}>
+                                    <Slider
+                                        min={10}
+                                        max={60}
+                                        value={matrixSpeed}
+                                        onChange={setMatrixSpeed}
+                                    />
+                                </div>
+                            </div>
+                        )}
 
                         <div className="settings-item">
                             <div className="settings-label">

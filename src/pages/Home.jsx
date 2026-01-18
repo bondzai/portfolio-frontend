@@ -4,21 +4,32 @@ import Typewriter from "typewriter-effect";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { profileImageURL, hoverProfileImageURL } from "../utils/constants";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import MatrixRain from "../components/effects/MatrixRain";
 import "./Home.css";
+
+import useScreenDimensions from "../hooks/useScreenDimensions";
 
 const Home = () => {
     const { isHovered, setIsHovered } = useContext(HoverContext);
+    const { width, height } = useScreenDimensions();
 
     return (
         <div className="home">
+            <MatrixRain active={isHovered} width={width} height={height} />
             <div className="about">
-                <LazyLoadImage
-                    src={isHovered ? hoverProfileImageURL : profileImageURL}
-                    alt="profile"
-                    effect="blur"
+                <div
+                    className="profile-container"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                />
+                    style={{ position: 'relative', width: '180px', height: '180px', margin: '0 auto', zIndex: 1 }}
+                >
+                    <LazyLoadImage
+                        src={isHovered ? hoverProfileImageURL : profileImageURL}
+                        alt="profile"
+                        effect="blur"
+                        style={{ position: 'relative', borderRadius: '50%' }}
+                    />
+                </div>
                 <div className="prompt">
                     <h3> Hi, I am James-Bond. </h3>
                     <p> <strong>  Architect | Engineer | Entrepreneur </strong> </p>

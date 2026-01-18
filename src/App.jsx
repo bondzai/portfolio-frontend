@@ -27,11 +27,24 @@ import { HoverProvider, HoverContext } from './contexts/HoverContext';
 import { PopupProvider, usePopup } from './contexts/PopupContext';
 import { WindowProvider } from './contexts/WindowContext';
 import { TourProvider } from './contexts/TourContext';
+import { SystemProvider, SystemContext } from './contexts/SystemContext';
 import GenericPopup from "./components/common/GenericPopup";
 import WelcomeMessage from "./components/common/WelcomeMessage";
+import MatrixRain from "./components/effects/MatrixRain";
 import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
 import pkg from "../package.json"; // Import package.json to get version
 import { POPUP_VERSION } from "./utils/constants";
+
+// Global Background Manager
+const SystemBackground = () => {
+    const { backgroundEffect, matrixSpeed } = useContext(SystemContext);
+    const { width, height } = useScreenDimensions();
+
+    if (backgroundEffect === 'matrix') {
+        return <MatrixRain active={true} width={width} height={height} speed={matrixSpeed} />;
+    }
+    return null;
+};
 
 // Unified System Popup Manager (Scalable)
 // To add more popups, you can chain useEffects or add logic here.
@@ -99,36 +112,39 @@ const App = () => {
 
     return (
         <div className="App">
-            <PopupProvider>
-                <WindowProvider>
-                    <TourProvider>
-                        <HoverProvider>
-                            <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-                                <Navbar />
-                                <Sidebar />
-                                <Footer />
-                                <GenericPopup />
-                                <SystemPopupManager />
-                                <Routes>
-                                    <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
-                                    <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
-                                    <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
-                                    <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
-                                    <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
-                                    <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
-                                    <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
-                                    <Route path="/settings" element={<HoverWrapper><Settings /></HoverWrapper>} />
-                                    <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
-                                    <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                                    <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
-                                    <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
-                                    <Route path="/roadmap" element={<HoverWrapper><Roadmap /></HoverWrapper>} />
-                                </Routes>
-                            </Router>
-                        </HoverProvider>
-                    </TourProvider>
-                </WindowProvider>
-            </PopupProvider>
+            <SystemProvider>
+                <PopupProvider>
+                    <WindowProvider>
+                        <TourProvider>
+                            <HoverProvider>
+                                <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                                    <SystemBackground />
+                                    <Navbar />
+                                    <Sidebar />
+                                    <Footer />
+                                    <GenericPopup />
+                                    <SystemPopupManager />
+                                    <Routes>
+                                        <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
+                                        <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
+                                        <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                                        <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
+                                        <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
+                                        <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                                        <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
+                                        <Route path="/settings" element={<HoverWrapper><Settings /></HoverWrapper>} />
+                                        <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
+                                        <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
+                                        <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
+                                        <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
+                                        <Route path="/roadmap" element={<HoverWrapper><Roadmap /></HoverWrapper>} />
+                                    </Routes>
+                                </Router>
+                            </HoverProvider>
+                        </TourProvider>
+                    </WindowProvider>
+                </PopupProvider>
+            </SystemProvider>
         </div>
     );
 }
