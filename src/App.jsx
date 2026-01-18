@@ -95,14 +95,27 @@ const SystemPopupManager = () => {
 
         addPopup({
             id: 'system_welcome_version',
-            title: 'System Notification',
+            title: 'System Update v2.0',
             version: POPUP_VERSION,
             content: (
                 <WelcomeMessage
                     align="center"
-                    title="Welcome"
-                    subTitle={`Portfolio OS UI ${appVersion}`}
-                    message={<p>Welcome to my digital workspace. Feel free to explore the apps, windows, and features I've built.</p>}
+                    title="Welcome Back"
+                    subTitle={`Portfolio OS v${POPUP_VERSION}`}
+                    message={
+                        <div style={{ textAlign: 'left' }}>
+                            <p><strong>New Feature: Immersive Environments 🌍</strong></p>
+                            <p>Customize your experience with dynamic background effects:</p>
+                            <ul>
+                                <li>✨ <strong>Starfall</strong>: A clean, twinkling night sky.</li>
+                                <li>❄️ <strong>Snow</strong>: Gentle winter vibes.</li>
+                                <li>🌕 <strong>Moonlight</strong>: Deep night ambiance.</li>
+                                <li>💻 <strong>Matrix</strong>: The classic digital rain.</li>
+                            </ul>
+                            <p>Go to <strong>Settings &gt; Appearance</strong> to try them out!</p>
+                            <p><em>Note: Auto Sync mode is coming soon.</em></p>
+                        </div>
+                    }
                     footer={
                         isMobile ? (
                             <div style={{
