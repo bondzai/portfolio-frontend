@@ -22,7 +22,7 @@ import { getProjectList } from "./apis/rest/Project";
 import { getCertificationList } from "./apis/rest/Certification";
 
 import "./App.css";
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { HoverProvider, HoverContext } from './contexts/HoverContext';
 import { PopupProvider, usePopup } from './contexts/PopupContext';
 import { WindowProvider } from './contexts/WindowContext';
@@ -31,19 +31,50 @@ import { SystemProvider, SystemContext } from './contexts/SystemContext';
 import GenericPopup from "./components/common/GenericPopup";
 import WelcomeMessage from "./components/common/WelcomeMessage";
 import MatrixRain from "./components/effects/MatrixRain";
+import Starfield from "./components/effects/Starfield";
+import Snow from "./components/effects/Snow";
+import Moonlight from "./components/effects/Moonlight";
 import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
 import pkg from "../package.json"; // Import package.json to get version
 import { POPUP_VERSION } from "./utils/constants";
 
 // Global Background Manager
 const SystemBackground = () => {
-    const { backgroundEffect, matrixSpeed } = useContext(SystemContext);
+    const { backgroundEffect, effectSpeed } = useContext(SystemContext);
     const { width, height } = useScreenDimensions();
+    const [autoEffect, setAutoEffect] = useState('matrix');
 
-    if (backgroundEffect === 'matrix') {
-        return <MatrixRain active={true} width={width} height={height} speed={matrixSpeed} />;
+    // Handle Auto Mode (Time-based for now)
+    useEffect(() => {
+        if (backgroundEffect === 'auto') {
+            const updateAutoEffect = () => {
+                const hour = new Date().getHours();
+                const isNight = hour >= 18 || hour < 6;
+                // Future: Integrate Weather API here
+                setAutoEffect(isNight ? 'moonlight' : 'matrix');
+            };
+
+            updateAutoEffect();
+            const timer = setInterval(updateAutoEffect, 60000); // Check every minute
+            return () => clearInterval(timer);
+        }
+    }, [backgroundEffect]);
+
+    const activeEffect = backgroundEffect === 'auto' ? autoEffect : backgroundEffect;
+
+    // Force active=true because the switch determines visibility/mounting
+    switch (activeEffect) {
+        case 'matrix':
+            return <MatrixRain active={true} width={width} height={height} speed={effectSpeed} />;
+        case 'stars':
+            return <Starfield active={true} width={width} height={height} speed={effectSpeed} />;
+        case 'snow':
+            return <Snow active={true} width={width} height={height} speed={effectSpeed} />;
+        case 'moonlight':
+            return <Moonlight active={true} width={width} height={height} />;
+        default:
+            return null;
     }
-    return null;
 };
 
 // Unified System Popup Manager (Scalable)

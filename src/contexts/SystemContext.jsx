@@ -8,9 +8,12 @@ export const SystemProvider = ({ children }) => {
         return localStorage.getItem('backgroundEffect') || 'matrix';
     });
 
-    const [matrixSpeed, setMatrixSpeed] = useState(() => {
-        return parseInt(localStorage.getItem('matrixSpeed')) || 20; // Default 20 FPS
+    const [matrixSpeed, setEffectSpeed] = useState(() => {
+        return parseInt(localStorage.getItem('effectSpeed')) || 20;
     });
+
+    // Alias for backward compatibility if needed, but better to just use effectSpeed
+    const effectSpeed = matrixSpeed;
 
     // Persist changes
     useEffect(() => {
@@ -18,15 +21,15 @@ export const SystemProvider = ({ children }) => {
     }, [backgroundEffect]);
 
     useEffect(() => {
-        localStorage.setItem('matrixSpeed', matrixSpeed);
-    }, [matrixSpeed]);
+        localStorage.setItem('effectSpeed', effectSpeed);
+    }, [effectSpeed]);
 
     return (
         <SystemContext.Provider value={{
             backgroundEffect,
             setBackgroundEffect,
-            matrixSpeed,
-            setMatrixSpeed
+            effectSpeed,
+            setEffectSpeed
         }}>
             {children}
         </SystemContext.Provider>

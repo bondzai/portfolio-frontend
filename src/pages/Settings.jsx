@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { ColorPicker, Button, message, Switch, Slider, Card } from "antd";
+import { ColorPicker, Button, message, Switch, Slider, Select, Card } from "antd";
 import { UndoOutlined, BgColorsOutlined, SoundOutlined, GlobalOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { SystemContext } from "../contexts/SystemContext";
 import "./Settings.css";
 
 const Settings = () => {
-    const { backgroundEffect, setBackgroundEffect, matrixSpeed, setMatrixSpeed } = useContext(SystemContext);
+    const { backgroundEffect, setBackgroundEffect, effectSpeed, setEffectSpeed } = useContext(SystemContext);
     const [primaryColor, setPrimaryColor] = useState(
         getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#21325e'
     );
@@ -99,26 +99,37 @@ const Settings = () => {
                         <div className="settings-item">
                             <div className="settings-label">
                                 <strong>Background Effect</strong>
-                                <span>Toggle immersive Matrix Rain animation.</span>
+                                <span>Choose an immersive environmental effect.</span>
                             </div>
-                            <Switch
-                                checked={backgroundEffect === 'matrix'}
-                                onChange={(checked) => setBackgroundEffect(checked ? 'matrix' : 'none')}
-                            />
+                            <div style={{ width: '200px' }}>
+                                <Select
+                                    value={backgroundEffect}
+                                    onChange={setBackgroundEffect}
+                                    style={{ width: '100%' }}
+                                    options={[
+                                        { value: 'none', label: 'None' },
+                                        { value: 'auto', label: 'Auto (Time/Weather) - Soon 🚀', disabled: true },
+                                        { value: 'matrix', label: 'Matrix Rain' },
+                                        { value: 'stars', label: 'Starfall' },
+                                        { value: 'snow', label: 'Snow' },
+                                        { value: 'moonlight', label: 'Moonlight' },
+                                    ]}
+                                />
+                            </div>
                         </div>
 
-                        {backgroundEffect === 'matrix' && (
+                        {backgroundEffect !== 'none' && (
                             <div className="settings-item">
                                 <div className="settings-label">
-                                    <strong>Rain Speed</strong>
-                                    <span>Adjust the falling speed of the code.</span>
+                                    <strong>Effect Intensity</strong>
+                                    <span>Adjust the speed or density of the effect.</span>
                                 </div>
                                 <div style={{ width: '150px' }}>
                                     <Slider
                                         min={10}
                                         max={60}
-                                        value={matrixSpeed}
-                                        onChange={setMatrixSpeed}
+                                        value={effectSpeed}
+                                        onChange={setEffectSpeed}
                                     />
                                 </div>
                             </div>
