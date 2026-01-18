@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "2.1.0",
-  "changelog": "Feature: Feedback Message System, AuthContext",
+  "version": "2.2.0",
+  "changelog": "Feature: Research & Development Whitepapers.",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -11,3 +11,20 @@ export const DEFAULT_EFFECT_SPEED = 20;
 
 export const FEEDBACK_MAX_ATTEMPTS = 5;
 export const FEEDBACK_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+
+const BADGE_BETA = {
+    text: "Beta",
+    color: "#1890ff",
+};
+
+const BADGE_SOON = {
+    text: "Soon",
+    color: "#faad14",
+};
+
+const BADGE_NEW = {
+    text: "New",
+    color: "#52c41a",
+};
+
+export { BADGE_BETA, BADGE_SOON, BADGE_NEW };

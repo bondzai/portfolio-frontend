@@ -11,6 +11,19 @@ const { Title, Text, Paragraph } = Typography;
 
 const changelogData = [
     {
+        version: "2.2.0",
+        date: "2026-01-19",
+        title: "Research & Development Shelf",
+        tags: ["feature", "branding"],
+        color: "cyan",
+        details: [
+            "Feature: New Research & Development Whitepapers.",
+            "Fix: Minor UI adjustments.",
+            "Improve: Enhanced system performance.",
+            "Refactor: Refactor constants format."
+        ]
+    },
+    {
         version: "2.1.0",
         date: "2026-01-18",
         title: "Feedback System & Standardization",
@@ -62,6 +75,12 @@ const getDetailIcon = (text) => {
         return { icon: <LayoutFilled style={{ color: '#722ed1' }} />, text: text.replace(/^(UX|UI):?\s*/i, '') };
     if (lower.startsWith("dev") || lower.startsWith("major"))
         return { icon: <CodeFilled style={{ color: '#8c8c8c' }} />, text: text.replace(/^(Dev|Major):?\s*/i, '') };
+    if (lower.startsWith("fix"))
+        return { icon: <BugOutlined style={{ color: '#ff4d4f' }} />, text: text.replace(/^Fix:?\s*/i, '') };
+    if (lower.startsWith("improve"))
+        return { icon: <ThunderboltFilled style={{ color: '#1890ff' }} />, text: text.replace(/^Improve:?\s*/i, '') };
+    if (lower.startsWith("refactor"))
+        return { icon: <CodeFilled style={{ color: '#8c8c8c' }} />, text: text.replace(/^Refactor:?\s*/i, '') };
 
     return { icon: <CheckCircleOutlined style={{ color: '#1890ff' }} />, text };
 };
