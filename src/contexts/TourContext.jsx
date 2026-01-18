@@ -2,7 +2,7 @@ import React, { createContext, useState, useRef, useEffect, useContext } from 'r
 import FeatureTour from '../components/common/FeatureTour';
 import useScreenDimensions, { ScreenSize } from '../hooks/useScreenDimensions';
 import { usePopup } from './PopupContext';
-import pkg from '../../package.json';
+import { TOUR_VERSION } from '../utils/constants'; // Use same version logic as popup
 import { compareVersions } from '../utils/versionUtils';
 
 const TourContext = createContext();
@@ -25,8 +25,8 @@ export const TourProvider = ({ children }) => {
 
     const closeTour = () => {
         setIsOpen(false);
-        const appVersion = pkg.version;
-        localStorage.setItem('feature_tour_version', appVersion);
+        // Save the current Popup/Tour version, not App version
+        localStorage.setItem('tour_version', TOUR_VERSION);
     };
 
     useEffect(() => {
@@ -37,10 +37,10 @@ export const TourProvider = ({ children }) => {
         // Auto-start allowed on mobile now (User Request)
         // if (isMobile) return;
 
-        const appVersion = pkg.version;
-        const savedVersion = localStorage.getItem('feature_tour_version') || '0';
+        const currentVersion = TOUR_VERSION;
+        const savedVersion = localStorage.getItem('tour_version') || '0';
 
-        if (compareVersions(savedVersion, appVersion) < 0) {
+        if (compareVersions(savedVersion, currentVersion) !== 0) {
             const timer = setTimeout(() => {
                 setIsOpen(true);
             }, 1500);

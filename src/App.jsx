@@ -36,7 +36,7 @@ import Snow from "./components/effects/Snow";
 import Moonlight from "./components/effects/Moonlight";
 import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
 import pkg from "../package.json"; // Import package.json to get version
-import { POPUP_VERSION } from "./utils/constants";
+import { POPUP_VERSION, TOUR_VERSION } from "./utils/constants";
 
 // Global Background Manager
 const SystemBackground = () => {
@@ -97,11 +97,12 @@ const SystemPopupManager = () => {
             id: 'system_welcome_version',
             title: 'System Update v2.0',
             version: POPUP_VERSION,
+            storageKey: 'popup_version', // Use custom key as requested
             content: (
                 <WelcomeMessage
                     align="center"
                     title="Welcome Back"
-                    subTitle={`Portfolio OS v${POPUP_VERSION}`}
+                    subTitle={`Portfolio OS v${appVersion}`}
                     message={
                         <div style={{ textAlign: 'left' }}>
                             <p><strong>New Feature: Immersive Environments 🌍</strong></p>

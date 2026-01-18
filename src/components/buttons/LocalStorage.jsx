@@ -4,7 +4,7 @@ const LocalStorage = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const storedData = localStorage.getItem('myData');
+        const storedData = localStorage.getItem('my_data');
         if (storedData) {
             setData(JSON.parse(storedData));
         }
@@ -13,13 +13,13 @@ const LocalStorage = () => {
     const handleAdd = newData => {
         const updatedData = [...data, newData];
         setData(updatedData);
-        localStorage.setItem('myData', JSON.stringify(updatedData));
+        localStorage.setItem('my_data', JSON.stringify(updatedData));
     };
 
     const handleDelete = index => {
         const updatedData = data.filter((_, i) => i !== index);
         setData(updatedData);
-        localStorage.setItem('myData', JSON.stringify(updatedData));
+        localStorage.setItem('my_data', JSON.stringify(updatedData));
     };
 
     return (
