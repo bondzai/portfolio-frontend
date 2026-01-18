@@ -4,11 +4,12 @@ import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
     MenuOutlined, RocketFilled, ThunderboltFilled,
     ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
-    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, RadarChartOutlined
+    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, RadarChartOutlined, MessageOutlined, HistoryOutlined
 } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
 import { useTour } from "../../contexts/TourContext";
+import FeedbackModal from "../../components/common/FeedbackModal";
 
 const NAV_ITEMS = [
     { label: "Home", key: "home", path: "/", icon: <HomeFilled /> },
@@ -18,6 +19,7 @@ const NAV_ITEMS = [
     { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
     { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
+    { label: "Feedback", key: "feedback", path: "/feedback", icon: <MessageOutlined />, badge: { text: "Beta", color: "#1890ff" } },
     { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: { text: "Beta", color: "#1890ff" } },
     { label: "Activities", key: "activities", path: "#", icon: <RadarChartOutlined />, badge: { text: "Soon", color: "#faad14" } },
     {
@@ -40,12 +42,18 @@ const NAV_ITEMS = [
                 badge: { text: "Beta", color: "#1890ff" }
             },
             {
+                label: "Changelog",
+                key: "changelog",
+                path: "/changelog",
+                icon: <HistoryOutlined />,
+            },
+            {
                 label: "Art Studio",
                 key: "art-studio",
                 path: "#",
                 icon: <BgColorsOutlined />,
                 badge: { text: "Soon", color: "#faad14" },
-                onClick: (e) => e.preventDefault() // Prevent navigation for coming soon
+                onClick: (e) => e.preventDefault()
             }
         ]
     },
@@ -80,13 +88,13 @@ const Navbar = () => {
     const { screenSize } = useScreenDimensions();
     const [current, setCurrent] = useState("");
     const [drawerVisible, setDrawerVisible] = useState(false);
+    const [feedbackVisible, setFeedbackVisible] = useState(false);
 
     useEffect(() => {
         const path = location.pathname.substring(1);
         if (location.pathname === "/") {
             setCurrent("");
         } else {
-            // Flatten items for search if needed, or simple check
             const findKey = (items) => {
                 for (const item of items) {
                     if (item.key === path || (item.key && path.startsWith(item.key))) return item.key;
@@ -108,11 +116,7 @@ const Navbar = () => {
         return items.map(item => {
             const styledIcon = item.icon ? React.cloneElement(item.icon, { style: { fontSize: isMobile ? '16px' : '18px', marginBottom: isMobile ? '0' : '4px' } }) : null;
 
-            // Determines if we should use the horizontal row layout (Mobile or Desktop Dropdown)
-            // or the default vertical column layout (Desktop Top Level)
             const useRowLayout = isMobile || (isSubMenu && !isMobile);
-
-            // Per User Request: Show children name in center when in mobile (Submenu Parent)
             const isSubMenuParent = !!item.children;
             const centerSubMenuTitle = isMobile && isSubMenuParent;
 
@@ -123,21 +127,12 @@ const Navbar = () => {
                     marginLeft: centerSubMenuTitle ? '0' : (isMobile ? '10px' : '0px'),
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: centerSubMenuTitle ? 'center' : 'flex-start', // Center if mobile submenu parent
+                    justifyContent: centerSubMenuTitle ? 'center' : 'flex-start',
                     width: '100%',
                     gap: isMobile ? '12px' : '12px'
                 }}>
-                    {/* For Desktop SubMenu, put Icon to the left if needed */}
                     {!isMobile && isSubMenu && <span>{styledIcon}</span>}
-                    {/* For Mobile SubMenu Parent, maybe hiding icon or keeping it? "Show children name in center". 
-                        Usually centering means the text is the focus. 
-                        Let's keep the icon but center the whole flex content. 
-                        Actually, Ant Menu Submenu title rendering might prevent perfect centering due to arrow.
-                        Let's try flex center.
-                    */}
-
                     {item.label}
-
                     {item.badge && (
                         <span style={{
                             backgroundColor: item.badge.color,
@@ -145,7 +140,7 @@ const Navbar = () => {
                             fontSize: '9px',
                             padding: '2px 8px',
                             borderRadius: '12px',
-                            marginLeft: centerSubMenuTitle ? '8px' : 'auto', // Adjust margin logic
+                            marginLeft: centerSubMenuTitle ? '8px' : 'auto',
                             fontWeight: '600',
                             letterSpacing: '0.5px',
                             boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
@@ -184,54 +179,8 @@ const Navbar = () => {
             if (item.children) {
                 return {
                     label: isMobile ? (
-                        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            {styledIcon} <span style={{ marginLeft: 8 }}>{item.label}</span>
-                            {/* Badge logic inside parent label if needed, but item.label is just string usually. 
-                                Wait, item.label in NAV_ITEMS is string.
-                                mapItems uses item.label string in the labelContent (span) above.
-                                So I should use labelContent.
-                                But I need to force center it.
-                             */}
-                            {/* Let's re-use labelContent but ensured it's centered above via centerSubMenuTitle flag */}
-                        </div>
-                        // Actually, labelContent above handles the layout. I just need to return it.
-                        // But Ant Menu adds an arrow for SubMenu. 
-                        // I'll return labelContent which now has center logic.
-                    ) : labelContent,
-                    key: item.key,
-                    children: mapItems(item.children, true)
-                };
-            }
-
-            // Wait, I need to clean up my logic. 
-            // If item.children, I return an object with label.
-            // My previous code: label: isMobile ? <span>{styledIcon} {labelContent}</span> : labelContent
-            // But labelContent ALREADY contains item.label and icon logic is mixed.
-            // In previous code:
-            // const styledIcon = ...
-            // labelContent (row layout) = <span> ... {item.label} ... </span>
-            // if (item.children) return { label: isMobile ? <span>{styledIcon} {labelContent}</span> ... }
-            // Wait, labelContent didn't have the icon in mobile before?
-            // "marginLeft: isMobile ? '10px'"
-            // "gap: isMobile ? '12px'"
-            // It seems labelContent was just the text part container?
-            // No, look at previous code:
-            // labelContent = <span ...> {!isMobile && isSubMenu && <span>{styledIcon}</span>} {item.label} ... </span>
-            // So labelContent DOES NOT have the icon if isMobile.
-            // And `if (item.children) label: isMobile ? <span>{styledIcon} {labelContent}</span>`
-            // So the icon was prepended.
-
-            // I want to center everything.
-            // I will simplify.
-
-            if (item.children) {
-                return {
-                    label: isMobile ? (
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                             {styledIcon}
-                            {/* We used labelContent before, which had styles. Let's use it but maybe override? */}
-                            {/* Actually, let's just use labelContent if I update labelContent to handle isMobile icon inclusion? */}
-                            {/* Let's stick to the previous pattern but wrap in centering div */}
                             {labelContent}
                         </div>
                     ) : labelContent,
@@ -240,7 +189,6 @@ const Navbar = () => {
                 };
             }
 
-            // Handle pure onClick items (like Settings)
             if (item.onClick) {
                 return {
                     label: <div onClick={item.onClick} style={{ display: isMobile ? 'flex' : 'flex', flexDirection: isMobile ? 'row' : 'column', alignItems: 'center', color: 'inherit', cursor: 'pointer' }}>
@@ -261,15 +209,6 @@ const Navbar = () => {
         });
     };
 
-    // Use augmented items specifically for the Mobile Drawer if desired, or global?
-    // User request: "menu in mobile mode... must include home... and setting"
-    // implies Desktop might not need it, or maybe it does.
-    // "Home" is usually redundant on desktop if Logo clicks to home.
-    // "Settings" on desktop is in the OS bar (Footer).
-
-    // Let's filter based on isMobile.
-    // User request: "show setting in desktop mode also"
-    // Register Hamburger Ref for Tour
     const { registerRef } = useTour();
     const hamburgerRef = React.useRef(null);
 
@@ -279,7 +218,18 @@ const Navbar = () => {
         }
     }, [isMobile, registerRef]);
 
-    const activeItems = [...NAV_ITEMS];
+    // Restore activeItems and inject onClick for Feedback
+    const activeItems = NAV_ITEMS.map(item => {
+        if (item.key === 'feedback') {
+            return {
+                ...item,
+                path: undefined, // Remove path to prevent Link rendering
+                onClick: () => setFeedbackVisible(true)
+            };
+        }
+        return item;
+    });
+
     const menuItems = mapItems(activeItems);
 
     const showDrawer = () => setDrawerVisible(true);
@@ -307,7 +257,8 @@ const Navbar = () => {
                         }
                         return "";
                     };
-                    return findLabel(NAV_ITEMS);
+                    return findLabel(NAV_ITEMS); // Note: Current label might not show Feedback if logic relies on key match with path?
+                    // Feedback has no path, so findLabel might return empty. That's fine.
                 })()}
             </span>
             <div ref={hamburgerRef}>
@@ -384,6 +335,8 @@ const Navbar = () => {
                 </Link>
 
                 {isMobile ? <MobileNav /> : <DesktopNav />}
+
+                <FeedbackModal visible={feedbackVisible} onClose={() => setFeedbackVisible(false)} />
             </div>
         </ConfigProvider>
     );

@@ -1,0 +1,87 @@
+.feedback-modal-wrapper .ant-modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.feedback-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feedback-icon {
+    font-size: 32px;
+    color: var(--color-highlight, #4facfe);
+    margin-bottom: 10px;
+}
+
+.feedback-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.feedback-header p {
+    margin: 5px 0 0;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.feedback-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-hint {
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.user-info img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.feedback-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* Ant Design Overrides for Glass */
+.feedback-modal-wrapper .ant-btn-primary {
+    background: var(--color-highlight, #4facfe);
+}
+
+.feedback-modal-wrapper .ant-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.feedback-modal-wrapper .ant-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}

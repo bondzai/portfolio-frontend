@@ -1,0 +1,54 @@
+.changelog-container {
+    padding: 100px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.changelog-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.changelog-timeline .ant-timeline-item-tail {
+    border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+.changelog-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.changelog-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.changelog-card .ant-card-head {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Ant Design Timeline Override */
+.changelog-timeline .ant-timeline-item-label {
+    width: calc(20% - 12px);
+}
+
+.changelog-timeline .ant-timeline-item-content {
+    width: calc(80% - 12px);
+}
+
+@media (max-width: 768px) {
+    .changelog-timeline .ant-timeline-item-label {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+
+    .changelog-timeline .ant-timeline-item-content {
+        width: 100%;
+    }
+}
