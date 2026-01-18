@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Popover, Tooltip } from 'antd';
-import { AppstoreOutlined, CalculatorOutlined, BulbOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined, ReadOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, CalculatorOutlined, SettingOutlined, LineChartOutlined, InfoCircleOutlined, ReadOutlined } from '@ant-design/icons';
 import './StartMenu.css';
 
-const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onOpenResources, onOpenAbout, onOpenGuide }) => {
+const StartMenu = ({ onOpenSettings, onOpenResources, onOpenAbout, onOpenGuide }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleOpenChange = (newOpen) => {
@@ -21,7 +21,7 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
                 <span>Applications</span>
             </div>
             <div className="start-menu-list">
-                <Tooltip title="In Development" placement="right">
+                <Tooltip title="Soon" placement="right">
                     <div className="app-list-item disabled">
                         <div className="app-icon-bg calc">
                             <CalculatorOutlined />
@@ -30,14 +30,6 @@ const StartMenu = ({ onOpenCalculator, onOpenFeatureRequest, onOpenSettings, onO
                         <span className="app-badge dev">DEV</span>
                     </div>
                 </Tooltip>
-
-                <div className="app-list-item" onClick={() => handleAppClick(onOpenFeatureRequest)}>
-                    <div className="app-icon-bg feature">
-                        <BulbOutlined />
-                    </div>
-                    <span className="app-name">Feature Request</span>
-                    <span className="app-badge beta">BETA</span>
-                </div>
 
                 <div className="app-list-item" onClick={() => handleAppClick(onOpenSettings)}>
                     <div className="app-icon-bg settings">
