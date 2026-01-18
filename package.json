@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "2.0.4",
-  "changelog": "Mobile navbar icon style fix",
+  "version": "2.0.5",
+  "changelog": "Background Effects",
   "type": "module",
   "scripts": {
     "dev": "vite",
