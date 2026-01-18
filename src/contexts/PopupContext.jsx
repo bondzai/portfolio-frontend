@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { compareVersions } from '../utils/versionUtils';
 
 const PopupContext = createContext();
@@ -8,7 +8,7 @@ export const usePopup = () => useContext(PopupContext);
 export const PopupProvider = ({ children }) => {
     const [popupQueue, setPopupQueue] = useState([]);
 
-    const addPopup = (popup) => {
+    const addPopup = useCallback((popup) => {
         const { id, oncePerSession, onceForever, version, storageKey } = popup;
 
         // Determine key
@@ -37,26 +37,27 @@ export const PopupProvider = ({ children }) => {
             if (prev.find(p => p.id === id)) return prev;
             return [...prev, popup];
         });
-    };
+    }, []);
 
-    const dismissPopup = (id) => {
+    const dismissPopup = useCallback((id) => {
         // Acknowledge logic
-        const popup = popupQueue.find(p => p.id === id);
-        if (popup) {
-            const key = popup.storageKey || `popup_ack_${id}`;
-            if (popup.onceForever) {
-                const value = popup.version ? popup.version.toString() : 'true';
-                localStorage.setItem(key, value);
+        setPopupQueue((prev) => {
+            const popup = prev.find(p => p.id === id);
+            if (popup) {
+                const key = popup.storageKey || `popup_ack_${id}`;
+                if (popup.onceForever) {
+                    const value = popup.version ? popup.version.toString() : 'true';
+                    localStorage.setItem(key, value);
+                }
+                if (popup.oncePerSession) sessionStorage.setItem(key, 'true');
             }
-            if (popup.oncePerSession) sessionStorage.setItem(key, 'true');
-        }
+            return prev.filter(p => p.id !== id);
+        });
+    }, []);
 
-        setPopupQueue((prev) => prev.filter(p => p.id !== id));
-    };
-
-    const clearAll = () => {
+    const clearAll = useCallback(() => {
         setPopupQueue([]);
-    };
+    }, []);
 
     return (
         <PopupContext.Provider value={{ popupQueue, addPopup, dismissPopup, clearAll }}>

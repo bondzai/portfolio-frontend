@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react';
 
 import Navbar from "./pages/global/Navbar";
 import Sidebar from "./pages/global/Sidebar";
@@ -15,28 +16,31 @@ import Stats from "./pages/Stats";
 import Brotherhood from "./pages/Brotherhood";
 import Blog from "./pages/Blog";
 import Roadmap from "./pages/Roadmap";
+import Changelog from "./pages/Changelog";
 
 import DisplayModal from "./components/modals/DisplayModal";
-
-import { getProjectList } from "./apis/rest/Project";
-import { getCertificationList } from "./apis/rest/Certification";
-
-import "./App.css";
-import { useContext, useEffect, useState } from 'react';
-import { HoverProvider, HoverContext } from './contexts/HoverContext';
-import { PopupProvider, usePopup } from './contexts/PopupContext';
-import { WindowProvider } from './contexts/WindowContext';
-import { TourProvider } from './contexts/TourContext';
-import { SystemProvider, SystemContext } from './contexts/SystemContext';
 import GenericPopup from "./components/common/GenericPopup";
 import WelcomeMessage from "./components/common/WelcomeMessage";
 import MatrixRain from "./components/effects/MatrixRain";
 import Starfield from "./components/effects/Starfield";
 import Snow from "./components/effects/Snow";
 import Moonlight from "./components/effects/Moonlight";
-import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
-import pkg from "../package.json"; // Import package.json to get version
+
+import { getProjectList } from "./apis/rest/Project";
+import { getCertificationList } from "./apis/rest/Certification";
+import pkg from "../package.json";
 import { POPUP_VERSION, TOUR_VERSION } from "./utils/constants";
+
+import { HoverProvider, HoverContext } from './contexts/HoverContext';
+import { PopupProvider, usePopup } from './contexts/PopupContext';
+import { WindowProvider } from './contexts/WindowContext';
+import { TourProvider } from './contexts/TourContext';
+import { SystemProvider, SystemContext } from './contexts/SystemContext';
+import { AuthProvider } from "./contexts/AuthContext";
+
+import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
+
+import "./App.css";
 
 // Global Background Manager
 const SystemBackground = () => {
@@ -50,7 +54,6 @@ const SystemBackground = () => {
             const updateAutoEffect = () => {
                 const hour = new Date().getHours();
                 const isNight = hour >= 18 || hour < 6;
-                // Future: Integrate Weather API here
                 setAutoEffect(isNight ? 'moonlight' : 'matrix');
             };
 
@@ -62,7 +65,6 @@ const SystemBackground = () => {
 
     const activeEffect = backgroundEffect === 'auto' ? autoEffect : backgroundEffect;
 
-    // Force active=true because the switch determines visibility/mounting
     switch (activeEffect) {
         case 'matrix':
             return <MatrixRain active={true} width={width} height={height} speed={effectSpeed} />;
@@ -77,27 +79,27 @@ const SystemBackground = () => {
     }
 };
 
-// Unified System Popup Manager (Scalable)
-// To add more popups, you can chain useEffects or add logic here.
+// Unified System Popup Manager
 const SystemPopupManager = () => {
     const { screenSize } = useScreenDimensions();
-    const { addPopup } = usePopup();
+    const { addPopup, dismissPopup } = usePopup();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
-        // User Request: Use version from package.json
         const appVersion = pkg.version;
-        // Separate version for popup logic to avoid showing it on every patch update
-        // const POPUP_VERSION = "1.0.0"; // Now imported from constants
 
-        // Example: If you want to scale up, add another check here for 'has_seen_promo' etc.
-        // if (!hasSeenPromo) { ... }
+        const handleChangelogClick = (e) => {
+            e.preventDefault();
+            dismissPopup('system_welcome_version');
+            navigate('/changelog');
+        };
 
         addPopup({
             id: 'system_welcome_version',
-            title: 'System Update v2.0',
+            title: 'System Update',
             version: POPUP_VERSION,
-            storageKey: 'popup_version', // Use custom key as requested
+            storageKey: 'popup_version',
             content: (
                 <WelcomeMessage
                     align="center"
@@ -105,7 +107,14 @@ const SystemPopupManager = () => {
                     subTitle={`Portfolio OS v${appVersion}`}
                     message={
                         <div style={{ textAlign: 'left' }}>
-                            <p><strong>New Feature: Immersive Environments 🌍</strong></p>
+                            <p><strong>New Feature: Feedback System 💬</strong></p>
+                            <p>You can now send messages directly to me via the new Feedback button!</p>
+                            <ul>
+                                <li>🔒 <strong>Secure Login</strong>: Sign in with Google to prevent spam.</li>
+                                <li>🛡️ <strong>Crash Proof</strong>: Robust error handling for smoother experience.</li>
+                            </ul>
+                            <br />
+                            <p><strong>Recent Updates: Immersive Environments 🌍</strong></p>
                             <p>Customize your experience with dynamic background effects:</p>
                             <ul>
                                 <li>✨ <strong>Starfall</strong>: A clean, twinkling night sky.</li>
@@ -114,7 +123,8 @@ const SystemPopupManager = () => {
                                 <li>💻 <strong>Matrix</strong>: The classic digital rain.</li>
                             </ul>
                             <p>Go to <strong>Settings &gt; Appearance</strong> to try them out!</p>
-                            <p><em>Note: Auto Sync mode is coming soon.</em></p>
+                            <br />
+                            <a href="/changelog" onClick={handleChangelogClick} style={{ color: '#1890ff', cursor: 'pointer' }}>View Full Changelog &rarr;</a>
                         </div>
                     }
                     footer={
@@ -140,7 +150,7 @@ const SystemPopupManager = () => {
             okText: "Enter System",
             trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
         });
-    }, [addPopup, screenSize]);
+    }, [addPopup, dismissPopup, navigate, screenSize]);
 
     return null;
 };
@@ -157,39 +167,42 @@ const App = () => {
 
     return (
         <div className="App">
-            <SystemProvider>
-                <PopupProvider>
-                    <WindowProvider>
-                        <TourProvider>
-                            <HoverProvider>
-                                <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-                                    <SystemBackground />
-                                    <Navbar />
-                                    <Sidebar />
-                                    <Footer />
-                                    <GenericPopup />
-                                    <SystemPopupManager />
-                                    <Routes>
-                                        <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
-                                        <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
-                                        <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
-                                        <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
-                                        <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
-                                        <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
-                                        <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
-                                        <Route path="/settings" element={<HoverWrapper><Settings /></HoverWrapper>} />
-                                        <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
-                                        <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
-                                        <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
-                                        <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
-                                        <Route path="/roadmap" element={<HoverWrapper><Roadmap /></HoverWrapper>} />
-                                    </Routes>
-                                </Router>
-                            </HoverProvider>
-                        </TourProvider>
-                    </WindowProvider>
-                </PopupProvider>
-            </SystemProvider>
+            <AuthProvider>
+                <SystemProvider>
+                    <PopupProvider>
+                        <WindowProvider>
+                            <TourProvider>
+                                <HoverProvider>
+                                    <Router basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                                        <SystemBackground />
+                                        <Navbar />
+                                        <Sidebar />
+                                        <Footer />
+                                        <GenericPopup />
+                                        <SystemPopupManager />
+                                        <Routes>
+                                            <Route path="/" element={<HoverWrapper><Home /></HoverWrapper>} />
+                                            <Route path="/skills" element={<HoverWrapper><Skills /></HoverWrapper>} />
+                                            <Route path="/projects" element={<HoverWrapper><Projects /></HoverWrapper>} />
+                                            <Route path="/project/:id" element={<HoverWrapper><DisplayModal getDataList={getProjectList} dataRoutePath="/projects" /></HoverWrapper>} />
+                                            <Route path="/certifications" element={<HoverWrapper><Certifications /></HoverWrapper>} />
+                                            <Route path="/certification/:id" element={<HoverWrapper><DisplayModal getDataList={getCertificationList} dataRoutePath="/certifications" /></HoverWrapper>} />
+                                            <Route path="/about" element={<HoverWrapper><About /></HoverWrapper>} />
+                                            <Route path="/settings" element={<HoverWrapper><Settings /></HoverWrapper>} />
+                                            <Route path="/experience" element={<HoverWrapper><Experience /></HoverWrapper>} />
+                                            <Route path="/stats" element={<HoverWrapper><Stats /></HoverWrapper>} />
+                                            <Route path="/brotherhood" element={<HoverWrapper><Brotherhood /></HoverWrapper>} />
+                                            <Route path="/blog" element={<HoverWrapper><Blog /></HoverWrapper>} />
+                                            <Route path="/roadmap" element={<HoverWrapper><Roadmap /></HoverWrapper>} />
+                                            <Route path="/changelog" element={<HoverWrapper><Changelog /></HoverWrapper>} />
+                                        </Routes>
+                                    </Router>
+                                </HoverProvider>
+                            </TourProvider>
+                        </WindowProvider>
+                    </PopupProvider>
+                </SystemProvider>
+            </AuthProvider>
         </div>
     );
 }
