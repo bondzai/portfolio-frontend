@@ -4,7 +4,7 @@ import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
     MenuOutlined, RocketFilled, ThunderboltFilled,
     ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
-    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, QuestionCircleOutlined
+    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, RadarChartOutlined
 } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
@@ -19,6 +19,7 @@ const NAV_ITEMS = [
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
     { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
     { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: { text: "Beta", color: "#1890ff" } },
+    { label: "Activities", key: "activities", path: "#", icon: <RadarChartOutlined />, badge: { text: "Soon", color: "#faad14" } },
     {
         label: "More",
         key: "more-group",
