@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { ColorPicker, Button, message, Switch, Slider, Select, Card } from "antd";
 import { UndoOutlined, BgColorsOutlined, SoundOutlined, GlobalOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { SystemContext } from "../contexts/SystemContext";
+import pkg from "../../package.json";
 import "./Settings.css";
 
 const Settings = () => {
@@ -42,6 +43,8 @@ const Settings = () => {
         root.style.setProperty('--color-secondary', secondary);
         root.style.setProperty('--color-deep', deep);
         root.style.setProperty('--color-highlight', highlight);
+        root.style.setProperty('--text-color-primary', '#f5f5f5');
+        root.style.setProperty('--text-color-secondary', '#d9d9d9');
 
         setPrimaryColor(colorHex);
     };
@@ -176,8 +179,8 @@ const Settings = () => {
 
                         <div className="settings-item">
                             <div className="settings-label">
-                                <strong>Portfolio OS Version</strong>
-                                <span>v2.0.1 (Stable)</span>
+                                <strong>Portfolio OS UI Version</strong>
+                                <span>v{pkg.version} ({pkg.changelog})</span>
                             </div>
                         </div>
                         <div className="settings-item">
