@@ -3,7 +3,7 @@
   "homepage": "https://jamesbond.live/",
   "private": true,
   "version": "2.0.5",
-  "changelog": "Background Effects",
+  "changelog": "Feature: Background Effects",
   "type": "module",
   "scripts": {
     "dev": "vite",
