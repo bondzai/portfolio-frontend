@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Input, Button, App as AntApp, ConfigProvider, Tooltip, Select } from 'antd';
 import { GithubOutlined, FacebookFilled, GoogleOutlined, MessageOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useAuth } from '../../contexts/AuthContext';
+import { checkRateLimit } from '../../utils/rateLimiter';
+import { FEEDBACK_MAX_ATTEMPTS, FEEDBACK_WINDOW_MS } from '../../utils/constants';
 import './FeedbackModal.css';
 
 const { TextArea } = Input;
@@ -25,6 +27,10 @@ const FeedbackModalContent = ({ visible, onClose }) => {
 
     const handleSend = async () => {
         if (!feedback.trim()) return message.warning("Please enter a message.");
+
+        // Anti-Spam Check
+        const { allowed, error } = checkRateLimit('feedback_submit', FEEDBACK_MAX_ATTEMPTS, FEEDBACK_WINDOW_MS);
+        if (!allowed) return message.error(error);
 
         setSending(true);
         try {
