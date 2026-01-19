@@ -7,7 +7,7 @@ export const hoverProfileImageURL = "https://res.cloudinary.com/dbdacfhye/image/
 export const POPUP_VERSION = "1.2.0";
 export const TOUR_VERSION = "1.0.0";
 export const DEFAULT_BACKGROUND_EFFECT = "stars";
-export const DEFAULT_EFFECT_SPEED = 20;
+export const DEFAULT_BACKGROUND_EFFECT_SPEED = 20;
 
 export const FEEDBACK_MAX_ATTEMPTS = 5;
 export const FEEDBACK_WINDOW_MS = 10 * 60 * 1000; // 10 minutes

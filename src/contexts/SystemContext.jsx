@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { DEFAULT_BACKGROUND_EFFECT, DEFAULT_EFFECT_SPEED } from '../utils/constants';
+import { DEFAULT_BACKGROUND_EFFECT, DEFAULT_BACKGROUND_EFFECT_SPEED } from '../utils/constants';
 
 export const SystemContext = createContext();
 
@@ -10,7 +10,7 @@ export const SystemProvider = ({ children }) => {
     });
 
     const [matrixSpeed, setEffectSpeed] = useState(() => {
-        return parseInt(localStorage.getItem('background_effect_speed')) || DEFAULT_EFFECT_SPEED;
+        return parseInt(localStorage.getItem('background_effect_speed')) || DEFAULT_BACKGROUND_EFFECT_SPEED;
     });
 
     // Alias for backward compatibility if needed, but better to just use effectSpeed

@@ -21,7 +21,7 @@ import Research from "./pages/Research";
 
 import DisplayModal from "./components/modals/DisplayModal";
 import GenericPopup from "./components/common/GenericPopup";
-import WelcomeMessage from "./components/common/WelcomeMessage";
+import SystemPopupManager from "./components/common/SystemPopupManager";
 import MatrixRain from "./components/effects/MatrixRain";
 import Starfield from "./components/effects/Starfield";
 import Snow from "./components/effects/Snow";
@@ -29,17 +29,15 @@ import Moonlight from "./components/effects/Moonlight";
 
 import { getProjectList } from "./apis/rest/Project";
 import { getCertificationList } from "./apis/rest/Certification";
-import pkg from "../package.json";
-import { POPUP_VERSION, TOUR_VERSION } from "./utils/constants";
 
 import { HoverProvider, HoverContext } from './contexts/HoverContext';
-import { PopupProvider, usePopup } from './contexts/PopupContext';
+import { PopupProvider } from './contexts/PopupContext';
 import { WindowProvider } from './contexts/WindowContext';
 import { TourProvider } from './contexts/TourContext';
 import { SystemProvider, SystemContext } from './contexts/SystemContext';
 import { AuthProvider } from "./contexts/AuthContext";
 
-import useScreenDimensions, { ScreenSize } from "./hooks/useScreenDimensions";
+import useScreenDimensions from "./hooks/useScreenDimensions";
 
 import "./App.css";
 
@@ -78,82 +76,6 @@ const SystemBackground = () => {
         default:
             return null;
     }
-};
-
-// Unified System Popup Manager
-const SystemPopupManager = () => {
-    const { screenSize } = useScreenDimensions();
-    const { addPopup, dismissPopup } = usePopup();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const isMobile = screenSize === ScreenSize.XS || screenSize === ScreenSize.SM;
-        const appVersion = pkg.version;
-
-        const handleChangelogClick = (e) => {
-            e.preventDefault();
-            dismissPopup('system_welcome_version');
-            navigate('/changelog');
-        };
-
-        addPopup({
-            id: 'system_welcome_version',
-            title: 'System Update',
-            version: POPUP_VERSION,
-            storageKey: 'popup_version',
-            content: (
-                <WelcomeMessage
-                    align="center"
-                    title="Welcome Back"
-                    subTitle={`Portfolio OS v${appVersion}`}
-                    message={
-                        <div style={{ textAlign: 'left' }}>
-                            <p><strong>New Feature: Feedback System 💬</strong></p>
-                            <p>You can now send messages directly to me via the new Feedback button!</p>
-                            <ul>
-                                <li>🔒 <strong>Secure Login</strong>: Sign in with Google to prevent spam.</li>
-                                <li>🛡️ <strong>Crash Proof</strong>: Robust error handling for smoother experience.</li>
-                            </ul>
-                            <br />
-                            <p><strong>Recent Updates: Immersive Environments 🌍</strong></p>
-                            <p>Customize your experience with dynamic background effects:</p>
-                            <ul>
-                                <li>✨ <strong>Starfall</strong>: A clean, twinkling night sky.</li>
-                                <li>❄️ <strong>Snow</strong>: Gentle winter vibes.</li>
-                                <li>🌕 <strong>Moonlight</strong>: Deep night ambiance.</li>
-                                <li>💻 <strong>Matrix</strong>: The classic digital rain.</li>
-                            </ul>
-                            <p>Go to <strong>Settings &gt; Appearance</strong> to try them out!</p>
-                            <br />
-                            <a href="/changelog" onClick={handleChangelogClick} style={{ color: '#1890ff', cursor: 'pointer' }}>View Full Changelog &rarr;</a>
-                        </div>
-                    }
-                    footer={
-                        isMobile ? (
-                            <div style={{
-                                padding: '10px',
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                borderRadius: '8px',
-                                borderLeft: '3px solid #ffcc00'
-                            }} >
-                                <p style={{
-                                    margin: 0,
-                                    fontSize: '13px',
-                                    fontStyle: 'italic'
-                                }}>
-                                    <strong>* Info:</strong> You are using a mobile device. For the full OS experience (Start Menu, draggable windows), please try a desktop screen.
-                                </p>
-                            </div >
-                        ) : null}
-                />
-            ),
-            onceForever: true,
-            okText: "Enter System",
-            trafficLights: { showClose: true, showMinimize: false, showMaximize: false }
-        });
-    }, [addPopup, dismissPopup, navigate, screenSize]);
-
-    return null;
 };
 
 const App = () => {
