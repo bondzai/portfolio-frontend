@@ -7,7 +7,7 @@ import { compareVersions } from '../utils/versionUtils';
 
 const TourContext = createContext();
 
-export const TourProvider = ({ children }) => {
+export function TourProvider({ children }) {
     const [isOpen, setIsOpen] = useState(false);
     const { screenSize } = useScreenDimensions();
     const { popupQueue } = usePopup();
@@ -58,6 +58,8 @@ export const TourProvider = ({ children }) => {
             />
         </TourContext.Provider>
     );
-};
+}
 
-export const useTour = () => useContext(TourContext);
+export function useTour() {
+    return useContext(TourContext);
+}

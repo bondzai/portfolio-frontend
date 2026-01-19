@@ -4,12 +4,13 @@ import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
     MenuOutlined, RocketFilled, ThunderboltFilled,
     ProjectFilled, TrophyFilled, AppstoreFilled, TeamOutlined, ReadFilled,
-    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, RadarChartOutlined, MessageOutlined, HistoryOutlined
+    IdcardFilled, HomeFilled, SettingFilled, BgColorsOutlined, RadarChartOutlined, MessageOutlined, HistoryOutlined, ExperimentOutlined
 } from "@ant-design/icons";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import BrandLogo from "../../components/common/BrandLogo";
 import { useTour } from "../../contexts/TourContext";
 import FeedbackModal from "../../components/common/FeedbackModal";
+import { BADGE_BETA, BADGE_SOON, BADGE_NEW } from "../../utils/constants";
 
 const NAV_ITEMS = [
     { label: "Home", key: "home", path: "/", icon: <HomeFilled /> },
@@ -19,27 +20,27 @@ const NAV_ITEMS = [
     { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
     { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
-    { label: "Feedback", key: "feedback", path: "/feedback", icon: <MessageOutlined />, badge: { text: "Beta", color: "#1890ff" } },
-    { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: { text: "Beta", color: "#1890ff" } },
-    { label: "Activities", key: "activities", path: "#", icon: <RadarChartOutlined />, badge: { text: "Soon", color: "#faad14" } },
+    { label: "Feedback", key: "feedback", path: "/feedback", icon: <MessageOutlined />, badge: BADGE_BETA },
+    { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: BADGE_BETA },
+    { label: "Activities", key: "activities", path: "#", icon: <RadarChartOutlined />, badge: BADGE_SOON },
     {
         label: "More",
         key: "more-group",
         icon: <AppstoreFilled />,
         children: [
             {
+                label: "Research",
+                key: "research",
+                path: "/research",
+                icon: <ExperimentOutlined />,
+                badge: BADGE_NEW
+            },
+            {
                 label: "Blog",
                 key: "blog",
                 path: "/blog",
                 icon: <ReadFilled />,
-                badge: { text: "Beta", color: "#1890ff" }
-            },
-            {
-                label: "Roadmap",
-                key: "roadmap",
-                path: "/roadmap",
-                icon: <RocketFilled />,
-                badge: { text: "Beta", color: "#1890ff" }
+                badge: BADGE_BETA
             },
             {
                 label: "Changelog",
@@ -52,7 +53,7 @@ const NAV_ITEMS = [
                 key: "art-studio",
                 path: "#",
                 icon: <BgColorsOutlined />,
-                badge: { text: "Soon", color: "#faad14" },
+                badge: BADGE_SOON,
                 onClick: (e) => e.preventDefault()
             }
         ]
@@ -195,6 +196,17 @@ const Navbar = () => {
                         {isMobile && styledIcon}
                         {labelContent}
                     </div>,
+                    key: item.key,
+                };
+            }
+
+            // Specific handling for Research to open in new tab
+            if (item.path === '/research') {
+                return {
+                    label: <a href={item.path} target="_blank" rel="noopener noreferrer" style={{ display: isMobile ? 'flex' : 'block', alignItems: 'center', color: 'inherit' }}>
+                        {isMobile && styledIcon}
+                        {labelContent}
+                    </a>,
                     key: item.key,
                 };
             }
