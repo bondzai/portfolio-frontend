@@ -24,17 +24,17 @@ const NAV_ITEMS = [
     { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: BADGE_BETA },
     { label: "Activities", key: "activities", path: "#", icon: <RadarChartOutlined />, badge: BADGE_SOON },
     {
+        label: "Research",
+        key: "research",
+        path: "/research",
+        icon: <ExperimentOutlined />,
+        badge: BADGE_NEW
+    },
+    {
         label: "More",
         key: "more-group",
         icon: <AppstoreFilled />,
         children: [
-            {
-                label: "Research",
-                key: "research",
-                path: "/research",
-                icon: <ExperimentOutlined />,
-                badge: BADGE_NEW
-            },
             {
                 label: "Blog",
                 key: "blog",

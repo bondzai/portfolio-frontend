@@ -17,40 +17,4 @@ export const RESEARCH_PAPERS = [
         downloadUrl: "/papers/harm-reduction-decentralized-systems.pdf",
         previewUrl: "/papers/harm-reduction-decentralized-systems"
     },
-    {
-        id: "002-trustless-coordination",
-        title: "Trustless Coordination Patterns in Human Systems",
-        abstract: "Investigating how cryptographic primitives can replace middle-management in software teams. A study on DAO-like structures applied to corporate hierarchies.",
-        problemFraming: "Human coordination typically requires a 'Trusted Coordinator' (Manager) to resolve conflicts and allocate resources. This introduces single points of failure and bias.",
-        hypothesis: "Smart contracts can automate the 'Management Layer' of software delivery—allocating bounties, verifying code quality via ZK-proofs of test passing, and distributing equity per commit.",
-        limitations: "The 'Oracle Problem' of assessing creative work quality remains unsolved. Code coverage is not a proxy for code value.",
-        futureWork: "Develop a 'Proof of Value' metric that combines Git activity, peer review sentiment, and production impact metrics.",
-        date: "2024-12-15",
-        version: "v1.2.1",
-        author: "Puritat Chamart",
-        tags: ["DAO", "Game Theory", "Organizational Design"],
-        citation: "Chamart, P. (2024). Trustless Coordination.",
-        status: "Published",
-        readTime: "15 min read",
-        downloadUrl: "#",
-        previewUrl: "#"
-    },
-    {
-        id: "003-minimal-backend",
-        title: "Minimal Backend Thesis",
-        abstract: "Proposing a radical reduction in backend complexity by leveraging edge computing and smart database policies. The 'Backend' should fade into infrastructure.",
-        problemFraming: "We spend 60% of engineering time writing 'Glue Code' (API endpoints, DTOs, Controllers) that simply moves data from A to B without adding value.",
-        hypothesis: "A 'Thick Database, Thick Client' architecture (using RLS and Edge Functions) allows us to delete the application server layer entirely for 90% of CRUD apps, reducing TCO by half.",
-        limitations: "Security rules become complex to test. Business logic that requires global context (e.g., aggregate analytics) is hard to implement in Row Level Security.",
-        futureWork: "Benchmark a 'Serverless SQL' stack against a traditional NestJS microservices cluster under high load.",
-        date: "2024-11-10",
-        version: "v1.0.0",
-        author: "Puritat Chamart",
-        tags: ["Backend", "Serverless", "Edge Computing"],
-        citation: "Chamart, P. (2024). Minimal Backend Thesis.",
-        status: "Published",
-        readTime: "18 min read",
-        downloadUrl: "#",
-        previewUrl: "#"
-    }
 ];

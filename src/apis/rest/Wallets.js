@@ -8,7 +8,7 @@ export const cryptoWallets = [
     {
         id: 1,
         value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
-        label: "Ethereum Network",
+        label: "EVM Network",
         iconUrl: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029",
     },
     {
@@ -19,24 +19,6 @@ export const cryptoWallets = [
     },
     {
         id: 3,
-        value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
-        label: "Avalanche C-Chain Network",
-        iconUrl: "https://cryptologos.cc/logos/avalanche-avax-logo.svg?v=029",
-    },
-    {
-        id: 4,
-        value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
-        label: "Optimism Network",
-        iconUrl: "https://cryptologos.cc/logos/optimism-ethereum-op-logo.svg?v=031",
-    },
-    {
-        id: 5,
-        value: "0x1c45e086ed143aef83c1209521a2ff5369f39abc",
-        label: "Arbitrum Network",
-        iconUrl: "https://cryptologos.cc/logos/arbitrum-arb-logo.svg?v=031",
-    },
-    {
-        id: 6,
         value: "inj1r3z7pphdzsawlq7pyz2jrghl2d5l8x4ue99fh3",
         label: "Injective Network",
         iconUrl: "https://cryptologos.cc/logos/injective-inj-logo.svg?v=031",

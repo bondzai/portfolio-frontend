@@ -157,8 +157,9 @@ const Research = () => {
     return (
         <div className="shelf-container">
             <div className="shelf-header">
-                <h1>RESEARCH & DEVELOPMENT</h1>
+                <h1>RESEARCH & DEVELOPMENT LABORATORY</h1>
                 <p className="shelf-subtitle">White-papers, micro-theses, and engineering proof of work.</p>
+
                 <div className="shelf-controls">
                     <div className="shelf-search">
                         <SearchOutlined />

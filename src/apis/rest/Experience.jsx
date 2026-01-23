@@ -8,11 +8,8 @@ import { calculateAge } from "../../utils/utils.js";
 
 const getExperienceList = () => getList({
     urls: BACKEND_URLS,
-    endpoint: "/experiences/", // Mock endpoint, logic.js uses defaultData fallback
+    endpoint: "/experiences/",
     customSort: CustomSortEnum.DESCENDING,
-    // Note: The original data was chronological (oldest to newest). 
-    // If we want newest first, we might need CustomSortEnum.DESCENDING or handle it in component.
-    // The component has a 'reverseOrder' toggle. The original array started with birth (1994).
     defaultData: defaultData,
 });
 

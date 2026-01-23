@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { avengers } from "../apis/rest/Avengers.js";
+import { brotherhood } from "../apis/rest/Brotherhood.js";
 import { HeroCard } from "../components/cards/HeroCard.jsx";
 import AvengersModal from "../components/modals/AvengersModal.jsx";
 import { TeamOutlined } from "@ant-design/icons";
@@ -15,15 +15,15 @@ const CarouselItem = ({ props }) => {
 
 const AutoplayCarousel = () => {
     // Duplicate data to create seamless loop
-    const items = Object.keys(avengers);
+    const items = brotherhood;
     const duplicatedItems = [...items, ...items, ...items];
 
     return (
         <div className="carousel-container">
             <div className="carousel-track">
-                {duplicatedItems.map((detailKey, index) => {
+                {duplicatedItems.map((item, index) => {
                     return (
-                        <CarouselItem key={`${detailKey}-${index}`} props={avengers[detailKey]} />
+                        <CarouselItem key={`${item.title}-${index}`} props={item} />
                     );
                 })}
             </div>
