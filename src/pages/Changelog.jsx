@@ -11,6 +11,18 @@ const { Title, Text, Paragraph } = Typography;
 
 const changelogData = [
     {
+        version: "2.2.1",
+        date: "2026-01-24",
+        title: "Stability & Rendering Fixes",
+        tags: ["fix", "dependencies"],
+        color: "orange",
+        details: [
+            "Fix: Markdown table rendering (Added GFM support).",
+            "Fix: Resolve peer dependency conflicts (react-scripts vs Vite).",
+            "Fix: Correct Esbuild binary for macOS (yarn/npm mismatch).",
+        ]
+    },
+    {
         version: "2.2.0",
         date: "2026-01-19",
         title: "Research & Development Shelf",

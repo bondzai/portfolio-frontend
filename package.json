@@ -2,8 +2,8 @@
   "name": "portfolio",
   "homepage": "https://jamesbond.live/",
   "private": true,
-  "version": "2.2.0",
-  "changelog": "Feature: Research & Development Whitepapers.",
+  "version": "2.2.1",
+  "changelog": "Fix: Markdown table rendering (GFM support) and dependency resolution.",
   "type": "module",
   "scripts": {
     "dev": "vite",
