@@ -98,12 +98,6 @@ const FeedbackModalContent = ({ visible, onClose }) => {
                         <Button icon={<GoogleOutlined />} onClick={loginWithGoogle} block>
                             Continue with Google
                         </Button>
-                        <Button icon={<GithubOutlined />} disabled block>
-                            Continue with GitHub (Soon)
-                        </Button>
-                        <Button icon={<FacebookFilled />} disabled block>
-                            Continue with Facebook (Soon)
-                        </Button>
                     </div>
                 </div>
             ) : (
