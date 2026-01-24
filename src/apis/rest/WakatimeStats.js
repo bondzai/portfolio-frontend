@@ -25,6 +25,8 @@ const transformWakatimeResponse = (apiResponse) => {
 
     return {
         human_readable_total_including_other_language: data.human_readable_total_including_other_language,
+        human_readable_daily_average: data.human_readable_daily_average,
+        human_readable_daily_average_including_other_language: data.human_readable_daily_average_including_other_language,
         operating_systems: data.operating_systems || [],
         editors: data.editors || [],
         languages: data.languages || [],

@@ -161,12 +161,8 @@ const WakatimeStats = () => {
                                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}>
                                     <span style={{ color: '#ffffff !important' }}>Daily Average</span>
                                     <span style={{ color: '#ffffff !important', fontWeight: '500' }}>
-                                        {stats.human_readable_daily_average_including_other_language || stats.human_readable_daily_average}
+                                        {stats.human_readable_daily_average_including_other_language || stats.human_readable_daily_average || 'N/A'}
                                     </span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}>
-                                    <span style={{ color: '#ffffff !important' }}>Location</span>
-                                    <span style={{ color: '#ffffff !important', fontWeight: '500' }}>Bangkok, Thailand</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 8px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}>
                                     <span style={{ color: '#ffffff !important' }}>Joined</span>
