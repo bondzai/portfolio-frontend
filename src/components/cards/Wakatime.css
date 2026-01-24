@@ -1,31 +1,228 @@
-.wakatime-stats {
-    width: 100vh;
-    height: auto;
+.wakatime-dashboard {
+    padding: 20px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    /* Reduced from 50px */
+}
+
+/* Glass Panel Style (Matches Skills.css) */
+.glass-panel {
+    background: var(--color-deep);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 16px;
+    height: 100%;
+    /* Restore equal height for columns */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Override for Activity Panel to allow tight fit */
+.activity-panel {
+    height: auto !important;
+}
+
+.glass-panel:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Profile Section */
+.profile-panel {
+    align-items: center;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.avatar-link {
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.avatar-link:hover {
+    transform: scale(1.05);
+}
+
+.profile-avatar {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-name {
+    margin: 16px 0 4px 0 !important;
+    color: var(--text-color-primary) !important;
+    text-align: center;
+}
+
+.profile-handle {
+    color: var(--text-color-secondary) !important;
+    font-size: 1.1rem;
+}
+
+.profile-summary {
+    margin-top: 20px;
+    text-align: center;
+    background: rgba(88, 166, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    width: 100%;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+.highlight-text {
+    color: #58a6ff !important;
+    font-size: 1.6rem;
+    display: block;
+    line-height: 1.2;
+}
+
+.sub-text {
+    color: var(--text-color-secondary) !important;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.detail-label {
+    color: var(--text-color-secondary) !important;
+    font-size: 0.9rem;
+}
+
+.detail-value {
+    color: var(--text-color-primary) !important;
+    font-weight: 500;
+}
+
+.wakatime-btn {
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Activity & Stats Panels */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-title {
+    color: var(--text-color-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.source-link-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.data-source-link {
+    font-size: 0.8rem;
+    color: var(--text-color-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.data-source-link:hover {
+    background: rgba(255, 255, 255, 0.15);
     color: var(--text-color-primary);
 }
 
-.wakatime-stats-title {
+.info-tooltip {
+    cursor: help;
+    font-size: 0.8rem;
+    color: #8b949e;
+    opacity: 0.7;
+}
+
+.info-tooltip:hover {
+    opacity: 1;
+}
+
+/* Heatmap Container */
+.heatmap-container {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    background-color: var(--color-deep);
+    overflow-x: auto;
+    padding: 10px 0;
 }
 
-.wakatime-stats-full-chart {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.wakatime-stats-tab-chart {
-    margin-top: 20px;
-}
-
+/* Responsive */
 @media screen and (max-width: 768px) {
-    .wakatime-stats {
-        width: 100%;
+    .wakatime-dashboard {
+        padding: 10px;
+        margin-top: 20px;
     }
+
+    .glass-panel {
+        padding: 16px;
+    }
+
+    .heatmap-container {
+        justify-content: flex-start;
+        /* Allow scroll on mobile */
+    }
+}
+
+/* Force Ant Design Card headers to use bright text */
+.ant-card-head-title {
+    color: #f5f5f5 !important;
+}
+
+.ant-card-head-title h3 {
+    color: #f5f5f5 !important;
+}
+
+.ant-card-extra {
+    color: #f5f5f5 !important;
+}
+
+.ant-card-extra a {
+    color: #f5f5f5 !important;
+}
+
+.ant-card-extra span {
+    color: #f5f5f5 !important;
 }

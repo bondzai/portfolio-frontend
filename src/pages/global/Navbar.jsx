@@ -20,42 +20,15 @@ const NAV_ITEMS = [
     { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
     { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
+    { label: "Activities", key: "activities", path: "/stats", icon: <RadarChartOutlined />, badge: BADGE_NEW },
+    { label: "Research", key: "research", path: "/research", icon: <ExperimentOutlined />, badge: BADGE_NEW},
     { label: "Feedback", key: "feedback", path: "/feedback", icon: <MessageOutlined />, badge: BADGE_BETA },
     { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: BADGE_BETA },
-    { label: "Activities", key: "activities", path: "#", icon: <RadarChartOutlined />, badge: BADGE_SOON },
-    {
-        label: "Research",
-        key: "research",
-        path: "/research",
-        icon: <ExperimentOutlined />,
-        badge: BADGE_NEW
-    },
-    {
-        label: "More",
-        key: "more-group",
-        icon: <AppstoreFilled />,
+    {label: "More", key: "more-group", icon: <AppstoreFilled />,
         children: [
-            {
-                label: "Blog",
-                key: "blog",
-                path: "/blog",
-                icon: <ReadFilled />,
-                badge: BADGE_BETA
-            },
-            {
-                label: "Changelog",
-                key: "changelog",
-                path: "/changelog",
-                icon: <HistoryOutlined />,
-            },
-            {
-                label: "Art Studio",
-                key: "art-studio",
-                path: "#",
-                icon: <BgColorsOutlined />,
-                badge: BADGE_SOON,
-                onClick: (e) => e.preventDefault()
-            }
+            {label: "Blog", key: "blog", path: "/blog", icon: <ReadFilled />, badge: BADGE_BETA},
+            {label: "Changelog", key: "changelog", path: "/changelog", icon: <HistoryOutlined />},
+            {label: "Art Studio", key: "art-studio", path: "#", icon: <BgColorsOutlined />, badge: BADGE_SOON, onClick: (e) => e.preventDefault()}
         ]
     },
 ];

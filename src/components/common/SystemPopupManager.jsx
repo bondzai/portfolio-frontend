@@ -35,10 +35,10 @@ const SystemPopupManager = () => {
                         <div style={{ textAlign: 'left' }}>
                             <p><strong>Latest System Upgrades 🚀</strong></p>
                             <ul style={{ paddingLeft: '20px', lineHeight: '1.6' }}>
+                                <li>📊 <strong>Activities Dashboard</strong>: WakaTime stats & GitHub contributions.</li>
                                 <li>🧪 <strong>Research Shelf</strong>: R&D Whitepapers & Dev Logs.</li>
                                 <li>💬 <strong>Feedback</strong>: Secure messaging with Google Auth.</li>
                                 <li>🌍 <strong>Immersive</strong>: Matrix, Starfield & Snow effects.</li>
-                                <li>⚡ <strong>Performance</strong>: Enhanced stability & polished UI.</li>
                             </ul>
                             <br />
                             <a href="/changelog" onClick={handleChangelogClick} style={{ color: '#1890ff', cursor: 'pointer' }}>View Full Changelog &rarr;</a>

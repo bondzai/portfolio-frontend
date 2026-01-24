@@ -11,6 +11,25 @@ const { Title, Text, Paragraph } = Typography;
 
 const changelogData = [
     {
+        version: "2.3.0",
+        date: "2026-01-24",
+        title: "Activities Dashboard Overhaul",
+        tags: ["feature", "ui", "refactor"],
+        color: "blue",
+        details: [
+            "Feature: Complete redesign of Activities (Stats) page using Ant Design components.",
+            "Feature: Integrated WakaTime coding statistics with Top Languages, Editors, and OS charts.",
+            "Feature: Added GitHub Contribution Activity calendar with dark theme.",
+            "UI: Implemented glassmorphism design with compact, pixel-perfect layout.",
+            "UI: Professional profile card with coding time stats and quick actions.",
+            "UI: Enhanced text readability with bright typography (#ffffff).",
+            "Refactor: Replaced custom CSS with Ant Design Card and Space components for consistency.",
+            "Refactor: DRY principle applied with reusable StatCard component.",
+            "Fix: Resolved text visibility issues by removing Ant Design style overrides.",
+            "Fix: Optimized chart rendering with proper grid margins to prevent label overflow."
+        ]
+    },
+    {
         version: "2.2.1",
         date: "2026-01-24",
         title: "Stability & Rendering Fixes",
