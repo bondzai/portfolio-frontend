@@ -49,6 +49,7 @@ const getWakatimeStats = async () => {
     try {
         const response = await axios.get(url, {
             timeout: 10000,
+            withCredentials: true,
         });
 
         // Backend returns { all_time: { ... }, summaries: ... }
