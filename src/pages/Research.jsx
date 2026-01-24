@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useParams, useNavigate } from "react-router-dom";
 import {
     SearchOutlined,
@@ -88,34 +90,42 @@ const Research = () => {
 
             <article className="research-paper-article">
                 <div className="article-body">
-                    <section className="section-abstract">
-                        <span className="label">ABSTRACT:</span>
-                        <p>{paper.abstract}</p>
-                    </section>
+                    {paper.content ? (
+                        <div className="markdown-content">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{paper.content}</ReactMarkdown>
+                        </div>
+                    ) : (
+                        <>
+                            <section className="section-abstract">
+                                <span className="label">ABSTRACT:</span>
+                                <p>{paper.abstract}</p>
+                            </section>
 
-                    <div className="rd-grid">
-                        <section className="rd-section">
-                            <h3>Problem Framing</h3>
-                            <p>{paper.problemFraming}</p>
-                        </section>
+                            <div className="rd-grid">
+                                <section className="rd-section">
+                                    <h3>Problem Framing</h3>
+                                    <p>{paper.problemFraming}</p>
+                                </section>
 
-                        <section className="rd-section">
-                            <h3>Hypothesis & Model</h3>
-                            <p>{paper.hypothesis}</p>
-                        </section>
-                    </div>
+                                <section className="rd-section">
+                                    <h3>Hypothesis & Model</h3>
+                                    <p>{paper.hypothesis}</p>
+                                </section>
+                            </div>
 
-                    <div className="rd-grid">
-                        <section className="rd-section">
-                            <h3>Limitations (Unknowns)</h3>
-                            <p>{paper.limitations}</p>
-                        </section>
+                            <div className="rd-grid">
+                                <section className="rd-section">
+                                    <h3>Limitations (Unknowns)</h3>
+                                    <p>{paper.limitations}</p>
+                                </section>
 
-                        <section className="rd-section">
-                            <h3>Future Work</h3>
-                            <p>{paper.futureWork}</p>
-                        </section>
-                    </div>
+                                <section className="rd-section">
+                                    <h3>Future Work</h3>
+                                    <p>{paper.futureWork}</p>
+                                </section>
+                            </div>
+                        </>
+                    )}
 
                     <footer className="article-footer">
                         <div className="keywords">
