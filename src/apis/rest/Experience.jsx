@@ -42,11 +42,11 @@ const defaultData = [
         date: formatDateRange("07/01/2016", "01/31/2022"),
         icon: <MdWork />,
         title: "Synergetech Co., Ltd., Nonthaburi, Thailand",
-        content: `Role: Automation System Engineer
-        Responsibilities:
-            - Spearheaded the design, development, debugging, deployment, and delivery of industrial automation projects, with a specialization in automated batch control systems.
-            - Proficient in industrial automation and control system programming, including PLC, SCADA, MES, and database integration.
-            - Successfully implemented analog signals, digital devices, I/O servers, and various 3rd-party integrations utilizing preferred protocols.
+        content: `Role: Automation System Engineer (On-site)
+        Highlights:
+            - Built full-stack web applications to monitor and manage production storage systems for Lion Corp, designing the data model and integrating PLC/SCADA telemetry into SQL Server for operational visibility.
+            - Developed MES and database integration layers linking industrial control systems to enterprise software.
+            - Designed and delivered complete industrial control systems from the ground up — PLC automation, Wonderware ArchestrA SCADA, fiber-optic networking across buildings, and self-hosted VMware vSphere/ESXi infrastructure.
         `,
         avatarSrc: null,
         avatarBorderColor: null
@@ -71,10 +71,11 @@ const defaultData = [
         date: formatDateRange("11/01/2022", "05/31/2024"),
         icon: <MdWork />,
         title: "Swift Dynamics Co., Ltd., Bangkok, Thailand",
-        content: `Role: Backend Developer
-        Responsibilities:
-        - Concentrating efforts on designing and developing a variety of backend services while collaborating with fellow engineers through coding and code reviews.
-        - Tackling challenges to master backend engineering, deepen understanding of software architectural patterns (with a focus on microservices and event-driven architecture), and expand knowledge in DevSecOps and cloud technologies.
+        content: `Role: Backend Developer (On-site)
+        Highlights:
+        - Built a real-time IoT metrics system for Airports of Thailand (AOT), integrating MQTT sensor data and sustaining 2,500+ req/sec at peak, with full-stack ownership of live analytics, automated alerts, and scheduled reporting.
+        - Reverse-engineered legacy recursive logic with custom data structures and hash-based algorithms, cutting runtime from 4 hours to ~10 seconds.
+        - Built MS Project-compatible scheduling supporting import/export of project plans spanning 10+ years.
         `,
         avatarSrc: null,
         avatarBorderColor: null
@@ -83,10 +84,13 @@ const defaultData = [
         date: formatDateRange("05/08/2024", "12/31/2025"),
         icon: <MdWork />,
         title: "Zero Friction Co., Ltd., Bangkok, Thailand",
-        content: `Role: Software Engineer
-        Responsibilities:
-        - Collaborating with team members to implement and optimize core stack components using Golang, Apache Kafka, Apache APISIX, and gRPC protocol.
-        - Particular emphasis on microservices architecture and optimizing data streaming efficiency.
+        content: `Role: Software Engineer (Hybrid)
+        Highlights:
+        - Led a backend squad of 5–7 engineers across multiple services, owning architecture decisions, service boundaries, performance, and production reliability.
+        - Architected and maintained an advertisement delivery system handling 3,000+ req/sec and ~260M requests/day at peak load.
+        - Built and maintained Go-based modular microservices communicating over REST, gRPC, Kafka, and webhooks.
+        - Built real-time systems — chat, live bidding, location tracking, notification pipelines — using SSE, WebSocket, RabbitMQ workers, and Redis Pub/Sub.
+        - Configured and operated infrastructure on Ubuntu and Red Hat within Virtuozzo cloud, managing an Apache APISIX gateway and Nginx load balancing.
         `,
         avatarSrc: null,
         avatarBorderColor: null
@@ -95,14 +99,12 @@ const defaultData = [
         date: formatDateRange("01/14/2026"),
         icon: <MdWork />,
         title: "Vulcan Coalition Co., Ltd., Bangkok, Thailand",
-        content: `Role: Senior Software Engineer
-        Responsibilities:
-        - Design, develop, and maintain high-quality frontend and backend systems.
-        - Architect scalable, maintainable software that aligns with product and business goals.
-        - Collaborate with AI engineers to build smart, automated product experiences.
-        - Implement and maintain CI/CD pipelines for smooth, zero-drama deployments.
-        - Conduct code reviews and mentor junior developers to raise team standards.
-        - Stay updated with emerging technologies and best practices in software development.
+        content: `Role: Senior Software Engineer → Project Manager (Hybrid)
+        Highlights:
+        - Built the proof of concept that won an AI enterprise platform engagement with Thai Samsung Electronics (TSE); promoted to lead delivery end-to-end.
+        - Own architecture and technical decisions across frontend, backend, and infrastructure — service boundaries, engineering standards, and LLM-based automation in core product flows.
+        - Lead delivery of the SF+ Dealer Support Platform for TSE — UAT release cycles, client communications, and technical documentation for a team of 5 engineers.
+        - Designed a client-facing development log and status lifecycle protocol that cut communication issues by 80%.
         `,
         avatarSrc: null,
         avatarBorderColor: null
