@@ -4,7 +4,7 @@ import { MdWork } from "react-icons/md";
 import { getList } from "./common/logics.js";
 import { BACKEND_URLS } from "./common/urls.js";
 import { CustomSortEnum } from "../../utils/choices.js";
-import { calculateAge } from "../../utils/utils.js";
+import { calculateAge, formatDateRange } from "../../utils/utils.js";
 
 const getExperienceList = () => getList({
     urls: BACKEND_URLS,
@@ -39,7 +39,7 @@ const defaultData = [
         avatarBorderColor: null
     },
     {
-        date: "Jul 2016 - Jan 2022 (5 years 7 months)",
+        date: formatDateRange("07/01/2016", "01/31/2022"),
         icon: <MdWork />,
         title: "Synergetech Co., Ltd., Nonthaburi, Thailand",
         content: `Role: Automation System Engineer
@@ -52,7 +52,7 @@ const defaultData = [
         avatarBorderColor: null
     },
     {
-        date: "Jan 2022 - Oct 2022 (10 months)",
+        date: formatDateRange("01/01/2022", "10/31/2022"),
         icon: <FaBookOpenReader />,
         title: "Self-Learning Journey: Software Development",
         content: `
@@ -68,7 +68,7 @@ const defaultData = [
         avatarBorderColor: null
     },
     {
-        date: "Nov 2022 -May 2024 (1 year 7 months)",
+        date: formatDateRange("11/01/2022", "05/31/2024"),
         icon: <MdWork />,
         title: "Swift Dynamics Co., Ltd., Bangkok, Thailand",
         content: `Role: Backend Developer
@@ -80,7 +80,7 @@ const defaultData = [
         avatarBorderColor: null
     },
     {
-        date: `May 2024 - Dec 2025 (${calculateAge("05/08/2024")})`,
+        date: formatDateRange("05/08/2024", "12/31/2025"),
         icon: <MdWork />,
         title: "Zero Friction Co., Ltd., Bangkok, Thailand",
         content: `Role: Software Engineer
@@ -92,7 +92,7 @@ const defaultData = [
         avatarBorderColor: null
     },
     {
-        date: `Jan 2026 - Present (${calculateAge("01/14/2026")})`,
+        date: formatDateRange("01/14/2026"),
         icon: <MdWork />,
         title: "Vulcan Coalition Co., Ltd., Bangkok, Thailand",
         content: `Role: Senior Software Engineer
