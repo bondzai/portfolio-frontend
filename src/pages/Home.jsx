@@ -26,17 +26,17 @@ const Home = () => {
                     />
                 </div>
                 <div className="prompt">
-                    <h3> Hi, I am James-Bond. </h3>
-                    <p> <strong>  Architect | Engineer | Entrepreneur </strong> </p>
-                    <p> <strong>  Blockchain Enthusiast </strong> </p>
+                    <h3> Hi, I am Puritat Chamart (James-Bond). </h3>
+                    <p> <strong> Staff Software Engineer · System Design </strong> </p>
                     <p> “Clean, simple, & high-quality solution <br /> always sparks joy in my blood.” </p>
                 </div>
                 <Typewriter
                     options={{
                         strings: [
-                            "<strong>GROWTH MINDSET</strong>",
-                            "<strong>GRIT</strong>",
-                            "<strong>SELF-ACTUALIZATION</strong>",
+                            "<strong>3,000+ REQ/SEC IN PRODUCTION</strong>",
+                            "<strong>~260M REQUESTS/DAY AT PEAK</strong>",
+                            "<strong>4 HOURS &rarr; 10 SECONDS</strong>",
+                            "<strong>BACKEND SQUADS OF 5-7 ENGINEERS</strong>",
                         ],
                         autoStart: true,
                         loop: true,
