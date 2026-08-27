@@ -4,7 +4,7 @@ import { FaDownload, FaEye } from 'react-icons/fa';
 import "./DownloadResumeButton.css";
 
 const DownloadResumeButton = () => {
-    const RESUME_URL = "https://drive.google.com/uc?export=download&id=1j325QVi7U5c1Go2O4rL0F65-rq3ul_OR";
+    const RESUME_URL = "https://drive.google.com/file/d/1PVhCEcMEF3kMo4Ug1te7gFMM_VH5udse/view?usp=sharing";
 
     const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
 
