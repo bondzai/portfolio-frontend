@@ -16,12 +16,25 @@ const transformChartData = (items = []) => {
 };
 
 /**
+ * The backend has served this payload in two shapes: the all-time fields at the
+ * top level (what it returns today), and a `{ all_time: { data } }` envelope
+ * mirroring WakaTime's own API. Accept both so either shape renders.
+ * @param {Object} apiResponse - Raw response body from the backend
+ * @returns {Object} The object holding the all-time fields
+ */
+const unwrapAllTime = (apiResponse) => {
+    if (apiResponse?.all_time?.data) return apiResponse.all_time.data;
+    if (apiResponse?.all_time) return apiResponse.all_time;
+    return apiResponse;
+};
+
+/**
  * Transforms Wakatime API response to component-expected format
  * @param {Object} apiResponse - Raw response from Wakatime API
  * @returns {Object} Transformed data object
  */
 const transformWakatimeResponse = (apiResponse) => {
-    const { data } = apiResponse.all_time;
+    const data = unwrapAllTime(apiResponse);
 
     return {
         human_readable_total_including_other_language: data.human_readable_total_including_other_language,
@@ -52,21 +65,17 @@ const getWakatimeStats = async () => {
             withCredentials: true,
         });
 
-        // Backend returns { all_time: { ... }, summaries: ... }
-        // We need to unwrap the structure.
-        // If the backend returns Option<WakatimeData>, it might be null if not ready.
-        if (!response.data || !response.data.all_time) {
-            // Return empty structure or throw
+        // Validate the unwrapped payload rather than an `all_time` envelope: the
+        // backend returns the all-time fields at the top level, so keying the
+        // check on `all_time` rejected every successful 200 response.
+        const allTime = unwrapAllTime(response.data);
+        if (!allTime || !Array.isArray(allTime.languages)) {
+            console.warn(
+                "Unexpected Wakatime payload; top-level keys:",
+                Object.keys(response.data || {})
+            );
             throw new Error("Wakatime stats not yet available (backend fetching in progress)");
         }
-
-        // The current transform expects the raw wakatime response format.
-        // Our backend returns `AllTimeStats` which matches the structure inside `data` of wakatime response,
-        // but with snake_case keys preserved from Rust structs.
-        // WakaTime API returns `data: { ... }`.
-        // Our rust struct `AllTimeStats` has `data: AllTimeData`.
-        // So `response.data.all_time` is `AllTimeStats` which has `data` field.
-        // So we can pass `response.data.all_time` to `transformWakatimeResponse`.
 
         return transformWakatimeResponse(response.data);
     } catch (error) {
