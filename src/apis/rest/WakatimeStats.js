@@ -3,12 +3,23 @@ import axios from "axios";
 
 
 /**
+ * The backend pads these arrays with nulls — operating_systems comes back as
+ * [ {...}, null, null, null ] — so every consumer that maps over an entry
+ * (WakatimeStats.jsx reads `i.name` and `i.percent`) would dereference null.
+ * Drop anything that is not a usable entry at the boundary.
+ * @param {Array} items
+ * @returns {Array} Only entries that are objects carrying a name
+ */
+const validEntries = (items) =>
+    Array.isArray(items) ? items.filter((item) => item && item.name != null) : [];
+
+/**
  * Transforms Wakatime API response items to chart format
  * @param {Array} items - Array of items from Wakatime API (languages, editors, operating_systems)
  * @returns {Array} Transformed array with value, name, and text properties
  */
 const transformChartData = (items = []) => {
-    return items.map(item => ({
+    return validEntries(items).map(item => ({
         value: item.percent,
         name: item.name,
         text: item.text,
@@ -40,9 +51,9 @@ const transformWakatimeResponse = (apiResponse) => {
         human_readable_total_including_other_language: data.human_readable_total_including_other_language,
         human_readable_daily_average: data.human_readable_daily_average,
         human_readable_daily_average_including_other_language: data.human_readable_daily_average_including_other_language,
-        operating_systems: data.operating_systems || [],
-        editors: data.editors || [],
-        languages: data.languages || [],
+        operating_systems: validEntries(data.operating_systems),
+        editors: validEntries(data.editors),
+        languages: validEntries(data.languages),
         summaries: apiResponse.summaries || [],
     };
 };
