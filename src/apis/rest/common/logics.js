@@ -1,5 +1,6 @@
 import axios from "axios";
 import { CustomSortEnum } from "../../../utils/choices.js";
+import { cachedFetch } from "./cache.js";
 
 // Applies custom sort on the response data
 const customSortResponse = (customSort, response) => {
@@ -9,6 +10,10 @@ const customSortResponse = (customSort, response) => {
     // Default to ASCENDING or no sort
     return response.data;
 };
+
+// Everything that can change the result has to be in the key, or two different
+// reads would collide: the sort order is applied before the value is cached.
+const cacheKey = (kind, urls, customSort) => `${kind}:${customSort ?? "none"}:${urls.join("|")}`;
 
 // Helper function to fetch data from multiple URLs
 const fetchFromUrls = async (urls, headers, defaultData, transform, waitingTime = 3000) => {
@@ -50,13 +55,18 @@ export const getList = async ({ ...Props }) => {
         ? { Authorization: `Bearer ${import.meta.env.VITE_DEV_TOKEN}` }
         : {};
 
-    return await fetchFromUrls(urls, headers, Props.defaultData, (response) => {
-        if (Array.isArray(response.data)) {
-            return customSortResponse(Props.customSort, response);
-        }
-        // If response.data is not an array, try the next URL
-        return undefined;
-    }, Props.waitingTime);
+    // Served from memory on a repeat visit; `cache: false` forces a refetch.
+    return await cachedFetch(
+        cacheKey("list", urls, Props.customSort),
+        () => fetchFromUrls(urls, headers, Props.defaultData, (response) => {
+            if (Array.isArray(response.data)) {
+                return customSortResponse(Props.customSort, response);
+            }
+            // If response.data is not an array, try the next URL
+            return undefined;
+        }, Props.waitingTime),
+        { ttl: Props.cacheTtl, enabled: Props.cache !== false }
+    );
 };
 
 // Fetch a single object from the provided URLs
@@ -70,5 +80,9 @@ export const getSingleObject = async ({ ...Props }) => {
         ? { Authorization: `Bearer ${import.meta.env.VITE_DEV_TOKEN}` }
         : {};
 
-    return await fetchFromUrls(urls, headers, Props.defaultData, (response) => response.data, Props.waitingTime);
+    return await cachedFetch(
+        cacheKey("object", urls, Props.customSort),
+        () => fetchFromUrls(urls, headers, Props.defaultData, (response) => response.data, Props.waitingTime),
+        { ttl: Props.cacheTtl, enabled: Props.cache !== false }
+    );
 };
