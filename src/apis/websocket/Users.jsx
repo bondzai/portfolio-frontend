@@ -8,14 +8,27 @@ export const Users = () => {
 
     const wsUrl = import.meta.env.VITE_WS_URL;
     const { receivedData, isConnected } = useSocket(wsUrl);
-    const data = JSON.parse(receivedData);
 
+    // Parse inside the effect, keyed on the raw frame string. Parsing during
+    // render instead would throw on any non-JSON frame and, with no error
+    // boundary above this, blank the whole app — and it produced a new object
+    // identity every render, so the effect re-ran on every render.
     useEffect(() => {
-        if (data) {
-            setActiveUsersCount(data.activeUsers);
-            setTotalUsersCount(data.totalUsers);
+        if (!receivedData) return;
+
+        let payload;
+        try {
+            payload = JSON.parse(receivedData);
+        } catch {
+            console.warn("Ignoring non-JSON WebSocket frame:", receivedData);
+            return;
         }
-    }, [data]);
+
+        // The server opens with { type: "connected" }, which carries no counts;
+        // only take numbers so a control frame cannot blank the display.
+        if (typeof payload?.activeUsers === "number") setActiveUsersCount(payload.activeUsers);
+        if (typeof payload?.totalUsers === "number") setTotalUsersCount(payload.totalUsers);
+    }, [receivedData]);
 
     return [activeUsersCount, totalUsersCount, isConnected];
 };
