@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Tour, ConfigProvider } from 'antd';
 import { AppstoreFilled } from '@ant-design/icons';
+import { FEATURES } from "../../utils/features";
 
 import './FeatureTour.css';
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
@@ -52,7 +53,9 @@ const FeatureTour = ({ isOpen, onClose, refs }) => {
                 ),
                 target: () => startRef?.current,
             },
-            {
+            // Only offered when the control center is actually rendered;
+            // otherwise the step would point at a ref that is never attached.
+            ...(FEATURES.serverStatus ? [{
                 title: 'System Control Center',
                 description: 'Your central hub for System Health and Active Tasks. Monitor resources and manage running apps.',
                 cover: (
@@ -61,7 +64,7 @@ const FeatureTour = ({ isOpen, onClose, refs }) => {
                     </div>
                 ),
                 target: () => controlRef?.current,
-            },
+            }] : []),
         ];
     }
 

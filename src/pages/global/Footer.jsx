@@ -13,6 +13,7 @@ import { usePopup } from "../../contexts/PopupContext";
 import { useWindow } from "../../contexts/WindowContext";
 import { useTour } from "../../contexts/TourContext";
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
+import { FEATURES } from "../../utils/features";
 import "./Footer.css";
 
 // OS Apps
@@ -78,22 +79,28 @@ const Footer = () => {
                                 />
                             </div>
 
-                            <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
+                            {FEATURES.serverStatus && (
+                                <>
+                                    <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }}></div>
 
-                            <div ref={controlRef}>
-                                <SystemControlCenter
-                                    runningApps={runningApps}
-                                    onRestore={openWindow}
-                                    onClose={closeWindow}
-                                    onCloseAll={closeAll}
-                                    activeUsersCount={activeUsersCount}
-                                    isConnected={isConnected}
-                                />
-                            </div>
+                                    <div ref={controlRef}>
+                                        <SystemControlCenter
+                                            runningApps={runningApps}
+                                            onRestore={openWindow}
+                                            onClose={closeWindow}
+                                            onCloseAll={closeAll}
+                                            activeUsersCount={activeUsersCount}
+                                            isConnected={isConnected}
+                                        />
+                                    </div>
+                                </>
+                            )}
                         </>
                     )}
 
-                    <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                    {FEATURES.realtimeCount && (
+                        <Watcher activeUsersCount={activeUsersCount} isConnected={isConnected} />
+                    )}
                 </div>
             </div>
 
