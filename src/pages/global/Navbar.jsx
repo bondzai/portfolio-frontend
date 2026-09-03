@@ -11,8 +11,9 @@ import BrandLogo from "../../components/common/BrandLogo";
 import { useTour } from "../../contexts/TourContext";
 import FeedbackModal from "../../components/common/FeedbackModal";
 import { BADGE_BETA, BADGE_SOON, BADGE_NEW } from "../../utils/constants";
+import { FEATURES } from "../../utils/features";
 
-const NAV_ITEMS = [
+const ALL_NAV_ITEMS = [
     { label: "Home", key: "home", path: "/", icon: <HomeFilled /> },
     { label: "About", key: "about", path: "/about", icon: <IdcardFilled /> },
     { label: "Experience", key: "experience", path: "/experience", icon: <RocketFilled /> },
@@ -20,7 +21,7 @@ const NAV_ITEMS = [
     { label: "Projects", key: "projects", path: "/projects", icon: <ProjectFilled /> },
     { label: "Certifications", key: "certifications", path: "/certifications", icon: <TrophyFilled /> },
     { label: "Brotherhood", key: "brotherhood", path: "/brotherhood", icon: <TeamOutlined /> },
-    { label: "Activities", key: "activities", path: "/stats", icon: <RadarChartOutlined />, badge: BADGE_NEW },
+    { label: "Activities", key: "activities", path: "/stats", icon: <RadarChartOutlined />, badge: BADGE_NEW, feature: "activities" },
     { label: "Research", key: "research", path: "/research", icon: <ExperimentOutlined />, badge: BADGE_NEW},
     { label: "Feedback", key: "feedback", path: "/feedback", icon: <MessageOutlined />, badge: BADGE_BETA },
     { label: "Settings", key: "settings", path: "/settings", icon: <SettingFilled />, badge: BADGE_BETA },
@@ -32,6 +33,10 @@ const NAV_ITEMS = [
         ]
     },
 ];
+
+// An item carrying `feature` renders only while that flag is on. The /stats
+// route stays registered in App.jsx, so the page is still reachable directly.
+const NAV_ITEMS = ALL_NAV_ITEMS.filter((item) => !item.feature || FEATURES[item.feature]);
 
 // Theme Config
 const themeConfig = {
