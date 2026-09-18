@@ -1,0 +1,226 @@
+/* Shared chrome for searchable, filterable, paginated lists.
+   Matches the glass surfaces used by the project and certification cards. */
+
+.collection {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Toolbar */
+.collection-toolbar {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.collection-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.collection-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 260px;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.collection-search:focus-within {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-highlight);
+}
+
+.collection-search-icon {
+    padding-left: 12px;
+    color: var(--text-color-secondary);
+    font-size: 14px;
+}
+
+.collection-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text-color-primary);
+    font-family: inherit;
+    font-size: 14px;
+    /* Safari draws its own clear button on type=search; ours is consistent. */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.collection-search input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.collection-search input::placeholder {
+    color: rgba(245, 245, 245, 0.45);
+}
+
+.collection-clear-input {
+    display: flex;
+    align-items: center;
+    padding: 0 12px 0 4px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgba(245, 245, 245, 0.45);
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.collection-clear-input:hover {
+    color: var(--text-color-primary);
+}
+
+.collection-select {
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-color-primary);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.collection-select:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.collection-select:focus-visible {
+    border-color: var(--color-highlight);
+}
+
+/* The dropdown itself is drawn by the OS, so the options need their own
+   colours to stay readable away from the glass background. */
+.collection-select option {
+    background: var(--color-deep);
+    color: var(--text-color-primary);
+}
+
+.collection-reset {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: var(--text-color-secondary);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.collection-reset:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--text-color-primary);
+}
+
+.collection-count {
+    margin: 12px 2px 0;
+    color: var(--text-color-secondary);
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+/* Empty state */
+.collection-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 60px 20px;
+    color: var(--text-color-secondary);
+    text-align: center;
+}
+
+.collection-empty p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Pagination */
+.collection-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.collection-page-btn {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-color-primary);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.collection-page-btn:hover:not(:disabled):not(.is-current) {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.collection-page-btn.is-current {
+    background: var(--color-highlight);
+    border-color: var(--color-highlight);
+    color: var(--color-deep);
+    font-weight: 600;
+    cursor: default;
+}
+
+.collection-page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.collection-page-gap {
+    padding: 0 2px;
+    color: var(--text-color-secondary);
+    opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+    .collection-search {
+        max-width: none;
+        flex-basis: 100%;
+    }
+
+    .collection-select {
+        flex: 1 1 140px;
+    }
+}
