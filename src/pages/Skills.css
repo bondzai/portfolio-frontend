@@ -44,10 +44,30 @@
     opacity: 0.5;
 }
 
-/* Resizable Handle Customization (Optional) */
-.react-resizable-handle {
+/* Resizable Handle Customization.
+   Scoped to the grid item so it wins over react-resizable's own stylesheet,
+   which would otherwise paint its dark default handle inside the panel corner. */
+.react-grid-item > .react-resizable-handle {
     background-image: none;
-    /* Hide default ugly handle if desired, or style it */
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.react-grid-item:hover > .react-resizable-handle {
+    opacity: 1;
+}
+
+.react-grid-item > .react-resizable-handle::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid rgba(255, 255, 255, 0.35);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 1px;
 }
 
 /* Glassmorphism Panel */
@@ -114,8 +134,8 @@
 }
 
 .accordion-content.expanded {
-    max-height: 1000px;
-    /* Allow expansion */
+    max-height: 2000px;
+    /* Allow expansion; must stay above the tallest panel or content gets clipped */
 }
 
 .accordion-inner {
