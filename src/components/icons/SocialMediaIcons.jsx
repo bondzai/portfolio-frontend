@@ -4,7 +4,7 @@ import { AiFillLinkedin, AiOutlineMail, AiFillGithub, AiFillYoutube, AiOutlineSh
 import { SiGitbook, SiBitcoin, SiWakatime } from "react-icons/si";
 import DonationCard from "../cards/DonationCard.jsx";
 import CustomModalButton from "../buttons/CustomModalButton.jsx";
-import { openInNewTab } from "../../utils/utils.js"
+import { openInNewTab, mailTo } from "../../utils/utils.js"
 import useScreenDimensions, { ScreenSize } from "../../hooks/useScreenDimensions";
 import { usePopup } from "../../contexts/PopupContext";
 
@@ -58,8 +58,8 @@ const SocialMediaIcons = () => {
                 </span>
             </Tooltip>
 
-            <Tooltip title="Mail" placement="top" getPopupContainer={() => document.body}>
-                <span>
+            <Tooltip title="puritat.lab@gmail.com" placement="top" getPopupContainer={() => document.body}>
+                <span onClick={() => mailTo("puritat.lab@gmail.com")}>
                     <AiOutlineMail
                         style={{ ...iconStyle, color: isMobile ? 'rgba(0,0,0,0.65)' : 'white' }}
                     />
