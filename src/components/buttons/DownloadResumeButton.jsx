@@ -4,42 +4,26 @@ import { FaDownload, FaEye } from 'react-icons/fa';
 import "./DownloadResumeButton.css";
 
 const DownloadResumeButton = () => {
-    const RESUME_URL = "https://drive.google.com/file/d/1PVhCEcMEF3kMo4Ug1te7gFMM_VH5udse/view?usp=sharing";
+    const RESUME_URL = "/resume.pdf";
+    const RESUME_FILENAME = "Puritat_Chamart_Resume.pdf";
 
     const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
 
-    // Extract file ID from Google Drive URL
-    const getFileId = (url) => {
-        try {
-            const urlObj = new URL(url);
-            return urlObj.searchParams.get("id");
-        } catch (e) {
-            return null;
-        }
-    };
-
-    const fileId = getFileId(RESUME_URL);
-    const previewUrl = fileId ? `https://drive.google.com/file/d/${fileId}/preview` : null;
-
     const handleDownload = () => {
-        if (!RESUME_URL) {
-            const link = document.createElement('a');
-            link.href = '/resume.pdf';
-            link.download = 'resume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            window.open(RESUME_URL, '_blank');
-        }
+        const link = document.createElement('a');
+        link.href = RESUME_URL;
+        link.download = RESUME_FILENAME;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
         <div className="resume-btn-container">
             <Button
                 type="primary"
-                onClick={previewUrl ? () => setIsPreviewOpen(true) : handleDownload}
-                icon={previewUrl ? <FaEye /> : <FaDownload />}
+                onClick={() => setIsPreviewOpen(true)}
+                icon={<FaEye />}
                 size="large"
                 className="resume-btn"
             >
@@ -59,14 +43,14 @@ const DownloadResumeButton = () => {
             >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
                     <span style={{ fontSize: '16px', fontWeight: '500', color: '#555' }}>
-                        Last Update: December 2025
+                        Last Update: November 2026
                     </span>
                     <Button key="download" type="primary" onClick={handleDownload} icon={<FaDownload />}>
                         Download
                     </Button>
                 </div>
                 <iframe
-                    src={previewUrl}
+                    src={RESUME_URL}
                     width="100%"
                     height="600px"
                     style={{ border: 'none' }}
